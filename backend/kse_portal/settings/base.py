@@ -8,6 +8,9 @@ env = environ.Env()
 # BASE_DIR is now two levels up since settings is a package
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
+# Read .env file from backend root (where manage.py lives)
+env.read_env(os.path.join(BASE_DIR, '.env'), overwrite=True)
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -43,12 +46,19 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
+]
+
 ROOT_URLCONF = 'kse_portal.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -116,3 +126,6 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+# Groq API Key for SmartCourse AI advisor (server-side only)
+GROQ_API_KEY = env('GROQ_API_KEY', default='')

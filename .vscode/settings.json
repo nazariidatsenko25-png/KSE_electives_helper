@@ -1,0 +1,15 @@
+{
+    "python.defaultInterpreterPath": "/Users/admin/Desktop/draft/backend/venv/bin/python",
+    "python.analysis.extraPaths": [
+        "/Users/admin/Desktop/draft/backend"
+    ],
+    "python.analysis.exclude": [
+        "**/node_modules",
+        "**/claude-cookbooks-main",
+        "**/.git"
+    ],
+    "python.venvFolders": [
+        "/Users/admin/Desktop/draft/backend/venv"
+    ],
+    "python.locator": "native"
+}

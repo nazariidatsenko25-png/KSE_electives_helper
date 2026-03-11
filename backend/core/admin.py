@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, Course, Enrollment, Review
+from .models import User, Course, Enrollment, Review, Wishlist
 
 class CustomUserAdmin(UserAdmin):
     ordering = ('email',)
@@ -29,7 +29,13 @@ class ReviewAdmin(admin.ModelAdmin):
     list_filter = ('rating_difficulty', 'rating_quality', 'rating_workload')
     search_fields = ('course__code', 'user__email', 'comment')
 
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ('user', 'course', 'added_at')
+    list_filter = ('added_at',)
+    search_fields = ('user__email', 'course__code')
+
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Enrollment, EnrollmentAdmin)
 admin.site.register(Review, ReviewAdmin)
+admin.site.register(Wishlist, WishlistAdmin)

@@ -1,4 +1,47 @@
-# React + Vite
+# KSE Student Portal
+
+> **⚠️ TODO (before production release):** Re-add a `.gitignore` file with the following entries:
+>
+> ```
+> # Logs
+> logs
+> *.log
+> npm-debug.log*
+> yarn-debug.log*
+> yarn-error.log*
+> pnpm-debug.log*
+> lerna-debug.log*
+>
+> node_modules
+> dist
+> dist-ssr
+> *.local
+>
+> # Editor directories and files
+> .vscode/*
+> !.vscode/extensions.json
+> .idea
+> .DS_Store
+> *.suo
+> *.ntvs*
+> *.njsproj
+> *.sln
+> *.sw?
+>
+> # Environment variables (API keys — never commit!)
+> .env
+> *.env
+>
+> # Python
+> __pycache__/
+> *.py[cod]
+> db.sqlite3
+> backend/venv/
+> ```
+
+---
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

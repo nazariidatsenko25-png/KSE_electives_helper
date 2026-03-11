@@ -1,25 +1,84 @@
-import React, { useState } from 'react';
-import { CheckCircle2, AlertTriangle, MessageSquare, Lock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { CheckCircle2, AlertTriangle, MessageSquare, Lock, Loader2, ChevronDown, Award } from 'lucide-react';
+import { fetchWithAuth } from '../utils/api';
 
-const CourseEvaluations = () => {
+const CourseEvaluations = ({ user }) => {
     const [submitted, setSubmitted] = useState(false);
     const [rating1, setRating1] = useState(3);
     const [rating2, setRating2] = useState(3);
     const [rating3, setRating3] = useState(3);
     const [comments, setComments] = useState('');
+    const [transcript, setTranscript] = useState([]);
+    const [selectedCourseId, setSelectedCourseId] = useState(null);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [error, setError] = useState(null);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Simulate API call
-        setTimeout(() => setSubmitted(true), 600);
-    };
+    useEffect(() => {
+        if (user) {
+            fetchWithAuth('/api/user/transcript/', { suppressAuthRedirect: true })
+                .then(data => {
+                    setTranscript(data);
+                    if (data.length > 0) {
+                        setSelectedCourseId(data[0].course.id);
+                    }
+                })
+                .catch(err => console.warn('Transcript fetch unavailable (mock mode):', err.message));
+        }
+    }, [user]);
 
-    const course = {
+    const selectedEnrollment = transcript.find(t => t.course.id === selectedCourseId);
+    const course = selectedEnrollment ? selectedEnrollment.course : {
         code: 'CS301',
-        title: 'Операційні системи',
+        title: 'Операційні системи (Mock)',
         instructor: 'Д-р Алан Тюрінг',
         term: 'Весна 2026'
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setError(null);
+
+        try {
+            await fetchWithAuth('/api/reviews/', {
+                method: 'POST',
+                suppressAuthRedirect: true,
+                body: JSON.stringify({
+                    course: selectedCourseId || course.id,
+                    rating_quality: rating1,
+                    rating_difficulty: rating2,
+                    rating_workload: rating3,
+                    comment: comments,
+                }),
+            });
+            setSubmitted(true);
+        } catch (err) {
+            setError(err.message || 'Помилка при відправці. Спробуйте ще раз.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
+
+    const handleReset = () => {
+        setSubmitted(false);
+        setRating1(3);
+        setRating2(3);
+        setRating3(3);
+        setComments('');
+        setError(null);
+    };
+
+    if (!user) {
+        return (
+            <div className="eval-view animate-in centered">
+                <div className="glass-panel text-center">
+                    <Lock size={48} className="text-muted mb-md" />
+                    <h2 className="heading-2">Авторизація обов'язкова</h2>
+                    <p className="text-muted">Щоб залишити верифікований відгук, увійдіть до системи за допомогою корпоративної пошти.</p>
+                </div>
+            </div>
+        );
+    }
 
     if (submitted) {
         return (
@@ -29,7 +88,7 @@ const CourseEvaluations = () => {
                     <h2 className="heading-2">Оцінку Надіслано</h2>
                     <p className="text-muted">Дякуємо за ваш відгук! Ваша відповідь була анонімізована та записана до верифікованої бази даних.</p>
                     <div className="mt-lg">
-                        <button className="btn-primary" onClick={() => setSubmitted(false)}>Оцінити інший курс</button>
+                        <button className="btn-primary" onClick={handleReset}>Оцінити інший курс</button>
                     </div>
                 </div>
             </div>
@@ -43,7 +102,7 @@ const CourseEvaluations = () => {
                     <MessageSquare className="text-gradient" size={28} />
                     <div>
                         <h1 className="heading-1 m-0">Верифіковане оцінювання курсу</h1>
-                        <p className="text-muted">Анонімізований відгук за {course.term}</p>
+                        <p className="text-muted">Анонімізований відгук за {course.trimester || course.term}</p>
                     </div>
                 </div>
 
@@ -53,9 +112,41 @@ const CourseEvaluations = () => {
                 </div>
             </div>
 
+            {/* Course Selector */}
+            {transcript.length > 1 && (
+                <div className="eval-course-selector glass-panel">
+                    <label className="text-muted text-sm" htmlFor="course-select">Оберіть курс для оцінювання:</label>
+                    <div className="select-wrapper">
+                        <select
+                            id="course-select"
+                            className="course-select"
+                            value={selectedCourseId || ''}
+                            onChange={(e) => setSelectedCourseId(Number(e.target.value))}
+                        >
+                            {transcript.map(t => (
+                                <option key={t.course.id} value={t.course.id}>
+                                    {t.course.code} — {t.course.title}{t.grade ? ` · Оцінка: ${t.grade}` : ''}
+                                </option>
+                            ))}
+                        </select>
+                        <ChevronDown size={16} className="select-icon" />
+                    </div>
+                </div>
+            )}
+
             <div className="eval-context-card glass-panel highlight-blue">
-                <h3 className="course-code">{course.code}</h3>
-                <h2 className="course-title">{course.title}</h2>
+                <div className="eval-context-top">
+                    <div>
+                        <h3 className="course-code">{course.code}</h3>
+                        <h2 className="course-title">{course.title}</h2>
+                    </div>
+                    {selectedEnrollment?.grade && (
+                        <div className="eval-grade-badge">
+                            <Award size={16} />
+                            <span>Оцінка: <strong>{selectedEnrollment.grade}</strong></span>
+                        </div>
+                    )}
+                </div>
                 <p className="instructor">Викладач: {course.instructor}</p>
 
                 <div className="disclaimer mt-sm">
@@ -63,6 +154,13 @@ const CourseEvaluations = () => {
                     <p className="text-sm text-muted">Відповіді повністю деідентифікуються перед тим, як ними поділяться з викладачами. Конструктивна критика допомагає покращувати програми KSE.</p>
                 </div>
             </div>
+
+            {error && (
+                <div className="eval-error glass-panel">
+                    <AlertTriangle size={18} className="text-danger" />
+                    <p className="text-danger">{error}</p>
+                </div>
+            )}
 
             <form className="eval-form glass-panel" onSubmit={handleSubmit}>
                 <div className="form-section">
@@ -138,7 +236,16 @@ const CourseEvaluations = () => {
 
                 <div className="form-actions border-t pt-md mt-lg">
                     <button type="button" className="btn-secondary">Зберегти чернетку</button>
-                    <button type="submit" className="btn-primary">Відправити оцінювання</button>
+                    <button type="submit" className="btn-primary" disabled={isSubmitting}>
+                        {isSubmitting ? (
+                            <>
+                                <Loader2 size={16} className="spin-icon" />
+                                Відправлення...
+                            </>
+                        ) : (
+                            'Відправити оцінювання'
+                        )}
+                    </button>
                 </div>
             </form>
         </div>

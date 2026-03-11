@@ -1,0 +1,21 @@
+{
+    "venvPath": "backend",
+    "venv": "venv",
+    "pythonVersion": "3.12",
+    "executionEnvironments": [
+        {
+            "root": "backend",
+            "extraPaths": [
+                "backend"
+            ]
+        }
+    ],
+    "ignore": [
+        "backend/venv"
+    ],
+    "reportMissingImports": false,
+    "reportMissingModuleSource": false,
+    "reportGeneralTypeIssues": false,
+    "reportOptionalMemberAccess": false,
+    "reportArgumentType": false
+}

@@ -58,14 +58,18 @@ const Sidebar = ({ currentView, setCurrentView }) => {
           <nav className="menu-nav">
             {secondaryItems.map((item) => {
               const Icon = item.icon;
+              const isEnabled = item.id === 'catalog';
+              const isActive = currentView === item.id && isEnabled;
               return (
                 <button
                   key={item.id}
-                  className="menu-item disabled"
-                  title="Незабаром"
+                  onClick={isEnabled ? () => setCurrentView(item.id) : undefined}
+                  className={`menu-item ${isActive ? 'active' : ''} ${!isEnabled ? 'disabled' : ''}`}
+                  title={!isEnabled ? 'Незабаром' : ''}
                 >
                   <Icon size={20} />
                   <span>{item.label}</span>
+                  {isActive && <div className="active-indicator" />}
                 </button>
               );
             })}
