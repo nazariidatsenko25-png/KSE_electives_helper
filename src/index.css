@@ -1638,6 +1638,24 @@ body {
   letter-spacing: 0.05em;
 }
 
+.instructor-title-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  letter-spacing: 0.03em;
+}
+
+.instructor-title-badge.professor {
+  background: rgba(20, 184, 166, 0.15);
+  color: #2dd4bf;
+}
+
+.instructor-title-badge.lecturer {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+}
+
 .catalog-course-name {
   font-size: 1.1rem;
   font-weight: 600;
@@ -1729,6 +1747,295 @@ body {
   padding: 3rem;
   text-align: center;
   color: var(--text-muted);
+}
+
+/* --- Instagram-Style Comments --- */
+.course-comments-section {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.comments-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+}
+
+.comments-count {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+}
+
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 280px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.comments-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.comment-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  transition: background 0.15s ease;
+}
+
+.comment-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comment-avatar:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.comment-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.comment-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.comment-nickname {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #60a5fa;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.comment-nickname:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+.comment-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.comment-text {
+  font-size: 0.83rem;
+  color: var(--text-main);
+  line-height: 1.45;
+  margin: 0;
+  word-break: break-word;
+}
+
+.comment-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
+}
+
+.comment-input-row:focus-within {
+  border-color: #60a5fa;
+}
+
+.comment-input-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.comment-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.comment-input::placeholder {
+  color: var(--text-muted);
+}
+
+.comment-send-btn {
+  background: none;
+  border: none;
+  color: #60a5fa;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.comment-send-btn:hover:not(:disabled) {
+  color: #93c5fd;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.comment-send-btn:disabled {
+  color: var(--text-muted);
+  opacity: 0.4;
+  cursor: default;
+}
+
+.comment-count-badge {
+  color: #c084fc !important;
+}
+
+/* --- Profile Popup --- */
+.profile-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.15s ease;
+}
+
+.profile-popup {
+  width: 340px;
+  padding: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  animation: notifSlideIn 0.25s ease;
+  position: relative;
+}
+
+.profile-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  z-index: 1;
+}
+
+.profile-popup-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+}
+
+.profile-popup-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem 1rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.1));
+}
+
+.profile-popup-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.profile-popup-name {
+  text-align: center;
+}
+
+.profile-popup-name h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  color: var(--text-main);
+}
+
+.profile-popup-nickname {
+  font-size: 0.85rem;
+  color: #60a5fa;
+  font-weight: 500;
+}
+
+.profile-popup-details {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.profile-popup-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.profile-popup-detail svg {
+  color: var(--color-accent, #10b981);
+  flex-shrink: 0;
 }
 
 /* --- Course Selector (Evaluations) --- */

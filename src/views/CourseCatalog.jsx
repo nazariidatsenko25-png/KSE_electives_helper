@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { BookOpen, Clock, Users, Star, Search, Filter, ChevronDown, Lock, Heart, Loader2 } from 'lucide-react';
-import { mockCatalog } from '../data/mockData';
+import React, { useState, useEffect, useRef } from 'react';
+import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail } from 'lucide-react';
+import { mockCatalog, mockComments, mockUsers } from '../data/mockData';
 import { fetchWithAuth } from '../utils/api';
 
 const CourseCatalog = ({ user }) => {
@@ -10,8 +10,46 @@ const CourseCatalog = ({ user }) => {
     const [expanded, setExpanded] = useState(null);
     const [wishlist, setWishlist] = useState(new Set());
     const [loadingWishlist, setLoadingWishlist] = useState(new Set());
+    const [comments, setComments] = useState(() => {
+        // Deep copy mock comments as initial state
+        const initial = {};
+        for (const [courseId, cmts] of Object.entries(mockComments)) {
+            initial[courseId] = [...cmts];
+        }
+        return initial;
+    });
+    const [commentInputs, setCommentInputs] = useState({});
+    const [profilePopup, setProfilePopup] = useState(null); // userId to show popup for
+    const popupRef = useRef(null);
 
     const departments = [...new Set(mockCatalog.map(c => c.department))];
+
+    const getUserById = (userId) => mockUsers.find(u => u.id === userId);
+
+    const formatTimeAgo = (timestamp) => {
+        const now = new Date('2027-01-20T12:00:00Z'); // Mock "now" aligned with mock data
+        const date = new Date(timestamp);
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMins / 60);
+        const diffDays = Math.floor(diffHours / 24);
+
+        if (diffDays > 0) return `${diffDays}д тому`;
+        if (diffHours > 0) return `${diffHours}год тому`;
+        if (diffMins > 0) return `${diffMins}хв тому`;
+        return 'щойно';
+    };
+
+    // Close profile popup on outside click
+    useEffect(() => {
+        const handleClick = (e) => {
+            if (popupRef.current && !popupRef.current.contains(e.target)) {
+                setProfilePopup(null);
+            }
+        };
+        document.addEventListener('mousedown', handleClick);
+        return () => document.removeEventListener('mousedown', handleClick);
+    }, []);
 
     // Fetch existing wishlist on mount
     useEffect(() => {
@@ -30,7 +68,6 @@ const CourseCatalog = ({ user }) => {
         const courseId = course.id;
         const isWishlisted = wishlist.has(courseId);
 
-        // Mark this card as loading
         setLoadingWishlist(prev => new Set(prev).add(courseId));
 
         try {
@@ -63,6 +100,31 @@ const CourseCatalog = ({ user }) => {
         }
     };
 
+    const handleCommentSubmit = (e, courseId) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const text = (commentInputs[courseId] || '').trim();
+        if (!text) return;
+
+        const newComment = {
+            id: Date.now(),
+            userId: 101, // Default to first mock user (dmytro_kh)
+            text,
+            timestamp: new Date().toISOString(),
+        };
+
+        setComments(prev => ({
+            ...prev,
+            [courseId]: [...(prev[courseId] || []), newComment],
+        }));
+        setCommentInputs(prev => ({ ...prev, [courseId]: '' }));
+    };
+
+    const handleProfileClick = (e, userId) => {
+        e.stopPropagation();
+        setProfilePopup(profilePopup === userId ? null : userId);
+    };
+
     const filtered = mockCatalog.filter(course => {
         const matchSearch = course.name.toLowerCase().includes(search.toLowerCase()) ||
             course.code.toLowerCase().includes(search.toLowerCase()) ||
@@ -72,8 +134,51 @@ const CourseCatalog = ({ user }) => {
         return matchSearch && matchDept && matchType;
     });
 
+    const profileUser = profilePopup ? getUserById(profilePopup) : null;
+
     return (
         <div className="catalog-view animate-in">
+            {/* Profile Popup Modal */}
+            {profileUser && (
+                <div className="profile-popup-overlay" onClick={() => setProfilePopup(null)}>
+                    <div
+                        className="profile-popup glass-panel"
+                        ref={popupRef}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button className="profile-popup-close" onClick={() => setProfilePopup(null)}>
+                            <X size={18} />
+                        </button>
+                        <div className="profile-popup-header">
+                            <div
+                                className="profile-popup-avatar"
+                                style={{ background: profileUser.avatarColor }}
+                            >
+                                <User size={28} />
+                            </div>
+                            <div className="profile-popup-name">
+                                <h3>{profileUser.first_name} {profileUser.last_name}</h3>
+                                <span className="profile-popup-nickname">@{profileUser.nickname}</span>
+                            </div>
+                        </div>
+                        <div className="profile-popup-details">
+                            <div className="profile-popup-detail">
+                                <GraduationCap size={15} />
+                                <span>{profileUser.major}</span>
+                            </div>
+                            <div className="profile-popup-detail">
+                                <Calendar size={15} />
+                                <span>{profileUser.current_year}-й курс</span>
+                            </div>
+                            <div className="profile-popup-detail">
+                                <Mail size={15} />
+                                <span>{profileUser.nickname}@kse.org.ua</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             <div className="catalog-header">
                 <div>
                     <h1 className="heading-1">Каталог курсів</h1>
@@ -135,6 +240,8 @@ const CourseCatalog = ({ user }) => {
                     const isExpanded = expanded === course.id;
                     const isWishlisted = wishlist.has(course.id);
                     const isLoading = loadingWishlist.has(course.id);
+                    const isElective = course.category === 'elective';
+                    const courseComments = comments[course.id] || [];
 
                     return (
                         <div
@@ -149,6 +256,9 @@ const CourseCatalog = ({ user }) => {
                                             {course.category === 'core' ? "Обов'язковий" : 'Вибірковий'}
                                         </span>
                                         <span className="course-code-badge">{course.code}</span>
+                                        <span className={`instructor-title-badge ${course.instructorTitle}`}>
+                                            {course.instructorTitle === 'professor' ? '🎓 Професор' : '📖 Викладач'}
+                                        </span>
                                     </div>
                                     <h3 className="catalog-course-name">{course.name}</h3>
                                     <p className="catalog-instructor">{course.instructor}</p>
@@ -168,6 +278,12 @@ const CourseCatalog = ({ user }) => {
                                             <Users size={14} />
                                             {isFull ? 'Заповнено' : `${spotsLeft} місць`}
                                         </span>
+                                        {isElective && courseComments.length > 0 && (
+                                            <span className="catalog-meta-item comment-count-badge">
+                                                <MessageCircle size={14} />
+                                                {courseComments.length}
+                                            </span>
+                                        )}
                                     </div>
                                     <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
                                 </div>
@@ -218,6 +334,80 @@ const CourseCatalog = ({ user }) => {
                                             </>
                                         )}
                                     </button>
+
+                                    {/* Instagram-style Comments — only for elective courses */}
+                                    {isElective && (
+                                        <div className="course-comments-section" onClick={(e) => e.stopPropagation()}>
+                                            <div className="comments-header">
+                                                <MessageCircle size={16} />
+                                                <span>Коментарі студентів</span>
+                                                <span className="comments-count">{courseComments.length}</span>
+                                            </div>
+
+                                            {courseComments.length > 0 && (
+                                                <div className="comments-list">
+                                                    {courseComments.map(comment => {
+                                                        const commenter = getUserById(comment.userId);
+                                                        if (!commenter) return null;
+                                                        return (
+                                                            <div key={comment.id} className="comment-item">
+                                                                <div
+                                                                    className="comment-avatar"
+                                                                    style={{ background: commenter.avatarColor }}
+                                                                    onClick={(e) => handleProfileClick(e, commenter.id)}
+                                                                >
+                                                                    <User size={14} />
+                                                                </div>
+                                                                <div className="comment-body">
+                                                                    <div className="comment-top">
+                                                                        <span
+                                                                            className="comment-nickname"
+                                                                            onClick={(e) => handleProfileClick(e, commenter.id)}
+                                                                        >
+                                                                            @{commenter.nickname}
+                                                                        </span>
+                                                                        <span className="comment-time">
+                                                                            {formatTimeAgo(comment.timestamp)}
+                                                                        </span>
+                                                                    </div>
+                                                                    <p className="comment-text">{comment.text}</p>
+                                                                </div>
+                                                            </div>
+                                                        );
+                                                    })}
+                                                </div>
+                                            )}
+
+                                            {/* Comment Input */}
+                                            <form
+                                                className="comment-input-row"
+                                                onSubmit={(e) => handleCommentSubmit(e, course.id)}
+                                            >
+                                                <div className="comment-input-avatar" style={{ background: '#2563EB' }}>
+                                                    <User size={12} />
+                                                </div>
+                                                <input
+                                                    type="text"
+                                                    className="comment-input"
+                                                    placeholder="Додати коментар..."
+                                                    value={commentInputs[course.id] || ''}
+                                                    onChange={(e) => setCommentInputs(prev => ({
+                                                        ...prev,
+                                                        [course.id]: e.target.value,
+                                                    }))}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                />
+                                                <button
+                                                    type="submit"
+                                                    className="comment-send-btn"
+                                                    disabled={!(commentInputs[course.id] || '').trim()}
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    <Send size={16} />
+                                                </button>
+                                            </form>
+                                        </div>
+                                    )}
                                 </div>
                             )}
                         </div>

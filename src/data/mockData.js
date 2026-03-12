@@ -32,6 +32,7 @@ export const mockCatalog = [
         code: 'CS401',
         name: 'Штучний інтелект',
         instructor: 'Проф. Тарасенко О.М.',
+        instructorTitle: 'professor',
         credits: 6,
         semester: 'Весна 2027',
         category: 'core',
@@ -46,7 +47,8 @@ export const mockCatalog = [
         id: 2,
         code: 'CS402',
         name: 'Кібербезпека',
-        instructor: 'Проф. Мельник В.І.',
+        instructor: 'Викл. Мельник В.І.',
+        instructorTitle: 'lecturer',
         credits: 6,
         semester: 'Весна 2027',
         category: 'elective',
@@ -62,6 +64,7 @@ export const mockCatalog = [
         code: 'ECON401',
         name: 'Теорія ігор',
         instructor: 'Проф. Литвиненко К.П.',
+        instructorTitle: 'professor',
         credits: 6,
         semester: 'Весна 2027',
         category: 'core',
@@ -76,7 +79,8 @@ export const mockCatalog = [
         id: 4,
         code: 'CS403',
         name: 'Хмарні обчислення',
-        instructor: 'Проф. Бондаренко А.С.',
+        instructor: 'Викл. Бондаренко А.С.',
+        instructorTitle: 'lecturer',
         credits: 6,
         semester: 'Весна 2027',
         category: 'elective',
@@ -92,6 +96,7 @@ export const mockCatalog = [
         code: 'ECON402',
         name: 'Фінансова економіка',
         instructor: 'Проф. Шевченко Д.О.',
+        instructorTitle: 'professor',
         credits: 6,
         semester: 'Весна 2027',
         category: 'core',
@@ -106,7 +111,8 @@ export const mockCatalog = [
         id: 6,
         code: 'DATA301',
         name: 'Аналіз даних з Python',
-        instructor: 'Проф. Козлова І.В.',
+        instructor: 'Викл. Козлова І.В.',
+        instructorTitle: 'lecturer',
         credits: 6,
         semester: 'Весна 2027',
         category: 'elective',
@@ -122,6 +128,7 @@ export const mockCatalog = [
         code: 'LAW201',
         name: 'Цифрове право та ШІ',
         instructor: 'Проф. Ткаченко Н.Р.',
+        instructorTitle: 'professor',
         credits: 6,
         semester: 'Весна 2027',
         category: 'elective',
@@ -137,6 +144,7 @@ export const mockCatalog = [
         code: 'MATH301',
         name: 'Диференціальні рівняння',
         instructor: 'Проф. Іваненко Г.М.',
+        instructorTitle: 'professor',
         credits: 6,
         semester: 'Весна 2027',
         category: 'core',
@@ -148,3 +156,39 @@ export const mockCatalog = [
         rating: 4.1,
     },
 ];
+
+// Mock users for comments
+export const mockUsers = [
+    { id: 101, nickname: 'dmytro_kh', first_name: 'Дмитро', last_name: 'Хоменко', major: 'Комп\'ютерні науки', current_year: 3, avatarColor: '#2563EB' },
+    { id: 102, nickname: 'anna_shev', first_name: 'Анна', last_name: 'Шевченко', major: 'Економіка', current_year: 2, avatarColor: '#DC2626' },
+    { id: 103, nickname: 'max_bondar', first_name: 'Максим', last_name: 'Бондар', major: 'Право', current_year: 4, avatarColor: '#059669' },
+    { id: 104, nickname: 'sofia_tk', first_name: 'Софія', last_name: 'Ткаченко', major: 'Програмна інженерія', current_year: 2, avatarColor: '#7C3AED' },
+    { id: 105, nickname: 'artem_lit', first_name: 'Артем', last_name: 'Литвиненко', major: 'Комп\'ютерні науки', current_year: 3, avatarColor: '#D97706' },
+    { id: 106, nickname: 'olga_mel', first_name: 'Ольга', last_name: 'Мельник', major: 'Фінанси', current_year: 2, avatarColor: '#DB2777' },
+];
+
+// Mock comments for elective courses (courseId → comments[])
+export const mockComments = {
+    2: [ // CS402 — Кібербезпека
+        { id: 1, userId: 101, text: 'Хтось вже проходив цей курс? Чи багато практики?', timestamp: '2027-01-10T14:20:00Z' },
+        { id: 2, userId: 104, text: 'Так! Дуже крутий курс, є хакатони і CTF-змагання 🔥', timestamp: '2027-01-10T15:05:00Z' },
+        { id: 3, userId: 102, text: 'А без досвіду в Linux можна йти?', timestamp: '2027-01-11T09:30:00Z' },
+        { id: 4, userId: 105, text: 'Можна, але краще підтягнути базу — перші тижні будуть інтенсивні', timestamp: '2027-01-11T10:15:00Z' },
+    ],
+    4: [ // CS403 — Хмарні обчислення
+        { id: 5, userId: 105, text: 'Місць вже немає 😭 може хтось знає чи буде додатковий набір?', timestamp: '2027-01-12T11:00:00Z' },
+        { id: 6, userId: 101, text: 'Зазвичай після першого тижня хтось відпадає, спробуй прийти на першу лекцію', timestamp: '2027-01-12T11:45:00Z' },
+        { id: 7, userId: 103, text: 'Підтверджую, минулого року так само було — потім місця з\'явились', timestamp: '2027-01-12T12:30:00Z' },
+    ],
+    6: [ // DATA301 — Аналіз даних з Python
+        { id: 8, userId: 102, text: 'Найкращий курс за всю програму! Козлова — топ викладач 🐍', timestamp: '2027-01-08T16:00:00Z' },
+        { id: 9, userId: 106, text: 'Погоджуюсь! Після цього курсу вже отримала стажування в аналітиці', timestamp: '2027-01-08T17:20:00Z' },
+        { id: 10, userId: 104, text: 'А який рівень Python потрібен? Я тільки основи знаю', timestamp: '2027-01-09T08:45:00Z' },
+        { id: 11, userId: 101, text: 'Основ вистачить, перші 3 тижні — повторення синтаксису + pandas', timestamp: '2027-01-09T09:30:00Z' },
+        { id: 12, userId: 105, text: 'Домашки об\'ємні, але реально цікаві — аналіз реальних датасетів', timestamp: '2027-01-09T10:00:00Z' },
+    ],
+    7: [ // LAW201 — Цифрове право та ШІ
+        { id: 13, userId: 103, text: 'Рекомендую всім! Ткаченко пояснює складне право простою мовою', timestamp: '2027-01-15T13:00:00Z' },
+        { id: 14, userId: 106, text: 'Дуже актуальна тема з GDPR, корисно для будь-якої спеціальності', timestamp: '2027-01-15T14:30:00Z' },
+    ],
+};
