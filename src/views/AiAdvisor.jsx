@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, Sparkles, BookOpen, Clock, Activity, Lock, X, FileText } from 'lucide-react';
+import { Send, Bot, Sparkles, BookOpen, Clock, Activity, Lock, X, FileText, GraduationCap, AlertTriangle } from 'lucide-react';
 import { fetchWithAuth } from '../utils/api';
 import { mockTranscript } from '../data/mockData';
 
@@ -51,13 +51,22 @@ const AiAdvisor = ({ user }) => {
         messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, [messages]);
 
-    const handleSend = async (e) => {
-        e.preventDefault();
-        if (!query.trim()) return;
+    const suggestedPrompts = [
+        'Порекомендуй вибірковий з Data Science',
+        'Які передумови для CS402?',
+        'Склади розклад без ранкових пар',
+        'Що взяти як гуманітарний вибірковий?',
+    ];
 
-        const userQuery = query;
+    const handleSend = async (e, customQuery = null) => {
+        if (e) e.preventDefault();
+        
+        const q = customQuery || query;
+        if (!q.trim()) return;
+
+        const userQuery = q;
         setMessages(prev => [...prev, { type: 'human', text: userQuery, recs: null, tools: null }]);
-        setQuery('');
+        if (!customQuery) setQuery('');
         setIsLoading(true);
 
         try {
@@ -137,7 +146,22 @@ const AiAdvisor = ({ user }) => {
                                     <div className="message-avatar">
                                         {msg.type === 'ai' ? <Bot size={18} /> : (user.first_name?.[0] || 'С')}
                                     </div>
-                                    <div className="message-content">{msg.text}</div>
+                                    <div className="message-content">
+                                        {msg.text}
+                                        {msg.type === 'ai' && i === 0 && messages.length === 1 && (
+                                            <div className="prompt-chips animate-in">
+                                                {suggestedPrompts.map((prompt, pIdx) => (
+                                                    <button 
+                                                        key={pIdx} 
+                                                        className="prompt-chip"
+                                                        onClick={(e) => handleSend(null, prompt)}
+                                                    >
+                                                        {prompt}
+                                                    </button>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
                                 {/* Tool-use action badges (cookbook pattern) */}
@@ -233,19 +257,19 @@ const AiAdvisor = ({ user }) => {
                 <div className="context-panel glass-panel">
                     <h3 className="heading-2 text-sm uppercase">Контекст ШІ</h3>
                     <div className="context-item">
-                        <span className="indicator active"></span>
+                        <BookOpen size={16} className="text-info" />
                         <span>Транскрипти: {transcript.length} курсів</span>
                     </div>
                     <div className="context-item">
-                        <span className="indicator active"></span>
+                        <GraduationCap size={16} className="text-success" />
                         <span>{user.major} ({user.current_year} курс)</span>
                     </div>
                     <div className="context-item">
-                        <span className="indicator active"></span>
+                        <Activity size={16} className="text-primary-dark" />
                         <span>ECTS: {user.total_credits} / 120</span>
                     </div>
-                    <div className="context-item">
-                        <span className="indicator warning"></span>
+                    <div className="context-item alert">
+                        <AlertTriangle size={16} className="text-warning" style={{ color: '#F59E0B' }} />
                         <span>Відсутній 1 гуманітарний вибірковий</span>
                     </div>
                     <div className="context-item" style={{ fontSize: '0.75rem', color: 'var(--text-muted)', opacity: 0.7 }}>

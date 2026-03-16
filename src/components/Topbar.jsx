@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bell, Search, User, MessageSquare, Calendar, Award, X } from 'lucide-react';
 
-const Topbar = ({ user, onLogin, onLogout, setCurrentView }) => {
+const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView }) => {
     const [showNotifs, setShowNotifs] = useState(false);
     const notifRef = useRef(null);
 
@@ -48,14 +48,18 @@ const Topbar = ({ user, onLogin, onLogout, setCurrentView }) => {
 
     return (
         <header className="topbar">
-            <div className="search-container glass-panel">
-                <Search size={18} className="search-icon" />
-                <input
-                    type="text"
-                    placeholder="Пошук курсів, викладачів або силабусів..."
-                    className="search-input"
-                />
-            </div>
+            {currentView !== 'catalog' ? (
+                <div className="search-container glass-panel">
+                    <Search size={18} className="search-icon" />
+                    <input
+                        type="text"
+                        placeholder="Пошук курсів, викладачів або силабусів..."
+                        className="search-input"
+                    />
+                </div>
+            ) : (
+                <div className="search-placeholder"></div>
+            )}
 
             <div className="topbar-actions">
                 <div className="notif-wrapper" ref={notifRef}>

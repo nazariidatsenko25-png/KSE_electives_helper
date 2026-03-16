@@ -37,7 +37,7 @@ function App() {
     <div className="app-container">
       <Sidebar currentView={currentView} setCurrentView={setCurrentView} />
       <div className="main-content">
-        <Topbar user={user} onLogin={handleMockLogin} onLogout={handleLogout} setCurrentView={setCurrentView} />
+        <Topbar user={user} onLogin={handleMockLogin} onLogout={handleLogout} currentView={currentView} setCurrentView={setCurrentView} />
         <main className="view-container">
           {renderView()}
         </main>
