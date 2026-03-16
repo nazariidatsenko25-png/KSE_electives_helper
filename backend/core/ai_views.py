@@ -17,16 +17,17 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from groq import Groq
+from google import genai
+from google.genai import types
 
-from .models import Course, Enrollment, Wishlist
+from .models import User, Course, Enrollment, Wishlist
 
 logger = logging.getLogger(__name__)
 
 # ──────────────────────────────────────────────────────────────────
-# Token estimation (rough: 1 token ≈ 4 chars for non-Latin, 3.5 for Latin)
+# Token estimation (rough: 1 token ≈ 4 chars)
 # ──────────────────────────────────────────────────────────────────
-MAX_CONTEXT_CHARS = 20_000  # ~5k tokens — safe for Llama 3 8k context
+MAX_CONTEXT_CHARS = 100_000  # ~25k tokens — very safe for Gemini's 1M context window
 
 
 def estimate_chars(messages: list[dict]) -> int:
@@ -62,12 +63,11 @@ def compact_history(client, messages: list[dict], system_msg: dict) -> list[dict
         summary_prompt += f"{role_label}: {m['content']}\n"
 
     try:
-        completion = client.chat.completions.create(
-            messages=[{'role': 'user', 'content': summary_prompt}],
-            model='llama-3.1-8b-instant',
-            max_tokens=200,
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=summary_prompt,
         )
-        summary = completion.choices[0].message.content or ''
+        summary = response.text or ''
     except Exception:
         logger.warning('Compaction summary failed, truncating instead')
         summary = '(Попередня розмова була скорочена через обмеження контексту.)'
@@ -82,55 +82,49 @@ def compact_history(client, messages: list[dict], system_msg: dict) -> list[dict
 
 
 # ──────────────────────────────────────────────────────────────────
-# Tool definitions (cookbook: customer_service_agent.ipynb)
+# Tool definitions
 # ──────────────────────────────────────────────────────────────────
 TOOL_DEFINITIONS = [
-    {
-        "type": "function",
-        "function": {
-            "name": "get_transcript",
-            "description": "Retrieve the student's completed courses from the database. Returns a list of course names, codes, ECTS credits, and grades.",
-            "parameters": {
-                "type": "object",
-                "properties": {},
-                "required": [],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "check_prerequisites",
-            "description": "Check if the student has completed the prerequisites for a specific course. Provide the course code to check.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "course_code": {
-                        "type": "string",
-                        "description": "The course code to check prerequisites for, e.g. 'CS401'",
+    types.Tool(
+        function_declarations=[
+            types.FunctionDeclaration(
+                name="get_transcript",
+                description="Retrieve the student's completed courses from the database. Returns a list of course names, codes, ECTS credits, and grades.",
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={},
+                ),
+            ),
+            types.FunctionDeclaration(
+                name="check_prerequisites",
+                description="Check if the student has completed the prerequisites for a specific course. Provide the course code to check.",
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "course_code": types.Schema(
+                            type=types.Type.STRING,
+                            description="The course code to check prerequisites for, e.g. 'CS401'",
+                        ),
                     },
-                },
-                "required": ["course_code"],
-            },
-        },
-    },
-    {
-        "type": "function",
-        "function": {
-            "name": "add_to_wishlist",
-            "description": "Add a course to the student's wishlist / enrollment plan. Provide the course code.",
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    "course_code": {
-                        "type": "string",
-                        "description": "The course code to add to the wishlist, e.g. 'CS401'",
+                    required=["course_code"],
+                ),
+            ),
+            types.FunctionDeclaration(
+                name="add_to_wishlist",
+                description="Add a course to the student's wishlist / enrollment plan. Provide the course code.",
+                parameters=types.Schema(
+                    type=types.Type.OBJECT,
+                    properties={
+                        "course_code": types.Schema(
+                            type=types.Type.STRING,
+                            description="The course code to add to the wishlist, e.g. 'CS401'",
+                        ),
                     },
-                },
-                "required": ["course_code"],
-            },
-        },
-    },
+                    required=["course_code"],
+                ),
+            ),
+        ]
+    )
 ]
 
 
@@ -139,6 +133,10 @@ TOOL_DEFINITIONS = [
 # ──────────────────────────────────────────────────────────────────
 def execute_tool(tool_name: str, tool_args: dict, user) -> str:
     """Execute a tool and return the result as a string."""
+    
+    # Safety check: AnonymousUser cannot be used in database filters
+    if not user or not getattr(user, 'id', None):
+        return json.dumps({'error': 'Користувач не авторизований або не знайдений для виконання інструментів.'}, ensure_ascii=False)
 
     if tool_name == 'get_transcript':
         enrollments = Enrollment.objects.filter(
@@ -268,10 +266,10 @@ class AiChatView(APIView):
     authentication_classes = []  # Dev: bypass CSRF for mock login; for prod remove this line
 
     def post(self, request):
-        api_key = getattr(settings, 'GROQ_API_KEY', None)
+        api_key = getattr(settings, 'GEMINI_API_KEY', None)
         if not api_key:
             return Response(
-                {'detail': 'AI advisor not configured. GROQ_API_KEY missing.'},
+                {'detail': 'AI advisor not configured. GEMINI_API_KEY missing.'},
                 status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
@@ -287,7 +285,10 @@ class AiChatView(APIView):
         # Use real user if authenticated, otherwise use a mock user for dev
         user = request.user
         if not user or not user.is_authenticated:
-            # Fallback mock user for development (when using frontend mock login)
+            # Fallback mock user for development
+            # Try to find a real user in the DB to associate queries with,
+            # otherwise Enrollment filters will crash.
+            user = User.objects.first()
             user_name = 'Олена'
             user_year = '3'
             user_major = 'Програмна інженерія'
@@ -305,7 +306,7 @@ class AiChatView(APIView):
         # ── Build proper message history (cookbook pattern) ──
         llm_messages = []
         for msg in incoming_messages:
-            role = 'assistant' if msg.get('type') == 'ai' else 'user'
+            role = 'model' if msg.get('type') == 'ai' else 'user'
             text = msg.get('text', '')
             if text:
                 llm_messages.append({'role': role, 'content': text})
@@ -314,43 +315,55 @@ class AiChatView(APIView):
         llm_messages.append({'role': 'user', 'content': query})
 
         # ── Session memory compaction (cookbook pattern) ──
-        client = Groq(api_key=api_key)
+        client = genai.Client(api_key=api_key)
         was_compacted = estimate_chars(llm_messages) > MAX_CONTEXT_CHARS
         if was_compacted:
             system_msg = {'role': 'system', 'content': system_instruction}
             llm_messages = compact_history(client, llm_messages, system_msg)
 
-        # Prepend system message
-        full_messages = [{'role': 'system', 'content': system_instruction}] + llm_messages
+        # Convert to Gemini formats
+        gemini_messages = []
+        for msg in llm_messages:
+            gemini_messages.append(
+                types.Content(
+                    role=msg['role'],
+                    parts=[types.Part.from_text(text=msg['content'])]
+                )
+            )
 
-        # ── Tool use loop (cookbook pattern) ──
+        gemini_config = types.GenerateContentConfig(
+            system_instruction=system_instruction,
+            tools=TOOL_DEFINITIONS,
+        )
+
+        # ── Tool use loop ──
         tools_used = []
         max_tool_rounds = 3  # Safety limit
 
         try:
             for _ in range(max_tool_rounds):
-                completion = client.chat.completions.create(
-                    messages=full_messages,
-                    model='llama-3.1-8b-instant',
-                    tools=TOOL_DEFINITIONS,
-                    tool_choice='auto',
+                response = client.models.generate_content(
+                    model='gemini-2.5-flash',
+                    contents=gemini_messages,
+                    config=gemini_config,
                 )
 
-                choice = completion.choices[0]
-
                 # If no tool calls, we have our final response
-                if choice.finish_reason != 'tool_calls' or not choice.message.tool_calls:
+                if not response.function_calls:
+                    final_text = response.text or 'Ось мої рекомендації.'
                     break
 
                 # Process tool calls
-                full_messages.append(choice.message)
+                # 1) Add model's function_call response to history
+                gemini_messages.append(
+                    response.candidates[0].content
+                )
 
-                for tool_call in choice.message.tool_calls:
-                    tool_name = tool_call.function.name
-                    try:
-                        tool_args = json.loads(tool_call.function.arguments)
-                    except json.JSONDecodeError:
-                        tool_args = {}
+                # 2) Collect tool results into a new Content part
+                tool_results_parts = []
+                for tool_call in response.function_calls:
+                    tool_name = tool_call.name
+                    tool_args = tool_call.args if tool_call.args else {}
 
                     tool_result = execute_tool(tool_name, tool_args, user)
                     tools_used.append({
@@ -359,18 +372,25 @@ class AiChatView(APIView):
                         'result_preview': tool_result[:100],
                     })
 
-                    # Feed tool result back to the LLM
-                    full_messages.append({
-                        'role': 'tool',
-                        'tool_call_id': tool_call.id,
-                        'content': tool_result,
-                    })
+                    # Add result for Gemini
+                    tool_results_parts.append(
+                        types.Part.from_function_response(
+                            name=tool_name,
+                            response={"result": tool_result}
+                        )
+                    )
 
-            # Extract final text response
-            final_text = choice.message.content or 'Ось мої рекомендації.'
+                gemini_messages.append(
+                    types.Content(
+                        role="user",
+                        parts=tool_results_parts
+                    )
+                )
+            else:
+                final_text = 'Ось мої рекомендації.' # Fallback if max rounds hit
 
         except Exception as exc:
-            logger.exception('Groq API error')
+            logger.exception('Gemini API error')
             return Response(
                 {'detail': f'AI service error: {str(exc)}'},
                 status=status.HTTP_502_BAD_GATEWAY,
