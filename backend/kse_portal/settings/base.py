@@ -127,5 +127,10 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
+# ----------------------------------------------------------------------
+# AI / LLM Configuration
+# ----------------------------------------------------------------------
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', default='')
+
 # Groq API Key for SmartCourse AI advisor (server-side only)
 GROQ_API_KEY = env('GROQ_API_KEY', default='')
