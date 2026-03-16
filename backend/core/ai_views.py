@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 # ──────────────────────────────────────────────────────────────────
 # Token estimation (rough: 1 token ≈ 4 chars)
 # ──────────────────────────────────────────────────────────────────
-MAX_CONTEXT_CHARS = 100_000  # ~25k tokens — very safe for Gemini's 1M context window
+MAX_CONTEXT_CHARS = 50_000  # ~12.5k tokens — very safe for Gemini's 1M context window
 
 
 def estimate_chars(messages: list[dict]) -> int:
