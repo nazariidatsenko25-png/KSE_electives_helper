@@ -3,26 +3,18 @@
 :root {
   /* Base Theme Colors (Deep Blue Theme) */
   --bg: #0b1120;
-  /* Deep blue background */
   --surface: #111827;
-  /* Slightly lighter deep blue for surfaces */
   --surface-hover: #1f2937;
 
-  /* KSE Logo/Brand remains white/gold in dark mode */
+  /* KSE Logo/Brand */
   --color-primary-dark: #FFFFFF;
-  /* Using white for primary text like Logo/Headers */
   --color-secondary: #7B6608;
-  /* Yukon Gold */
 
   /* Functional Accents */
   --color-success: #10B981;
-  /* GPA, Active tags */
   --color-error: #EF4444;
-  /* Closed sessions */
   --color-info: #3B82F6;
-  /* Active tabs */
   --color-accent: #3B82F6;
-  /* Blue accent for icons and highlights */
 
   /* Text Colors */
   --text-main: #FFFFFF;
@@ -30,15 +22,17 @@
 
   /* Borders & Shadows */
   --border: rgba(255, 255, 255, 0.05);
-  /* Very subtle borders */
-
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
-  --shadow-glow: 0 0 16px rgba(16, 185, 129, 0.2);
-  /* Green glow for active states if needed */
 
-  /* Typography */
+  /* Typography Scale */
+  --fs-h1: 1.75rem;
+  --fs-h2: 1.25rem;
+  --fs-h3: 1.05rem;
+  --fs-body: 0.95rem;
+  --fs-caption: 0.75rem;
+
   --font-family: 'Inter',
     system-ui,
     -apple-system,
@@ -217,7 +211,7 @@ body {
 
 .menu-item.active {
   color: var(--text-main);
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .menu-item.active svg {
@@ -239,10 +233,10 @@ body {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 3px;
-  height: 20px;
+  width: 4px;
+  height: 24px;
   background: var(--color-success);
-  /* Green active indicator from screenshot */
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
   border-radius: 0 4px 4px 0;
 }
 
@@ -518,13 +512,25 @@ body {
 
 /* --- Common Utilities --- */
 .animate-in {
-  animation: fadeIn 0.4s ease forwards;
+  animation: fadeInUp 0.35s ease forwards;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
 
   to {
@@ -636,6 +642,8 @@ body {
   padding: 1.5rem;
   grid-column: 1 / 2;
   grid-row: 1 / 2;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, var(--surface) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.1);
 }
 
 .widget-header {
@@ -673,10 +681,16 @@ body {
 .donut-fill {
   fill: none;
   stroke: var(--color-success);
-  /* Green GPA ring from screenshot */
   stroke-width: 12;
   stroke-linecap: round;
   transition: stroke-dasharray 1s ease-out;
+  animation: donutDraw 1.2s ease-out forwards;
+}
+
+@keyframes donutDraw {
+  from {
+    stroke-dasharray: 0 251.2;
+  }
 }
 
 .donut-text {
@@ -956,6 +970,35 @@ body {
   border-radius: 16px;
   font-size: 0.95rem;
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.prompt-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.prompt-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: fit-content;
+}
+
+.prompt-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
 .message-bubble.ai .message-content {
@@ -1008,15 +1051,21 @@ body {
 
 .context-item {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
   font-size: 0.85rem;
   color: var(--text-main);
   background: var(--surface);
   box-shadow: none;
   border: 1px solid var(--border);
-  padding: 0.75rem;
+  padding: 0.85rem 1rem;
   border-radius: 8px;
+}
+
+.context-item.alert {
+  background: rgba(245, 158, 11, 0.05);
+  border-color: rgba(245, 158, 11, 0.1);
 }
 
 .indicator {
@@ -1492,7 +1541,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .catalog-header {
@@ -1582,14 +1631,15 @@ body {
 }
 
 .catalog-card {
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .catalog-card:hover {
   background: var(--surface-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
 }
 
 .catalog-card.expanded {
@@ -1605,14 +1655,15 @@ body {
 
 .catalog-card-top {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.625rem;
   margin-bottom: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .course-type-badge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -1629,9 +1680,9 @@ body {
 }
 
 .course-code-badge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 12px;
   background: rgba(255, 255, 255, 0.06);
   color: var(--text-muted);
@@ -1639,9 +1690,9 @@ body {
 }
 
 .instructor-title-badge {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.7rem;
   border-radius: 12px;
   letter-spacing: 0.03em;
 }
@@ -1705,7 +1756,7 @@ body {
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border);
-  animation: fadeIn 0.2s ease;
+  animation: fadeInUp 0.25s ease;
 }
 
 .catalog-description {

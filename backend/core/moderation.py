@@ -10,7 +10,7 @@ Follows the Claude Cookbook `building_moderation_filter.ipynb` pattern:
 import logging
 
 from django.conf import settings
-from groq import Groq
+from google import genai
 
 logger = logging.getLogger(__name__)
 
@@ -44,28 +44,26 @@ def moderate_review(review_text: str) -> tuple[bool, str]:
     Returns:
         (is_allowed, reason) — True if review passes, False if blocked.
     """
-    api_key = getattr(settings, 'GROQ_API_KEY', None)
+    api_key = getattr(settings, 'GEMINI_API_KEY', None)
     if not api_key:
         # If no API key, allow by default (fail-open)
-        logger.warning('GROQ_API_KEY not set — skipping moderation')
+        logger.warning('GEMINI_API_KEY not set — skipping moderation')
         return True, ''
 
     try:
-        client = Groq(api_key=api_key)
-        completion = client.chat.completions.create(
-            messages=[
-                {'role': 'user', 'content': MODERATION_PROMPT.format(review_text=review_text)},
-            ],
-            model='llama-3.1-8b-instant',
-            max_tokens=300,
+        client = genai.Client(api_key=api_key)
+        response = client.models.generate_content(
+            model='gemini-2.5-flash',
+            contents=MODERATION_PROMPT.format(review_text=review_text),
         )
-        response = completion.choices[0].message.content or ''
+        
+        response_text = response.text or ''
 
         # Extract classification from <output> tags
-        if '<output>' in response:
-            output = response.split('<output>')[1].split('</output>')[0].strip()
+        if '<output>' in response_text:
+            output = response_text.split('<output>')[1].split('</output>')[0].strip()
         else:
-            output = response.strip().split('\n')[-1].strip()
+            output = response_text.strip().split('\n')[-1].strip()
 
         if output.upper().startswith('BLOCK'):
             reason = output.split(':', 1)[1].strip() if ':' in output else 'Вміст порушує правила спільноти.'
