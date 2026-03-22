@@ -70,9 +70,10 @@ const CourseCatalog = ({ user }) => {
     const [pendingFilters, setPendingFilters] = useState(defaultFilters);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-    const [sortField, setSortField] = useState('rating');
-    const [sortOrder, setSortOrder] = useState('desc');
+    const [sortField, setSortField] = useState('term');
+    const [sortOrder, setSortOrder] = useState('asc'); // change to asc for default term progression
     const [expanded, setExpanded] = useState(null);
+    const [showOnlyWishlist, setShowOnlyWishlist] = useState(false);
     const [showExtendedStats, setShowExtendedStats] = useState(false);
     const [wishlist, setWishlist] = useState(new Set());
     const [loadingWishlist, setLoadingWishlist] = useState(new Set());
@@ -165,22 +166,24 @@ const CourseCatalog = ({ user }) => {
 
         try {
             if (isWishlisted) {
-                await fetchWithAuth(`/api/wishlist/${courseId}/`, {
-                    method: 'DELETE',
-                    suppressAuthRedirect: true,
-                });
+                // Optimistic UI update
                 setWishlist(prev => {
                     const next = new Set(prev);
                     next.delete(courseId);
                     return next;
                 });
+                await fetchWithAuth(`/api/wishlist/${courseId}/`, {
+                    method: 'DELETE',
+                    suppressAuthRedirect: true,
+                });
             } else {
+                // Optimistic UI update
+                setWishlist(prev => new Set(prev).add(courseId));
                 await fetchWithAuth('/api/wishlist/', {
                     method: 'POST',
                     suppressAuthRedirect: true,
                     body: JSON.stringify({ course: courseId }),
                 });
-                setWishlist(prev => new Set(prev).add(courseId));
             }
         } catch (err) {
             console.error('Wishlist toggle error:', err);
@@ -260,15 +263,32 @@ const CourseCatalog = ({ user }) => {
         const matchNextTerm = !activeFilters.nextTerm || course.next_term;
         const matchCredits = course.credits >= activeFilters.credits[0] && course.credits <= activeFilters.credits[1];
         const matchDuration = course.duration >= activeFilters.duration[0] && course.duration <= activeFilters.duration[1];
+        const matchWishlist = !showOnlyWishlist || wishlist.has(course.id);
 
-        return matchSearch && matchDept && matchType && matchLevel && matchTerm && matchLang && matchNextTerm && matchCredits && matchDuration;
+        return matchSearch && matchDept && matchType && matchLevel && matchTerm && matchLang && matchNextTerm && matchCredits && matchDuration && matchWishlist;
     });
+
+    const getSemesterRank = (semesterStr) => {
+        if (!semesterStr) return 1000;
+        const currentYear = 2027;
+        const currentTermVal = 2; // Весна=2
+        const parts = semesterStr.split(' ');
+        const term = parts[0];
+        const year = parseInt(parts[1], 10) || 0;
+        const termOrder = { 'Зима': 1, 'Весна': 2, 'Літо': 3, 'Осінь': 4 };
+        const termVal = termOrder[term] || 0;
+        
+        const diff = (year - currentYear) * 4 + (termVal - currentTermVal);
+        if (diff < 0) return 1000 - diff; // Past courses at the very bottom
+        return diff; // Present=0, Future=1, 2...
+    };
 
     const sorted = [...filtered].sort((a, b) => {
         let valA, valB;
         if (sortField === 'rating') { valA = a.rating; valB = b.rating; }
         else if (sortField === 'credits') { valA = a.credits; valB = b.credits; }
         else if (sortField === 'duration') { valA = a.duration; valB = b.duration; }
+        else if (sortField === 'term') { valA = getSemesterRank(a.semester); valB = getSemesterRank(b.semester); }
         else if (sortField === 'dept') {
             const cmp = a.department.localeCompare(b.department);
             return sortOrder === 'asc' ? cmp : -cmp;
@@ -448,9 +468,18 @@ const CourseCatalog = ({ user }) => {
                             </button>
                             
                             <button 
+                                className={`dept-select glass-panel filter-toggle-btn ${showOnlyWishlist ? 'active' : ''}`} 
+                                onClick={() => setShowOnlyWishlist(!showOnlyWishlist)}
+                                style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: "0.5rem", color: showOnlyWishlist ? '#ef4444' : 'inherit' }}
+                            >
+                                <Heart size={14} fill={showOnlyWishlist ? 'currentColor' : 'none'} color={showOnlyWishlist ? '#ef4444' : 'currentColor'} />
+                                Улюблені
+                            </button>
+
+                            <button 
                                 className={`dept-select glass-panel filter-toggle-btn ${isFiltersActive ? 'active' : ''}`} 
                                 onClick={openSidebar}
-                                style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: "0.5rem" }}
+                                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                             >
                                 <Filter size={14} />
                                 Фільтри
@@ -465,6 +494,7 @@ const CourseCatalog = ({ user }) => {
                                     value={sortField}
                                     onChange={(e) => setSortField(e.target.value)}
                                 >
+                                    <option value="term">За семестром (за замовчуванням)</option>
                                     <option value="rating">За рейтингом</option>
                                     <option value="credits">За кредитами</option>
                                     <option value="duration">За тривалістю</option>
@@ -517,6 +547,14 @@ const CourseCatalog = ({ user }) => {
 
                                         <div className="catalog-card-right">
                                             <div className="catalog-meta">
+                                                <span 
+                                                    className="catalog-meta-item" 
+                                                    style={{ color: isWishlisted ? '#ef4444' : 'var(--text-muted)', cursor: 'pointer', transition: 'color 0.2s' }} 
+                                                    title={isWishlisted ? "Прибрати з улюблених" : "Додати до улюблених"}
+                                                    onClick={(e) => handleWishlistToggle(e, course)}
+                                                >
+                                                    <Heart size={14} fill={isWishlisted ? "currentColor" : "none"} />
+                                                </span>
                                                 <span className="catalog-meta-item">
                                                     <Star size={14} color="#F59E0B" fill="#F59E0B" />
                                                     {course.rating}
