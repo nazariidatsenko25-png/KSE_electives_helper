@@ -93,6 +93,30 @@ const CourseCatalog = ({ user }) => {
 
     const getUserById = (userId) => mockUsers.find(u => u.id === userId);
 
+    const getCourseDates = (semester, startWeek, duration) => {
+        let term = 'Spring';
+        let year = 2027;
+        if (semester) {
+            if (semester.includes('Осінь')) term = 'Autumn';
+            else if (semester.includes('Літо')) term = 'Summer';
+            const yMatch = semester.match(/\d{4}/);
+            if (yMatch) year = parseInt(yMatch[0]);
+        }
+        
+        let termStartStr = `${year}-02-01`; // Default Spring
+        if (term === 'Autumn') termStartStr = `${year}-09-01`;
+        else if (term === 'Summer') termStartStr = `${year}-07-01`;
+        
+        const start = new Date(termStartStr);
+        start.setDate(start.getDate() + (startWeek - 1) * 7);
+        
+        const end = new Date(start);
+        end.setDate(end.getDate() + (duration * 7) - 1);
+        
+        const formatter = new Intl.DateTimeFormat('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        return { start: formatter.format(start), end: formatter.format(end) };
+    };
+
     const formatTimeAgo = (timestamp) => {
         const now = new Date('2027-01-20T12:00:00Z'); 
         const date = new Date(timestamp);
@@ -546,10 +570,90 @@ const CourseCatalog = ({ user }) => {
                                                     </a>
                                                 </div>
 
-                                                {/* Zone 2: Short Syllabus (Description) */}
+                                                {/* Zone 2: Short Syllabus (Description) or Detailed Syllabus */}
                                                 <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', gridColumn: '1 / -1' }}>
-                                                    <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Короткий опис дисципліни</h4>
-                                                    <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0 }}>{course.description}</p>
+                                                    {course.detailedSyllabus ? (
+                                                        <>
+                                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                                                                <h4 className="dashboard-heading" style={{ margin: 0 }}>Детальний огляд силабусу</h4>
+                                                            </div>
+                                                            <div className="detailed-syllabus text-sm" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: '1.6', color: 'var(--text-muted)' }}>
+                                                                
+                                                                <div>
+                                                                    <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Обґрунтування курсу</h5>
+                                                                    <p style={{ margin: 0 }}>{course.detailedSyllabus.justification}</p>
+                                                                </div>
+
+                                                                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+                                                                    <div>
+                                                                        <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Передумови (Must Have)</h5>
+                                                                        <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                                                                            {course.detailedSyllabus.prerequisites.mustHave.map((item, i) => <li key={i}>{item}</li>)}
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div>
+                                                                        <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Бажані (Nice to Have)</h5>
+                                                                        <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                                                                            {course.detailedSyllabus.prerequisites.niceToHave.map((item, i) => <li key={i}>{item}</li>)}
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div>
+                                                                    <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Цілі курсу</h5>
+                                                                    <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                                                                        {course.detailedSyllabus.goals.map((item, i) => <li key={i}>{item}</li>)}
+                                                                    </ul>
+                                                                </div>
+
+                                                                <div>
+                                                                    <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Результати навчання</h5>
+                                                                    <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                                                                        {course.detailedSyllabus.outcomes.map((item, i) => <li key={i}>{item}</li>)}
+                                                                    </ul>
+                                                                </div>
+
+                                                                <div>
+                                                                    <h5 style={{ color: 'var(--text-main)', marginBottom: '1rem', fontSize: '0.95rem' }}>Політика оцінювання</h5>
+                                                                    <div style={{ overflowX: 'auto', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                                                                        <table style={{ width: '100%', minWidth: '600px', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.8rem' }}>
+                                                                            <thead>
+                                                                                <tr style={{ background: 'rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                                                                                    <th style={{ padding: '10px', color: 'var(--text-main)' }}>Вид діяльності</th>
+                                                                                    <th style={{ padding: '10px', color: 'var(--text-main)' }}>Деталі</th>
+                                                                                    <th style={{ padding: '10px', color: 'var(--text-main)', textAlign: 'center' }}>Балів за етап</th>
+                                                                                    <th style={{ padding: '10px', color: 'var(--text-main)', textAlign: 'center' }}>Всього балів</th>
+                                                                                    <th style={{ padding: '10px', color: 'var(--text-main)' }}>Дедлайн</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                {course.detailedSyllabus.gradingTable.map((row, i) => (
+                                                                                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                                                                                        <td style={{ padding: '10px', fontWeight: 600 }}>{row.type}</td>
+                                                                                        <td style={{ padding: '10px', opacity: 0.8 }}>{row.details}</td>
+                                                                                        <td style={{ padding: '10px', textAlign: 'center' }}>{row.perItem}</td>
+                                                                                        <td style={{ padding: '10px', textAlign: 'center', fontWeight: 600, color: '#3b82f6' }}>{row.total}</td>
+                                                                                        <td style={{ padding: '10px', opacity: 0.8 }}>{row.deadline}</td>
+                                                                                    </tr>
+                                                                                ))}
+                                                                                <tr style={{ background: 'rgba(255,255,255,0.02)' }}>
+                                                                                    <td colSpan="3" style={{ padding: '10px', fontWeight: 'bold', color: 'var(--text-main)', textAlign: 'right' }}>Разом</td>
+                                                                                    <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold', color: '#10b981', fontSize: '0.9rem' }}>100</td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                
+                                                            </div>
+                                                        </>
+                                                    ) : (
+                                                        <>
+                                                            <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Короткий опис дисципліни</h4>
+                                                            <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0 }}>{course.description}</p>
+                                                        </>
+                                                    )}
                                                 </div>
 
                                                 {/* Zone 3: Timeline */}
@@ -557,8 +661,16 @@ const CourseCatalog = ({ user }) => {
                                                     <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Розклад (Семестр)</h4>
                                                     <div className="timeline-container">
                                                         <div className="timeline-labels text-xs" style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)', fontSize: '0.7rem', padding: '0 4px' }}>
-                                                            <span>1-й тижд.</span>
-                                                            <span>{course.termLength}-й тижд.</span>
+                                                            {(() => {
+                                                                const termStart = getCourseDates(course.semester, 1, 1).start;
+                                                                const termEnd = getCourseDates(course.semester, course.termLength, 1).end;
+                                                                return (
+                                                                    <>
+                                                                        <span>{termStart}</span>
+                                                                        <span>{termEnd}</span>
+                                                                    </>
+                                                                );
+                                                            })()}
                                                         </div>
                                                         <div className="timeline-track" style={{ 
                                                             position: 'relative', height: '14px', 
@@ -573,8 +685,16 @@ const CourseCatalog = ({ user }) => {
                                                             }}></div>
                                                         </div>
                                                         <div className="text-center text-xs mt-xs" style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                                            <Clock size={12} /> Проходить: Тижні <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.startWeek} - {course.startWeek + course.duration - 1}</span>
-                                                            <span style={{ fontSize: '0.65rem', marginLeft: 'auto', opacity: 0.7 }}>({course.duration} тижнів)</span>
+                                                            <Clock size={12} /> Проходить: 
+                                                            {(() => {
+                                                                const dates = getCourseDates(course.semester, course.startWeek, course.duration);
+                                                                return (
+                                                                    <>
+                                                                        <span style={{color: 'var(--text-main)', fontWeight: 600}}> {dates.start} — {dates.end}</span>
+                                                                        <span style={{ fontSize: '0.65rem', marginLeft: 'auto', opacity: 0.7 }}>({course.duration} тижнів)</span>
+                                                                    </>
+                                                                );
+                                                            })()}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -683,6 +803,72 @@ const CourseCatalog = ({ user }) => {
                                                                         {f.name}: <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{f.value}%</span>
                                                                     </span>
                                                                 )) || null}
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 10: Score Gaining Timeline (Weekly Points Bar Chart) */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', gridColumn: '1 / -1' }}>
+                                                            <h4 className="dashboard-heading" style={{ marginBottom: '1rem' }}>Динаміка набору балів</h4>
+                                                            <div style={{ display: 'flex', alignItems: 'flex-end', gap: '4px', height: '140px', width: '100%', paddingBottom: '0.5rem', position: 'relative' }}>
+                                                                {(() => {
+                                                                    const maxWeeklyPoints = Math.max(...(course.weeklyPoints || [1])); // prevent div by zero
+                                                                    const totalExam = Math.round((course.maxPoints || 100) * (course.gradingBreakdown?.exam || 0) / 100);
+                                                                    const totalProj = Math.round((course.maxPoints || 100) * (course.gradingBreakdown?.project || 0) / 100);
+                                                                    
+                                                                    let remExam = totalExam;
+                                                                    let remProj = totalProj;
+                                                                    
+                                                                    const allocations = [];
+                                                                    for (let i = course.duration - 1; i >= 0; i--) {
+                                                                        let pts = course.weeklyPoints[i] || 0;
+                                                                        let examPts = 0, projPts = 0, hwPts = 0;
+                                                                        
+                                                                        if (remExam > 0) {
+                                                                            let take = Math.min(pts, remExam);
+                                                                            examPts = take;
+                                                                            remExam -= take;
+                                                                            pts -= take;
+                                                                        }
+                                                                        if (pts > 0 && remProj > 0) {
+                                                                            let take = Math.min(pts, remProj);
+                                                                            projPts = take;
+                                                                            remProj -= take;
+                                                                            pts -= take;
+                                                                        }
+                                                                        hwPts = pts;
+                                                                        
+                                                                        allocations.unshift({ total: course.weeklyPoints[i], hw: hwPts, proj: projPts, exam: examPts });
+                                                                    }
+                                                                    
+                                                                    return allocations.map((alloc, idx) => {
+                                                                        const pts = alloc.total;
+                                                                        const heightPct = (pts / maxWeeklyPoints) * 100;
+                                                                        const hwPct = pts > 0 ? (alloc.hw / pts) * 100 : 0;
+                                                                        const projPct = pts > 0 ? (alloc.proj / pts) * 100 : 0;
+                                                                        const examPct = pts > 0 ? (alloc.exam / pts) * 100 : 0;
+                                                                        const weekDate = getCourseDates(course.semester, course.startWeek + idx, 1).start.substring(0, 5);
+                                                                        
+                                                                        return (
+                                                                            <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', height: '100%', justifyContent: 'flex-end', group: 'bar' }} title={`Тиждень ${idx + 1} (${weekDate}): ${pts} балів\nІспит: ${alloc.exam}\nПроєкт: ${alloc.proj}\nДЗ: ${alloc.hw}`}>
+                                                                                <span style={{ fontSize: '0.65rem', color: pts > 0 ? 'var(--text-main)' : 'rgba(255,255,255,0.1)', fontWeight: 600 }}>{pts}</span>
+                                                                                <div style={{ 
+                                                                                    width: '100%', 
+                                                                                    height: `${heightPct}%`, 
+                                                                                    minHeight: pts > 0 ? '4px' : '2px',
+                                                                                    background: pts > 0 ? `linear-gradient(to top, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, ${0.4 + (pts/maxWeeklyPoints)*0.6}))` : 'rgba(255,255,255,0.03)',
+                                                                                    borderRadius: '4px 4px 0 0',
+                                                                                    borderTop: pts > 0 ? '2px solid #3b82f6' : 'none',
+                                                                                    transition: '0.2s all',
+                                                                                    cursor: 'crosshair',
+                                                                                    opacity: 0.9
+                                                                                }} className="hover:opacity-100"></div>
+                                                                                <span style={{ fontSize: '0.55rem', color: 'var(--text-muted)', marginTop: '2px', whiteSpace: 'nowrap' }}>{weekDate}</span>
+                                                                                {alloc.exam > 0 && <span style={{ fontSize: '0.45rem', color: '#ef4444', textTransform: 'uppercase', marginTop: '1px', fontWeight: 600 }}>Іспит</span>}
+                                                                                {alloc.proj > 0 && <span style={{ fontSize: '0.45rem', color: '#3b82f6', textTransform: 'uppercase', marginTop: '1px', fontWeight: 600 }}>Проєкт</span>}
+                                                                            </div>
+                                                                        );
+                                                                    });
+                                                                })()}
                                                             </div>
                                                         </div>
                                                     </>
