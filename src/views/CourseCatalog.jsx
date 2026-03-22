@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText } from 'lucide-react';
+import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin } from 'lucide-react';
 import { mockCatalog, mockComments, mockUsers } from '../data/mockData';
 import { fetchWithAuth } from '../utils/api';
 
@@ -508,7 +508,7 @@ const CourseCatalog = ({ user }) => {
                                                 </span>
                                                 <span className="course-code-badge">{course.code}</span>
                                                 <span className={`instructor-title-badge ${course.instructorTitle}`}>
-                                                    {course.instructorTitle === 'professor' ? '🎓 Професор' : '📖 Викладач'}
+                                                    {course.instructorTitle === 'professor' ? '🎓 Професор' : course.instructorTitle === 'expert' ? '💼 Експерт-практик' : '📖 Викладач'}
                                                 </span>
                                             </div>
                                             <h3 className="catalog-course-name">{course.name}</h3>
@@ -526,13 +526,19 @@ const CourseCatalog = ({ user }) => {
                                                     {course.credits} ECTS
                                                 </span>
                                                 <span className="catalog-meta-item">
+                                                    <MessageCircle size={14} />
+                                                    {course.language}
+                                                </span>
+                                                <span className="catalog-meta-item">
                                                     <Clock size={14} />
                                                     {course.duration} тиж.
                                                 </span>
-                                                <span className={`catalog-meta-item ${isFull ? 'full' : ''}`}>
-                                                    <Users size={14} />
-                                                    {isFull ? 'Заповнено' : `${spotsLeft} місць`}
-                                                </span>
+                                                {course.semester === 'Весна 2027' && (
+                                                    <span className="catalog-meta-item">
+                                                        <Users size={14} />
+                                                        {course.spots.taken} {course.language === 'Англійська' ? 'students' : 'учнів'}
+                                                    </span>
+                                                )}
                                                 {isElective && courseComments.length > 0 && (
                                                     <span className="catalog-meta-item comment-count-badge">
                                                         <MessageCircle size={14} />
@@ -559,15 +565,26 @@ const CourseCatalog = ({ user }) => {
                                             <div className="expanded-dashboard-v2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
                                                 
                                                 {/* Zone 1: Instructor & Syllabus Download */}
-                                                <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', gridColumn: '1 / -1', gap: '1rem', alignItems: 'center' }}>
-                                                    <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" style={{ width: '60px', height: '60px', borderRadius: '30px' }} />
-                                                    <div style={{ flex: 1 }}>
-                                                        <h4 style={{ margin: 0, fontWeight: 600, fontSize: '1.1rem' }}>{course.instructor}</h4>
-                                                        <span className="text-muted block text-sm">{course.instructorTitle === 'professor' ? 'Професор' : 'Викладач'}</span>
+                                                <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', gridColumn: '1 / -1', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
+                                                    <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" style={{ width: '64px', height: '64px', borderRadius: '32px', objectFit: 'cover' }} />
+                                                    <div style={{ flex: 1, minWidth: '200px' }}>
+                                                        <h4 style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-main)' }}>{course.instructor}</h4>
+                                                        <span className="text-muted block text-sm" style={{ marginBottom: '0.4rem', color: 'var(--color-accent)' }}>
+                                                            {course.instructorTitle === 'professor' ? 'Професор' : course.instructorTitle === 'expert' ? 'Запрошений експерт' : 'Викладач'}
+                                                        </span>
+                                                        {course.instructorBio && (
+                                                            <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
+                                                                {course.instructorBio}
+                                                            </p>
+                                                        )}
                                                     </div>
-                                                    <a href={course.syllabusUrl} target="_blank" rel="noreferrer" className="btn-secondary syllabus-btn" style={{ padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                                        <FileText size={16} /> Syllabus
-                                                    </a>
+                                                    <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                                                        {course.instructorLinkedIn && (
+                                                            <a href={course.instructorLinkedIn} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '0.5rem 0.75rem', display: 'flex', alignItems: 'center', gap: '0.4rem', color: '#0A66C2' }}>
+                                                                <Linkedin size={16} /> LinkedIn
+                                                            </a>
+                                                        )}
+                                                    </div>
                                                 </div>
 
                                                 {/* Zone 2: Short Syllabus (Description) or Detailed Syllabus */}
@@ -576,6 +593,9 @@ const CourseCatalog = ({ user }) => {
                                                         <>
                                                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                                                                 <h4 className="dashboard-heading" style={{ margin: 0 }}>Детальний огляд силабусу</h4>
+                                                                <a href={course.syllabusUrl} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '0.4rem 0.8rem', display: 'flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.9rem' }}>
+                                                                    <FileText size={16} /> Завантажити PDF
+                                                                </a>
                                                             </div>
                                                             <div className="detailed-syllabus text-sm" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', lineHeight: '1.6', color: 'var(--text-muted)' }}>
                                                                 
@@ -815,10 +835,14 @@ const CourseCatalog = ({ user }) => {
                                                                     const totalExam = Math.round((course.maxPoints || 100) * (course.gradingBreakdown?.exam || 0) / 100);
                                                                     const totalProj = Math.round((course.maxPoints || 100) * (course.gradingBreakdown?.project || 0) / 100);
                                                                     
+                                                                    const totalTermLength = course.termLength || 15;
+                                                                    const startWk = (course.startWeek || 1) - 1;
+                                                                    const endWk = startWk + course.duration - 1;
+
                                                                     let remExam = totalExam;
                                                                     let remProj = totalProj;
                                                                     
-                                                                    const allocations = [];
+                                                                    const activeAllocations = [];
                                                                     for (let i = course.duration - 1; i >= 0; i--) {
                                                                         let pts = course.weeklyPoints[i] || 0;
                                                                         let examPts = 0, projPts = 0, hwPts = 0;
@@ -837,32 +861,38 @@ const CourseCatalog = ({ user }) => {
                                                                         }
                                                                         hwPts = pts;
                                                                         
-                                                                        allocations.unshift({ total: course.weeklyPoints[i], hw: hwPts, proj: projPts, exam: examPts });
+                                                                        activeAllocations.unshift({ total: course.weeklyPoints[i] || 0, hw: hwPts, proj: projPts, exam: examPts });
+                                                                    }
+
+                                                                    const fullTimelineObj = [];
+                                                                    for (let i = 0; i < totalTermLength; i++) {
+                                                                        if (i >= startWk && i <= endWk) {
+                                                                            fullTimelineObj.push(activeAllocations[i - startWk]);
+                                                                        } else {
+                                                                            fullTimelineObj.push({ total: 0, hw: 0, proj: 0, exam: 0, empty: true });
+                                                                        }
                                                                     }
                                                                     
-                                                                    return allocations.map((alloc, idx) => {
+                                                                    return fullTimelineObj.map((alloc, idx) => {
                                                                         const pts = alloc.total;
-                                                                        const heightPct = (pts / maxWeeklyPoints) * 100;
-                                                                        const hwPct = pts > 0 ? (alloc.hw / pts) * 100 : 0;
-                                                                        const projPct = pts > 0 ? (alloc.proj / pts) * 100 : 0;
-                                                                        const examPct = pts > 0 ? (alloc.exam / pts) * 100 : 0;
-                                                                        const weekDate = getCourseDates(course.semester, course.startWeek + idx, 1).start.substring(0, 5);
+                                                                        const heightPct = pts > 0 ? (pts / maxWeeklyPoints) * 100 : 0;
+                                                                        const weekDate = getCourseDates(course.semester, idx + 1, 1).start.substring(0, 5);
                                                                         
                                                                         return (
-                                                                            <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', height: '100%', justifyContent: 'flex-end', group: 'bar' }} title={`Тиждень ${idx + 1} (${weekDate}): ${pts} балів\nІспит: ${alloc.exam}\nПроєкт: ${alloc.proj}\nДЗ: ${alloc.hw}`}>
-                                                                                <span style={{ fontSize: '0.65rem', color: pts > 0 ? 'var(--text-main)' : 'rgba(255,255,255,0.1)', fontWeight: 600 }}>{pts}</span>
+                                                                            <div key={idx} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px', height: '100%', justifyContent: 'flex-end', group: 'bar' }} title={alloc.empty ? `Тиждень ${idx + 1} (${weekDate}): Занять немає` : `Тиждень ${idx + 1} (${weekDate}): ${pts} балів\nІспит: ${alloc.exam}\nПроєкт: ${alloc.proj}\nДЗ: ${alloc.hw}`}>
+                                                                                <span style={{ fontSize: '0.65rem', color: pts > 0 ? 'var(--text-main)' : 'transparent', fontWeight: 600 }}>{pts > 0 ? pts : '-'}</span>
                                                                                 <div style={{ 
                                                                                     width: '100%', 
-                                                                                    height: `${heightPct}%`, 
+                                                                                    height: pts > 0 ? `${heightPct}%` : '2px', 
                                                                                     minHeight: pts > 0 ? '4px' : '2px',
                                                                                     background: pts > 0 ? `linear-gradient(to top, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, ${0.4 + (pts/maxWeeklyPoints)*0.6}))` : 'rgba(255,255,255,0.03)',
                                                                                     borderRadius: '4px 4px 0 0',
                                                                                     borderTop: pts > 0 ? '2px solid #3b82f6' : 'none',
                                                                                     transition: '0.2s all',
                                                                                     cursor: 'crosshair',
-                                                                                    opacity: 0.9
+                                                                                    opacity: alloc.empty ? 0.3 : 0.9
                                                                                 }} className="hover:opacity-100"></div>
-                                                                                <span style={{ fontSize: '0.55rem', color: 'var(--text-muted)', marginTop: '2px', whiteSpace: 'nowrap' }}>{weekDate}</span>
+                                                                                <span style={{ fontSize: '0.55rem', color: alloc.empty ? 'rgba(255,255,255,0.2)' : 'var(--text-muted)', marginTop: '2px', whiteSpace: 'nowrap' }}>{weekDate}</span>
                                                                                 {alloc.exam > 0 && <span style={{ fontSize: '0.45rem', color: '#ef4444', textTransform: 'uppercase', marginTop: '1px', fontWeight: 600 }}>Іспит</span>}
                                                                                 {alloc.proj > 0 && <span style={{ fontSize: '0.45rem', color: '#3b82f6', textTransform: 'uppercase', marginTop: '1px', fontWeight: 600 }}>Проєкт</span>}
                                                                             </div>

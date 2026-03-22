@@ -28,2320 +28,7449 @@ export const mockTranscript = [
 // Mock course catalog
 export const mockCatalog = [
     {
-        id: 10,
-        code: 'МАТ101',
-        name: 'Кількісні статистики',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'professor',
-        credits: 24,
-        duration: 17,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 27,
-        enrollmentType: { mandatory: 52, elective: 48 },
-        facultySplit: [
-          { name: 'Економіка', value: 56 },
-          { name: 'Кібербезпека', value: 33 },
-          { name: 'КН', value: 11 }
+        "id": 10,
+        "code": "МАТ101",
+        "name": "Кількісні статистики",
+        "instructor": "Володимир Павленко",
+        "instructorTitle": "expert",
+        "credits": 24,
+        "duration": 10,
+        "startWeek": 5,
+        "termLength": 16,
+        "practicePercentage": 66,
+        "enrollmentType": {
+            "mandatory": 40,
+            "elective": 60
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 47
+            },
+            {
+                "name": "КН",
+                "value": 38
+            },
+            {
+                "name": "Інше",
+                "value": 15
+            }
         ],
-        gradingBreakdown: { exam: 55, project: 39, homework: 6 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Математика',
-        description: 'Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 34 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.3,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 0, 2, 3, 4, 4, 3, 7, 13, 9, 4, 11, 12, 12, 12, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 107.9,
-        passRate60Plus: 93,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 55,
+            "project": 39,
+            "homework": 6
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Математика",
+        "description": "Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 34
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.3,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%9F%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 12 роками досвіду в індустрії (Математика).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-10",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            19,
+            2,
+            5,
+            4,
+            4,
+            4,
+            3,
+            28,
+            3,
+            28
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Застосовувати отримані знання",
+                "Підготувати дослідницький проєкт",
+                "Аналізувати інформацію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 23,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "24",
+                    "total": 24,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "24",
+                    "total": 24,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 87.3,
+        "passRate60Plus": 93,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 11,
-        code: 'ПРА102',
-        name: 'Глобальна інтелектуальної власності',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'professor',
-        credits: 8,
-        duration: 17,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 44,
-        enrollmentType: { mandatory: 71, elective: 29 },
-        facultySplit: [
-          { name: 'Кібербезпека', value: 47 },
-          { name: 'Право', value: 21 },
-          { name: 'Психологія', value: 32 }
+        "id": 11,
+        "code": "ПРА102",
+        "name": "Глобальна інтелектуальної власності",
+        "instructor": "Андрій Мороз",
+        "instructorTitle": "expert",
+        "credits": 8,
+        "duration": 9,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 72,
+        "enrollmentType": {
+            "mandatory": 93,
+            "elective": 7
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 41
+            },
+            {
+                "name": "КН",
+                "value": 36
+            },
+            {
+                "name": "Інше",
+                "value": 23
+            }
         ],
-        gradingBreakdown: { exam: 42, project: 12, homework: 46 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 1 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 0, 1, 2, 1, 3, 5, 6, 3, 6, 6, 6, 11, 12, 13, 15, 10],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 92.3,
-        passRate60Plus: 91,
-        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 42,
+            "project": 12,
+            "homework": 46
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 1
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 9 роками досвіду в індустрії (Право).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-11",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            8,
+            5,
+            2,
+            3,
+            2,
+            5,
+            4,
+            29,
+            42
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Застосовувати правові норми на практиці",
+                "Зрозуміти основи правової системи"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Виступити в суді",
+                "Скласти договір",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 16,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 20,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "39",
+                    "total": 39,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 79.6,
+        "passRate60Plus": 91,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 12,
-        code: 'МАТ103',
-        name: 'Корпоративна топології',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'lecturer',
-        credits: 26,
-        duration: 3,
-        startWeek: 2,
-        termLength: 16,
-        practicePercentage: 48,
-        enrollmentType: { mandatory: 67, elective: 33 },
-        facultySplit: [
-          { name: 'Право', value: 67 },
-          { name: 'Менеджмент', value: 33 },
-          { name: 'Психологія', value: 0 }
+        "id": 12,
+        "code": "МАТ103",
+        "name": "Корпоративна топології",
+        "instructor": "Проф. Олександр Гаврилюк",
+        "instructorTitle": "professor",
+        "credits": 26,
+        "duration": 9,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 44,
+        "enrollmentType": {
+            "mandatory": 8,
+            "elective": 92
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 28
+            },
+            {
+                "name": "Інше",
+                "value": 13
+            }
         ],
-        gradingBreakdown: { exam: 57, project: 39, homework: 4 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Математика',
-        description: 'Розширений курс про топології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 13 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.3,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [7, 41, 68],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 107.0,
-        passRate60Plus: 80,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 57,
+            "project": 39,
+            "homework": 4
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Математика",
+        "description": "Розширений курс про топології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 13
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.3,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D1%8E%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Математика, автор 22 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-12",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            13,
+            5,
+            2,
+            5,
+            5,
+            4,
+            4,
+            21,
+            41
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Застосовувати отримані знання",
+                "Аналізувати інформацію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 27,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "16",
+                    "total": 16,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "36",
+                    "total": 36,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 87,
+        "passRate60Plus": 80,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 13,
-        code: 'ЕКО104',
-        name: 'Кількісні макроекономіки',
-        instructor: 'Проф. Бойко С.М.',
-        instructorTitle: 'professor',
-        credits: 2,
-        duration: 16,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 49,
-        enrollmentType: { mandatory: 48, elective: 52 },
-        facultySplit: [
-          { name: 'Економіка', value: 46 },
-          { name: 'КН', value: 18 },
-          { name: 'Право', value: 36 }
+        "id": 13,
+        "code": "ЕКО104",
+        "name": "Кількісні макроекономіки",
+        "instructor": "Проф. Оксана Мороз",
+        "instructorTitle": "professor",
+        "credits": 2,
+        "duration": 12,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 47,
+        "enrollmentType": {
+            "mandatory": 91,
+            "elective": 9
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 41
+            },
+            {
+                "name": "КН",
+                "value": 37
+            },
+            {
+                "name": "Інше",
+                "value": 22
+            }
         ],
-        gradingBreakdown: { exam: 40, project: 13, homework: 47 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Розширений курс про макроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 27 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 2, 0, 3, 1, 8, 3, 11, 13, 8, 10, 13, 20, 11, 13],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 81.1,
-        passRate60Plus: 100,
-        studentTypes: ['Магістри Аналітики','2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 40,
+            "project": 13,
+            "homework": 47
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Розширений курс про макроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 27
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.4,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Економіка, автор 25 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-13",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -3,
+            3,
+            2,
+            3,
+            3,
+            4,
+            2,
+            17,
+            4,
+            4,
+            5,
+            56
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Оцінювати вплив макроекономічних шоків",
+                "Будувати економетричні прогнози",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Розрахувати ВВП та інфляцію",
+                "Аналізувати поведінку споживачів",
+                "Будувати регресійні моделі"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 10,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 22,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "15",
+                    "total": 15,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "53",
+                    "total": 53,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 79.6,
+        "passRate60Plus": 100,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 14,
-        code: 'КОМ105',
-        name: 'Стратегічне баз даних',
-        instructor: 'Проф. Бойко С.М.',
-        instructorTitle: 'professor',
-        credits: 2,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 48,
-        enrollmentType: { mandatory: 42, elective: 58 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 35 },
-          { name: 'Економіка', value: 21 },
-          { name: 'Право', value: 44 }
+        "id": 14,
+        "code": "КОМ105",
+        "name": "Стратегічне баз даних",
+        "instructor": "Олена Мельник",
+        "instructorTitle": "lecturer",
+        "credits": 2,
+        "duration": 14,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 50,
+        "enrollmentType": {
+            "mandatory": 20,
+            "elective": 80
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 56
+            },
+            {
+                "name": "КН",
+                "value": 28
+            },
+            {
+                "name": "Інше",
+                "value": 16
+            }
         ],
-        gradingBreakdown: { exam: 34, project: 20, homework: 46 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: false,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 21 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 4, 1, 4, 9, 10, 6, 12, 14, 14, 16, 26],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 70.8,
-        passRate60Plus: 93,
-        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 34,
+            "project": 20,
+            "homework": 46
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 21
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.9,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BB%D0%B5%D0%BD%D0%B0%20%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 9 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-14",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            7,
+            2,
+            4,
+            4,
+            2,
+            4,
+            5,
+            15,
+            2,
+            5,
+            2,
+            2,
+            4,
+            42
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Оптимізувати SQL запити",
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 32,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "37",
+                    "total": 37,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 92.3,
+        "passRate60Plus": 93,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 15,
-        code: 'ПРА106',
-        name: 'Теорія корпоративного права',
-        instructor: 'Проф. Кравченко О.С.',
-        instructorTitle: 'professor',
-        credits: 17,
-        duration: 13,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 30,
-        enrollmentType: { mandatory: 55, elective: 45 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 38 },
-          { name: 'Психологія', value: 22 },
-          { name: 'Право', value: 40 }
+        "id": 15,
+        "code": "ПРА106",
+        "name": "Теорія корпоративного права",
+        "instructor": "Юлія Мороз",
+        "instructorTitle": "lecturer",
+        "credits": 17,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 68,
+        "enrollmentType": {
+            "mandatory": 33,
+            "elective": 67
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 44
+            },
+            {
+                "name": "КН",
+                "value": 34
+            },
+            {
+                "name": "Інше",
+                "value": 22
+            }
         ],
-        gradingBreakdown: { exam: 48, project: 26, homework: 26 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 31 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 2, 0, 2, 4, 10, 6, 7, 11, 11, 20, 18, 25],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 106.6,
-        passRate60Plus: 87,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 48,
+            "project": 26,
+            "homework": 26
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 31
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.5,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 12 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            3,
+            5,
+            5,
+            5,
+            4,
+            2,
+            5,
+            28,
+            3,
+            2,
+            38
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Зрозуміти основи правової системи",
+                "Захищати права клієнтів",
+                "Застосовувати правові норми на практиці"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Оформити позовну заяву",
+                "Виступити в суді",
+                "Скласти договір"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 20,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 23,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "24",
+                    "total": 24,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "33",
+                    "total": 33,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 92,
+        "passRate60Plus": 87,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 16,
-        code: 'ПРА107',
-        name: 'Вступ до інтелектуальної власності',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'lecturer',
-        credits: 12,
-        duration: 11,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 39,
-        enrollmentType: { mandatory: 66, elective: 34 },
-        facultySplit: [
-          { name: 'Психологія', value: 47 },
-          { name: 'КН', value: 35 },
-          { name: 'Кібербезпека', value: 18 }
+        "id": 16,
+        "code": "ПРА107",
+        "name": "Вступ до інтелектуальної власності",
+        "instructor": "Проф. Юлія Бондаренко",
+        "instructorTitle": "professor",
+        "credits": 12,
+        "duration": 13,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 60,
+        "enrollmentType": {
+            "mandatory": 95,
+            "elective": 5
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 48
+            },
+            {
+                "name": "КН",
+                "value": 33
+            },
+            {
+                "name": "Інше",
+                "value": 19
+            }
         ],
-        gradingBreakdown: { exam: 59, project: 19, homework: 22 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 10 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 5, 7, 9, 11, 17, 8, 11, 25, 23],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 85.7,
-        passRate60Plus: 80,
-        studentTypes: ['2-й курс Фінансів','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 59,
+            "project": 19,
+            "homework": 22
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 10
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.8,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%91%D0%BE%D0%BD%D0%B4%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Право, автор 31 наукових статей у міжнародних виданнях.",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            3,
+            5,
+            5,
+            2,
+            4,
+            5,
+            3,
+            20,
+            4,
+            4,
+            2,
+            3,
+            40
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Навчитися аналізувати нормативні акти",
+                "Застосовувати правові норми на практиці",
+                "Захищати права клієнтів"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Виступити в суді",
+                "Скласти договір"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 13,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 35,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "15",
+                    "total": 15,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "37",
+                    "total": 37,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 87.4,
+        "passRate60Plus": 80,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 17,
-        code: 'КОМ108',
-        name: 'Прикладна штучного інтелекту',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'professor',
-        credits: 24,
-        duration: 8,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 36,
-        enrollmentType: { mandatory: 67, elective: 33 },
-        facultySplit: [
-          { name: 'Економіка', value: 62 },
-          { name: 'Право', value: 39 },
-          { name: 'Психологія', value: -1 }
+        "id": 17,
+        "code": "КОМ108",
+        "name": "Прикладна штучного інтелекту",
+        "instructor": "Олена Власенко",
+        "instructorTitle": "expert",
+        "credits": 24,
+        "duration": 14,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 45,
+        "enrollmentType": {
+            "mandatory": 15,
+            "elective": 85
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 46
+            },
+            {
+                "name": "КН",
+                "value": 26
+            },
+            {
+                "name": "Інше",
+                "value": 28
+            }
         ],
-        gradingBreakdown: { exam: 48, project: 31, homework: 21 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 37 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [1, 1, 7, 11, 4, 20, 24, 32],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 88.2,
-        passRate60Plus: 97,
-        studentTypes: ['3-й курс Психології','2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 48,
+            "project": 31,
+            "homework": 21
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 37
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.9,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BB%D0%B5%D0%BD%D0%B0%20%D0%92%D0%BB%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 7 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-17",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -1,
+            5,
+            3,
+            5,
+            2,
+            4,
+            5,
+            20,
+            4,
+            3,
+            3,
+            4,
+            5,
+            38
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Розробляти масштабовані системи",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок",
+                "Написати власну програму"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 15,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 35,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "16",
+                    "total": 16,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "34",
+                    "total": 34,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 81.5,
+        "passRate60Plus": 97,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 18,
-        code: 'ПРА109',
-        name: 'Корпоративна корпоративного права',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'lecturer',
-        credits: 19,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 74,
-        enrollmentType: { mandatory: 69, elective: 31 },
-        facultySplit: [
-          { name: 'КН', value: 45 },
-          { name: 'Економіка', value: 35 },
-          { name: 'Кібербезпека', value: 20 }
+        "id": 18,
+        "code": "ПРА109",
+        "name": "Корпоративна корпоративного права",
+        "instructor": "Проф. Володимир Власенко",
+        "instructorTitle": "professor",
+        "credits": 19,
+        "duration": 13,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 67,
+        "enrollmentType": {
+            "mandatory": 100,
+            "elective": 0
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 52
+            },
+            {
+                "name": "КН",
+                "value": 21
+            },
+            {
+                "name": "Інше",
+                "value": 27
+            }
         ],
-        gradingBreakdown: { exam: 35, project: 27, homework: 38 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 36 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 2, 1, 6, 4, 10, 7, 7, 9, 10, 21, 23],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 81.4,
-        passRate60Plus: 87,
-        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 35,
+            "project": 27,
+            "homework": 38
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 36
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.2,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%92%D0%BB%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Право, автор 18 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-18",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            11,
+            5,
+            3,
+            4,
+            2,
+            2,
+            3,
+            21,
+            4,
+            2,
+            2,
+            2,
+            39
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Захищати права клієнтів",
+                "Застосовувати правові норми на практиці",
+                "Навчитися аналізувати нормативні акти"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Оформити позовну заяву",
+                "Виступити в суді"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 26,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "17",
+                    "total": 17,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "36",
+                    "total": 36,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 92.6,
+        "passRate60Plus": 87,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 19,
-        code: 'МАТ110',
-        name: 'Методи топології',
-        instructor: 'Викл. Захарова Н.М.',
-        instructorTitle: 'professor',
-        credits: 18,
-        duration: 3,
-        startWeek: 9,
-        termLength: 16,
-        practicePercentage: 43,
-        enrollmentType: { mandatory: 30, elective: 70 },
-        facultySplit: [
-          { name: 'Економіка', value: 61 },
-          { name: 'Менеджмент', value: 24 },
-          { name: 'КН', value: 15 }
+        "id": 19,
+        "code": "МАТ110",
+        "name": "Методи топології",
+        "instructor": "Володимир Ковальчук",
+        "instructorTitle": "expert",
+        "credits": 18,
+        "duration": 8,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 33,
+        "enrollmentType": {
+            "mandatory": 97,
+            "elective": 3
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 51
+            },
+            {
+                "name": "КН",
+                "value": 26
+            },
+            {
+                "name": "Інше",
+                "value": 23
+            }
         ],
-        gradingBreakdown: { exam: 55, project: 25, homework: 20 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Математика',
-        description: 'Розширений курс про топології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 19 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [7, 40, 69],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 103.4,
-        passRate60Plus: 91,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 55,
+            "project": 25,
+            "homework": 20
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Математика",
+        "description": "Розширений курс про топології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 19
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.8,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 11 роками досвіду в індустрії (Математика).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-19",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            4,
+            4,
+            3,
+            2,
+            5,
+            3,
+            20,
+            59
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними",
+                "Розуміти базові концепції дисципліни"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Аналізувати інформацію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 10,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "15",
+                    "total": 15,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "54",
+                    "total": 54,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 77.6,
+        "passRate60Plus": 91,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 20,
-        code: 'КОМ111',
-        name: 'Вступ до криптографії',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'lecturer',
-        credits: 5,
-        duration: 11,
-        startWeek: 4,
-        termLength: 16,
-        practicePercentage: 56,
-        enrollmentType: { mandatory: 72, elective: 28 },
-        facultySplit: [
-          { name: 'Психологія', value: 39 },
-          { name: 'Право', value: 16 },
-          { name: 'Економіка', value: 45 }
+        "id": 20,
+        "code": "КОМ111",
+        "name": "Вступ до криптографії",
+        "instructor": "Юлія Мороз",
+        "instructorTitle": "lecturer",
+        "credits": 5,
+        "duration": 8,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 38,
+        "enrollmentType": {
+            "mandatory": 16,
+            "elective": 84
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 38
+            },
+            {
+                "name": "КН",
+                "value": 32
+            },
+            {
+                "name": "Інше",
+                "value": 30
+            }
         ],
-        gradingBreakdown: { exam: 42, project: 27, homework: 31 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 30 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [2, 0, 4, 3, 4, 13, 8, 10, 17, 17, 22],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 70.3,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 42,
+            "project": 27,
+            "homework": 31
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 30
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.2,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 9 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-20",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            24,
+            3,
+            3,
+            5,
+            5,
+            2,
+            18,
+            40
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Створити веб-застосунок",
+                "Написати власну програму",
+                "Налаштувати CI/CD",
+                "Оптимізувати SQL запити"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 25,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 25,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "14",
+                    "total": 14,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "36",
+                    "total": 36,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 75.7,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 21,
-        code: 'КОМ112',
-        name: 'Аналіз баз даних',
-        instructor: 'Проф. Лисенко М.М.',
-        instructorTitle: 'lecturer',
-        credits: 20,
-        duration: 6,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 30,
-        enrollmentType: { mandatory: 38, elective: 62 },
-        facultySplit: [
-          { name: 'Економіка', value: 59 },
-          { name: 'Кібербезпека', value: 30 },
-          { name: 'Психологія', value: 11 }
+        "id": 21,
+        "code": "КОМ112",
+        "name": "Аналіз баз даних",
+        "instructor": "Петро Ткаченко",
+        "instructorTitle": "lecturer",
+        "credits": 20,
+        "duration": 14,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 68,
+        "enrollmentType": {
+            "mandatory": 22,
+            "elective": 78
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 34
+            },
+            {
+                "name": "Інше",
+                "value": 7
+            }
         ],
-        gradingBreakdown: { exam: 41, project: 25, homework: 34 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: false,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 16 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [1, 5, 16, 20, 31, 43],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 114.4,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 41,
+            "project": 25,
+            "homework": 34
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 16
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%20%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 13 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-21",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -3,
+            5,
+            3,
+            2,
+            4,
+            3,
+            2,
+            24,
+            5,
+            5,
+            4,
+            4,
+            4,
+            38
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Опанувати алгоритмічне мислення",
+                "Розробляти масштабовані системи"
+            ],
+            "outcomes": [
+                "Створити веб-застосунок",
+                "Налаштувати CI/CD",
+                "Оптимізувати SQL запити"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 11,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 33,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "21",
+                    "total": 21,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "35",
+                    "total": 35,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 96.4,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 22,
-        code: 'ПРА113',
-        name: 'Теорія корпоративного права',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'professor',
-        credits: 11,
-        duration: 3,
-        startWeek: 9,
-        termLength: 16,
-        practicePercentage: 67,
-        enrollmentType: { mandatory: 30, elective: 70 },
-        facultySplit: [
-          { name: 'Економіка', value: 62 },
-          { name: 'Психологія', value: 23 },
-          { name: 'Право', value: 15 }
+        "id": 22,
+        "code": "ПРА113",
+        "name": "Теорія корпоративного права",
+        "instructor": "Марія Шевченко",
+        "instructorTitle": "expert",
+        "credits": 11,
+        "duration": 13,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 77,
+        "enrollmentType": {
+            "mandatory": 18,
+            "elective": 82
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 37
+            },
+            {
+                "name": "Інше",
+                "value": 4
+            }
         ],
-        gradingBreakdown: { exam: 57, project: 34, homework: 9 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 17 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.6,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [11, 30, 75],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 74.9,
-        passRate60Plus: 95,
-        studentTypes: ['2-й курс Фінансів','1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 57,
+            "project": 34,
+            "homework": 9
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 17
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.6,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B0%D1%80%D1%96%D1%8F%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 5 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            17,
+            2,
+            3,
+            4,
+            5,
+            5,
+            2,
+            24,
+            5,
+            4,
+            3,
+            3,
+            23
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Застосовувати правові норми на практиці",
+                "Навчитися аналізувати нормативні акти",
+                "Захищати права клієнтів"
+            ],
+            "outcomes": [
+                "Скласти договір",
+                "Виступити в суді",
+                "Провести юридичну експертизу"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 25,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 34,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "21",
+                    "total": 21,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "20",
+                    "total": 20,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 88.5,
+        "passRate60Plus": 95,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 23,
-        code: 'МЕН114',
-        name: 'Кількісні психології ділових відносин',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'lecturer',
-        credits: 20,
-        duration: 17,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 58,
-        enrollmentType: { mandatory: 23, elective: 77 },
-        facultySplit: [
-          { name: 'КН', value: 42 },
-          { name: 'Економіка', value: 26 },
-          { name: 'Кібербезпека', value: 32 }
+        "id": 23,
+        "code": "МЕН114",
+        "name": "Кількісні психології ділових відносин",
+        "instructor": "Володимир Лисенко",
+        "instructorTitle": "lecturer",
+        "credits": 20,
+        "duration": 11,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 70,
+        "enrollmentType": {
+            "mandatory": 85,
+            "elective": 15
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 30
+            },
+            {
+                "name": "КН",
+                "value": 37
+            },
+            {
+                "name": "Інше",
+                "value": 33
+            }
         ],
-        gradingBreakdown: { exam: 46, project: 19, homework: 35 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: false,
-        category: 'core',
-        department: 'Менеджмент',
-        description: 'Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 4 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.5,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 1, 2, 1, 0, 5, 2, 2, 8, 10, 8, 10, 8, 17, 16, 9],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 86.6,
-        passRate60Plus: 85,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 46,
+            "project": 19,
+            "homework": 35
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "core",
+        "department": "Менеджмент",
+        "description": "Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 4
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.5,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 10 роками досвіду в індустрії (Менеджмент).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-23",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            24,
+            2,
+            3,
+            3,
+            4,
+            3,
+            2,
+            23,
+            3,
+            2,
+            31
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Застосовувати отримані знання"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 23,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "21",
+                    "total": 21,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "27",
+                    "total": 27,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 81,
+        "passRate60Plus": 85,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 24,
-        code: 'КОМ115',
-        name: 'Теорія криптографії',
-        instructor: 'Проф. Лисенко М.М.',
-        instructorTitle: 'professor',
-        credits: 17,
-        duration: 10,
-        startWeek: 2,
-        termLength: 16,
-        practicePercentage: 44,
-        enrollmentType: { mandatory: 62, elective: 38 },
-        facultySplit: [
-          { name: 'Економіка', value: 43 },
-          { name: 'Менеджмент', value: 30 },
-          { name: 'КН', value: 27 }
+        "id": 24,
+        "code": "КОМ115",
+        "name": "Теорія криптографії",
+        "instructor": "Проф. Петро Кравченко",
+        "instructorTitle": "professor",
+        "credits": 17,
+        "duration": 14,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 58,
+        "enrollmentType": {
+            "mandatory": 77,
+            "elective": 23
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 31
+            },
+            {
+                "name": "Інше",
+                "value": 10
+            }
         ],
-        gradingBreakdown: { exam: 43, project: 12, homework: 45 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: false,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 27 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 2, 5, 8, 13, 14, 12, 25, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 70.2,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 43,
+            "project": 12,
+            "homework": 45
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 27
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.5,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 17 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-24",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -9,
+            2,
+            3,
+            2,
+            4,
+            2,
+            3,
+            30,
+            5,
+            5,
+            2,
+            4,
+            2,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Опанувати алгоритмічне мислення",
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 13,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "41",
+                    "total": 41,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 95,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 25,
-        code: 'ЕКО116',
-        name: 'Прикладна мікроекономіки',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'professor',
-        credits: 3,
-        duration: 11,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 55,
-        enrollmentType: { mandatory: 28, elective: 72 },
-        facultySplit: [
-          { name: 'Право', value: 51 },
-          { name: 'Психологія', value: 30 },
-          { name: 'Менеджмент', value: 19 }
+        "id": 25,
+        "code": "ЕКО116",
+        "name": "Прикладна мікроекономіки",
+        "instructor": "Проф. Олександр Лисенко",
+        "instructorTitle": "professor",
+        "credits": 3,
+        "duration": 10,
+        "startWeek": 6,
+        "termLength": 16,
+        "practicePercentage": 38,
+        "enrollmentType": {
+            "mandatory": 86,
+            "elective": 14
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 55
+            },
+            {
+                "name": "КН",
+                "value": 34
+            },
+            {
+                "name": "Інше",
+                "value": 11
+            }
         ],
-        gradingBreakdown: { exam: 52, project: 38, homework: 10 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 11 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 3, 1, 9, 3, 8, 12, 16, 23, 14, 27],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 73.6,
-        passRate60Plus: 89,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 52,
+            "project": 38,
+            "homework": 10
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 11
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BB%D0%B5%D0%BA%D1%81%D0%B0%D0%BD%D0%B4%D1%80%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Економіка, автор 23 наукових статей у міжнародних виданнях.",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            9,
+            4,
+            4,
+            2,
+            3,
+            5,
+            2,
+            25,
+            3,
+            43
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Навчитися аналізувати ринкові структури",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Будувати регресійні моделі",
+                "Аналізувати поведінку споживачів",
+                "Розрахувати ВВП та інфляцію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 15,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 22,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "40",
+                    "total": 40,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 81.9,
+        "passRate60Plus": 89,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 26,
-        code: 'ЕКО117',
-        name: 'Стратегічне мікроекономіки',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'professor',
-        credits: 17,
-        duration: 11,
-        startWeek: 2,
-        termLength: 16,
-        practicePercentage: 24,
-        enrollmentType: { mandatory: 51, elective: 49 },
-        facultySplit: [
-          { name: 'Кібербезпека', value: 62 },
-          { name: 'Право', value: 38 },
-          { name: 'Психологія', value: 0 }
+        "id": 26,
+        "code": "ЕКО117",
+        "name": "Стратегічне мікроекономіки",
+        "instructor": "Оксана Ткаченко",
+        "instructorTitle": "expert",
+        "credits": 17,
+        "duration": 13,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 47,
+        "enrollmentType": {
+            "mandatory": 100,
+            "elective": 0
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 39
+            },
+            {
+                "name": "КН",
+                "value": 30
+            },
+            {
+                "name": "Інше",
+                "value": 31
+            }
         ],
-        gradingBreakdown: { exam: 38, project: 17, homework: 45 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 8 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 3, 5, 10, 5, 6, 9, 13, 16, 30, 19],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 85.5,
-        passRate60Plus: 86,
-        studentTypes: ['1-й курс Економіки','2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 38,
+            "project": 17,
+            "homework": 45
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 8
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.5,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 10 роками досвіду в індустрії (Економіка).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-26",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            13,
+            2,
+            4,
+            5,
+            3,
+            4,
+            5,
+            25,
+            4,
+            2,
+            5,
+            5,
+            23
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Будувати економетричні прогнози",
+                "Навчитися аналізувати ринкові структури"
+            ],
+            "outcomes": [
+                "Розрахувати ВВП та інфляцію",
+                "Будувати регресійні моделі"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 24,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 34,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "19",
+                    "total": 19,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 81.4,
+        "passRate60Plus": 86,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 27,
-        code: 'КОМ118',
-        name: 'Кількісні криптографії',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'lecturer',
-        credits: 23,
-        duration: 6,
-        startWeek: 10,
-        termLength: 16,
-        practicePercentage: 77,
-        enrollmentType: { mandatory: 68, elective: 32 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 57 },
-          { name: 'КН', value: 10 },
-          { name: 'Економіка', value: 33 }
+        "id": 27,
+        "code": "КОМ118",
+        "name": "Кількісні криптографії",
+        "instructor": "Проф. Наталія Мороз",
+        "instructorTitle": "professor",
+        "credits": 23,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 30,
+        "enrollmentType": {
+            "mandatory": 96,
+            "elective": 4
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 33
+            },
+            {
+                "name": "КН",
+                "value": 23
+            },
+            {
+                "name": "Інше",
+                "value": 44
+            }
         ],
-        gradingBreakdown: { exam: 55, project: 29, homework: 16 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 19 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 6, 15, 15, 27, 37],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 99.7,
-        passRate60Plus: 88,
-        studentTypes: ['Магістри Аналітики'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 55,
+            "project": 29,
+            "homework": 16
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 19
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%96%D1%8F%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 42 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-27",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            4,
+            2,
+            4,
+            3,
+            4,
+            3,
+            2,
+            16,
+            5,
+            5,
+            52
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Опанувати алгоритмічне мислення",
+                "Розробляти масштабовані системи",
+                "Навчитися проектувати архітектуру ПЗ"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Створити веб-застосунок",
+                "Налаштувати CI/CD"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 16,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "13",
+                    "total": 13,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "50",
+                    "total": 50,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.3,
+        "passRate60Plus": 88,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 28,
-        code: 'КОМ119',
-        name: 'Методи машинного навчання',
-        instructor: 'Викл. Захарова Н.М.',
-        instructorTitle: 'professor',
-        credits: 26,
-        duration: 7,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 27,
-        enrollmentType: { mandatory: 65, elective: 35 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 30 },
-          { name: 'Право', value: 36 },
-          { name: 'Економіка', value: 34 }
+        "id": 28,
+        "code": "КОМ119",
+        "name": "Методи машинного навчання",
+        "instructor": "Проф. Тетяна Кравченко",
+        "instructorTitle": "professor",
+        "credits": 26,
+        "duration": 8,
+        "startWeek": 7,
+        "termLength": 16,
+        "practicePercentage": 39,
+        "enrollmentType": {
+            "mandatory": 100,
+            "elective": 0
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 30
+            },
+            {
+                "name": "КН",
+                "value": 36
+            },
+            {
+                "name": "Інше",
+                "value": 34
+            }
         ],
-        gradingBreakdown: { exam: 51, project: 31, homework: 18 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: false,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 32 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [1, 5, 4, 16, 20, 22, 32],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 85.5,
-        passRate60Plus: 84,
-        studentTypes: ['2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 51,
+            "project": 31,
+            "homework": 18
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 32
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%A2%D0%B5%D1%82%D1%8F%D0%BD%D0%B0%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 43 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-28",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            11,
+            2,
+            5,
+            5,
+            5,
+            4,
+            23,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 13,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 26,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "20",
+                    "total": 20,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "41",
+                    "total": 41,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 80.8,
+        "passRate60Plus": 84,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 29,
-        code: 'МАТ120',
-        name: 'Основи статистики',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'lecturer',
-        credits: 23,
-        duration: 7,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 58,
-        enrollmentType: { mandatory: 55, elective: 45 },
-        facultySplit: [
-          { name: 'Економіка', value: 34 },
-          { name: 'Менеджмент', value: 32 },
-          { name: 'Психологія', value: 34 }
+        "id": 29,
+        "code": "МАТ120",
+        "name": "Основи статистики",
+        "instructor": "Петро Лисенко",
+        "instructorTitle": "expert",
+        "credits": 23,
+        "duration": 11,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 80,
+        "enrollmentType": {
+            "mandatory": 28,
+            "elective": 72
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 50
+            },
+            {
+                "name": "КН",
+                "value": 25
+            },
+            {
+                "name": "Інше",
+                "value": 25
+            }
         ],
-        gradingBreakdown: { exam: 54, project: 15, homework: 31 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Математика',
-        description: 'Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 6 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 3, 16, 9, 18, 27, 43],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 100.7,
-        passRate60Plus: 89,
-        studentTypes: ['2-й курс Фінансів','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 54,
+            "project": 15,
+            "homework": 31
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Математика",
+        "description": "Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 6
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 8 роками досвіду в індустрії (Математика).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -4,
+            5,
+            2,
+            5,
+            2,
+            4,
+            4,
+            22,
+            2,
+            5,
+            53
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Аналізувати інформацію",
+                "Підготувати дослідницький проєкт",
+                "Застосовувати отримані знання"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 14,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "17",
+                    "total": 17,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "48",
+                    "total": 48,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 78.5,
+        "passRate60Plus": 89,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 30,
-        code: 'КОМ121',
-        name: 'Обчислювальний криптографії',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'professor',
-        credits: 15,
-        duration: 17,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 73,
-        enrollmentType: { mandatory: 23, elective: 77 },
-        facultySplit: [
-          { name: 'Психологія', value: 30 },
-          { name: 'КН', value: 23 },
-          { name: 'Право', value: 47 }
+        "id": 30,
+        "code": "КОМ121",
+        "name": "Обчислювальний криптографії",
+        "instructor": "Проф. Андрій Павленко",
+        "instructorTitle": "professor",
+        "credits": 15,
+        "duration": 14,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 33,
+        "enrollmentType": {
+            "mandatory": 95,
+            "elective": 5
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 51
+            },
+            {
+                "name": "КН",
+                "value": 23
+            },
+            {
+                "name": "Інше",
+                "value": 26
+            }
         ],
-        gradingBreakdown: { exam: 49, project: 28, homework: 23 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 40 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.6,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 0, 2, 1, 1, 0, 1, 4, 1, 7, 9, 12, 6, 10, 17, 16, 13],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 87.4,
-        passRate60Plus: 100,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 49,
+            "project": 28,
+            "homework": 23
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 40
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.6,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9%20%D0%9F%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 26 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-30",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -3,
+            5,
+            4,
+            3,
+            3,
+            5,
+            3,
+            24,
+            3,
+            3,
+            3,
+            4,
+            3,
+            40
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Оптимізувати SQL запити",
+                "Написати власну програму"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 19,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 26,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "19",
+                    "total": 19,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "36",
+                    "total": 36,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.1,
+        "passRate60Plus": 100,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 31,
-        code: 'КОМ122',
-        name: 'Корпоративна криптографії',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'professor',
-        credits: 5,
-        duration: 14,
-        startWeek: 2,
-        termLength: 16,
-        practicePercentage: 39,
-        enrollmentType: { mandatory: 42, elective: 58 },
-        facultySplit: [
-          { name: 'Право', value: 31 },
-          { name: 'Психологія', value: 27 },
-          { name: 'Менеджмент', value: 42 }
+        "id": 31,
+        "code": "КОМ122",
+        "name": "Корпоративна криптографії",
+        "instructor": "Володимир Павленко",
+        "instructorTitle": "lecturer",
+        "credits": 5,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 68,
+        "enrollmentType": {
+            "mandatory": 88,
+            "elective": 12
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 56
+            },
+            {
+                "name": "КН",
+                "value": 22
+            },
+            {
+                "name": "Інше",
+                "value": 22
+            }
         ],
-        gradingBreakdown: { exam: 45, project: 22, homework: 33 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 1 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 1, 3, 3, 5, 3, 8, 6, 14, 10, 8, 18, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 88.5,
-        passRate60Plus: 85,
-        studentTypes: ['3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 45,
+            "project": 22,
+            "homework": 33
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 1
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.9,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%9F%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 5 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-31",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            20,
+            5,
+            2,
+            4,
+            3,
+            2,
+            3,
+            25,
+            5,
+            3,
+            28
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Оптимізувати SQL запити",
+                "Створити веб-застосунок",
+                "Налаштувати CI/CD"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 20,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 34,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "22",
+                    "total": 22,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "24",
+                    "total": 24,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 94.3,
+        "passRate60Plus": 85,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 32,
-        code: 'ПРА123',
-        name: 'Сучасна корпоративного права',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'professor',
-        credits: 3,
-        duration: 11,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 27,
-        enrollmentType: { mandatory: 35, elective: 65 },
-        facultySplit: [
-          { name: 'Економіка', value: 39 },
-          { name: 'Психологія', value: 31 },
-          { name: 'Право', value: 30 }
+        "id": 32,
+        "code": "ПРА123",
+        "name": "Сучасна корпоративного права",
+        "instructor": "Михайло Власенко",
+        "instructorTitle": "expert",
+        "credits": 3,
+        "duration": 14,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 48,
+        "enrollmentType": {
+            "mandatory": 39,
+            "elective": 61
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 37
+            },
+            {
+                "name": "КН",
+                "value": 25
+            },
+            {
+                "name": "Інше",
+                "value": 38
+            }
         ],
-        gradingBreakdown: { exam: 44, project: 38, homework: 18 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 20 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 2, 3, 6, 5, 8, 9, 13, 16, 23, 31],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 86.8,
-        passRate60Plus: 82,
-        studentTypes: ['3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 44,
+            "project": 38,
+            "homework": 18
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 20
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%20%D0%92%D0%BB%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 13 роками досвіду в індустрії (Право).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-32",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            9,
+            4,
+            5,
+            5,
+            5,
+            4,
+            4,
+            27,
+            2,
+            5,
+            5,
+            3,
+            3,
+            19
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Захищати права клієнтів",
+                "Навчитися аналізувати нормативні акти"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Виступити в суді"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 25,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 35,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "15",
+                    "total": 15,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 96.4,
+        "passRate60Plus": 82,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 33,
-        code: 'КОМ124',
-        name: 'Теорія машинного навчання',
-        instructor: 'Викл. Захарова Н.М.',
-        instructorTitle: 'professor',
-        credits: 18,
-        duration: 4,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 33,
-        enrollmentType: { mandatory: 66, elective: 34 },
-        facultySplit: [
-          { name: 'Кібербезпека', value: 38 },
-          { name: 'Економіка', value: 12 },
-          { name: 'КН', value: 50 }
+        "id": 33,
+        "code": "КОМ124",
+        "name": "Теорія машинного навчання",
+        "instructor": "Михайло Лисенко",
+        "instructorTitle": "expert",
+        "credits": 18,
+        "duration": 12,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 38,
+        "enrollmentType": {
+            "mandatory": 75,
+            "elective": 25
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 34
+            },
+            {
+                "name": "КН",
+                "value": 25
+            },
+            {
+                "name": "Інше",
+                "value": 41
+            }
         ],
-        gradingBreakdown: { exam: 45, project: 37, homework: 18 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 3 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [3, 17, 34, 62],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 100.8,
-        passRate60Plus: 83,
-        studentTypes: ['3-й курс Психології','2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 45,
+            "project": 37,
+            "homework": 18
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 3
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.9,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 14 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-33",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -4,
+            4,
+            2,
+            5,
+            5,
+            2,
+            5,
+            17,
+            2,
+            3,
+            4,
+            55
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Працювати з базами даних",
+                "Навчитися проектувати архітектуру ПЗ",
+                "Розробляти масштабовані системи"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Написати власну програму",
+                "Створити веб-застосунок",
+                "Оптимізувати SQL запити"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 13,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "13",
+                    "total": 13,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "53",
+                    "total": 53,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 84.6,
+        "passRate60Plus": 83,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 34,
-        code: 'КОМ125',
-        name: 'Аналіз криптографії',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'lecturer',
-        credits: 11,
-        duration: 9,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 31,
-        enrollmentType: { mandatory: 69, elective: 31 },
-        facultySplit: [
-          { name: 'Кібербезпека', value: 65 },
-          { name: 'Право', value: 10 },
-          { name: 'Психологія', value: 25 }
+        "id": 34,
+        "code": "КОМ125",
+        "name": "Аналіз криптографії",
+        "instructor": "Проф. Юлія Савченко",
+        "instructorTitle": "professor",
+        "credits": 11,
+        "duration": 11,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 51,
+        "enrollmentType": {
+            "mandatory": 78,
+            "elective": 22
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 52
+            },
+            {
+                "name": "КН",
+                "value": 22
+            },
+            {
+                "name": "Інше",
+                "value": 26
+            }
         ],
-        gradingBreakdown: { exam: 37, project: 39, homework: 24 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 21 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 0, 5, 4, 11, 10, 20, 27, 23],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 85.7,
-        passRate60Plus: 89,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 37,
+            "project": 39,
+            "homework": 24
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про криптографії. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 21
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%A1%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 32 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-34",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            18,
+            4,
+            2,
+            3,
+            2,
+            4,
+            5,
+            18,
+            3,
+            2,
+            39
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок",
+                "Оптимізувати SQL запити",
+                "Написати власну програму"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 15,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 34,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "14",
+                    "total": 14,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "37",
+                    "total": 37,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 87.9,
+        "passRate60Plus": 89,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 35,
-        code: 'ПРА126',
-        name: 'Стратегічне корпоративного права',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'professor',
-        credits: 15,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 53,
-        enrollmentType: { mandatory: 42, elective: 58 },
-        facultySplit: [
-          { name: 'Економіка', value: 41 },
-          { name: 'Кібербезпека', value: 36 },
-          { name: 'Право', value: 23 }
+        "id": 35,
+        "code": "ПРА126",
+        "name": "Стратегічне корпоративного права",
+        "instructor": "Оксана Кравченко",
+        "instructorTitle": "lecturer",
+        "credits": 15,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 57,
+        "enrollmentType": {
+            "mandatory": 24,
+            "elective": 76
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 53
+            },
+            {
+                "name": "КН",
+                "value": 40
+            },
+            {
+                "name": "Інше",
+                "value": 7
+            }
         ],
-        gradingBreakdown: { exam: 46, project: 27, homework: 27 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 25 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 3, 4, 6, 7, 6, 13, 12, 23, 17, 25],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 83.7,
-        passRate60Plus: 91,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 46,
+            "project": 27,
+            "homework": 27
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 25
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 15 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            8,
+            2,
+            3,
+            3,
+            5,
+            2,
+            5,
+            15,
+            3,
+            4,
+            50
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Захищати права клієнтів",
+                "Зрозуміти основи правової системи",
+                "Застосовувати правові норми на практиці"
+            ],
+            "outcomes": [
+                "Скласти договір",
+                "Оформити позовну заяву",
+                "Виступити в суді",
+                "Провести юридичну експертизу"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 20,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 23,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "12",
+                    "total": 12,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "45",
+                    "total": 45,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 83.2,
+        "passRate60Plus": 91,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 36,
-        code: 'КОМ127',
-        name: 'Вступ до баз даних',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'professor',
-        credits: 9,
-        duration: 15,
-        startWeek: 2,
-        termLength: 16,
-        practicePercentage: 40,
-        enrollmentType: { mandatory: 26, elective: 74 },
-        facultySplit: [
-          { name: 'Психологія', value: 47 },
-          { name: 'Менеджмент', value: 28 },
-          { name: 'Право', value: 25 }
+        "id": 36,
+        "code": "КОМ127",
+        "name": "Вступ до баз даних",
+        "instructor": "Наталія Мороз",
+        "instructorTitle": "expert",
+        "credits": 9,
+        "duration": 11,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 71,
+        "enrollmentType": {
+            "mandatory": 12,
+            "elective": 88
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 33
+            },
+            {
+                "name": "КН",
+                "value": 22
+            },
+            {
+                "name": "Інше",
+                "value": 45
+            }
         ],
-        gradingBreakdown: { exam: 31, project: 28, homework: 41 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 25 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 0, 1, 3, 1, 4, 5, 3, 11, 10, 8, 15, 15, 11, 13],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 90.4,
-        passRate60Plus: 84,
-        studentTypes: ['Магістри Аналітики','3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 31,
+            "project": 28,
+            "homework": 41
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про баз даних. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 25
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.4,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%96%D1%8F%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 15 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-36",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            3,
+            5,
+            2,
+            5,
+            3,
+            2,
+            4,
+            23,
+            5,
+            5,
+            43
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Навчитися проектувати архітектуру ПЗ",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Налаштувати CI/CD"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 17,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 21,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "21",
+                    "total": 21,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "41",
+                    "total": 41,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 79.1,
+        "passRate60Plus": 84,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 37,
-        code: 'ПРА128',
-        name: 'Системний корпоративного права',
-        instructor: 'Проф. Кравченко О.С.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 6,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 79,
-        enrollmentType: { mandatory: 36, elective: 64 },
-        facultySplit: [
-          { name: 'Психологія', value: 57 },
-          { name: 'Кібербезпека', value: 34 },
-          { name: 'Право', value: 9 }
+        "id": 37,
+        "code": "ПРА128",
+        "name": "Системний корпоративного права",
+        "instructor": "Проф. Оксана Лисенко",
+        "instructorTitle": "professor",
+        "credits": 6,
+        "duration": 11,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 74,
+        "enrollmentType": {
+            "mandatory": 100,
+            "elective": 0
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 53
+            },
+            {
+                "name": "КН",
+                "value": 34
+            },
+            {
+                "name": "Інше",
+                "value": 13
+            }
         ],
-        gradingBreakdown: { exam: 43, project: 23, homework: 34 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 38 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 8, 9, 17, 28, 54],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 105.2,
-        passRate60Plus: 91,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 43,
+            "project": 23,
+            "homework": 34
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 38
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Право, автор 28 наукових статей у міжнародних виданнях.",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            11,
+            4,
+            3,
+            2,
+            3,
+            4,
+            4,
+            28,
+            5,
+            3,
+            33
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Захищати права клієнтів",
+                "Навчитися аналізувати нормативні акти",
+                "Застосовувати правові норми на практиці"
+            ],
+            "outcomes": [
+                "Скласти договір",
+                "Провести юридичну експертизу",
+                "Виступити в суді",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 17,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "31",
+                    "total": 31,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 78.9,
+        "passRate60Plus": 91,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 38,
-        code: 'МЕН129',
-        name: 'Кількісні психології ділових відносин',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 5,
-        duration: 10,
-        startWeek: 7,
-        termLength: 16,
-        practicePercentage: 65,
-        enrollmentType: { mandatory: 43, elective: 57 },
-        facultySplit: [
-          { name: 'КН', value: 53 },
-          { name: 'Економіка', value: 39 },
-          { name: 'Менеджмент', value: 8 }
+        "id": 38,
+        "code": "МЕН129",
+        "name": "Кількісні психології ділових відносин",
+        "instructor": "Андрій Мороз",
+        "instructorTitle": "lecturer",
+        "credits": 5,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 45,
+        "enrollmentType": {
+            "mandatory": 18,
+            "elective": 82
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 36
+            },
+            {
+                "name": "КН",
+                "value": 24
+            },
+            {
+                "name": "Інше",
+                "value": 40
+            }
         ],
-        gradingBreakdown: { exam: 55, project: 38, homework: 7 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: 'Менеджмент',
-        description: 'Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 3 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 2, 3, 8, 14, 8, 11, 18, 27, 25],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 70.4,
-        passRate60Plus: 94,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 55,
+            "project": 38,
+            "homework": 7
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Менеджмент",
+        "description": "Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 3
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 14 роками досвіду в індустрії (Менеджмент).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-38",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            12,
+            4,
+            2,
+            5,
+            3,
+            2,
+            2,
+            28,
+            4,
+            2,
+            36
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними",
+                "Розуміти базові концепції дисципліни"
+            ],
+            "outcomes": [
+                "Аналізувати інформацію",
+                "Підготувати дослідницький проєкт"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 24,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 20,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "33",
+                    "total": 33,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 75.2,
+        "passRate60Plus": 94,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 39,
-        code: 'ПРА130',
-        name: 'Прикладна корпоративного права',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'professor',
-        credits: 26,
-        duration: 5,
-        startWeek: 11,
-        termLength: 16,
-        practicePercentage: 46,
-        enrollmentType: { mandatory: 57, elective: 43 },
-        facultySplit: [
-          { name: 'КН', value: 53 },
-          { name: 'Кібербезпека', value: 25 },
-          { name: 'Економіка', value: 22 }
+        "id": 39,
+        "code": "ПРА130",
+        "name": "Прикладна корпоративного права",
+        "instructor": "Проф. Наталія Мороз",
+        "instructorTitle": "professor",
+        "credits": 26,
+        "duration": 9,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 74,
+        "enrollmentType": {
+            "mandatory": 9,
+            "elective": 91
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 49
+            },
+            {
+                "name": "КН",
+                "value": 40
+            },
+            {
+                "name": "Інше",
+                "value": 11
+            }
         ],
-        gradingBreakdown: { exam: 46, project: 38, homework: 16 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 18 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [3, 7, 17, 30, 43],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 98.2,
-        passRate60Plus: 93,
-        studentTypes: ['4-й курс Права','2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 46,
+            "project": 38,
+            "homework": 16
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 18
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.7,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%96%D1%8F%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Право, автор 38 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-39",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            19,
+            3,
+            3,
+            4,
+            5,
+            2,
+            4,
+            23,
+            37
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Навчитися аналізувати нормативні акти",
+                "Зрозуміти основи правової системи"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Оформити позовну заяву",
+                "Виступити в суді",
+                "Скласти договір"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "18",
+                    "total": 18,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "32",
+                    "total": 32,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 84.3,
+        "passRate60Plus": 93,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 40,
-        code: 'МЕН131',
-        name: 'Сучасна психології ділових відносин',
-        instructor: 'Доц. Ковальчук О.П.',
-        instructorTitle: 'lecturer',
-        credits: 2,
-        duration: 4,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 39,
-        enrollmentType: { mandatory: 56, elective: 44 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 40 },
-          { name: 'Право', value: 35 },
-          { name: 'Економіка', value: 25 }
+        "id": 40,
+        "code": "МЕН131",
+        "name": "Сучасна психології ділових відносин",
+        "instructor": "Михайло Кравченко",
+        "instructorTitle": "expert",
+        "credits": 2,
+        "duration": 13,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 61,
+        "enrollmentType": {
+            "mandatory": 18,
+            "elective": 82
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 46
+            },
+            {
+                "name": "КН",
+                "value": 33
+            },
+            {
+                "name": "Інше",
+                "value": 21
+            }
         ],
-        gradingBreakdown: { exam: 31, project: 37, homework: 32 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: 'Менеджмент',
-        description: 'Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 36 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [1, 17, 31, 51],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 81.8,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Бізнесу','3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 31,
+            "project": 37,
+            "homework": 32
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Менеджмент",
+        "description": "Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 36
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 12 роками досвіду в індустрії (Менеджмент).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-40",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -3,
+            2,
+            4,
+            5,
+            5,
+            2,
+            5,
+            25,
+            2,
+            3,
+            2,
+            3,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Навчитися працювати з даними",
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Застосовувати отримані знання"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 13,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 24,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "22",
+                    "total": 22,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "41",
+                    "total": 41,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 95.2,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 41,
-        code: 'МАТ132',
-        name: 'Вступ до статистики',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'professor',
-        credits: 20,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 65,
-        enrollmentType: { mandatory: 38, elective: 62 },
-        facultySplit: [
-          { name: 'Економіка', value: 47 },
-          { name: 'Психологія', value: 21 },
-          { name: 'Право', value: 32 }
+        "id": 41,
+        "code": "МАТ132",
+        "name": "Вступ до статистики",
+        "instructor": "Олена Лисенко",
+        "instructorTitle": "lecturer",
+        "credits": 20,
+        "duration": 11,
+        "startWeek": 5,
+        "termLength": 16,
+        "practicePercentage": 30,
+        "enrollmentType": {
+            "mandatory": 16,
+            "elective": 84
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 36
+            },
+            {
+                "name": "КН",
+                "value": 29
+            },
+            {
+                "name": "Інше",
+                "value": 35
+            }
         ],
-        gradingBreakdown: { exam: 37, project: 25, homework: 38 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Математика',
-        description: 'Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 15 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.6,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [1, 1, 6, 4, 3, 7, 7, 16, 11, 18, 22, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 82.6,
-        passRate60Plus: 97,
-        studentTypes: ['4-й курс Права'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 37,
+            "project": 25,
+            "homework": 38
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Математика",
+        "description": "Розширений курс про статистики. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 15
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.6,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BB%D0%B5%D0%BD%D0%B0%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 9 роками досвіду в індустрії (Математика).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-41",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            9,
+            3,
+            5,
+            4,
+            5,
+            5,
+            5,
+            14,
+            2,
+            3,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Застосовувати отримані знання",
+                "Підготувати дослідницький проєкт",
+                "Аналізувати інформацію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 16,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 31,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "43",
+                    "total": 43,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.3,
+        "passRate60Plus": 97,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 42,
-        code: 'МЕН133',
-        name: 'Кібернетична психології ділових відносин',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 8,
-        duration: 11,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 75,
-        enrollmentType: { mandatory: 44, elective: 56 },
-        facultySplit: [
-          { name: 'КН', value: 54 },
-          { name: 'Психологія', value: 30 },
-          { name: 'Економіка', value: 16 }
+        "id": 42,
+        "code": "МЕН133",
+        "name": "Кібернетична психології ділових відносин",
+        "instructor": "Андрій Ткаченко",
+        "instructorTitle": "expert",
+        "credits": 8,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 36,
+        "enrollmentType": {
+            "mandatory": 6,
+            "elective": 94
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 57
+            },
+            {
+                "name": "КН",
+                "value": 23
+            },
+            {
+                "name": "Інше",
+                "value": 20
+            }
         ],
-        gradingBreakdown: { exam: 31, project: 23, homework: 46 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Менеджмент',
-        description: 'Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 7 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 1, 3, 1, 12, 8, 11, 14, 18, 26, 22],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 102.3,
-        passRate60Plus: 91,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 31,
+            "project": 23,
+            "homework": 46
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Менеджмент",
+        "description": "Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 7
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.2,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9%20%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 12 роками досвіду в індустрії (Менеджмент).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-42",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            12,
+            4,
+            5,
+            5,
+            3,
+            5,
+            2,
+            25,
+            2,
+            4,
+            33
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Аналізувати інформацію",
+                "Застосовувати отримані знання"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "22",
+                    "total": 22,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "28",
+                    "total": 28,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.5,
+        "passRate60Plus": 91,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 43,
-        code: 'МІЖ134',
-        name: 'Стратегічне політології',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'professor',
-        credits: 2,
-        duration: 10,
-        startWeek: 4,
-        termLength: 16,
-        practicePercentage: 30,
-        enrollmentType: { mandatory: 55, elective: 45 },
-        facultySplit: [
-          { name: 'Право', value: 53 },
-          { name: 'Кібербезпека', value: 36 },
-          { name: 'Психологія', value: 11 }
+        "id": 43,
+        "code": "МІЖ134",
+        "name": "Стратегічне політології",
+        "instructor": "Проф. Володимир Ткаченко",
+        "instructorTitle": "professor",
+        "credits": 2,
+        "duration": 14,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 79,
+        "enrollmentType": {
+            "mandatory": 83,
+            "elective": 17
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 36
+            },
+            {
+                "name": "КН",
+                "value": 27
+            },
+            {
+                "name": "Інше",
+                "value": 37
+            }
         ],
-        gradingBreakdown: { exam: 58, project: 32, homework: 10 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: 'Міжнародні відносини',
-        description: 'Розширений курс про політології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 26 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 2, 7, 10, 14, 17, 22, 18, 26],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 110.4,
-        passRate60Plus: 88,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 58,
+            "project": 32,
+            "homework": 10
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Міжнародні відносини",
+        "description": "Розширений курс про політології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 26
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Міжнародні відносини, автор 41 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-43",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            2,
+            4,
+            3,
+            3,
+            2,
+            2,
+            5,
+            14,
+            5,
+            2,
+            3,
+            2,
+            4,
+            49
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення"
+            ],
+            "outcomes": [
+                "Аналізувати інформацію",
+                "Підготувати дослідницький проєкт"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 10,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 35,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "45",
+                    "total": 45,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 80.9,
+        "passRate60Plus": 88,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 44,
-        code: 'ЕКО135',
-        name: 'Прикладна фінансового менеджменту',
-        instructor: 'Проф. Петренко В.О.',
-        instructorTitle: 'lecturer',
-        credits: 4,
-        duration: 10,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 30,
-        enrollmentType: { mandatory: 38, elective: 62 },
-        facultySplit: [
-          { name: 'Економіка', value: 63 },
-          { name: 'КН', value: 16 },
-          { name: 'Менеджмент', value: 21 }
+        "id": 44,
+        "code": "ЕКО135",
+        "name": "Прикладна фінансового менеджменту",
+        "instructor": "Андрій Шевченко",
+        "instructorTitle": "expert",
+        "credits": 4,
+        "duration": 12,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 72,
+        "enrollmentType": {
+            "mandatory": 75,
+            "elective": 25
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 42
+            },
+            {
+                "name": "КН",
+                "value": 35
+            },
+            {
+                "name": "Інше",
+                "value": 23
+            }
         ],
-        gradingBreakdown: { exam: 56, project: 27, homework: 17 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 38 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.6,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [1, 2, 3, 6, 8, 9, 14, 15, 30, 28],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 84.0,
-        passRate60Plus: 82,
-        studentTypes: ['2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 56,
+            "project": 27,
+            "homework": 17
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 38
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.6,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%90%D0%BD%D0%B4%D1%80%D1%96%D0%B9%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 14 роками досвіду в індустрії (Економіка).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-44",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -6,
+            3,
+            5,
+            5,
+            5,
+            4,
+            4,
+            25,
+            2,
+            3,
+            5,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Зрозуміти базові економічні моделі",
+                "Будувати економетричні прогнози",
+                "Оцінювати вплив макроекономічних шоків"
+            ],
+            "outcomes": [
+                "Аналізувати поведінку споживачів",
+                "Розрахувати ВВП та інфляцію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 14,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 24,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "22",
+                    "total": 22,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "40",
+                    "total": 40,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.7,
+        "passRate60Plus": 82,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 45,
-        code: 'МЕН136',
-        name: 'Стратегічне психології ділових відносин',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 21,
-        duration: 6,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 59,
-        enrollmentType: { mandatory: 48, elective: 52 },
-        facultySplit: [
-          { name: 'Психологія', value: 53 },
-          { name: 'Менеджмент', value: 20 },
-          { name: 'Економіка', value: 27 }
+        "id": 45,
+        "code": "МЕН136",
+        "name": "Стратегічне психології ділових відносин",
+        "instructor": "Проф. Тетяна Власенко",
+        "instructorTitle": "professor",
+        "credits": 21,
+        "duration": 10,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 39,
+        "enrollmentType": {
+            "mandatory": 8,
+            "elective": 92
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 40
+            },
+            {
+                "name": "КН",
+                "value": 35
+            },
+            {
+                "name": "Інше",
+                "value": 25
+            }
         ],
-        gradingBreakdown: { exam: 49, project: 19, homework: 32 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Менеджмент',
-        description: 'Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 35 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 6, 13, 26, 26, 45],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 111.4,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 49,
+            "project": 19,
+            "homework": 32
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Менеджмент",
+        "description": "Розширений курс про психології ділових відносин. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 35
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.9,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%A2%D0%B5%D1%82%D1%8F%D0%BD%D0%B0%20%D0%92%D0%BB%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Менеджмент, автор 35 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-45",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            22,
+            2,
+            4,
+            4,
+            5,
+            3,
+            3,
+            23,
+            3,
+            31
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Навчитися працювати з даними",
+                "Розвинути критичне мислення",
+                "Розуміти базові концепції дисципліни"
+            ],
+            "outcomes": [
+                "Підготувати дослідницький проєкт",
+                "Аналізувати інформацію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 24,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 31,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "18",
+                    "total": 18,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "27",
+                    "total": 27,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 96.8,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 46,
-        code: 'ЕКО137',
-        name: 'Системний мікроекономіки',
-        instructor: 'Проф. Кравченко О.С.',
-        instructorTitle: 'lecturer',
-        credits: 25,
-        duration: 3,
-        startWeek: 11,
-        termLength: 16,
-        practicePercentage: 44,
-        enrollmentType: { mandatory: 40, elective: 60 },
-        facultySplit: [
-          { name: 'Право', value: 40 },
-          { name: 'Економіка', value: 11 },
-          { name: 'Кібербезпека', value: 49 }
+        "id": 46,
+        "code": "ЕКО137",
+        "name": "Системний мікроекономіки",
+        "instructor": "Оксана Шевченко",
+        "instructorTitle": "lecturer",
+        "credits": 25,
+        "duration": 10,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 34,
+        "enrollmentType": {
+            "mandatory": 8,
+            "elective": 92
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 52
+            },
+            {
+                "name": "КН",
+                "value": 32
+            },
+            {
+                "name": "Інше",
+                "value": 16
+            }
         ],
-        gradingBreakdown: { exam: 45, project: 32, homework: 23 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Економіка',
-        description: 'Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 30 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [9, 33, 74],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 115.1,
-        passRate60Plus: 87,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 45,
+            "project": 32,
+            "homework": 23
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Економіка",
+        "description": "Розширений курс про мікроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 30
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 14 роками досвіду в індустрії (Економіка).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-46",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            20,
+            2,
+            2,
+            3,
+            3,
+            3,
+            3,
+            18,
+            2,
+            44
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Будувати економетричні прогнози",
+                "Оцінювати вплив макроекономічних шоків",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Будувати регресійні моделі",
+                "Формувати монетарну політику"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 12,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 35,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "14",
+                    "total": 14,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "39",
+                    "total": 39,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 92.5,
+        "passRate60Plus": 87,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 47,
-        code: 'ЕКО138',
-        name: 'Економіка фірми',
-        instructor: 'Проф. Петренко В.О.',
-        instructorTitle: 'lecturer',
-        credits: 24,
-        duration: 6,
-        startWeek: 9,
-        termLength: 16,
-        practicePercentage: 36,
-        enrollmentType: { mandatory: 69, elective: 31 },
-        facultySplit: [
-          { name: 'КН', value: 52 },
-          { name: 'Економіка', value: 38 },
-          { name: 'Право', value: 10 }
+        "id": 47,
+        "code": "ЕКО138",
+        "name": "Економіка фірми",
+        "instructor": "Валентин Гвоздій",
+        "instructorTitle": "expert",
+        "credits": 24,
+        "duration": 11,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 85,
+        "enrollmentType": {
+            "mandatory": 95,
+            "elective": 5
+        },
+        "facultySplit": [
+            {
+                "name": "Бізнес",
+                "value": 60
+            },
+            {
+                "name": "Аналітика",
+                "value": 35
+            },
+            {
+                "name": "Інше",
+                "value": 5
+            }
         ],
-        gradingBreakdown: { exam: 51, project: 20, homework: 29 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Економіка',
-        description: 'Розширений курс про макроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 11 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 5.0,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 10, 10, 16, 29, 35],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 91.3,
-        passRate60Plus: 90,
-        studentTypes: ['2-й курс Комп. Наук','1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 51,
+            "project": 20,
+            "homework": 29
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Економіка",
+        "description": "Розширений курс про макроекономіки. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 11
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 5,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%B0%D0%BB%D0%B5%D0%BD%D1%82%D0%B8%D0%BD+%D0%93%D0%B2%D0%BE%D0%B7%D0%B4%D1%96%D0%B9&background=random&color=fff&size=128",
+        "instructorBio": "Старший партнер юридичної фірми GOLAW.",
+        "instructorLinkedIn": "https://linkedin.com/in/valentyngvozdiy",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            2,
+            2,
+            12,
+            2,
+            12,
+            12,
+            2,
+            2,
+            22,
+            2,
+            32
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички аналітичного мислення та роботи з даними",
+                    "Володіння Excel / Google Sheets на базовому рівні",
+                    "Навички командної роботи та комунікації",
+                    "Розуміння базових економічних категорій"
+                ],
+                "niceToHave": [
+                    "Попереднє знайомство з бізнес-процесами",
+                    "Навички створення презентацій (PowerPoint/Google Slides)",
+                    "Базові знання з мікроекономіки",
+                    "Інтерес до роботи реальних компаній"
+                ]
+            },
+            "justification": "Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.",
+            "goals": [
+                "Сформувати системне розуміння фірми як економічної системи.",
+                "Навчити студентів аналізувати ресурси, виробничі процеси, витрати.",
+                "Розвинути здатність приймати економічно обґрунтовані рішення.",
+                "Навчити інтерпретувати результати діяльності підприємства."
+            ],
+            "outcomes": [
+                "Пояснювати сутність фірми як економічної системи.",
+                "Оцінювати структуру та ефективність використання основного капіталу.",
+                "Аналізувати оборотні кошти.",
+                "Оцінювати продуктивність праці та витрати на персонал.",
+                "Формувати виробничу програму та аналізувати логістичні рішення.",
+                "Розраховувати витрати та формувати ціну.",
+                "Аналізувати фінансові результати (прибуток, рентабельність)."
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях, виконання завдань",
+                    "perItem": "1 бал за семінар",
+                    "total": 15,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Індивідуальні практичні",
+                    "details": "Міні-есе, практичні розрахунки, міні-кейси",
+                    "perItem": "10",
+                    "total": 40,
+                    "deadline": "Після кожного блоку"
+                },
+                {
+                    "type": "Групова робота",
+                    "details": "Проміжна презентація 1 (5 тиждень)",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 5"
+                },
+                {
+                    "type": "Групова робота",
+                    "details": "Проміжна презентація 2 (9 тиждень)",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 9"
+                },
+                {
+                    "type": "Групова робота",
+                    "details": "Фінальна презентація",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 11"
+                }
+            ]
+        },
+        "historicalAverage": 91.3,
+        "passRate60Plus": 90,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 48,
-        code: 'КОМ139',
-        name: 'Кількісні машинного навчання',
-        instructor: 'Викл. Ткаченко Д.Р.',
-        instructorTitle: 'lecturer',
-        credits: 24,
-        duration: 14,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 50,
-        enrollmentType: { mandatory: 30, elective: 70 },
-        facultySplit: [
-          { name: 'Психологія', value: 52 },
-          { name: 'КН', value: 30 },
-          { name: 'Кібербезпека', value: 18 }
+        "id": 48,
+        "code": "КОМ139",
+        "name": "Кількісні машинного навчання",
+        "instructor": "Василь Гаврилюк",
+        "instructorTitle": "lecturer",
+        "credits": 24,
+        "duration": 14,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 40,
+        "enrollmentType": {
+            "mandatory": 90,
+            "elective": 10
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 38
+            },
+            {
+                "name": "КН",
+                "value": 27
+            },
+            {
+                "name": "Інше",
+                "value": 35
+            }
         ],
-        gradingBreakdown: { exam: 43, project: 24, homework: 33 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 31 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 2, 2, 5, 1, 8, 12, 8, 15, 16, 13, 9, 25],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 104.4,
-        passRate60Plus: 90,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 43,
+            "project": 24,
+            "homework": 33
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про машинного навчання. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 31
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.2,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D1%8E%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 15 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-48",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -8,
+            2,
+            3,
+            2,
+            4,
+            5,
+            2,
+            28,
+            2,
+            5,
+            2,
+            4,
+            2,
+            47
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Опанувати алгоритмічне мислення",
+                "Розробляти масштабовані системи"
+            ],
+            "outcomes": [
+                "Оптимізувати SQL запити",
+                "Написати власну програму"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 11,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 20,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "24",
+                    "total": 24,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "45",
+                    "total": 45,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 80.7,
+        "passRate60Plus": 90,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 49,
-        code: 'ПРА140',
-        name: 'Міжнародна корпоративного права',
-        instructor: 'Доц. Шевченко А.В.',
-        instructorTitle: 'lecturer',
-        credits: 15,
-        duration: 9,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 55,
-        enrollmentType: { mandatory: 35, elective: 65 },
-        facultySplit: [
-          { name: 'Психологія', value: 63 },
-          { name: 'КН', value: 38 },
-          { name: 'Економіка', value: -1 }
+        "id": 49,
+        "code": "ПРА140",
+        "name": "Міжнародна корпоративного права",
+        "instructor": "Тетяна Гаврилюк",
+        "instructorTitle": "lecturer",
+        "credits": 15,
+        "duration": 9,
+        "startWeek": 7,
+        "termLength": 16,
+        "practicePercentage": 43,
+        "enrollmentType": {
+            "mandatory": 83,
+            "elective": 17
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 34
+            },
+            {
+                "name": "КН",
+                "value": 27
+            },
+            {
+                "name": "Інше",
+                "value": 39
+            }
         ],
-        gradingBreakdown: { exam: 58, project: 32, homework: 10 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: false,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 40 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [2, 2, 1, 6, 4, 16, 17, 32, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 88.7,
-        passRate60Plus: 92,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 58,
+            "project": 32,
+            "homework": 10
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 40
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%A2%D0%B5%D1%82%D1%8F%D0%BD%D0%B0%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D1%8E%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 5 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            13,
+            2,
+            5,
+            2,
+            2,
+            5,
+            4,
+            14,
+            53
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Застосовувати правові норми на практиці",
+                "Зрозуміти основи правової системи",
+                "Захищати права клієнтів"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 14,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 23,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "12",
+                    "total": 12,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "51",
+                    "total": 51,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 83,
+        "passRate60Plus": 92,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 50,
-        code: 'ПРА141',
-        name: 'Інноваційна корпоративного права',
-        instructor: 'Проф. Бойко С.М.',
-        instructorTitle: 'professor',
-        credits: 24,
-        duration: 9,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 30,
-        enrollmentType: { mandatory: 66, elective: 34 },
-        facultySplit: [
-          { name: 'Психологія', value: 65 },
-          { name: 'Право', value: 30 },
-          { name: 'Кібербезпека', value: 5 }
+        "id": 50,
+        "code": "ПРА141",
+        "name": "Інноваційна корпоративного права",
+        "instructor": "Василь Ковальчук",
+        "instructorTitle": "expert",
+        "credits": 24,
+        "duration": 8,
+        "startWeek": 6,
+        "termLength": 16,
+        "practicePercentage": 65,
+        "enrollmentType": {
+            "mandatory": 33,
+            "elective": 67
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 41
+            },
+            {
+                "name": "КН",
+                "value": 32
+            },
+            {
+                "name": "Інше",
+                "value": 27
+            }
         ],
-        gradingBreakdown: { exam: 39, project: 38, homework: 23 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Право',
-        description: 'Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 7 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [1, 2, 3, 4, 8, 20, 16, 26, 36],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 97.9,
-        passRate60Plus: 86,
-        studentTypes: ['Магістри Аналітики'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 39,
+            "project": 38,
+            "homework": 23
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Право",
+        "description": "Розширений курс про корпоративного права. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 7
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 8 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            25,
+            3,
+            5,
+            2,
+            3,
+            5,
+            21,
+            36
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Навчитися аналізувати нормативні акти",
+                "Зрозуміти основи правової системи",
+                "Захищати права клієнтів"
+            ],
+            "outcomes": [
+                "Виступити в суді",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "18",
+                    "total": 18,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "32",
+                    "total": 32,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 85.9,
+        "passRate60Plus": 86,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 51,
-        code: 'ЕКО142',
-        name: 'Вступ до фінансового менеджменту',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 13,
-        duration: 13,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 27,
-        enrollmentType: { mandatory: 56, elective: 44 },
-        facultySplit: [
-          { name: 'Психологія', value: 43 },
-          { name: 'Право', value: 11 },
-          { name: 'Кібербезпека', value: 46 }
+        "id": 51,
+        "code": "ЕКО142",
+        "name": "Вступ до фінансового менеджменту",
+        "instructor": "Дмитро Шевченко",
+        "instructorTitle": "expert",
+        "credits": 13,
+        "duration": 11,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 47,
+        "enrollmentType": {
+            "mandatory": 8,
+            "elective": 92
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 32
+            },
+            {
+                "name": "КН",
+                "value": 39
+            },
+            {
+                "name": "Інше",
+                "value": 29
+            }
         ],
-        gradingBreakdown: { exam: 57, project: 20, homework: 23 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'elective',
-        department: 'Економіка',
-        description: 'Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 40 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 5.0,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 1, 4, 2, 4, 7, 8, 7, 10, 18, 14, 24],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 86.0,
-        passRate60Plus: 93,
-        studentTypes: ['Магістри Аналітики'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 57,
+            "project": 20,
+            "homework": 23
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Економіка",
+        "description": "Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 40
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 5,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%BE%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 10 роками досвіду в індустрії (Економіка).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            -3,
+            2,
+            4,
+            5,
+            4,
+            5,
+            5,
+            24,
+            5,
+            3,
+            46
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Оцінювати вплив макроекономічних шоків",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Аналізувати поведінку споживачів",
+                "Розрахувати ВВП та інфляцію",
+                "Формувати монетарну політику"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 12,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 26,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "19",
+                    "total": 19,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "43",
+                    "total": 43,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 83.7,
+        "passRate60Plus": 93,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 52,
-        code: 'ЕКО143',
-        name: 'Міжнародна фінансового менеджменту',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 22,
-        duration: 3,
-        startWeek: 14,
-        termLength: 16,
-        practicePercentage: 36,
-        enrollmentType: { mandatory: 35, elective: 65 },
-        facultySplit: [
-          { name: 'Психологія', value: 42 },
-          { name: 'Право', value: 24 },
-          { name: 'КН', value: 34 }
+        "id": 52,
+        "code": "ЕКО143",
+        "name": "Міжнародна фінансового менеджменту",
+        "instructor": "Михайло Лисенко",
+        "instructorTitle": "expert",
+        "credits": 22,
+        "duration": 13,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 79,
+        "enrollmentType": {
+            "mandatory": 22,
+            "elective": 78
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 32
+            },
+            {
+                "name": "КН",
+                "value": 32
+            },
+            {
+                "name": "Інше",
+                "value": 36
+            }
         ],
-        gradingBreakdown: { exam: 45, project: 22, homework: 33 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Економіка',
-        description: 'Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 27 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.1,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [5, 28, 67],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 76.2,
-        passRate60Plus: 87,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 45,
+            "project": 22,
+            "homework": 33
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Економіка",
+        "description": "Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 27
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.1,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%20%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 12 роками досвіду в індустрії (Економіка).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-52",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            2,
+            4,
+            4,
+            4,
+            4,
+            4,
+            5,
+            19,
+            5,
+            3,
+            4,
+            5,
+            37
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Будувати економетричні прогнози",
+                "Оцінювати вплив макроекономічних шоків",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Будувати регресійні моделі",
+                "Аналізувати поведінку споживачів",
+                "Формувати монетарну політику"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 28,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "16",
+                    "total": 16,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "35",
+                    "total": 35,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 79.4,
+        "passRate60Plus": 87,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 53,
-        code: 'ПРА144',
-        name: 'Кількісні інтелектуальної власності',
-        instructor: 'Проф. Петренко В.О.',
-        instructorTitle: 'lecturer',
-        credits: 17,
-        duration: 14,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 31,
-        enrollmentType: { mandatory: 33, elective: 67 },
-        facultySplit: [
-          { name: 'Психологія', value: 65 },
-          { name: 'КН', value: 20 },
-          { name: 'Економіка', value: 15 }
+        "id": 53,
+        "code": "ПРА144",
+        "name": "Кількісні інтелектуальної власності",
+        "instructor": "Проф. Дмитро Кравченко",
+        "instructorTitle": "professor",
+        "credits": 17,
+        "duration": 8,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 78,
+        "enrollmentType": {
+            "mandatory": 83,
+            "elective": 17
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 35
+            },
+            {
+                "name": "Інше",
+                "value": 6
+            }
         ],
-        gradingBreakdown: { exam: 48, project: 36, homework: 16 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: 'Право',
-        description: 'Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 9 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 0, 3, 4, 4, 2, 4, 16, 8, 5, 17, 18, 18],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 79.9,
-        passRate60Plus: 96,
-        studentTypes: ['2-й курс Фінансів','4-й курс Права'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 48,
+            "project": 36,
+            "homework": 16
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Право",
+        "description": "Розширений курс про інтелектуальної власності. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 9
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%BE%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Право, автор 46 наукових статей у міжнародних виданнях.",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            30,
+            4,
+            3,
+            3,
+            2,
+            3,
+            24,
+            31
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Зрозуміти основи правової системи",
+                "Захищати права клієнтів"
+            ],
+            "outcomes": [
+                "Провести юридичну експертизу",
+                "Скласти договір",
+                "Виступити в суді",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 19,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 33,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "19",
+                    "total": 19,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "29",
+                    "total": 29,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 91.1,
+        "passRate60Plus": 96,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 54,
-        code: 'МІЖ145',
-        name: 'Корпоративна політології',
-        instructor: 'Проф. Лисенко М.М.',
-        instructorTitle: 'professor',
-        credits: 26,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 58,
-        enrollmentType: { mandatory: 23, elective: 77 },
-        facultySplit: [
-          { name: 'КН', value: 36 },
-          { name: 'Економіка', value: 38 },
-          { name: 'Кібербезпека', value: 26 }
+        "id": 54,
+        "code": "МІЖ145",
+        "name": "Корпоративна політології",
+        "instructor": "Проф. Михайло Павленко",
+        "instructorTitle": "professor",
+        "credits": 26,
+        "duration": 13,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 75,
+        "enrollmentType": {
+            "mandatory": 97,
+            "elective": 3
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 51
+            },
+            {
+                "name": "КН",
+                "value": 20
+            },
+            {
+                "name": "Інше",
+                "value": 29
+            }
         ],
-        gradingBreakdown: { exam: 37, project: 18, homework: 45 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'PhD',
-        language: 'Українська',
-        next_term: false,
-        category: 'core',
-        department: 'Міжнародні відносини',
-        description: 'Розширений курс про політології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 39 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 1, 2, 3, 4, 7, 14, 12, 17, 19, 14, 23],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 91.5,
-        passRate60Plus: 92,
-        studentTypes: ['3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 37,
+            "project": 18,
+            "homework": 45
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": false,
+        "category": "core",
+        "department": "Міжнародні відносини",
+        "description": "Розширений курс про політології. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 39
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.9,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%20%D0%9F%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Міжнародні відносини, автор 33 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-54",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            1,
+            4,
+            3,
+            4,
+            2,
+            5,
+            3,
+            17,
+            3,
+            2,
+            3,
+            3,
+            50
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Аналізувати інформацію",
+                "Підготувати дослідницький проєкт"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 20,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 22,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "13",
+                    "total": 13,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "45",
+                    "total": 45,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 86.1,
+        "passRate60Plus": 92,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 55,
-        code: 'КОМ146',
-        name: 'Стратегічне штучного інтелекту',
-        instructor: 'Проф. Петренко В.О.',
-        instructorTitle: 'professor',
-        credits: 2,
-        duration: 13,
-        startWeek: 4,
-        termLength: 16,
-        practicePercentage: 68,
-        enrollmentType: { mandatory: 35, elective: 65 },
-        facultySplit: [
-          { name: 'Економіка', value: 36 },
-          { name: 'Менеджмент', value: 31 },
-          { name: 'Кібербезпека', value: 33 }
+        "id": 55,
+        "code": "КОМ146",
+        "name": "Стратегічне штучного інтелекту",
+        "instructor": "Юлія Савченко",
+        "instructorTitle": "lecturer",
+        "credits": 2,
+        "duration": 8,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 69,
+        "enrollmentType": {
+            "mandatory": 33,
+            "elective": 67
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 35
+            },
+            {
+                "name": "КН",
+                "value": 27
+            },
+            {
+                "name": "Інше",
+                "value": 38
+            }
         ],
-        gradingBreakdown: { exam: 44, project: 37, homework: 19 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: false,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 13 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.1,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 0, 2, 3, 7, 4, 9, 4, 5, 19, 11, 14, 22],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 81.8,
-        passRate60Plus: 100,
-        studentTypes: ['2-й курс Фінансів','2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 44,
+            "project": 37,
+            "homework": 19
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 13
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.1,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%A1%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 11 роками досвіду в індустрії (Комп'ютерні науки).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            6,
+            3,
+            3,
+            4,
+            5,
+            3,
+            16,
+            60
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних",
+                "Навчитися проектувати архітектуру ПЗ"
+            ],
+            "outcomes": [
+                "Оптимізувати SQL запити",
+                "Написати власну програму",
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 11,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 20,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "12",
+                    "total": 12,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "57",
+                    "total": 57,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 80.7,
+        "passRate60Plus": 100,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 56,
-        code: 'КОМ147',
-        name: 'Аналіз штучного інтелекту',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'lecturer',
-        credits: 17,
-        duration: 12,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 45,
-        enrollmentType: { mandatory: 47, elective: 53 },
-        facultySplit: [
-          { name: 'Кібербезпека', value: 41 },
-          { name: 'КН', value: 35 },
-          { name: 'Економіка', value: 24 }
+        "id": 56,
+        "code": "КОМ147",
+        "name": "Аналіз штучного інтелекту",
+        "instructor": "Проф. Петро Кравченко",
+        "instructorTitle": "professor",
+        "credits": 17,
+        "duration": 9,
+        "startWeek": 5,
+        "termLength": 16,
+        "practicePercentage": 74,
+        "enrollmentType": {
+            "mandatory": 24,
+            "elective": 76
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 31
+            },
+            {
+                "name": "КН",
+                "value": 24
+            },
+            {
+                "name": "Інше",
+                "value": 45
+            }
         ],
-        gradingBreakdown: { exam: 31, project: 27, homework: 42 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: false,
-        category: 'elective',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 19 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 3, 2, 4, 2, 3, 9, 9, 12, 21, 15, 20],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 90.1,
-        passRate60Plus: 80,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 31,
+            "project": 27,
+            "homework": 42
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про штучного інтелекту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 19
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 3.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%20%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 30 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-56",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            14,
+            2,
+            2,
+            5,
+            4,
+            4,
+            4,
+            16,
+            49
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Налаштувати CI/CD",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 14,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 27,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "13",
+                    "total": 13,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "46",
+                    "total": 46,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 75.1,
+        "passRate60Plus": 80,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 57,
-        code: 'КОМ148',
-        name: 'Теорія алгоритмів',
-        instructor: 'Викл. Мороз І.Ю.',
-        instructorTitle: 'professor',
-        credits: 9,
-        duration: 9,
-        startWeek: 7,
-        termLength: 16,
-        practicePercentage: 34,
-        enrollmentType: { mandatory: 65, elective: 35 },
-        facultySplit: [
-          { name: 'Право', value: 32 },
-          { name: 'Психологія', value: 13 },
-          { name: 'Менеджмент', value: 55 }
+        "id": 57,
+        "code": "КОМ148",
+        "name": "Теорія алгоритмів",
+        "instructor": "Наталія Шевченко",
+        "instructorTitle": "expert",
+        "credits": 9,
+        "duration": 9,
+        "startWeek": 2,
+        "termLength": 16,
+        "practicePercentage": 67,
+        "enrollmentType": {
+            "mandatory": 84,
+            "elective": 16
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 31
+            },
+            {
+                "name": "КН",
+                "value": 20
+            },
+            {
+                "name": "Інше",
+                "value": 49
+            }
         ],
-        gradingBreakdown: { exam: 39, project: 34, homework: 27 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'PhD',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про алгоритмів. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.',
-        prerequisites: [],
-        spots: { total: 40, taken: 8 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 2, 2, 7, 11, 9, 19, 24, 26],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 79.1,
-        passRate60Plus: 100,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 39,
+            "project": 34,
+            "homework": 27
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "PhD",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про алгоритмів. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня PhD.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 8
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%96%D1%8F%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 13 роками досвіду в індустрії (Комп'ютерні науки).",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-57",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            21,
+            3,
+            2,
+            4,
+            2,
+            5,
+            2,
+            21,
+            40
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Опанувати алгоритмічне мислення",
+                "Навчитися проектувати архітектуру ПЗ",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Написати власну програму",
+                "Налаштувати CI/CD",
+                "Оптимізувати SQL запити",
+                "Створити веб-застосунок"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 23,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 24,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "17",
+                    "total": 17,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "36",
+                    "total": 36,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 91.3,
+        "passRate60Plus": 100,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 58,
-        code: 'ЕКО149',
-        name: 'Методи фінансового менеджменту',
-        instructor: 'Проф. Мельник В.І.',
-        instructorTitle: 'professor',
-        credits: 11,
-        duration: 12,
-        startWeek: 1,
-        termLength: 16,
-        practicePercentage: 35,
-        enrollmentType: { mandatory: 53, elective: 47 },
-        facultySplit: [
-          { name: 'КН', value: 35 },
-          { name: 'Економіка', value: 31 },
-          { name: 'Кібербезпека', value: 34 }
+        "id": 58,
+        "code": "ЕКО149",
+        "name": "Методи фінансового менеджменту",
+        "instructor": "Проф. Володимир Ковальчук",
+        "instructorTitle": "professor",
+        "credits": 11,
+        "duration": 12,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 50,
+        "enrollmentType": {
+            "mandatory": 80,
+            "elective": 20
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 59
+            },
+            {
+                "name": "КН",
+                "value": 25
+            },
+            {
+                "name": "Інше",
+                "value": 16
+            }
         ],
-        gradingBreakdown: { exam: 38, project: 13, homework: 49 },
-        semester: 'Літо 2027',
-        term: 'Літо',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 26 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [1, 0, 3, 2, 5, 9, 7, 8, 12, 11, 18, 24],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 89.0,
-        passRate60Plus: 82,
-        studentTypes: ['3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 38,
+            "project": 13,
+            "homework": 49
+        },
+        "semester": "Літо 2027",
+        "term": "Літо",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": true,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Розширений курс про фінансового менеджменту. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Магістр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 26
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.7,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%BE%D0%BB%D0%BE%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%20%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Економіка, автор 22 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-58",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            8,
+            2,
+            3,
+            3,
+            5,
+            4,
+            3,
+            13,
+            2,
+            3,
+            4,
+            50
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Зрозуміти базові економічні моделі",
+                "Будувати економетричні прогнози",
+                "Оцінювати вплив макроекономічних шоків"
+            ],
+            "outcomes": [
+                "Формувати монетарну політику",
+                "Будувати регресійні моделі"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 12,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 31,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "10",
+                    "total": 10,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "47",
+                    "total": 47,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 96.9,
+        "passRate60Plus": 82,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 59,
-        code: 'КОМ150',
-        name: 'Сучасна алгоритмів',
-        instructor: 'Проф. Бойко С.М.',
-        instructorTitle: 'lecturer',
-        credits: 9,
-        duration: 11,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 22,
-        enrollmentType: { mandatory: 25, elective: 75 },
-        facultySplit: [
-          { name: 'КН', value: 46 },
-          { name: 'Психологія', value: 12 },
-          { name: 'Економіка', value: 42 }
+        "id": 59,
+        "code": "КОМ150",
+        "name": "Сучасна алгоритмів",
+        "instructor": "Проф. Дмитро Мороз",
+        "instructorTitle": "professor",
+        "credits": 9,
+        "duration": 8,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 46,
+        "enrollmentType": {
+            "mandatory": 100,
+            "elective": 0
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 46
+            },
+            {
+                "name": "КН",
+                "value": 31
+            },
+            {
+                "name": "Інше",
+                "value": 23
+            }
         ],
-        gradingBreakdown: { exam: 40, project: 35, homework: 25 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Бакалавр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: "Комп'ютерні науки",
-        description: 'Розширений курс про алгоритмів. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.',
-        prerequisites: [],
-        spots: { total: 40, taken: 16 },
-        schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 1, 3, 5, 5, 11, 16, 11, 16, 26, 22],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 72.8,
-        passRate60Plus: 98,
-        studentTypes: ['2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf'
+        "gradingBreakdown": {
+            "exam": 40,
+            "project": 35,
+            "homework": 25
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Розширений курс про алгоритмів. Спрямований на практичні та теоретичні навички. Рекомендовано для рівня Бакалавр.",
+        "prerequisites": [],
+        "spots": {
+            "total": 40,
+            "taken": 16
+        },
+        "schedule": "Пн, Ср — 12:00-13:20",
+        "rating": 4.4,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%BE%20%D0%9C%D0%BE%D1%80%D0%BE%D0%B7&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 42 наукових статей у міжнародних виданнях.",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            17,
+            4,
+            4,
+            5,
+            3,
+            5,
+            17,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Опанувати алгоритмічне мислення",
+                "Працювати з базами даних",
+                "Розробляти масштабовані системи"
+            ],
+            "outcomes": [
+                "Оптимізувати SQL запити",
+                "Написати власну програму",
+                "Створити веб-застосунок",
+                "Налаштувати CI/CD"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 16,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 27,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "14",
+                    "total": 14,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "43",
+                    "total": 43,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 91.3,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 1,
-        code: 'CS401',
-        name: 'Штучний інтелект',
-        instructor: 'Проф. Тарасенко О.М.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 12,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 36,
-        enrollmentType: { mandatory: 38, elective: 62 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 48 },
-          { name: 'КН', value: 23 },
-          { name: 'Психологія', value: 29 }
+        "id": 1,
+        "code": "CS401",
+        "name": "Штучний інтелект",
+        "instructor": "Проф. Марія Ткаченко",
+        "instructorTitle": "professor",
+        "credits": 6,
+        "duration": 11,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 51,
+        "enrollmentType": {
+            "mandatory": 91,
+            "elective": 9
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 58
+            },
+            {
+                "name": "КН",
+                "value": 40
+            },
+            {
+                "name": "Інше",
+                "value": 2
+            }
         ],
-        gradingBreakdown: { exam: 35, project: 25, homework: 40 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: 'Комп\'ютерні науки',
-        description: 'Вступ до методів ШІ: пошук, оптимізація, машинне навчання, нейронні мережі та обробка природної мови.',
-        prerequisites: ['CS201', 'MATH201'],
-        spots: { total: 40, taken: 32 },
-        schedule: 'Пн, Ср — 10:30-12:00',
-        rating: 4.7,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 0, 3, 2, 6, 3, 9, 14, 15, 17, 24, 23],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 80.1,
-        passRate60Plus: 98,
-        studentTypes: ['4-й курс Права'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 35,
+            "project": 25,
+            "homework": 40
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Комп'ютерні науки",
+        "description": "Вступ до методів ШІ: пошук, оптимізація, машинне навчання, нейронні мережі та обробка природної мови.",
+        "prerequisites": [
+            "CS201",
+            "MATH201"
+        ],
+        "spots": {
+            "total": 40,
+            "taken": 32
+        },
+        "schedule": "Пн, Ср — 10:30-12:00",
+        "rating": 4.7,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9C%D0%B0%D1%80%D1%96%D1%8F%20%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 17 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-1",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            6,
+            2,
+            5,
+            3,
+            2,
+            2,
+            5,
+            26,
+            4,
+            5,
+            40
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Навчитися проектувати архітектуру ПЗ",
+                "Розробляти масштабовані системи"
+            ],
+            "outcomes": [
+                "Створити веб-застосунок",
+                "Написати власну програму"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 16,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 25,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "22",
+                    "total": 22,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "37",
+                    "total": 37,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 80.6,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 2,
-        code: 'CS402',
-        name: 'Кібербезпека',
-        instructor: 'Викл. Мельник В.І.',
-        instructorTitle: 'lecturer',
-        credits: 6,
-        duration: 10,
-        startWeek: 5,
-        termLength: 16,
-        practicePercentage: 49,
-        enrollmentType: { mandatory: 79, elective: 21 },
-        facultySplit: [
-          { name: 'Психологія', value: 63 },
-          { name: 'Менеджмент', value: 38 },
-          { name: 'Кібербезпека', value: -1 }
+        "id": 2,
+        "code": "CS402",
+        "name": "Кібербезпека",
+        "instructor": "Проф. Василь Шевченко",
+        "instructorTitle": "professor",
+        "credits": 6,
+        "duration": 11,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 58,
+        "enrollmentType": {
+            "mandatory": 32,
+            "elective": 68
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 31
+            },
+            {
+                "name": "КН",
+                "value": 25
+            },
+            {
+                "name": "Інше",
+                "value": 44
+            }
         ],
-        gradingBreakdown: { exam: 54, project: 31, homework: 15 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Комп\'ютерні науки',
-        description: 'Основи захисту інформації: криптографія, мережева безпека, аналіз вразливостей, етичний хакінг.',
-        prerequisites: ['CS201'],
-        spots: { total: 35, taken: 28 },
-        schedule: 'Вт, Чт — 13:30-15:00',
-        rating: 4.5,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 2, 2, 6, 4, 9, 11, 22, 22, 22],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 96.7,
-        passRate60Plus: 98,
-        studentTypes: ['2-й курс Фінансів','2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 54,
+            "project": 31,
+            "homework": 15
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Основи захисту інформації: криптографія, мережева безпека, аналіз вразливостей, етичний хакінг.",
+        "prerequisites": [
+            "CS201"
+        ],
+        "spots": {
+            "total": 35,
+            "taken": 28
+        },
+        "schedule": "Вт, Чт — 13:30-15:00",
+        "rating": 4.5,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 18 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-2",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            14,
+            4,
+            5,
+            3,
+            5,
+            4,
+            5,
+            15,
+            4,
+            2,
+            39
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Працювати з базами даних",
+                "Навчитися проектувати архітектуру ПЗ"
+            ],
+            "outcomes": [
+                "Створити веб-застосунок",
+                "Оптимізувати SQL запити"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 24,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "12",
+                    "total": 12,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "35",
+                    "total": 35,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 83.8,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 3,
-        code: 'ECON401',
-        name: 'Теорія ігор',
-        instructor: 'Проф. Литвиненко К.П.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 14,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 68,
-        enrollmentType: { mandatory: 31, elective: 69 },
-        facultySplit: [
-          { name: 'Право', value: 61 },
-          { name: 'Психологія', value: 17 },
-          { name: 'КН', value: 22 }
+        "id": 3,
+        "code": "ECON401",
+        "name": "Теорія ігор",
+        "instructor": "Проф. Юлія Гаврилюк",
+        "instructorTitle": "professor",
+        "credits": 6,
+        "duration": 10,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 61,
+        "enrollmentType": {
+            "mandatory": 81,
+            "elective": 19
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 42
+            },
+            {
+                "name": "КН",
+                "value": 31
+            },
+            {
+                "name": "Інше",
+                "value": 27
+            }
         ],
-        gradingBreakdown: { exam: 47, project: 14, homework: 39 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Бакалавр',
-        language: 'Українська',
-        next_term: true,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Стратегічна взаємодія, рівновага Неша, аукціони, теорія механізмів та застосування в економіці.',
-        prerequisites: ['ECON101', 'MATH101'],
-        spots: { total: 50, taken: 41 },
-        schedule: 'Пн, Ср — 09:00-10:30',
-        rating: 4.8,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9A.%D0%9F.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 2, 3, 3, 4, 5, 5, 4, 6, 7, 15, 14, 14, 18],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 79.4,
-        passRate60Plus: 87,
-        studentTypes: ['1-й курс Економіки'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 47,
+            "project": 14,
+            "homework": 39
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Бакалавр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Стратегічна взаємодія, рівновага Неша, аукціони, теорія механізмів та застосування в економіці.",
+        "prerequisites": [
+            "ECON101",
+            "MATH101"
+        ],
+        "spots": {
+            "total": 50,
+            "taken": 41
+        },
+        "schedule": "Пн, Ср — 09:00-10:30",
+        "rating": 4.8,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%93%D0%B0%D0%B2%D1%80%D0%B8%D0%BB%D1%8E%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Економіка, автор 10 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-3",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            13,
+            5,
+            4,
+            4,
+            2,
+            4,
+            4,
+            15,
+            4,
+            45
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Оцінювати вплив макроекономічних шоків",
+                "Зрозуміти базові економічні моделі"
+            ],
+            "outcomes": [
+                "Формувати монетарну політику",
+                "Розрахувати ВВП та інфляцію"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 11,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 33,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "13",
+                    "total": 13,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "43",
+                    "total": 43,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 82.7,
+        "passRate60Plus": 87,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 4,
-        code: 'CS403',
-        name: 'Хмарні обчислення',
-        instructor: 'Викл. Бондаренко А.С.',
-        instructorTitle: 'lecturer',
-        credits: 6,
-        duration: 8,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 29,
-        enrollmentType: { mandatory: 36, elective: 64 },
-        facultySplit: [
-          { name: 'Менеджмент', value: 41 },
-          { name: 'Психологія', value: 13 },
-          { name: 'Економіка', value: 46 }
+        "id": 4,
+        "code": "CS403",
+        "name": "Хмарні обчислення",
+        "instructor": "Оксана Власенко",
+        "instructorTitle": "lecturer",
+        "credits": 6,
+        "duration": 8,
+        "startWeek": 4,
+        "termLength": 16,
+        "practicePercentage": 68,
+        "enrollmentType": {
+            "mandatory": 36,
+            "elective": 64
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 55
+            },
+            {
+                "name": "КН",
+                "value": 35
+            },
+            {
+                "name": "Інше",
+                "value": 10
+            }
         ],
-        gradingBreakdown: { exam: 48, project: 24, homework: 28 },
-        semester: 'Осінь 2027',
-        term: 'Осінь',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'elective',
-        department: 'Комп\'ютерні науки',
-        description: 'AWS, Azure, Docker, Kubernetes. Проєктування масштабованих хмарних систем та DevOps-практики.',
-        prerequisites: ['CS301'],
-        spots: { total: 30, taken: 30 },
-        schedule: 'Вт, Чт — 10:30-12:00',
-        rating: 4.3,
-        teachingFormat: 'Flipped Classroom',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%BD%D0%B4%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%A1.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [0, 1, 5, 13, 13, 24, 18, 26],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 75.6,
-        passRate60Plus: 98,
-        studentTypes: ['1-й курс Бізнесу'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 48,
+            "project": 24,
+            "homework": 28
+        },
+        "semester": "Осінь 2027",
+        "term": "Осінь",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "AWS, Azure, Docker, Kubernetes. Проєктування масштабованих хмарних систем та DevOps-практики.",
+        "prerequisites": [
+            "CS301"
+        ],
+        "spots": {
+            "total": 30,
+            "taken": 30
+        },
+        "schedule": "Вт, Чт — 10:30-12:00",
+        "rating": 4.3,
+        "teachingFormat": "Flipped Classroom",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0%20%D0%92%D0%BB%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 9 роками досвіду в індустрії (Комп'ютерні науки).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            14,
+            2,
+            3,
+            4,
+            3,
+            5,
+            18,
+            51
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Розробляти масштабовані системи",
+                "Працювати з базами даних"
+            ],
+            "outcomes": [
+                "Оптимізувати SQL запити",
+                "Написати власну програму",
+                "Налаштувати CI/CD"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 12,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 26,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "16",
+                    "total": 16,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "46",
+                    "total": 46,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 79.5,
+        "passRate60Plus": 98,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 5,
-        code: 'ECON402',
-        name: 'Фінансова економіка',
-        instructor: 'Проф. Шевченко Д.О.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 12,
-        startWeek: 4,
-        termLength: 16,
-        practicePercentage: 36,
-        enrollmentType: { mandatory: 49, elective: 51 },
-        facultySplit: [
-          { name: 'КН', value: 68 },
-          { name: 'Менеджмент', value: 25 },
-          { name: 'Психологія', value: 7 }
+        "id": 5,
+        "code": "ECON402",
+        "name": "Фінансова економіка",
+        "instructor": "Тетяна Шевченко",
+        "instructorTitle": "expert",
+        "credits": 6,
+        "duration": 10,
+        "startWeek": 3,
+        "termLength": 16,
+        "practicePercentage": 35,
+        "enrollmentType": {
+            "mandatory": 80,
+            "elective": 20
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 45
+            },
+            {
+                "name": "КН",
+                "value": 29
+            },
+            {
+                "name": "Інше",
+                "value": 26
+            }
         ],
-        gradingBreakdown: { exam: 48, project: 36, homework: 16 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Англійська',
-        next_term: true,
-        category: 'core',
-        department: 'Економіка',
-        description: 'Фінансові ринки, ціноутворення активів, портфельна теорія, деривативи та управління ризиками.',
-        prerequisites: ['ECON201', 'STAT101'],
-        spots: { total: 45, taken: 38 },
-        schedule: 'Пн, Ср — 13:30-15:00',
-        rating: 4.6,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%9E.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 1, 6, 1, 9, 7, 7, 9, 12, 21, 18, 25],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 86.8,
-        passRate60Plus: 95,
-        studentTypes: ['2-й курс Комп. Наук'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 48,
+            "project": 36,
+            "homework": 16
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Англійська",
+        "next_term": true,
+        "category": "core",
+        "department": "Економіка",
+        "description": "Фінансові ринки, ціноутворення активів, портфельна теорія, деривативи та управління ризиками.",
+        "prerequisites": [
+            "ECON201",
+            "STAT101"
+        ],
+        "spots": {
+            "total": 45,
+            "taken": 38
+        },
+        "schedule": "Пн, Ср — 13:30-15:00",
+        "rating": 4.6,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%A2%D0%B5%D1%82%D1%8F%D0%BD%D0%B0%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 6 роками досвіду в індустрії (Економіка).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            10,
+            3,
+            5,
+            5,
+            5,
+            2,
+            2,
+            28,
+            2,
+            38
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс забезпечує фундаментальне розуміння економічних процесів у сучасному світі.",
+            "goals": [
+                "Оцінювати вплив макроекономічних шоків",
+                "Будувати економетричні прогнози"
+            ],
+            "outcomes": [
+                "Розрахувати ВВП та інфляцію",
+                "Аналізувати поведінку споживачів",
+                "Будувати регресійні моделі",
+                "Формувати монетарну політику"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 21,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 20,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "34",
+                    "total": 34,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 81.8,
+        "passRate60Plus": 95,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 6,
-        code: 'DATA301',
-        name: 'Аналіз даних з Python',
-        instructor: 'Викл. Козлова І.В.',
-        instructorTitle: 'lecturer',
-        credits: 6,
-        duration: 10,
-        startWeek: 6,
-        termLength: 16,
-        practicePercentage: 43,
-        enrollmentType: { mandatory: 44, elective: 56 },
-        facultySplit: [
-          { name: 'Психологія', value: 42 },
-          { name: 'КН', value: 14 },
-          { name: 'Кібербезпека', value: 44 }
+        "id": 6,
+        "code": "DATA301",
+        "name": "Аналіз даних з Python",
+        "instructor": "Проф. Юлія Мельник",
+        "instructorTitle": "professor",
+        "credits": 6,
+        "duration": 9,
+        "startWeek": 5,
+        "termLength": 16,
+        "practicePercentage": 42,
+        "enrollmentType": {
+            "mandatory": 40,
+            "elective": 60
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 49
+            },
+            {
+                "name": "КН",
+                "value": 22
+            },
+            {
+                "name": "Інше",
+                "value": 29
+            }
         ],
-        gradingBreakdown: { exam: 51, project: 34, homework: 15 },
-        semester: 'Весна 2027',
-        category: 'elective',
-        department: 'Комп\'ютерні науки',
-        description: 'Pandas, NumPy, Matplotlib, Scikit-learn. Практичний курс аналізу даних та побудови моделей.',
-        prerequisites: ['CS101', 'STAT101'],
-        spots: { total: 35, taken: 20 },
-        schedule: 'Вт, Чт — 15:00-16:30',
-        rating: 4.9,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%D0%B0%20%D0%86.%D0%92.&background=random&color=fff&size=128',
-        maxPoints: 116,
-        weeklyPoints: [0, 1, 8, 6, 8, 7, 17, 27, 16, 26],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 71.8,
-        passRate60Plus: 84,
-        studentTypes: ['3-й курс Психології'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 51,
+            "project": 34,
+            "homework": 15
+        },
+        "semester": "Весна 2027",
+        "category": "elective",
+        "department": "Комп'ютерні науки",
+        "description": "Pandas, NumPy, Matplotlib, Scikit-learn. Практичний курс аналізу даних та побудови моделей.",
+        "prerequisites": [
+            "CS101",
+            "STAT101"
+        ],
+        "spots": {
+            "total": 35,
+            "taken": 20
+        },
+        "schedule": "Вт, Чт — 15:00-16:30",
+        "rating": 4.9,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%AE%D0%BB%D1%96%D1%8F%20%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA&background=random&color=fff&size=128",
+        "instructorBio": "Викладач кафедри Комп'ютерні науки, автор 20 наукових статей у міжнародних виданнях.",
+        "instructorLinkedIn": "https://linkedin.com/in/instructor-6",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            20,
+            2,
+            3,
+            2,
+            3,
+            4,
+            2,
+            28,
+            36
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Курс готує студентів до вирішення складних інженерних задач у сфері розробки програмного забезпечення.",
+            "goals": [
+                "Працювати з базами даних",
+                "Навчитися проектувати архітектуру ПЗ",
+                "Опанувати алгоритмічне мислення"
+            ],
+            "outcomes": [
+                "Створити веб-застосунок",
+                "Налаштувати CI/CD",
+                "Написати власну програму",
+                "Оптимізувати SQL запити"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 14,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 27,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "25",
+                    "total": 25,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "34",
+                    "total": 34,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 90.4,
+        "passRate60Plus": 84,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "language": "Англійська"
     },
     {
-        id: 7,
-        code: 'LAW201',
-        name: 'Цифрове право та ШІ',
-        instructor: 'Проф. Ткаченко Н.Р.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 6,
-        startWeek: 8,
-        termLength: 16,
-        practicePercentage: 76,
-        enrollmentType: { mandatory: 24, elective: 76 },
-        facultySplit: [
-          { name: 'Право', value: 63 },
-          { name: 'Психологія', value: 14 },
-          { name: 'Менеджмент', value: 23 }
+        "id": 7,
+        "code": "LAW201",
+        "name": "Цифрове право та ШІ",
+        "instructor": "Василь Шевченко",
+        "instructorTitle": "lecturer",
+        "credits": 6,
+        "duration": 10,
+        "startWeek": 1,
+        "termLength": 16,
+        "practicePercentage": 63,
+        "enrollmentType": {
+            "mandatory": 13,
+            "elective": 87
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 36
+            },
+            {
+                "name": "КН",
+                "value": 32
+            },
+            {
+                "name": "Інше",
+                "value": 32
+            }
         ],
-        gradingBreakdown: { exam: 30, project: 20, homework: 50 },
-        semester: 'Весна 2027',
-        term: 'Весна',
-        level: 'Магістр',
-        language: 'Українська',
-        next_term: false,
-        category: 'elective',
-        department: 'Право',
-        description: 'Регулювання ШІ, захист персональних даних (GDPR), інтелектуальна власність у цифровому середовищі.',
-        prerequisites: [],
-        spots: { total: 60, taken: 15 },
-        schedule: 'Ср — 15:00-18:00',
-        rating: 4.2,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9D.%D0%A0.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [3, 10, 8, 19, 32, 28],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 91.6,
-        passRate60Plus: 93,
-        studentTypes: ['Магістри Аналітики'],
-        syllabusUrl: '/syllabus-dummy.pdf',
+        "gradingBreakdown": {
+            "exam": 30,
+            "project": 20,
+            "homework": 50
+        },
+        "semester": "Весна 2027",
+        "term": "Весна",
+        "level": "Магістр",
+        "language": "Українська",
+        "next_term": false,
+        "category": "elective",
+        "department": "Право",
+        "description": "Регулювання ШІ, захист персональних даних (GDPR), інтелектуальна власність у цифровому середовищі.",
+        "prerequisites": [],
+        "spots": {
+            "total": 60,
+            "taken": 15
+        },
+        "schedule": "Ср — 15:00-18:00",
+        "rating": 4.2,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%92%D0%B0%D1%81%D0%B8%D0%BB%D1%8C%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 11 роками досвіду в індустрії (Право).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            16,
+            4,
+            4,
+            5,
+            2,
+            4,
+            3,
+            25,
+            4,
+            33
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Диплом бакалавра",
+                    "Знання англійської мови B2+"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Дисципліна є обов'язковою для формування базових компетенцій сучасного юриста.",
+            "goals": [
+                "Застосовувати правові норми на практиці",
+                "Захищати права клієнтів",
+                "Зрозуміти основи правової системи"
+            ],
+            "outcomes": [
+                "Скласти договір",
+                "Провести юридичну експертизу",
+                "Оформити позовну заяву"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 17,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 29,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "31",
+                    "total": 31,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 77.3,
+        "passRate60Plus": 93,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf"
     },
     {
-        id: 8,
-        code: 'MATH301',
-        name: 'Диференціальні рівняння',
-        instructor: 'Проф. Іваненко Г.М.',
-        instructorTitle: 'professor',
-        credits: 6,
-        duration: 14,
-        startWeek: 3,
-        termLength: 16,
-        practicePercentage: 33,
-        enrollmentType: { mandatory: 27, elective: 73 },
-        facultySplit: [
-          { name: 'КН', value: 60 },
-          { name: 'Право', value: 35 },
-          { name: 'Економіка', value: 5 }
+        "id": 8,
+        "code": "MATH301",
+        "name": "Диференціальні рівняння",
+        "instructor": "Петро Шевченко",
+        "instructorTitle": "expert",
+        "credits": 6,
+        "duration": 9,
+        "startWeek": 5,
+        "termLength": 16,
+        "practicePercentage": 69,
+        "enrollmentType": {
+            "mandatory": 83,
+            "elective": 17
+        },
+        "facultySplit": [
+            {
+                "name": "Економіка",
+                "value": 41
+            },
+            {
+                "name": "КН",
+                "value": 39
+            },
+            {
+                "name": "Інше",
+                "value": 20
+            }
         ],
-        gradingBreakdown: { exam: 54, project: 28, homework: 18 },
-        semester: 'Весна 2027',
-        category: 'core',
-        department: 'Математика',
-        description: 'Звичайні та частинні диференціальні рівняння. Чисельні методи розв\'язання та застосування в моделюванні.',
-        prerequisites: ['MATH101', 'MATH201'],
-        spots: { total: 40, taken: 25 },
-        schedule: 'Пн, Чт — 15:00-16:30',
-        rating: 4.1,
-        teachingFormat: 'Regular',
-        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%86%D0%B2%D0%B0%D0%BD%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%93.%D0%9C.&background=random&color=fff&size=128',
-        maxPoints: 100,
-        weeklyPoints: [1, 0, 1, 1, 5, 4, 3, 9, 8, 15, 10, 7, 18, 18],
-        detailedSyllabus: {"prerequisites":{"mustHave":["Базові навички аналітичного мислення та роботи з даними","Володіння Excel / Google Sheets на базовому рівні","Навички командної роботи та комунікації","Розуміння базових економічних категорій"],"niceToHave":["Попереднє знайомство з бізнес-процесами","Навички створення презентацій (PowerPoint/Google Slides)","Базові знання з мікроекономіки","Інтерес до роботи реальних компаній"]},"justification":"Курс «Економіка фірми» є фундаментальною частиною підготовки бакалаврів програм «Бізнес економіка» та «Економіка та великі дані» Київської школи економіки. Він розроблений для студентів першого року навчання та не вимагає поглиблених знань у сфері бізнесу чи фінансів.","goals":["Сформувати системне розуміння фірми як економічної системи.","Навчити студентів аналізувати ресурси, виробничі процеси, витрати.","Розвинути здатність приймати економічно обґрунтовані рішення.","Навчити інтерпретувати результати діяльності підприємства."],"outcomes":["Пояснювати сутність фірми як економічної системи.","Оцінювати структуру та ефективність використання основного капіталу.","Аналізувати оборотні кошти.","Оцінювати продуктивність праці та витрати на персонал.","Формувати виробничу програму та аналізувати логістичні рішення.","Розраховувати витрати та формувати ціну.","Аналізувати фінансові результати (прибуток, рентабельність)."],"gradingTable":[{"type":"Активність на семінарах","details":"Участь у дискусіях, виконання завдань","perItem":"1 бал за семінар","total":15,"deadline":"Щотижня"},{"type":"Індивідуальні практичні","details":"Міні-есе, практичні розрахунки, міні-кейси","perItem":"10","total":40,"deadline":"Після кожного блоку"},{"type":"Групова робота","details":"Проміжна презентація 1 (5 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 5"},{"type":"Групова робота","details":"Проміжна презентація 2 (9 тиждень)","perItem":"10","total":10,"deadline":"Тиждень 9"},{"type":"Групова робота","details":"Фінальна презентація","perItem":"25","total":25,"deadline":"Тиждень 11"}]},
-        historicalAverage: 83.3,
-        passRate60Plus: 84,
-        studentTypes: ['3-й курс Психології','2-й курс Фінансів'],
-        syllabusUrl: '/syllabus-dummy.pdf',
-    },
+        "gradingBreakdown": {
+            "exam": 54,
+            "project": 28,
+            "homework": 18
+        },
+        "semester": "Весна 2027",
+        "category": "core",
+        "department": "Математика",
+        "description": "Звичайні та частинні диференціальні рівняння. Чисельні методи розв'язання та застосування в моделюванні.",
+        "prerequisites": [
+            "MATH101",
+            "MATH201"
+        ],
+        "spots": {
+            "total": 40,
+            "taken": 25
+        },
+        "schedule": "Пн, Чт — 15:00-16:30",
+        "rating": 4.1,
+        "teachingFormat": "Regular",
+        "instructorPhoto": "https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%BE%20%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE&background=random&color=fff&size=128",
+        "instructorBio": "Експерт-практик із 15 роками досвіду в індустрії (Математика).",
+        "maxPoints": 100,
+        "weeklyPoints": [
+            20,
+            3,
+            4,
+            3,
+            2,
+            2,
+            5,
+            27,
+            34
+        ],
+        "detailedSyllabus": {
+            "prerequisites": {
+                "mustHave": [
+                    "Базові навички критичного мислення",
+                    "Шкільна програма"
+                ],
+                "niceToHave": [
+                    "Попередній досвід",
+                    "Цікавість до предмету"
+                ]
+            },
+            "justification": "Цей курс розширює світогляд студента та формує необхідні soft-skills.",
+            "goals": [
+                "Розуміти базові концепції дисципліни",
+                "Розвинути критичне мислення",
+                "Навчитися працювати з даними"
+            ],
+            "outcomes": [
+                "Застосовувати отримані знання",
+                "Аналізувати інформацію",
+                "Підготувати дослідницький проєкт"
+            ],
+            "gradingTable": [
+                {
+                    "type": "Активність на семінарах",
+                    "details": "Участь у дискусіях",
+                    "perItem": "1-2 бали",
+                    "total": 18,
+                    "deadline": "Щотижня"
+                },
+                {
+                    "type": "Домашні завдання",
+                    "details": "Практичні кейси",
+                    "perItem": "5-10 балів",
+                    "total": 27,
+                    "deadline": "Раз на 2 тижні"
+                },
+                {
+                    "type": "Курсовий проєкт",
+                    "details": "Командна робота",
+                    "perItem": "23",
+                    "total": 23,
+                    "deadline": "Тиждень 8"
+                },
+                {
+                    "type": "Фінальний іспит",
+                    "details": "Письмовий тест",
+                    "perItem": "32",
+                    "total": 32,
+                    "deadline": "Останній тиждень"
+                }
+            ]
+        },
+        "historicalAverage": 96.2,
+        "passRate60Plus": 84,
+        "studentTypes": [
+            "1-й рік Бізнес-економіки",
+            "1-й рік Аналітики"
+        ],
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "language": "Українська"
+    }
 ];
 
-// Mock users for comments
 export const mockUsers = [
     { id: 101, nickname: 'dmytro_kh', first_name: 'Дмитро', last_name: 'Хоменко', major: 'Комп\'ютерні науки', current_year: 3, avatarColor: '#2563EB' },
     { id: 102, nickname: 'anna_shev', first_name: "Демьян", last_name: 'Батенко ', major: 'Економіка', current_year: 2, avatarColor: '#DC2626' },
