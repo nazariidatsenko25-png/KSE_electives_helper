@@ -35,6 +35,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 24,
         duration: 17,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 27,
+        enrollmentType: { mandatory: 52, elective: 48 },
+        facultySplit: [
+          { name: 'Економіка', value: 56 },
+          { name: 'Кібербезпека', value: 33 },
+          { name: 'КН', value: 11 }
+        ],
+        gradingBreakdown: { exam: 55, project: 39, homework: 6 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'PhD',
@@ -46,7 +56,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 34 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.3
+        rating: 4.3,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 107.9,
+        passRate60Plus: 93,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 11,
@@ -56,6 +73,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 8,
         duration: 17,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 44,
+        enrollmentType: { mandatory: 71, elective: 29 },
+        facultySplit: [
+          { name: 'Кібербезпека', value: 47 },
+          { name: 'Право', value: 21 },
+          { name: 'Психологія', value: 32 }
+        ],
+        gradingBreakdown: { exam: 42, project: 12, homework: 46 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -67,7 +94,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 1 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 92.3,
+        passRate60Plus: 91,
+        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 12,
@@ -77,6 +111,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 26,
         duration: 3,
+        startWeek: 2,
+        termLength: 16,
+        practicePercentage: 48,
+        enrollmentType: { mandatory: 67, elective: 33 },
+        facultySplit: [
+          { name: 'Право', value: 67 },
+          { name: 'Менеджмент', value: 33 },
+          { name: 'Психологія', value: 0 }
+        ],
+        gradingBreakdown: { exam: 57, project: 39, homework: 4 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Магістр',
@@ -88,7 +132,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 13 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.3
+        rating: 4.3,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 107.0,
+        passRate60Plus: 80,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 13,
@@ -98,6 +149,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 2,
         duration: 16,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 49,
+        enrollmentType: { mandatory: 48, elective: 52 },
+        facultySplit: [
+          { name: 'Економіка', value: 46 },
+          { name: 'КН', value: 18 },
+          { name: 'Право', value: 36 }
+        ],
+        gradingBreakdown: { exam: 40, project: 13, homework: 47 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Бакалавр',
@@ -109,7 +170,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 27 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4
+        rating: 4.4,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 81.1,
+        passRate60Plus: 100,
+        studentTypes: ['Магістри Аналітики','2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 14,
@@ -119,6 +187,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 2,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 48,
+        enrollmentType: { mandatory: 42, elective: 58 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 35 },
+          { name: 'Економіка', value: 21 },
+          { name: 'Право', value: 44 }
+        ],
+        gradingBreakdown: { exam: 34, project: 20, homework: 46 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -130,7 +208,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 21 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9
+        rating: 4.9,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 70.8,
+        passRate60Plus: 93,
+        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 15,
@@ -140,6 +225,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 17,
         duration: 13,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 30,
+        enrollmentType: { mandatory: 55, elective: 45 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 38 },
+          { name: 'Психологія', value: 22 },
+          { name: 'Право', value: 40 }
+        ],
+        gradingBreakdown: { exam: 48, project: 26, homework: 26 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -151,7 +246,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 31 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5
+        rating: 4.5,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 106.6,
+        passRate60Plus: 87,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 16,
@@ -161,6 +263,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 12,
         duration: 11,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 39,
+        enrollmentType: { mandatory: 66, elective: 34 },
+        facultySplit: [
+          { name: 'Психологія', value: 47 },
+          { name: 'КН', value: 35 },
+          { name: 'Кібербезпека', value: 18 }
+        ],
+        gradingBreakdown: { exam: 59, project: 19, homework: 22 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -172,7 +284,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 10 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8
+        rating: 3.8,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 85.7,
+        passRate60Plus: 80,
+        studentTypes: ['2-й курс Фінансів','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 17,
@@ -182,6 +301,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 24,
         duration: 8,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 36,
+        enrollmentType: { mandatory: 67, elective: 33 },
+        facultySplit: [
+          { name: 'Економіка', value: 62 },
+          { name: 'Право', value: 39 },
+          { name: 'Психологія', value: -1 }
+        ],
+        gradingBreakdown: { exam: 48, project: 31, homework: 21 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Магістр',
@@ -193,7 +322,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 37 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9
+        rating: 3.9,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 88.2,
+        passRate60Plus: 97,
+        studentTypes: ['3-й курс Психології','2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 18,
@@ -203,6 +339,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 19,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 74,
+        enrollmentType: { mandatory: 69, elective: 31 },
+        facultySplit: [
+          { name: 'КН', value: 45 },
+          { name: 'Економіка', value: 35 },
+          { name: 'Кібербезпека', value: 20 }
+        ],
+        gradingBreakdown: { exam: 35, project: 27, homework: 38 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -214,7 +360,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 36 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2
+        rating: 4.2,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 81.4,
+        passRate60Plus: 87,
+        studentTypes: ['3-й курс Психології','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 19,
@@ -224,6 +377,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 18,
         duration: 3,
+        startWeek: 9,
+        termLength: 16,
+        practicePercentage: 43,
+        enrollmentType: { mandatory: 30, elective: 70 },
+        facultySplit: [
+          { name: 'Економіка', value: 61 },
+          { name: 'Менеджмент', value: 24 },
+          { name: 'КН', value: 15 }
+        ],
+        gradingBreakdown: { exam: 55, project: 25, homework: 20 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -235,7 +398,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 19 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8
+        rating: 4.8,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 103.4,
+        passRate60Plus: 91,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 20,
@@ -245,6 +415,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 5,
         duration: 11,
+        startWeek: 4,
+        termLength: 16,
+        practicePercentage: 56,
+        enrollmentType: { mandatory: 72, elective: 28 },
+        facultySplit: [
+          { name: 'Психологія', value: 39 },
+          { name: 'Право', value: 16 },
+          { name: 'Економіка', value: 45 }
+        ],
+        gradingBreakdown: { exam: 42, project: 27, homework: 31 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Бакалавр',
@@ -256,7 +436,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 30 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2
+        rating: 4.2,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 70.3,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 21,
@@ -266,6 +453,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 20,
         duration: 6,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 30,
+        enrollmentType: { mandatory: 38, elective: 62 },
+        facultySplit: [
+          { name: 'Економіка', value: 59 },
+          { name: 'Кібербезпека', value: 30 },
+          { name: 'Психологія', value: 11 }
+        ],
+        gradingBreakdown: { exam: 41, project: 25, homework: 34 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -277,7 +474,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 16 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 114.4,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 22,
@@ -287,6 +491,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 11,
         duration: 3,
+        startWeek: 9,
+        termLength: 16,
+        practicePercentage: 67,
+        enrollmentType: { mandatory: 30, elective: 70 },
+        facultySplit: [
+          { name: 'Економіка', value: 62 },
+          { name: 'Психологія', value: 23 },
+          { name: 'Право', value: 15 }
+        ],
+        gradingBreakdown: { exam: 57, project: 34, homework: 9 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -298,7 +512,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 17 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.6
+        rating: 3.6,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 74.9,
+        passRate60Plus: 95,
+        studentTypes: ['2-й курс Фінансів','1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 23,
@@ -308,6 +529,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 20,
         duration: 17,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 58,
+        enrollmentType: { mandatory: 23, elective: 77 },
+        facultySplit: [
+          { name: 'КН', value: 42 },
+          { name: 'Економіка', value: 26 },
+          { name: 'Кібербезпека', value: 32 }
+        ],
+        gradingBreakdown: { exam: 46, project: 19, homework: 35 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -319,7 +550,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 4 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.5
+        rating: 3.5,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 86.6,
+        passRate60Plus: 85,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 24,
@@ -329,6 +567,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 17,
         duration: 10,
+        startWeek: 2,
+        termLength: 16,
+        practicePercentage: 44,
+        enrollmentType: { mandatory: 62, elective: 38 },
+        facultySplit: [
+          { name: 'Економіка', value: 43 },
+          { name: 'Менеджмент', value: 30 },
+          { name: 'КН', value: 27 }
+        ],
+        gradingBreakdown: { exam: 43, project: 12, homework: 45 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -340,7 +588,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 27 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5
+        rating: 4.5,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 70.2,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 25,
@@ -350,6 +605,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 3,
         duration: 11,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 55,
+        enrollmentType: { mandatory: 28, elective: 72 },
+        facultySplit: [
+          { name: 'Право', value: 51 },
+          { name: 'Психологія', value: 30 },
+          { name: 'Менеджмент', value: 19 }
+        ],
+        gradingBreakdown: { exam: 52, project: 38, homework: 10 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -361,7 +626,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 11 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 73.6,
+        passRate60Plus: 89,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 26,
@@ -371,6 +643,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 17,
         duration: 11,
+        startWeek: 2,
+        termLength: 16,
+        practicePercentage: 24,
+        enrollmentType: { mandatory: 51, elective: 49 },
+        facultySplit: [
+          { name: 'Кібербезпека', value: 62 },
+          { name: 'Право', value: 38 },
+          { name: 'Психологія', value: 0 }
+        ],
+        gradingBreakdown: { exam: 38, project: 17, homework: 45 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -382,7 +664,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 8 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.5
+        rating: 4.5,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 85.5,
+        passRate60Plus: 86,
+        studentTypes: ['1-й курс Економіки','2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 27,
@@ -392,6 +681,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 23,
         duration: 6,
+        startWeek: 10,
+        termLength: 16,
+        practicePercentage: 77,
+        enrollmentType: { mandatory: 68, elective: 32 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 57 },
+          { name: 'КН', value: 10 },
+          { name: 'Економіка', value: 33 }
+        ],
+        gradingBreakdown: { exam: 55, project: 29, homework: 16 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -403,7 +702,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 19 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8
+        rating: 4.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 99.7,
+        passRate60Plus: 88,
+        studentTypes: ['Магістри Аналітики'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 28,
@@ -413,6 +719,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 26,
         duration: 7,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 27,
+        enrollmentType: { mandatory: 65, elective: 35 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 30 },
+          { name: 'Право', value: 36 },
+          { name: 'Економіка', value: 34 }
+        ],
+        gradingBreakdown: { exam: 51, project: 31, homework: 18 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -424,7 +740,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 32 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 85.5,
+        passRate60Plus: 84,
+        studentTypes: ['2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 29,
@@ -434,6 +757,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 23,
         duration: 7,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 58,
+        enrollmentType: { mandatory: 55, elective: 45 },
+        facultySplit: [
+          { name: 'Економіка', value: 34 },
+          { name: 'Менеджмент', value: 32 },
+          { name: 'Психологія', value: 34 }
+        ],
+        gradingBreakdown: { exam: 54, project: 15, homework: 31 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -445,7 +778,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 6 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 100.7,
+        passRate60Plus: 89,
+        studentTypes: ['2-й курс Фінансів','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 30,
@@ -455,6 +795,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 15,
         duration: 17,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 73,
+        enrollmentType: { mandatory: 23, elective: 77 },
+        facultySplit: [
+          { name: 'Психологія', value: 30 },
+          { name: 'КН', value: 23 },
+          { name: 'Право', value: 47 }
+        ],
+        gradingBreakdown: { exam: 49, project: 28, homework: 23 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -466,7 +816,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 40 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.6
+        rating: 4.6,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 87.4,
+        passRate60Plus: 100,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 31,
@@ -476,6 +833,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 5,
         duration: 14,
+        startWeek: 2,
+        termLength: 16,
+        practicePercentage: 39,
+        enrollmentType: { mandatory: 42, elective: 58 },
+        facultySplit: [
+          { name: 'Право', value: 31 },
+          { name: 'Психологія', value: 27 },
+          { name: 'Менеджмент', value: 42 }
+        ],
+        gradingBreakdown: { exam: 45, project: 22, homework: 33 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -487,7 +854,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 1 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9
+        rating: 3.9,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 88.5,
+        passRate60Plus: 85,
+        studentTypes: ['3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 32,
@@ -497,6 +871,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 3,
         duration: 11,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 27,
+        enrollmentType: { mandatory: 35, elective: 65 },
+        facultySplit: [
+          { name: 'Економіка', value: 39 },
+          { name: 'Психологія', value: 31 },
+          { name: 'Право', value: 30 }
+        ],
+        gradingBreakdown: { exam: 44, project: 38, homework: 18 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -508,7 +892,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 20 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 86.8,
+        passRate60Plus: 82,
+        studentTypes: ['3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 33,
@@ -518,6 +909,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 18,
         duration: 4,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 33,
+        enrollmentType: { mandatory: 66, elective: 34 },
+        facultySplit: [
+          { name: 'Кібербезпека', value: 38 },
+          { name: 'Економіка', value: 12 },
+          { name: 'КН', value: 50 }
+        ],
+        gradingBreakdown: { exam: 45, project: 37, homework: 18 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -529,7 +930,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 3 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.9
+        rating: 3.9,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%97%D0%B0%D1%85%D0%B0%D1%80%D0%BE%D0%B2%D0%B0%20%D0%9D.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 100.8,
+        passRate60Plus: 83,
+        studentTypes: ['3-й курс Психології','2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 34,
@@ -539,6 +947,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 11,
         duration: 9,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 31,
+        enrollmentType: { mandatory: 69, elective: 31 },
+        facultySplit: [
+          { name: 'Кібербезпека', value: 65 },
+          { name: 'Право', value: 10 },
+          { name: 'Психологія', value: 25 }
+        ],
+        gradingBreakdown: { exam: 37, project: 39, homework: 24 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -550,7 +968,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 21 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8
+        rating: 4.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 85.7,
+        passRate60Plus: 89,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 35,
@@ -560,6 +985,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 15,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 53,
+        enrollmentType: { mandatory: 42, elective: 58 },
+        facultySplit: [
+          { name: 'Економіка', value: 41 },
+          { name: 'Кібербезпека', value: 36 },
+          { name: 'Право', value: 23 }
+        ],
+        gradingBreakdown: { exam: 46, project: 27, homework: 27 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Бакалавр',
@@ -571,7 +1006,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 25 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 83.7,
+        passRate60Plus: 91,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 36,
@@ -581,6 +1023,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 9,
         duration: 15,
+        startWeek: 2,
+        termLength: 16,
+        practicePercentage: 40,
+        enrollmentType: { mandatory: 26, elective: 74 },
+        facultySplit: [
+          { name: 'Психологія', value: 47 },
+          { name: 'Менеджмент', value: 28 },
+          { name: 'Право', value: 25 }
+        ],
+        gradingBreakdown: { exam: 31, project: 28, homework: 41 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -592,7 +1044,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 25 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4
+        rating: 4.4,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 90.4,
+        passRate60Plus: 84,
+        studentTypes: ['Магістри Аналітики','3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 37,
@@ -602,6 +1061,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 6,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 79,
+        enrollmentType: { mandatory: 36, elective: 64 },
+        facultySplit: [
+          { name: 'Психологія', value: 57 },
+          { name: 'Кібербезпека', value: 34 },
+          { name: 'Право', value: 9 }
+        ],
+        gradingBreakdown: { exam: 43, project: 23, homework: 34 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -613,7 +1082,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 38 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 105.2,
+        passRate60Plus: 91,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 38,
@@ -623,6 +1099,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 5,
         duration: 10,
+        startWeek: 7,
+        termLength: 16,
+        practicePercentage: 65,
+        enrollmentType: { mandatory: 43, elective: 57 },
+        facultySplit: [
+          { name: 'КН', value: 53 },
+          { name: 'Економіка', value: 39 },
+          { name: 'Менеджмент', value: 8 }
+        ],
+        gradingBreakdown: { exam: 55, project: 38, homework: 7 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -634,7 +1120,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 3 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7
+        rating: 3.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 70.4,
+        passRate60Plus: 94,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 39,
@@ -644,6 +1137,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 26,
         duration: 5,
+        startWeek: 11,
+        termLength: 16,
+        practicePercentage: 46,
+        enrollmentType: { mandatory: 57, elective: 43 },
+        facultySplit: [
+          { name: 'КН', value: 53 },
+          { name: 'Кібербезпека', value: 25 },
+          { name: 'Економіка', value: 22 }
+        ],
+        gradingBreakdown: { exam: 46, project: 38, homework: 16 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -655,7 +1158,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 18 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7
+        rating: 3.7,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 98.2,
+        passRate60Plus: 93,
+        studentTypes: ['4-й курс Права','2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 40,
@@ -665,6 +1175,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 2,
         duration: 4,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 39,
+        enrollmentType: { mandatory: 56, elective: 44 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 40 },
+          { name: 'Право', value: 35 },
+          { name: 'Економіка', value: 25 }
+        ],
+        gradingBreakdown: { exam: 31, project: 37, homework: 32 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -676,7 +1196,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 36 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B2%D0%B0%D0%BB%D1%8C%D1%87%D1%83%D0%BA%20%D0%9E.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 81.8,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Бізнесу','3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 41,
@@ -686,6 +1213,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 20,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 65,
+        enrollmentType: { mandatory: 38, elective: 62 },
+        facultySplit: [
+          { name: 'Економіка', value: 47 },
+          { name: 'Психологія', value: 21 },
+          { name: 'Право', value: 32 }
+        ],
+        gradingBreakdown: { exam: 37, project: 25, homework: 38 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -697,7 +1234,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 15 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.6
+        rating: 4.6,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 82.6,
+        passRate60Plus: 97,
+        studentTypes: ['4-й курс Права'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 42,
@@ -707,6 +1251,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 8,
         duration: 11,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 75,
+        enrollmentType: { mandatory: 44, elective: 56 },
+        facultySplit: [
+          { name: 'КН', value: 54 },
+          { name: 'Психологія', value: 30 },
+          { name: 'Економіка', value: 16 }
+        ],
+        gradingBreakdown: { exam: 31, project: 23, homework: 46 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -718,7 +1272,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 7 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2
+        rating: 4.2,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 102.3,
+        passRate60Plus: 91,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 43,
@@ -728,6 +1289,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 2,
         duration: 10,
+        startWeek: 4,
+        termLength: 16,
+        practicePercentage: 30,
+        enrollmentType: { mandatory: 55, elective: 45 },
+        facultySplit: [
+          { name: 'Право', value: 53 },
+          { name: 'Кібербезпека', value: 36 },
+          { name: 'Психологія', value: 11 }
+        ],
+        gradingBreakdown: { exam: 58, project: 32, homework: 10 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Бакалавр',
@@ -739,7 +1310,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 26 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 110.4,
+        passRate60Plus: 88,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 44,
@@ -749,6 +1327,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 4,
         duration: 10,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 30,
+        enrollmentType: { mandatory: 38, elective: 62 },
+        facultySplit: [
+          { name: 'Економіка', value: 63 },
+          { name: 'КН', value: 16 },
+          { name: 'Менеджмент', value: 21 }
+        ],
+        gradingBreakdown: { exam: 56, project: 27, homework: 17 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -760,7 +1348,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 38 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.6
+        rating: 3.6,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 84.0,
+        passRate60Plus: 82,
+        studentTypes: ['2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 45,
@@ -770,6 +1365,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 21,
         duration: 6,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 59,
+        enrollmentType: { mandatory: 48, elective: 52 },
+        facultySplit: [
+          { name: 'Психологія', value: 53 },
+          { name: 'Менеджмент', value: 20 },
+          { name: 'Економіка', value: 27 }
+        ],
+        gradingBreakdown: { exam: 49, project: 19, homework: 32 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -781,7 +1386,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 35 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9
+        rating: 4.9,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 111.4,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 46,
@@ -791,6 +1403,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 25,
         duration: 3,
+        startWeek: 11,
+        termLength: 16,
+        practicePercentage: 44,
+        enrollmentType: { mandatory: 40, elective: 60 },
+        facultySplit: [
+          { name: 'Право', value: 40 },
+          { name: 'Економіка', value: 11 },
+          { name: 'Кібербезпека', value: 49 }
+        ],
+        gradingBreakdown: { exam: 45, project: 32, homework: 23 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -802,7 +1424,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 30 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8
+        rating: 3.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D1%80%D0%B0%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%A1.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 115.1,
+        passRate60Plus: 87,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 47,
@@ -812,6 +1441,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 24,
         duration: 6,
+        startWeek: 9,
+        termLength: 16,
+        practicePercentage: 36,
+        enrollmentType: { mandatory: 69, elective: 31 },
+        facultySplit: [
+          { name: 'КН', value: 52 },
+          { name: 'Економіка', value: 38 },
+          { name: 'Право', value: 10 }
+        ],
+        gradingBreakdown: { exam: 51, project: 20, homework: 29 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'PhD',
@@ -823,7 +1462,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 11 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 5.0
+        rating: 5.0,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 91.3,
+        passRate60Plus: 90,
+        studentTypes: ['2-й курс Комп. Наук','1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 48,
@@ -833,6 +1479,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 24,
         duration: 14,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 50,
+        enrollmentType: { mandatory: 30, elective: 70 },
+        facultySplit: [
+          { name: 'Психологія', value: 52 },
+          { name: 'КН', value: 30 },
+          { name: 'Кібербезпека', value: 18 }
+        ],
+        gradingBreakdown: { exam: 43, project: 24, homework: 33 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -844,7 +1500,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 31 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.2
+        rating: 4.2,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 104.4,
+        passRate60Plus: 90,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 49,
@@ -854,6 +1517,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 15,
         duration: 9,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 55,
+        enrollmentType: { mandatory: 35, elective: 65 },
+        facultySplit: [
+          { name: 'Психологія', value: 63 },
+          { name: 'КН', value: 38 },
+          { name: 'Економіка', value: -1 }
+        ],
+        gradingBreakdown: { exam: 58, project: 32, homework: 10 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -865,7 +1538,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 40 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.8
+        rating: 3.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 88.7,
+        passRate60Plus: 92,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 50,
@@ -875,6 +1555,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 24,
         duration: 9,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 30,
+        enrollmentType: { mandatory: 66, elective: 34 },
+        facultySplit: [
+          { name: 'Психологія', value: 65 },
+          { name: 'Право', value: 30 },
+          { name: 'Кібербезпека', value: 5 }
+        ],
+        gradingBreakdown: { exam: 39, project: 38, homework: 23 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -886,7 +1576,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 7 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.8
+        rating: 4.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 97.9,
+        passRate60Plus: 86,
+        studentTypes: ['Магістри Аналітики'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 51,
@@ -896,6 +1593,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 13,
         duration: 13,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 27,
+        enrollmentType: { mandatory: 56, elective: 44 },
+        facultySplit: [
+          { name: 'Психологія', value: 43 },
+          { name: 'Право', value: 11 },
+          { name: 'Кібербезпека', value: 46 }
+        ],
+        gradingBreakdown: { exam: 57, project: 20, homework: 23 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -907,7 +1614,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 40 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 5.0
+        rating: 5.0,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 86.0,
+        passRate60Plus: 93,
+        studentTypes: ['Магістри Аналітики'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 52,
@@ -917,6 +1631,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 22,
         duration: 3,
+        startWeek: 14,
+        termLength: 16,
+        practicePercentage: 36,
+        enrollmentType: { mandatory: 35, elective: 65 },
+        facultySplit: [
+          { name: 'Психологія', value: 42 },
+          { name: 'Право', value: 24 },
+          { name: 'КН', value: 34 }
+        ],
+        gradingBreakdown: { exam: 45, project: 22, homework: 33 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -928,7 +1652,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 27 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.1
+        rating: 4.1,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 76.2,
+        passRate60Plus: 87,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 53,
@@ -938,6 +1669,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 17,
         duration: 14,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 31,
+        enrollmentType: { mandatory: 33, elective: 67 },
+        facultySplit: [
+          { name: 'Психологія', value: 65 },
+          { name: 'КН', value: 20 },
+          { name: 'Економіка', value: 15 }
+        ],
+        gradingBreakdown: { exam: 48, project: 36, homework: 16 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -949,7 +1690,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 9 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 79.9,
+        passRate60Plus: 96,
+        studentTypes: ['2-й курс Фінансів','4-й курс Права'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 54,
@@ -959,6 +1707,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 26,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 58,
+        enrollmentType: { mandatory: 23, elective: 77 },
+        facultySplit: [
+          { name: 'КН', value: 36 },
+          { name: 'Економіка', value: 38 },
+          { name: 'Кібербезпека', value: 26 }
+        ],
+        gradingBreakdown: { exam: 37, project: 18, homework: 45 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'PhD',
@@ -970,7 +1728,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 39 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.9
+        rating: 4.9,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9C.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 91.5,
+        passRate60Plus: 92,
+        studentTypes: ['3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 55,
@@ -980,6 +1745,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 2,
         duration: 13,
+        startWeek: 4,
+        termLength: 16,
+        practicePercentage: 68,
+        enrollmentType: { mandatory: 35, elective: 65 },
+        facultySplit: [
+          { name: 'Економіка', value: 36 },
+          { name: 'Менеджмент', value: 31 },
+          { name: 'Кібербезпека', value: 33 }
+        ],
+        gradingBreakdown: { exam: 44, project: 37, homework: 19 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -991,7 +1766,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 13 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.1
+        rating: 4.1,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9F%D0%B5%D1%82%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%92.%D0%9E.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 81.8,
+        passRate60Plus: 100,
+        studentTypes: ['2-й курс Фінансів','2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 56,
@@ -1001,6 +1783,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 17,
         duration: 12,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 45,
+        enrollmentType: { mandatory: 47, elective: 53 },
+        facultySplit: [
+          { name: 'Кібербезпека', value: 41 },
+          { name: 'КН', value: 35 },
+          { name: 'Економіка', value: 24 }
+        ],
+        gradingBreakdown: { exam: 31, project: 27, homework: 42 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -1012,7 +1804,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 19 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 3.7
+        rating: 3.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 90.1,
+        passRate60Plus: 80,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 57,
@@ -1022,6 +1821,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 9,
         duration: 9,
+        startWeek: 7,
+        termLength: 16,
+        practicePercentage: 34,
+        enrollmentType: { mandatory: 65, elective: 35 },
+        facultySplit: [
+          { name: 'Право', value: 32 },
+          { name: 'Психологія', value: 13 },
+          { name: 'Менеджмент', value: 55 }
+        ],
+        gradingBreakdown: { exam: 39, project: 34, homework: 27 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'PhD',
@@ -1033,7 +1842,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 8 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.0
+        rating: 4.0,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%BE%D1%80%D0%BE%D0%B7%20%D0%86.%D0%AE.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 79.1,
+        passRate60Plus: 100,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 58,
@@ -1043,6 +1859,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 11,
         duration: 12,
+        startWeek: 1,
+        termLength: 16,
+        practicePercentage: 35,
+        enrollmentType: { mandatory: 53, elective: 47 },
+        facultySplit: [
+          { name: 'КН', value: 35 },
+          { name: 'Економіка', value: 31 },
+          { name: 'Кібербезпека', value: 34 }
+        ],
+        gradingBreakdown: { exam: 38, project: 13, homework: 49 },
         semester: 'Літо 2027',
         term: 'Літо',
         level: 'Магістр',
@@ -1054,7 +1880,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 26 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.7
+        rating: 4.7,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 89.0,
+        passRate60Plus: 82,
+        studentTypes: ['3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 59,
@@ -1064,6 +1897,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 9,
         duration: 11,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 22,
+        enrollmentType: { mandatory: 25, elective: 75 },
+        facultySplit: [
+          { name: 'КН', value: 46 },
+          { name: 'Психологія', value: 12 },
+          { name: 'Економіка', value: 42 }
+        ],
+        gradingBreakdown: { exam: 40, project: 35, homework: 25 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Бакалавр',
@@ -1075,7 +1918,14 @@ export const mockCatalog = [
         prerequisites: [],
         spots: { total: 40, taken: 16 },
         schedule: 'Пн, Ср — 12:00-13:20',
-        rating: 4.4
+        rating: 4.4,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%B9%D0%BA%D0%BE%20%D0%A1.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 72.8,
+        passRate60Plus: 98,
+        studentTypes: ['2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf'
     },
     {
         id: 1,
@@ -1085,6 +1935,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 12,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 36,
+        enrollmentType: { mandatory: 38, elective: 62 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 48 },
+          { name: 'КН', value: 23 },
+          { name: 'Психологія', value: 29 }
+        ],
+        gradingBreakdown: { exam: 35, project: 25, homework: 40 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -1097,6 +1957,13 @@ export const mockCatalog = [
         spots: { total: 40, taken: 32 },
         schedule: 'Пн, Ср — 10:30-12:00',
         rating: 4.7,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%B0%D1%80%D0%B0%D1%81%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9E.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 80.1,
+        passRate60Plus: 98,
+        studentTypes: ['4-й курс Права'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 2,
@@ -1106,6 +1973,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 6,
         duration: 10,
+        startWeek: 5,
+        termLength: 16,
+        practicePercentage: 49,
+        enrollmentType: { mandatory: 79, elective: 21 },
+        facultySplit: [
+          { name: 'Психологія', value: 63 },
+          { name: 'Менеджмент', value: 38 },
+          { name: 'Кібербезпека', value: -1 }
+        ],
+        gradingBreakdown: { exam: 54, project: 31, homework: 15 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -1118,6 +1995,13 @@ export const mockCatalog = [
         spots: { total: 35, taken: 28 },
         schedule: 'Вт, Чт — 13:30-15:00',
         rating: 4.5,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9C%D0%B5%D0%BB%D1%8C%D0%BD%D0%B8%D0%BA%20%D0%92.%D0%86.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 96.7,
+        passRate60Plus: 98,
+        studentTypes: ['2-й курс Фінансів','2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 3,
@@ -1127,6 +2011,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 14,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 68,
+        enrollmentType: { mandatory: 31, elective: 69 },
+        facultySplit: [
+          { name: 'Право', value: 61 },
+          { name: 'Психологія', value: 17 },
+          { name: 'КН', value: 22 }
+        ],
+        gradingBreakdown: { exam: 47, project: 14, homework: 39 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Бакалавр',
@@ -1139,6 +2033,13 @@ export const mockCatalog = [
         spots: { total: 50, taken: 41 },
         schedule: 'Пн, Ср — 09:00-10:30',
         rating: 4.8,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9B%D0%B8%D1%82%D0%B2%D0%B8%D0%BD%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9A.%D0%9F.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 79.4,
+        passRate60Plus: 87,
+        studentTypes: ['1-й курс Економіки'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 4,
@@ -1148,6 +2049,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 6,
         duration: 8,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 29,
+        enrollmentType: { mandatory: 36, elective: 64 },
+        facultySplit: [
+          { name: 'Менеджмент', value: 41 },
+          { name: 'Психологія', value: 13 },
+          { name: 'Економіка', value: 46 }
+        ],
+        gradingBreakdown: { exam: 48, project: 24, homework: 28 },
         semester: 'Осінь 2027',
         term: 'Осінь',
         level: 'Магістр',
@@ -1160,6 +2071,13 @@ export const mockCatalog = [
         spots: { total: 30, taken: 30 },
         schedule: 'Вт, Чт — 10:30-12:00',
         rating: 4.3,
+        teachingFormat: 'Flipped Classroom',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%91%D0%BE%D0%BD%D0%B4%D0%B0%D1%80%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%90.%D0%A1.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 75.6,
+        passRate60Plus: 98,
+        studentTypes: ['1-й курс Бізнесу'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 5,
@@ -1169,6 +2087,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 12,
+        startWeek: 4,
+        termLength: 16,
+        practicePercentage: 36,
+        enrollmentType: { mandatory: 49, elective: 51 },
+        facultySplit: [
+          { name: 'КН', value: 68 },
+          { name: 'Менеджмент', value: 25 },
+          { name: 'Психологія', value: 7 }
+        ],
+        gradingBreakdown: { exam: 48, project: 36, homework: 16 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -1181,6 +2109,13 @@ export const mockCatalog = [
         spots: { total: 45, taken: 38 },
         schedule: 'Пн, Ср — 13:30-15:00',
         rating: 4.6,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A8%D0%B5%D0%B2%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%94.%D0%9E.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 86.8,
+        passRate60Plus: 95,
+        studentTypes: ['2-й курс Комп. Наук'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 6,
@@ -1190,6 +2125,16 @@ export const mockCatalog = [
         instructorTitle: 'lecturer',
         credits: 6,
         duration: 10,
+        startWeek: 6,
+        termLength: 16,
+        practicePercentage: 43,
+        enrollmentType: { mandatory: 44, elective: 56 },
+        facultySplit: [
+          { name: 'Психологія', value: 42 },
+          { name: 'КН', value: 14 },
+          { name: 'Кібербезпека', value: 44 }
+        ],
+        gradingBreakdown: { exam: 51, project: 34, homework: 15 },
         semester: 'Весна 2027',
         category: 'elective',
         department: 'Комп\'ютерні науки',
@@ -1198,6 +2143,13 @@ export const mockCatalog = [
         spots: { total: 35, taken: 20 },
         schedule: 'Вт, Чт — 15:00-16:30',
         rating: 4.9,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%9A%D0%BE%D0%B7%D0%BB%D0%BE%D0%B2%D0%B0%20%D0%86.%D0%92.&background=random&color=fff&size=128',
+        maxPoints: 116,
+        historicalAverage: 71.8,
+        passRate60Plus: 84,
+        studentTypes: ['3-й курс Психології'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 7,
@@ -1207,6 +2159,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 6,
+        startWeek: 8,
+        termLength: 16,
+        practicePercentage: 76,
+        enrollmentType: { mandatory: 24, elective: 76 },
+        facultySplit: [
+          { name: 'Право', value: 63 },
+          { name: 'Психологія', value: 14 },
+          { name: 'Менеджмент', value: 23 }
+        ],
+        gradingBreakdown: { exam: 30, project: 20, homework: 50 },
         semester: 'Весна 2027',
         term: 'Весна',
         level: 'Магістр',
@@ -1219,6 +2181,13 @@ export const mockCatalog = [
         spots: { total: 60, taken: 15 },
         schedule: 'Ср — 15:00-18:00',
         rating: 4.2,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%A2%D0%BA%D0%B0%D1%87%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%9D.%D0%A0.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 91.6,
+        passRate60Plus: 93,
+        studentTypes: ['Магістри Аналітики'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
     {
         id: 8,
@@ -1228,6 +2197,16 @@ export const mockCatalog = [
         instructorTitle: 'professor',
         credits: 6,
         duration: 14,
+        startWeek: 3,
+        termLength: 16,
+        practicePercentage: 33,
+        enrollmentType: { mandatory: 27, elective: 73 },
+        facultySplit: [
+          { name: 'КН', value: 60 },
+          { name: 'Право', value: 35 },
+          { name: 'Економіка', value: 5 }
+        ],
+        gradingBreakdown: { exam: 54, project: 28, homework: 18 },
         semester: 'Весна 2027',
         category: 'core',
         department: 'Математика',
@@ -1236,6 +2215,13 @@ export const mockCatalog = [
         spots: { total: 40, taken: 25 },
         schedule: 'Пн, Чт — 15:00-16:30',
         rating: 4.1,
+        teachingFormat: 'Regular',
+        instructorPhoto: 'https://ui-avatars.com/api/?name=%D0%86%D0%B2%D0%B0%D0%BD%D0%B5%D0%BD%D0%BA%D0%BE%20%D0%93.%D0%9C.&background=random&color=fff&size=128',
+        maxPoints: 100,
+        historicalAverage: 83.3,
+        passRate60Plus: 84,
+        studentTypes: ['3-й курс Психології','2-й курс Фінансів'],
+        syllabusUrl: '/syllabus-dummy.pdf',
     },
 ];
 

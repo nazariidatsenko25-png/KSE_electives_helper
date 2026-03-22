@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter } from 'lucide-react';
+import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText } from 'lucide-react';
 import { mockCatalog, mockComments, mockUsers } from '../data/mockData';
 import { fetchWithAuth } from '../utils/api';
 
@@ -73,6 +73,7 @@ const CourseCatalog = ({ user }) => {
     const [sortField, setSortField] = useState('rating');
     const [sortOrder, setSortOrder] = useState('desc');
     const [expanded, setExpanded] = useState(null);
+    const [showExtendedStats, setShowExtendedStats] = useState(false);
     const [wishlist, setWishlist] = useState(new Set());
     const [loadingWishlist, setLoadingWishlist] = useState(new Set());
     
@@ -470,7 +471,10 @@ const CourseCatalog = ({ user }) => {
                                 <div
                                     key={course.id}
                                     className={`catalog-card glass-panel ${isExpanded ? 'expanded' : ''}`}
-                                    onClick={() => setExpanded(isExpanded ? null : course.id)}
+                                    onClick={() => {
+                                        setExpanded(isExpanded ? null : course.id);
+                                        setShowExtendedStats(false);
+                                    }}
                                 >
                                     <div className="catalog-card-main">
                                         <div className="catalog-card-left">
@@ -518,22 +522,170 @@ const CourseCatalog = ({ user }) => {
 
                                     {isExpanded && (
                                         <div className="catalog-card-details">
-                                            <p className="catalog-description">{course.description}</p>
+                                            {/* Top Header Row of Details */}
+                                            <div className="expanded-header">
+                                                <span className={`teaching-format-badge ${course.teachingFormat === 'Regular' ? 'regular' : 'flipped'}`}>
+                                                    {course.teachingFormat === 'Regular' ? 'Класичний формат' : 'Flipped Classroom'}
+                                                </span>
+                                                <span className="max-points-badge">
+                                                    Максимум: <span style={{fontWeight: 'bold', color: 'var(--text-main)'}}>{course.maxPoints}</span> балів
+                                                </span>
+                                            </div>
 
-                                            <div className="catalog-details-grid">
-                                                <div className="detail-item">
-                                                    <Clock size={14} />
-                                                    <span>{course.schedule}</span>
-                                                </div>
-                                                <div className="detail-item">
-                                                    <BookOpen size={14} />
-                                                    <span>{course.department}</span>
-                                                </div>
-                                                {course.prerequisites.length > 0 && (
-                                                    <div className="detail-item">
-                                                        <Lock size={14} />
-                                                        <span>Пререквізити: {course.prerequisites.join(', ')}</span>
+                                            <div className="expanded-dashboard-v2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
+                                                
+                                                {/* Zone 1: Instructor & Syllabus Download */}
+                                                <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', gridColumn: '1 / -1', gap: '1rem', alignItems: 'center' }}>
+                                                    <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" style={{ width: '60px', height: '60px', borderRadius: '30px' }} />
+                                                    <div style={{ flex: 1 }}>
+                                                        <h4 style={{ margin: 0, fontWeight: 600, fontSize: '1.1rem' }}>{course.instructor}</h4>
+                                                        <span className="text-muted block text-sm">{course.instructorTitle === 'professor' ? 'Професор' : 'Викладач'}</span>
                                                     </div>
+                                                    <a href={course.syllabusUrl} target="_blank" rel="noreferrer" className="btn-secondary syllabus-btn" style={{ padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                                                        <FileText size={16} /> Syllabus
+                                                    </a>
+                                                </div>
+
+                                                {/* Zone 2: Short Syllabus (Description) */}
+                                                <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', gridColumn: '1 / -1' }}>
+                                                    <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Короткий опис дисципліни</h4>
+                                                    <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0 }}>{course.description}</p>
+                                                </div>
+
+                                                {/* Zone 3: Timeline */}
+                                                <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', gridColumn: '1 / -1' }}>
+                                                    <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Розклад (Семестр)</h4>
+                                                    <div className="timeline-container">
+                                                        <div className="timeline-labels text-xs" style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-muted)', fontSize: '0.7rem', padding: '0 4px' }}>
+                                                            <span>1-й тижд.</span>
+                                                            <span>{course.termLength}-й тижд.</span>
+                                                        </div>
+                                                        <div className="timeline-track" style={{ 
+                                                            position: 'relative', height: '14px', 
+                                                            background: `repeating-linear-gradient(to right, rgba(255,255,255,0.05), rgba(255,255,255,0.05) calc(100% / ${course.termLength} - 1px), rgba(255,255,255,0.2) calc(100% / ${course.termLength} - 1px), rgba(255,255,255,0.2) calc(100% / ${course.termLength}))`, 
+                                                            borderRadius: '4px', marginTop: '4px', border: '1px solid rgba(255,255,255,0.1)', overflow: 'hidden' 
+                                                        }}>
+                                                            <div className="timeline-fill" style={{ 
+                                                                position: 'absolute', height: '100%', 
+                                                                left: `${((course.startWeek - 1) / course.termLength) * 100}%`, width: `${(course.duration / course.termLength) * 100}%`,
+                                                                background: 'rgba(59, 130, 246, 0.45)', borderLeft: '2px solid #3b82f6', borderRight: '2px solid #3b82f6',
+                                                                boxShadow: 'inset 0 0 10px rgba(59,130,246,0.2)'
+                                                            }}></div>
+                                                        </div>
+                                                        <div className="text-center text-xs mt-xs" style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                                                            <Clock size={12} /> Проходить: Тижні <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.startWeek} - {course.startWeek + course.duration - 1}</span>
+                                                            <span style={{ fontSize: '0.65rem', marginLeft: 'auto', opacity: 0.7 }}>({course.duration} тижнів)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <button 
+                                                    className="btn-secondary catalog-stats-toggle text-sm" 
+                                                    style={{ gridColumn: '1 / -1', padding: '0.75rem', marginTop: '0.5rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', cursor: 'pointer', color: 'var(--text-main)', transition: '0.2s all' }}
+                                                    onClick={(e) => { e.stopPropagation(); setShowExtendedStats(!showExtendedStats); }}
+                                                    onMouseOver={(e) => e.target.style.background = 'rgba(255,255,255,0.08)'}
+                                                    onMouseOut={(e) => e.target.style.background = 'rgba(255,255,255,0.05)'}
+                                                >
+                                                    {showExtendedStats ? 'Згорнути детальну статистику' : 'Розгорнути детальну статистику'}
+                                                </button>
+
+                                                {showExtendedStats && (
+                                                    <>
+                                                        {/* Zone 4: Average Grade */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column' }}>
+                                                            <h4 className="dashboard-heading">Середній бал</h4>
+                                                            <div className="stat-linear-container" style={{ marginTop: 'auto', marginBottom: 'auto', width: '100%' }}>
+                                                                <div className="linear-label" style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>
+                                                                    <span style={{fontWeight: 600, color: 'var(--text-main)'}}>{course.historicalAverage}</span>
+                                                                    <span className="text-muted text-sm ml-xs"> / {course.maxPoints}</span>
+                                                                </div>
+                                                                <div className="linear-progress-bg mt-xs">
+                                                                    <div className="linear-progress-fill" style={{ width: `${(course.historicalAverage / course.maxPoints) * 100}%` }}></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 5: % Закриття дисципліни */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                                                            <h4 className="dashboard-heading" style={{ alignSelf: 'flex-start', width: '100%' }}>% закриття дисципліни</h4>
+                                                            <div className="stat-ring-container" style={{ marginTop: '0.5rem' }}>
+                                                                <svg className="radial-progress" viewBox="0 0 36 36">
+                                                                    <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                    <path className="circle-fill" strokeDasharray={`${course.passRate60Plus}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                    <text x="18" y="20.35" className="percentage">{course.passRate60Plus}%</text>
+                                                                </svg>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 6: Practice vs Theory Line */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                                                            <h4 className="dashboard-heading">Теорія vs Практика</h4>
+                                                            <div style={{ marginTop: '1.5rem', position: 'relative', height: '14px', background: 'rgba(255,255,255,0.05)', borderRadius: '7px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                                                                <div style={{ position: 'absolute', top: '-6px', bottom: '-6px', width: '4px', background: '#a855f7', left: `calc(${course.practicePercentage}% - 2px)`, borderRadius: '2px', boxShadow: '0 0 10px #a855f7', zIndex: 2 }}></div>
+                                                                <div style={{ position: 'absolute', left: '50%', top: '0', bottom: '0', width: '2px', background: 'rgba(255,255,255,0.3)', zIndex: 1 }}></div>
+                                                            </div>
+                                                            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
+                                                                <span>Теорія: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{100 - course.practicePercentage}%</span></span>
+                                                                <span>Баланс</span>
+                                                                <span>Практика: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.practicePercentage}%</span></span>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 7: Grading Breakdown Donut Pie Chart */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                                            <h4 className="dashboard-heading" style={{ alignSelf: 'flex-start', width: '100%' }}>Розподіл оцінювання</h4>
+                                                            <div style={{ 
+                                                                position: 'relative', marginTop: '0.5rem', width: '80px', height: '80px', borderRadius: '50%', boxShadow: '0 0 15px rgba(0,0,0,0.2)',
+                                                                background: `conic-gradient(
+                                                                    #ef4444 0% ${course.gradingBreakdown?.exam || 40}%, 
+                                                                    #3b82f6 ${course.gradingBreakdown?.exam || 40}% ${(course.gradingBreakdown?.exam || 40) + (course.gradingBreakdown?.project || 30)}%, 
+                                                                    #10b981 ${(course.gradingBreakdown?.exam || 40) + (course.gradingBreakdown?.project || 30)}% 100%
+                                                                )` 
+                                                            }}>
+                                                                <div style={{ position: 'absolute', top: '25%', left: '25%', right: '25%', bottom: '25%', background: '#0f172a', borderRadius: '50%' }}></div>
+                                                            </div>
+                                                            <div className="text-xs" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1rem', width: '100%' }}>
+                                                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}><div style={{width: 10, height: 10, background: '#ef4444', borderRadius: '3px'}}></div> Іспит <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{course.gradingBreakdown?.exam || 40}%</span></span>
+                                                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}><div style={{width: 10, height: 10, background: '#3b82f6', borderRadius: '3px'}}></div> Проєкт <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{course.gradingBreakdown?.project || 30}%</span></span>
+                                                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}><div style={{width: 10, height: 10, background: '#10b981', borderRadius: '3px'}}></div> Домашні завдання <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{course.gradingBreakdown?.homework || 30}%</span></span>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 8: Enrollment Type (Mandatory vs Elective) Donut Pie Chart */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                                            <h4 className="dashboard-heading" style={{ alignSelf: 'flex-start', width: '100%' }}>Для кого курс</h4>
+                                                            <div style={{ position: 'relative', marginTop: '0.5rem', width: '80px', height: '80px', borderRadius: '50%', background: `conic-gradient(#ef4444 0% ${course.enrollmentType?.mandatory || 50}%, #3b82f6 ${course.enrollmentType?.mandatory || 50}% 100%)`, boxShadow: '0 0 15px rgba(0,0,0,0.2)' }}>
+                                                                <div style={{ position: 'absolute', top: '25%', left: '25%', right: '25%', bottom: '25%', background: '#0f172a', borderRadius: '50%' }}></div>
+                                                            </div>
+                                                            <div className="text-xs" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1rem', width: '100%' }}>
+                                                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}><div style={{width: 10, height: 10, background: '#ef4444', borderRadius: '3px'}}></div> Студенти, для яких обов'язковий: <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{course.enrollmentType?.mandatory || 50}%</span></span>
+                                                                <span style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}><div style={{width: 10, height: 10, background: '#3b82f6', borderRadius: '3px'}}></div> Студенти, які обрали: <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{course.enrollmentType?.elective || 50}%</span></span>
+                                                            </div>
+                                                        </div>
+
+                                                        {/* Zone 9: Faculties Pie Chart Donut Pie Chart */}
+                                                        <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                                            <h4 className="dashboard-heading" style={{ alignSelf: 'flex-start', width: '100%' }}>Факультети-слухачі</h4>
+                                                            <div style={{ 
+                                                                position: 'relative', marginTop: '0.5rem', width: '80px', height: '80px', borderRadius: '50%', boxShadow: '0 0 15px rgba(0,0,0,0.2)',
+                                                                background: `conic-gradient(
+                                                                    #10b981 0% ${course.facultySplit?.[0].value || 33}%, 
+                                                                    #f59e0b ${course.facultySplit?.[0].value || 33}% ${(course.facultySplit?.[0].value || 33) + (course.facultySplit?.[1].value || 33)}%, 
+                                                                    #a855f7 ${(course.facultySplit?.[0].value || 33) + (course.facultySplit?.[1].value || 33)}% 100%
+                                                                )` 
+                                                            }}>
+                                                                <div style={{ position: 'absolute', top: '25%', left: '25%', right: '25%', bottom: '25%', background: '#0f172a', borderRadius: '50%' }}></div>
+                                                            </div>
+                                                            <div className="text-xs" style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem', marginTop: '1rem', width: '100%' }}>
+                                                                {course.facultySplit?.map((f, i) => (
+                                                                    <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--text-muted)' }}>
+                                                                        <div style={{width: 10, height: 10, background: ['#10b981', '#f59e0b', '#a855f7'][i], borderRadius: '3px'}}></div> 
+                                                                        {f.name}: <span style={{color: 'var(--text-main)', marginLeft: 'auto', fontWeight: 600}}>{f.value}%</span>
+                                                                    </span>
+                                                                )) || null}
+                                                            </div>
+                                                        </div>
+                                                    </>
                                                 )}
                                             </div>
 
