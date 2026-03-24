@@ -79,14 +79,10 @@ const CourseCatalog = ({ user, navigate }) => {
     const [wishlist, setWishlist] = useState(new Set());
     const [loadingWishlist, setLoadingWishlist] = useState(new Set());
     
-    const [comments, setComments] = useState(() => {
-        const initial = {};
-        for (const [courseId, cmts] of Object.entries(mockComments)) {
-            initial[courseId] = [...cmts];
-        }
-        return initial;
-    });
-    const [commentInputs, setCommentInputs] = useState({});
+    // Per-review comments state
+    const [reviewComments, setReviewComments] = useState({}); // { reviewId: [comment] }
+    const [reviewCommentInputs, setReviewCommentInputs] = useState({}); // { reviewId: '' }
+    const [expandedReviewComments, setExpandedReviewComments] = useState({}); // { reviewId: bool }
 
 
     // Reviews state
@@ -209,24 +205,22 @@ const CourseCatalog = ({ user, navigate }) => {
         }
     };
 
-    const handleCommentSubmit = (e, courseId) => {
+    const handleReviewCommentSubmit = (e, reviewId) => {
         e.preventDefault();
         e.stopPropagation();
-        const text = (commentInputs[courseId] || '').trim();
+        const text = (reviewCommentInputs[reviewId] || '').trim();
         if (!text) return;
-
         const newComment = {
             id: Date.now(),
-            userId: 101, 
+            userId: user?.id ?? 1,
             text,
             timestamp: new Date().toISOString(),
         };
-
-        setComments(prev => ({
+        setReviewComments(prev => ({
             ...prev,
-            [courseId]: [...(prev[courseId] || []), newComment],
+            [reviewId]: [...(prev[reviewId] || []), newComment],
         }));
-        setCommentInputs(prev => ({ ...prev, [courseId]: '' }));
+        setReviewCommentInputs(prev => ({ ...prev, [reviewId]: '' }));
     };
 
     const handleProfileClick = (e, userId) => {
@@ -560,7 +554,6 @@ const CourseCatalog = ({ user, navigate }) => {
                             const isWishlisted = wishlist.has(course.id);
                             const isLoading = loadingWishlist.has(course.id);
                             const isElective = course.category === 'elective';
-                            const courseComments = comments[course.id] || [];
                             const courseReviews = reviews[course.id] || [];
                             const aiState = aiSummaryState[course.id] || {};
                             const isReviewsExpanded = reviewsExpanded[course.id] ?? false;
@@ -619,12 +612,6 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     <span className="catalog-meta-item">
                                                         <Users size={14} />
                                                         {course.spots.taken} {course.language === 'Англійська' ? 'students' : 'учнів'}
-                                                    </span>
-                                                )}
-                                                {isElective && courseComments.length > 0 && (
-                                                    <span className="catalog-meta-item comment-count-badge">
-                                                        <MessageCircle size={14} />
-                                                        {courseComments.length}
                                                     </span>
                                                 )}
                                             </div>
@@ -1066,11 +1053,44 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     {/* Individual Reviews */}
                                                     {isReviewsExpanded && (
                                                         <div className="reviews-list">
-                                                            {courseReviews.map(review => {
+                                                            {(() => {
+                                                                // Compute per-course review labels
+                                                                const labelMap = {};
+                                                                if (courseReviews.length > 1) {
+                                                                    const maxLikes = Math.max(...courseReviews.map(r => r.likes));
+                                                                    const maxVotes = Math.max(...courseReviews.map(r => r.likes + (r.dislikes || 0)));
+                                                                    const maxLen   = Math.max(...courseReviews.map(r => r.questions.reduce((s, q) => s + q.a.length, 0)));
+                                                                    const newest   = courseReviews.reduce((a, b) => new Date(a.date) > new Date(b.date) ? a : b);
+                                                                    courseReviews.forEach(r => {
+                                                                        const labels = [];
+                                                                        const totalAns = r.questions.reduce((s, q) => s + q.a.length, 0);
+                                                                        const totalVotes = r.likes + (r.dislikes || 0);
+                                                                        if (r.likes === maxLikes && maxLikes > 0)
+                                                                            labels.push({ text: 'Найкорисніший', icon: '🔥', cls: 'label-liked' });
+                                                                        if (totalVotes === maxVotes && maxVotes > 0 && r.likes !== maxLikes)
+                                                                            labels.push({ text: 'Найпопулярніший', icon: '👁', cls: 'label-popular' });
+                                                                        if (totalAns === maxLen && maxLen > 100)
+                                                                            labels.push({ text: 'Найдетальніший', icon: '📝', cls: 'label-detailed' });
+                                                                        if (r.id === newest.id)
+                                                                            labels.push({ text: 'Найновіший', icon: '🕐', cls: 'label-new' });
+                                                                        if (labels.length) labelMap[r.id] = labels;
+                                                                    });
+                                                                }
+                                                                return courseReviews.map(review => {
                                                                 const author = review.isAnonymous ? null : getUserById(review.authorId);
                                                                 const myVote = reviewVotes[review.id] || null;
+                                                                const reviewLabels = labelMap[review.id] || [];
                                                                 return (
                                                                     <div key={review.id} className="review-card">
+                                                                        {reviewLabels.length > 0 && (
+                                                                            <div className="review-labels-row">
+                                                                                {reviewLabels.map((lbl, li) => (
+                                                                                    <span key={li} className={`review-label ${lbl.cls}`}>
+                                                                                        {lbl.icon} {lbl.text}
+                                                                                    </span>
+                                                                                ))}
+                                                                            </div>
+                                                                        )}
                                                                         {/* Review Header: author + date */}
                                                                         <div className="review-card-header">
                                                                             <div className="review-author">
@@ -1152,85 +1172,74 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                 {review.dislikes}
                                                                             </button>
                                                                         </div>
-                                                                    </div>
-                                                                );
-                                                            })}
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            )}
-
-                                            {isElective && (
-                                                <div className="course-comments-section" onClick={(e) => e.stopPropagation()}>
-                                                    <div className="comments-header">
-                                                        <MessageCircle size={16} />
-                                                        <span>Коментарі студентів</span>
-                                                        <span className="comments-count">{courseComments.length}</span>
-                                                    </div>
-
-                                                    {courseComments.length > 0 && (
-                                                        <div className="comments-list">
-                                                            {courseComments.map(comment => {
-                                                                const commenter = getUserById(comment.userId);
-                                                                if (!commenter) return null;
-                                                                return (
-                                                                    <div key={comment.id} className="comment-item">
-                                                                        <div
-                                                                            className="comment-avatar"
-                                                                            style={{ background: commenter.avatarColor }}
-                                                                            onClick={(e) => handleProfileClick(e, commenter.id)}
-                                                                        >
-                                                                            <User size={14} />
-                                                                        </div>
-                                                                        <div className="comment-body">
-                                                                            <div className="comment-top">
-                                                                                <span
-                                                                                    className="comment-nickname"
-                                                                                    onClick={(e) => handleProfileClick(e, commenter.id)}
+                                                                            {/* Per-Review Comments */}
+                                                                            <div className="review-comments-section" onClick={(e) => e.stopPropagation()}>
+                                                                                <button
+                                                                                    className="review-comments-toggle"
+                                                                                    onClick={(e) => {
+                                                                                        e.stopPropagation();
+                                                                                        setExpandedReviewComments(prev => ({ ...prev, [review.id]: !prev[review.id] }));
+                                                                                    }}
                                                                                 >
-                                                                                    @{commenter.nickname}
-                                                                                </span>
-                                                                                <span className="comment-time">
-                                                                                    {formatTimeAgo(comment.timestamp)}
-                                                                                </span>
+                                                                                    <MessageCircle size={12} />
+                                                                                    {(reviewComments[review.id] || []).length > 0
+                                                                                        ? `${(reviewComments[review.id] || []).length} коментар(і)`
+                                                                                        : 'Коментувати'}
+                                                                                </button>
+                                                                                {expandedReviewComments[review.id] && (
+                                                                                    <div className="review-comments-list">
+                                                                                        {(reviewComments[review.id] || []).map(cmt => {
+                                                                                            const cmtAuthor = getUserById(cmt.userId);
+                                                                                            return (
+                                                                                                <div key={cmt.id} className="review-comment-item">
+                                                                                                    <div className="review-comment-avatar" style={{ background: cmtAuthor?.avatarColor || '#6366f1' }}>
+                                                                                                        <User size={11} />
+                                                                                                    </div>
+                                                                                                    <div className="review-comment-body">
+                                                                                                        <span className="review-comment-nick">@{cmtAuthor?.nickname ?? 'Анонім'}</span>
+                                                                                                        <span className="review-comment-time">{formatTimeAgo(cmt.timestamp)}</span>
+                                                                                                        <p className="review-comment-text">{cmt.text}</p>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            );
+                                                                                        })}
+                                                                                        <form
+                                                                                            className="review-comment-form"
+                                                                                            onSubmit={(e) => handleReviewCommentSubmit(e, review.id)}
+                                                                                        >
+                                                                                            <div className="review-comment-input-avatar" style={{ background: user ? '#2563EB' : '#4b5563' }}>
+                                                                                                <User size={11} />
+                                                                                            </div>
+                                                                                            <input
+                                                                                                type="text"
+                                                                                                className="review-comment-input"
+                                                                                                placeholder={user ? "Залишити коментар..." : "Увійдіть, щоб коментувати"}
+                                                                                                disabled={!user}
+                                                                                                value={reviewCommentInputs[review.id] || ''}
+                                                                                                onChange={(e) => setReviewCommentInputs(prev => ({ ...prev, [review.id]: e.target.value }))}
+                                                                                                onClick={(e) => e.stopPropagation()}
+                                                                                            />
+                                                                                            <button
+                                                                                                type="submit"
+                                                                                                className="review-comment-send-btn"
+                                                                                                disabled={!user || !(reviewCommentInputs[review.id] || '').trim()}
+                                                                                                onClick={(e) => e.stopPropagation()}
+                                                                                            >
+                                                                                                <Send size={13} />
+                                                                                            </button>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                )}
                                                                             </div>
-                                                                            <p className="comment-text">{comment.text}</p>
-                                                                        </div>
                                                                     </div>
                                                                 );
-                                                            })}
+                                                                                                                            });
+                                                                                                                        })()}
                                                         </div>
                                                     )}
-
-                                                    <form
-                                                        className="comment-input-row"
-                                                        onSubmit={(e) => handleCommentSubmit(e, course.id)}
-                                                    >
-                                                        <div className="comment-input-avatar" style={{ background: '#2563EB' }}>
-                                                            <User size={12} />
-                                                        </div>
-                                                        <input
-                                                            type="text"
-                                                            className="comment-input"
-                                                            placeholder="Додати коментар..."
-                                                            value={commentInputs[course.id] || ''}
-                                                            onChange={(e) => setCommentInputs(prev => ({
-                                                                ...prev,
-                                                                [course.id]: e.target.value,
-                                                            }))}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                        />
-                                                        <button
-                                                            type="submit"
-                                                            className="comment-send-btn"
-                                                            disabled={!(commentInputs[course.id] || '').trim()}
-                                                            onClick={(e) => e.stopPropagation()}
-                                                        >
-                                                            <Send size={16} />
-                                                        </button>
-                                                    </form>
                                                 </div>
                                             )}
+
                                         </div>
                                     )}
                                 </div>
