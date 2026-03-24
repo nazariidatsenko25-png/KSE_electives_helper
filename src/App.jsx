@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
-import { Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog, Profile } from './views';
+import { Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog, Profile, StudentProfile, InstructorProfile } from './views';
 import { mockUser } from './data/mockData';
 
 function App() {
   const [currentView, setCurrentView] = useState('dashboard');
+  const [viewParams, setViewParams] = useState({});
   const [user, setUser] = useState(null);
 
   const handleMockLogin = () => {
@@ -14,6 +15,11 @@ function App() {
 
   const handleLogout = () => {
     setUser(null);
+  };
+
+  const navigate = (view, params = {}) => {
+    setViewParams(params);
+    setCurrentView(view);
   };
 
   const renderView = () => {
@@ -25,9 +31,13 @@ function App() {
       case 'evaluations':
         return <CourseEvaluations user={user} />;
       case 'catalog':
-        return <CourseCatalog user={user} />;
+        return <CourseCatalog user={user} navigate={navigate} />;
       case 'profile':
         return <Profile user={user} />;
+      case 'student-profile':
+        return <StudentProfile userId={viewParams.userId} onBack={() => navigate('catalog')} />;
+      case 'instructor-profile':
+        return <InstructorProfile courseId={viewParams.courseId} onBack={() => navigate('catalog')} />;
       default:
         return <Dashboard user={user} setCurrentView={setCurrentView} />;
     }

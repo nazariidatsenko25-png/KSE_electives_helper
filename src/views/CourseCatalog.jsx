@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin } from 'lucide-react';
-import { mockCatalog, mockComments, mockUsers } from '../data/mockData';
+import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin, ThumbsUp, ThumbsDown, Sparkles, ChevronUp, Award, BarChart2, Pin, PinOff } from 'lucide-react';
+import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments } from '../data/mockData';
 import { fetchWithAuth } from '../utils/api';
 
 const MultiRangeSlider = ({ min, max, value, onChange }) => {
@@ -61,9 +61,10 @@ const defaultFilters = {
     duration: [minDuration, maxDuration]
 };
 
-const CourseCatalog = ({ user }) => {
+const CourseCatalog = ({ user, navigate }) => {
     const [search, setSearch] = useState('');
     const [filterType, setFilterType] = useState('all');
+    const [pinActive, setPinActive] = useState(true);
     
     // Abstracting filters into active and pending states
     const [activeFilters, setActiveFilters] = useState(defaultFilters);
@@ -86,7 +87,19 @@ const CourseCatalog = ({ user }) => {
         return initial;
     });
     const [commentInputs, setCommentInputs] = useState({});
-    const [profilePopup, setProfilePopup] = useState(null); 
+
+
+    // Reviews state
+    const [reviews, setReviews] = useState(() => {
+        const init = {};
+        for (const [courseId, revs] of Object.entries(mockReviews)) {
+            init[courseId] = revs.map(r => ({ ...r }));
+        }
+        return init;
+    });
+    const [reviewVotes, setReviewVotes] = useState({}); // { reviewId: 'like' | 'dislike' | null }
+    const [aiSummaryState, setAiSummaryState] = useState({}); // { courseId: { loading, summary } }
+    const [reviewsExpanded, setReviewsExpanded] = useState({}); 
     const popupRef = useRef(null);
     const sidebarRef = useRef(null);
 
@@ -218,7 +231,60 @@ const CourseCatalog = ({ user }) => {
 
     const handleProfileClick = (e, userId) => {
         e.stopPropagation();
-        setProfilePopup(profilePopup === userId ? null : userId);
+        if (navigate) navigate('student-profile', { userId });
+    };
+
+    const handleInstructorClick = (e, course) => {
+        e.stopPropagation();
+        if (navigate) navigate('instructor-profile', { courseId: course.id });
+    };
+
+    const handleReviewVote = (e, reviewId, vote) => {
+        e.stopPropagation();
+        const current = reviewVotes[reviewId];
+        const next = current === vote ? null : vote;
+        setReviewVotes(prev => ({ ...prev, [reviewId]: next }));
+        setReviews(prev => {
+            const updated = {};
+            for (const [cid, revList] of Object.entries(prev)) {
+                updated[cid] = revList.map(r => {
+                    if (r.id !== reviewId) return r;
+                    let likes = r.likes;
+                    let dislikes = r.dislikes;
+                    if (current === 'like') likes--;
+                    else if (current === 'dislike') dislikes--;
+                    if (next === 'like') likes++;
+                    else if (next === 'dislike') dislikes++;
+                    return { ...r, likes, dislikes };
+                });
+            }
+            return updated;
+        });
+    };
+
+    const handleAiSummarize = async (e, courseId) => {
+        e.stopPropagation();
+        const courseRevs = reviews[courseId] || [];
+        if (courseRevs.length === 0) return;
+        setAiSummaryState(prev => ({ ...prev, [courseId]: { loading: true, summary: null } }));
+        // Collect all questions (use first review as template)
+        const questions = courseRevs[0]?.questions.map(q => q.q) || [];
+        // Build a simulated AI summary by aggregating answers
+        await new Promise(r => setTimeout(r, 1200));
+        const summaryByQuestion = questions.map((question, qi) => {
+            const answers = courseRevs.map(r => r.questions[qi]?.a).filter(Boolean);
+            // Combine answers into a coherent summary sentence
+            const combined = answers.length === 1
+                ? answers[0]
+                : `${answers[0]} Інші студенти також відзначають: ${answers.slice(1).join(' ')}` ;
+            return { q: question, a: combined };
+        });
+        setAiSummaryState(prev => ({ ...prev, [courseId]: { loading: false, summary: summaryByQuestion } }));
+    };
+
+    const formatReviewDate = (iso) => {
+        const d = new Date(iso);
+        return d.toLocaleDateString('uk-UA', { day: '2-digit', month: 'short', year: 'numeric' });
     };
 
     // Filter Handlers
@@ -300,50 +366,9 @@ const CourseCatalog = ({ user }) => {
         return 0;
     });
 
-    const profileUser = profilePopup ? getUserById(profilePopup) : null;
 
     return (
         <div className="catalog-view animate-in">
-            {/* Profile Popup Modal */}
-            {profileUser && (
-                <div className="profile-popup-overlay" onClick={() => setProfilePopup(null)}>
-                    <div
-                        className="profile-popup glass-panel"
-                        ref={popupRef}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <button className="profile-popup-close" onClick={() => setProfilePopup(null)}>
-                            <X size={18} />
-                        </button>
-                        <div className="profile-popup-header">
-                            <div
-                                className="profile-popup-avatar"
-                                style={{ background: profileUser.avatarColor }}
-                            >
-                                <User size={28} />
-                            </div>
-                            <div className="profile-popup-name">
-                                <h3>{profileUser.first_name} {profileUser.last_name}</h3>
-                                <span className="profile-popup-nickname">@{profileUser.nickname}</span>
-                            </div>
-                        </div>
-                        <div className="profile-popup-details">
-                            <div className="profile-popup-detail">
-                                <GraduationCap size={15} />
-                                <span>{profileUser.major}</span>
-                            </div>
-                            <div className="profile-popup-detail">
-                                <Calendar size={15} />
-                                <span>{profileUser.current_year}-й курс</span>
-                            </div>
-                            <div className="profile-popup-detail">
-                                <Mail size={15} />
-                                <span>{profileUser.nickname}@kse.org.ua</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
 
             <div className="catalog-header">
                 <div>
@@ -507,12 +532,28 @@ const CourseCatalog = ({ user }) => {
                                 >
                                     {sortOrder === 'desc' ? <ArrowDown size={16} /> : <ArrowUp size={16} />}
                                 </button>
+                                <button
+                                    className={`dept-select glass-panel sort-order-btn pin-toggle-btn ${pinActive ? 'pin-active' : ''}`}
+                                    onClick={() => setPinActive(prev => !prev)}
+                                    title={pinActive ? 'Приховати активні курси' : 'Закріпити активні курси вгорі'}
+                                >
+                                    {pinActive ? <Pin size={16} /> : <PinOff size={16} />}
+                                </button>
                             </div>
                         </div>
                     </div>
 
                     <div className="catalog-grid">
-                        {sorted.map(course => {
+                        {(() => {
+                            // Active courses — only available when logged in
+                            const activeCourseIds = user
+                                ? new Set(mockEnrollments[user.id] || [])
+                                : new Set();
+
+                            const pinnedCourses = (pinActive && user) ? sorted.filter(c => activeCourseIds.has(c.id)) : [];
+                            const restCourses = (pinActive && user) ? sorted.filter(c => !activeCourseIds.has(c.id)) : sorted;
+
+                            const renderCard = (course, isActive = false) => {
                             const spotsLeft = course.spots.total - course.spots.taken;
                             const isFull = spotsLeft <= 0;
                             const isExpanded = expanded === course.id;
@@ -520,11 +561,14 @@ const CourseCatalog = ({ user }) => {
                             const isLoading = loadingWishlist.has(course.id);
                             const isElective = course.category === 'elective';
                             const courseComments = comments[course.id] || [];
+                            const courseReviews = reviews[course.id] || [];
+                            const aiState = aiSummaryState[course.id] || {};
+                            const isReviewsExpanded = reviewsExpanded[course.id] ?? false;
 
                             return (
                                 <div
                                     key={course.id}
-                                    className={`catalog-card glass-panel ${isExpanded ? 'expanded' : ''}`}
+                                    className={`catalog-card glass-panel ${isExpanded ? 'expanded' : ''} ${isActive ? 'active-course' : ''}`}
                                     onClick={() => {
                                         setExpanded(isExpanded ? null : course.id);
                                         setShowExtendedStats(false);
@@ -604,9 +648,9 @@ const CourseCatalog = ({ user }) => {
                                                 
                                                 {/* Zone 1: Instructor & Syllabus Download */}
                                                 <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', gridColumn: '1 / -1', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
-                                                    <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" style={{ width: '64px', height: '64px', borderRadius: '32px', objectFit: 'cover' }} />
+                                                    <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" onClick={(e) => handleInstructorClick(e, course)} style={{ width: '64px', height: '64px', borderRadius: '32px', objectFit: 'cover', cursor: 'pointer', transition: 'opacity 0.15s', }} onMouseEnter={e => e.target.style.opacity='0.8'} onMouseLeave={e => e.target.style.opacity='1'} />
                                                     <div style={{ flex: 1, minWidth: '200px' }}>
-                                                        <h4 style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-main)' }}>{course.instructor}</h4>
+                                                        <h4 onClick={(e) => handleInstructorClick(e, course)} style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-main)', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.15s' }} onMouseEnter={e => e.target.style.textDecorationColor='currentColor'} onMouseLeave={e => e.target.style.textDecorationColor='transparent'}>{course.instructor}</h4>
                                                         <span className="text-muted block text-sm" style={{ marginBottom: '0.4rem', color: 'var(--color-accent)' }}>
                                                             {course.instructorTitle === 'professor' ? 'Професор' : course.instructorTitle === 'expert' ? 'Запрошений експерт' : 'Викладач'}
                                                         </span>
@@ -968,6 +1012,154 @@ const CourseCatalog = ({ user }) => {
                                                 )}
                                             </button>
 
+                                            {/* ===== REVIEWS SECTION ===== */}
+                                            {courseReviews.length > 0 && (
+                                                <div className="course-reviews-section" onClick={(e) => e.stopPropagation()}>
+                                                    {/* Reviews Header */}
+                                                    <div className="reviews-header">
+                                                        <div className="reviews-header-left">
+                                                            <Star size={16} color="#F59E0B" fill="#F59E0B" />
+                                                            <span>Відгуки студентів</span>
+                                                            <span className="reviews-count-badge">{courseReviews.length}</span>
+                                                        </div>
+                                                        <div className="reviews-header-actions">
+                                                            <button
+                                                                className={`btn-ai-summarize ${aiState.loading ? 'loading' : ''}`}
+                                                                onClick={(e) => handleAiSummarize(e, course.id)}
+                                                                disabled={aiState.loading}
+                                                                title="Згенерувати спільне резюме всіх відгуків за допомогою ШІ"
+                                                            >
+                                                                {aiState.loading ? (
+                                                                    <><Loader2 size={13} className="spin" /> Аналіз...</>
+                                                                ) : (
+                                                                    <><Sparkles size={13} /> ШІ-резюме</>  
+                                                                )}
+                                                            </button>
+                                                            <button
+                                                                className="reviews-toggle-btn"
+                                                                onClick={(e) => { e.stopPropagation(); setReviewsExpanded(prev => ({ ...prev, [course.id]: !isReviewsExpanded })); }}
+                                                            >
+                                                                {isReviewsExpanded ? <ChevronUp size={14}/> : <ChevronDown size={14}/>}
+                                                                {isReviewsExpanded ? 'Згорнути' : 'Показати'}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* AI Summary Panel */}
+                                                    {aiState.summary && (
+                                                        <div className="ai-summary-panel">
+                                                            <div className="ai-summary-title">
+                                                                <Sparkles size={14} />
+                                                                ШІ-резюме всіх відгуків
+                                                            </div>
+                                                            <div className="ai-summary-questions">
+                                                                {aiState.summary.map((item, i) => (
+                                                                    <div key={i} className="ai-summary-qa">
+                                                                        <div className="ai-summary-q">{item.q}</div>
+                                                                        <div className="ai-summary-a">{item.a}</div>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Individual Reviews */}
+                                                    {isReviewsExpanded && (
+                                                        <div className="reviews-list">
+                                                            {courseReviews.map(review => {
+                                                                const author = review.isAnonymous ? null : getUserById(review.authorId);
+                                                                const myVote = reviewVotes[review.id] || null;
+                                                                return (
+                                                                    <div key={review.id} className="review-card">
+                                                                        {/* Review Header: author + date */}
+                                                                        <div className="review-card-header">
+                                                                            <div className="review-author">
+                                                                                {review.isAnonymous ? (
+                                                                                    <div className="review-avatar anon">
+                                                                                        <User size={13} />
+                                                                                    </div>
+                                                                                ) : (
+                                                                                    <div
+                                                                                        className="review-avatar"
+                                                                                        style={{ background: author?.avatarColor }}
+                                                                                        onClick={(e) => author && handleProfileClick(e, author.id)}
+                                                                                    >
+                                                                                        <User size={13} />
+                                                                                    </div>
+                                                                                )}
+                                                                                <div className="review-author-info">
+                                                                                    <span
+                                                                                        className={`review-author-name ${!review.isAnonymous ? 'clickable' : ''}`}
+                                                                                        onClick={(e) => !review.isAnonymous && author && handleProfileClick(e, author.id)}
+                                                                                    >
+                                                                                        {review.isAnonymous ? 'Анонімно' : `${author?.first_name} ${author?.last_name}`}
+                                                                                    </span>
+                                                                                    <div className="review-author-meta">
+                                                                                        {!review.isAnonymous && author && (
+                                                                                            <span className="review-meta-tag specialization">
+                                                                                                <GraduationCap size={10} />
+                                                                                                {author.major}
+                                                                                            </span>
+                                                                                        )}
+                                                                                        {review.grade && (
+                                                                                            <span className="review-meta-tag grade">
+                                                                                                <Award size={10} />
+                                                                                                {review.grade}
+                                                                                            </span>
+                                                                                        )}
+                                                                                        {review.gpa && (
+                                                                                            <span className="review-meta-tag gpa">
+                                                                                                <BarChart2 size={10} />
+                                                                                                GPA {Math.round(review.gpa)}
+                                                                                            </span>
+                                                                                        )}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <span className="review-date">
+                                                                                <Calendar size={11} />
+                                                                                {formatReviewDate(review.date)}
+                                                                            </span>
+                                                                        </div>
+
+                                                                        {/* Q&A */}
+                                                                        <div className="review-qa-list">
+                                                                            {review.questions.map((item, qi) => (
+                                                                                <div key={qi} className="review-qa-item">
+                                                                                    <div className="review-question">{item.q}</div>
+                                                                                    <div className="review-answer">{item.a}</div>
+                                                                                </div>
+                                                                            ))}
+                                                                        </div>
+
+                                                                        {/* Like / Dislike */}
+                                                                        <div className="review-vote-row">
+                                                                            <span className="review-helpful-label">Чи був корисним цей відгук?</span>
+                                                                            <button
+                                                                                className={`review-vote-btn like ${myVote === 'like' ? 'active' : ''}`}
+                                                                                onClick={(e) => handleReviewVote(e, review.id, 'like')}
+                                                                                title="Корисно"
+                                                                            >
+                                                                                <ThumbsUp size={13} />
+                                                                                {review.likes}
+                                                                            </button>
+                                                                            <button
+                                                                                className={`review-vote-btn dislike ${myVote === 'dislike' ? 'active' : ''}`}
+                                                                                onClick={(e) => handleReviewVote(e, review.id, 'dislike')}
+                                                                                title="Не корисно"
+                                                                            >
+                                                                                <ThumbsDown size={13} />
+                                                                                {review.dislikes}
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
+
                                             {isElective && (
                                                 <div className="course-comments-section" onClick={(e) => e.stopPropagation()}>
                                                     <div className="comments-header">
@@ -1043,14 +1235,36 @@ const CourseCatalog = ({ user }) => {
                                     )}
                                 </div>
                             );
-                        })}
+                            }; // end renderCard
 
-                        {sorted.length === 0 && (
-                            <div className="catalog-empty">
-                                <Search size={48} className="text-muted" />
-                                <p>Курсів за вашим запитом не знайдено</p>
-                            </div>
-                        )}
+                            return (
+                                <>
+                                    {pinActive && !user && (
+                                        <div className="active-courses-login-nudge">
+                                            Увійдіть в акаунт, щоб побачити ваші активні курси вгорі
+                                        </div>
+                                    )}
+                                    {pinnedCourses.length > 0 && (
+                                        <>
+                                            <div className="active-courses-header">
+                                                <Pin size={13} />
+                                                <span>Мої активні курси</span>
+                                                <span className="active-courses-count">{pinnedCourses.length}</span>
+                                            </div>
+                                            {pinnedCourses.map(c => renderCard(c, true))}
+                                            {restCourses.length > 0 && <div className="active-courses-divider" />}
+                                        </>
+                                    )}
+                                    {restCourses.map(c => renderCard(c, false))}
+                                    {sorted.length === 0 && (
+                                        <div className="catalog-empty">
+                                            <Search size={48} className="text-muted" />
+                                            <p>Курсів за вашим запитом не знайдено</p>
+                                        </div>
+                                    )}
+                                </>
+                            );
+                        })()}
                     </div>
                 </div>
             </div>
