@@ -8,6 +8,7 @@ function App() {
   const [currentView, setCurrentView] = useState('dashboard');
   const [viewParams, setViewParams] = useState({});
   const [user, setUser] = useState(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMockLogin = () => {
     setUser(mockUser);
@@ -45,9 +46,21 @@ function App() {
 
   return (
     <div className="app-container">
-      <Sidebar currentView={currentView} setCurrentView={setCurrentView} />
+      <Sidebar 
+        currentView={currentView} 
+        setCurrentView={setCurrentView} 
+        isMobileMenuOpen={isMobileMenuOpen}
+        setIsMobileMenuOpen={setIsMobileMenuOpen}
+      />
       <div className="main-content">
-        <Topbar user={user} onLogin={handleMockLogin} onLogout={handleLogout} currentView={currentView} setCurrentView={setCurrentView} />
+        <Topbar 
+          user={user} 
+          onLogin={handleMockLogin} 
+          onLogout={handleLogout} 
+          currentView={currentView} 
+          setCurrentView={setCurrentView} 
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
         <main className="view-container">
           {renderView()}
         </main>

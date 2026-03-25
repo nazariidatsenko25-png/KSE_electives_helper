@@ -348,6 +348,8 @@ const CourseCatalog = ({ user, navigate }) => {
         if (sortField === 'rating') { valA = a.rating; valB = b.rating; }
         else if (sortField === 'credits') { valA = a.credits; valB = b.credits; }
         else if (sortField === 'duration') { valA = a.duration; valB = b.duration; }
+        else if (sortField === 'passRate') { valA = a.passRate60Plus || 0; valB = b.passRate60Plus || 0; }
+        else if (sortField === 'avgScore') { valA = a.historicalAverage || 0; valB = b.historicalAverage || 0; }
         else if (sortField === 'term') { valA = getSemesterRank(a.semester); valB = getSemesterRank(b.semester); }
         else if (sortField === 'dept') {
             const cmp = a.department.localeCompare(b.department);
@@ -453,7 +455,7 @@ const CourseCatalog = ({ user, navigate }) => {
                     </aside>
                 )}
 
-                <div className="catalog-main" style={{ gridColumn: isSidebarOpen ? '2' : '1 / -1' }}>
+                <div className={`catalog-main ${isSidebarOpen ? 'sidebar-open' : ''}`}>
                     <div className="catalog-filters">
                         <div className="catalog-search glass-panel">
                             <Search size={18} className="text-muted" />
@@ -518,6 +520,8 @@ const CourseCatalog = ({ user, navigate }) => {
                                     <option value="credits">За кредитами</option>
                                     <option value="duration">За тривалістю</option>
                                     <option value="dept">За спеціалізацією</option>
+                                    <option value="passRate">За % завершення</option>
+                                    <option value="avgScore">За середнім балом</option>
                                 </select>
                                 <button 
                                     className="dept-select glass-panel sort-order-btn" 
@@ -569,7 +573,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                 >
                                     <div className="catalog-card-main">
                                         <div className="catalog-card-left">
-                                            <div className="catalog-card-top">
+                                            <div className="catalog-card-top" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
                                                 <span className={`course-type-badge ${course.category}`}>
                                                     {course.category === 'core' ? "Обов'язковий" : 'Вибірковий'}
                                                 </span>
@@ -577,6 +581,16 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 <span className={`instructor-title-badge ${course.instructorTitle}`}>
                                                     {course.instructorTitle === 'professor' ? '🎓 Професор' : course.instructorTitle === 'expert' ? '💼 Експерт-практик' : '📖 Викладач'}
                                                 </span>
+                                                {course.attendanceMandatory && (
+                                                    <span className="attendance-badge" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title="Обов'язкове відвідування">
+                                                        <Lock size={12} /> Обов'язково
+                                                    </span>
+                                                )}
+                                                {course.bonusPointsAvailable && (
+                                                    <span className="bonus-badge" style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#F59E0B', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title="Є можливість отримати додаткові бали">
+                                                        <Sparkles size={12} /> Бонуси
+                                                    </span>
+                                                )}
                                             </div>
                                             <h3 className="catalog-course-name">{course.name}</h3>
                                             <p className="catalog-instructor">{course.instructor}</p>
@@ -614,6 +628,14 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         {course.spots.taken} {course.language === 'Англійська' ? 'students' : 'учнів'}
                                                     </span>
                                                 )}
+                                                <span className="catalog-meta-item">
+                                                    <BarChart2 size={14} color="#6EE7B7" />
+                                                    {course.passRate60Plus || '--'}% закриття
+                                                </span>
+                                                <span className="catalog-meta-item">
+                                                    <Award size={14} color="#93C5FD" />
+                                                    Ср. бал: {course.historicalAverage || '--'}
+                                                </span>
                                             </div>
                                             <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
                                         </div>
@@ -1066,7 +1088,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                         const totalAns = r.questions.reduce((s, q) => s + q.a.length, 0);
                                                                         const totalVotes = r.likes + (r.dislikes || 0);
                                                                         if (r.likes === maxLikes && maxLikes > 0)
-                                                                            labels.push({ text: 'Найкорисніший', icon: '🔥', cls: 'label-liked' });
+                                                                            labels.push({ text: 'Найкорисніший відгук', icon: '🏆', cls: 'label-liked-gold' });
                                                                         if (totalVotes === maxVotes && maxVotes > 0 && r.likes !== maxLikes)
                                                                             labels.push({ text: 'Найпопулярніший', icon: '👁', cls: 'label-popular' });
                                                                         if (totalAns === maxLen && maxLen > 100)
@@ -1081,11 +1103,11 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                 const myVote = reviewVotes[review.id] || null;
                                                                 const reviewLabels = labelMap[review.id] || [];
                                                                 return (
-                                                                    <div key={review.id} className="review-card">
+                                                                    <div key={review.id} className="review-card" style={reviewLabels.some(lbl => lbl.cls === 'label-liked-gold') ? { border: '2px solid #F59E0B', background: 'rgba(245, 158, 11, 0.05)', boxShadow: '0 4px 15px rgba(245, 158, 11, 0.15)' } : {}}>
                                                                         {reviewLabels.length > 0 && (
-                                                                            <div className="review-labels-row">
+                                                                            <div className="review-labels-row" style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
                                                                                 {reviewLabels.map((lbl, li) => (
-                                                                                    <span key={li} className={`review-label ${lbl.cls}`}>
+                                                                                    <span key={li} className={`review-label ${lbl.cls}`} style={lbl.cls === 'label-liked-gold' ? { background: 'linear-gradient(135deg, #F59E0B, #D97706)', color: '#fff', padding: '4px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' } : undefined}>
                                                                                         {lbl.icon} {lbl.text}
                                                                                     </span>
                                                                                 ))}

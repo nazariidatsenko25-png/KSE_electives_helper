@@ -7,6 +7,8 @@ export const mockUser = {
     major: 'Програмна інженерія',
     current_year: 2,
     total_credits: 72,
+    creditsRequired: 240,
+    gpa: 88.5,
 };
 
 // Mock transcript data
@@ -148,6 +150,8 @@ export const mockCatalog = [
         },
         "historicalAverage": 87.3,
         "passRate60Plus": 93,
+        "attendanceMandatory": true,
+        "bonusPointsAvailable": true,
         "studentTypes": [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"

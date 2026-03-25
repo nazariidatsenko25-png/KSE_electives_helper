@@ -186,13 +186,21 @@ const Profile = ({ user, onUpdateUser }) => {
                     </div>
 
                     <div className="profile-hero-info">
-                        <h1 className="profile-full-name">
+                        <h1 className="profile-full-name" style={{ marginBottom: '0.75rem' }}>
                             {user.first_name} {user.last_name}
                         </h1>
-                        <span className="profile-major-badge">
-                            <GraduationCap size={16} />
-                            {user.major || 'Студент'}
-                        </span>
+                        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                            <span className="profile-major-badge">
+                                <GraduationCap size={16} />
+                                {user.major || 'Студент'}
+                            </span>
+                            {user.gpa && (
+                                <span className="profile-major-badge" style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981', borderColor: 'transparent' }}>
+                                    <Star size={16} />
+                                    GPA: {user.gpa}
+                                </span>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,9 +247,17 @@ const Profile = ({ user, onUpdateUser }) => {
                                 <div className="info-icon-wrap">
                                     <Award size={16} />
                                 </div>
-                                <div className="info-details">
-                                    <span className="info-label">Кредити</span>
-                                    <span className="info-value">{user.total_credits || 0} ECTS</span>
+                                <div className="info-details" style={{ width: '100%' }}>
+                                    <span className="info-label">Кредити (Отримано / Потрібно)</span>
+                                    <div className="info-value" style={{ marginTop: '0.25rem' }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                            <span style={{ fontWeight: 600, color: 'var(--text-main)' }}>{user.total_credits || 0}</span> 
+                                            <span style={{ color: 'var(--text-muted)' }}>/ {user.creditsRequired || 240} ECTS</span>
+                                        </div>
+                                        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', marginTop: '0.5rem', overflow: 'hidden' }}>
+                                            <div style={{ height: '100%', background: 'var(--color-primary)', width: `${Math.min(100, ((user.total_credits || 0) / (user.creditsRequired || 240)) * 100)}%`, borderRadius: '3px', transition: 'width 1s ease-out' }}></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

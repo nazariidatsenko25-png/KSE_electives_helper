@@ -9,7 +9,7 @@ import {
   Settings
 } from 'lucide-react';
 
-const Sidebar = ({ currentView, setCurrentView }) => {
+const Sidebar = ({ currentView, setCurrentView, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const menuItems = [
     { id: 'dashboard', label: 'Головна', icon: LayoutDashboard },
     { id: 'ai-advisor', label: 'ШІ-Асистент', icon: Sparkles },
@@ -23,9 +23,17 @@ const Sidebar = ({ currentView, setCurrentView }) => {
   ];
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <div className="logo-container">
+    <>
+      {/* Mobile Backdrop Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="sidebar-overlay" 
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+      )}
+      <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">
+          <div className="logo-container">
           <div className="logo-box">K</div>
           <span className="logo-text">KSE Hub</span>
         </div>
@@ -41,7 +49,10 @@ const Sidebar = ({ currentView, setCurrentView }) => {
               return (
                 <button
                   key={item.id}
-                  onClick={() => setCurrentView(item.id)}
+                  onClick={() => {
+                    setCurrentView(item.id);
+                    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+                  }}
                   className={`menu-item ${isActive ? 'active' : ''}`}
                 >
                   <Icon size={20} />
@@ -63,7 +74,10 @@ const Sidebar = ({ currentView, setCurrentView }) => {
               return (
                 <button
                   key={item.id}
-                  onClick={isEnabled ? () => setCurrentView(item.id) : undefined}
+                  onClick={isEnabled ? () => {
+                    setCurrentView(item.id);
+                    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+                  } : undefined}
                   className={`menu-item ${isActive ? 'active' : ''} ${!isEnabled ? 'disabled' : ''}`}
                   title={!isEnabled ? 'Незабаром' : ''}
                 >
@@ -84,6 +98,7 @@ const Sidebar = ({ currentView, setCurrentView }) => {
         </button>
       </div>
     </aside>
+    </>
   );
 };
 

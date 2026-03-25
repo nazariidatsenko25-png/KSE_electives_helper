@@ -1,0 +1,215 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026__15_21__Changes_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026__15_21__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026__15_21__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026__15_21__Changes_.xml	(revision 06cee9f92c2ae296646dbbd3a40642118698632d)
++++ /dev/null	(revision 06cee9f92c2ae296646dbbd3a40642118698632d)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]" date="1773321769935" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 12.03.2026, 15:21 [Changes]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_12_03_2026,_15_21_[Changes]/shelved.patch	(revision 06cee9f92c2ae296646dbbd3a40642118698632d)
++++ /dev/null	(revision 06cee9f92c2ae296646dbbd3a40642118698632d)
+@@ -1,147 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"bea33db1-4773-4b9f-a10b-6ac52951b0ee\" name=\"Changes\" comment=\"\" />\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"CopilotPersistence\">\n    <persistenceIdMap>\n      <entry key=\"_/Users/admin/Desktop/draft\" value=\"3AG2JeicFZv2KDcotl39cVS45K4\" />\n    </persistenceIdMap>\n  </component>\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;nazariidatsenko25-png&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\n  \"selectedUrlAndAccountId\": {\n    \"url\": \"https://github.com/nazariidatsenko25-png/draft.git\",\n    \"accountId\": \"11a323ad-f552-45dd-8d05-d392ee4e8eb2\"\n  }\n}]]></component>\n  <component name=\"MetaFilesCheckinStateConfiguration\" checkMetaFiles=\"true\" />\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 6\n}</component>\n  <component name=\"ProjectId\" id=\"3AG2JeicFZv2KDcotl39cVS45K4\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"ModuleVcsDetector.initialDetectionPerformed\": \"true\",\n    \"RunOnceActivity.OpenDjangoStructureViewOnStart\": \"true\",\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\n    \"RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252\": \"true\",\n    \"RunOnceActivity.git.unshallow\": \"true\",\n    \"RunOnceActivity.typescript.service.memoryLimit.init\": \"true\",\n    \"git-widget-placeholder\": \"main\",\n    \"last_opened_file_path\": \"/Users/admin/Desktop/draft\",\n    \"node.js.detected.package.eslint\": \"true\",\n    \"node.js.detected.package.tslint\": \"true\",\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\n    \"nodejs_package_manager_path\": \"npm\",\n    \"settings.editor.selected.configurable\": \"com.intellij.python.django.customization.DjangoModulesConfigurable\",\n    \"vue.rearranger.settings.migration\": \"true\"\n  }\n}]]></component>\n  <component name=\"RunManager\">\n    <configuration name=\"draft\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\n      <module name=\"draft\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\n      <option name=\"port\" value=\"8000\" />\n      <option name=\"host\" value=\"\" />\n      <option name=\"additionalOptions\" value=\"\" />\n      <option name=\"browserUrl\" value=\"\" />\n      <option name=\"runTestServer\" value=\"false\" />\n      <option name=\"runNoReload\" value=\"false\" />\n      <option name=\"useCustomRunCommand\" value=\"false\" />\n      <option name=\"customRunCommand\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178\" />\n        <option value=\"bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"bea33db1-4773-4b9f-a10b-6ac52951b0ee\" name=\"Changes\" comment=\"\" />\n      <created>1772146705002</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1772146705002</updated>\n      <workItem from=\"1772204518025\" duration=\"1054000\" />\n      <workItem from=\"1772633792834\" duration=\"963000\" />\n      <workItem from=\"1773230574201\" duration=\"1002000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"UnityCheckinConfiguration\" checkUnsavedScenes=\"true\" />\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.OperationCanceledException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.OperationCanceledException\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.Threading.Tasks.TaskCanceledException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.Threading.Tasks.TaskCanceledException\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.Threading.ThreadAbortException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.Threading.ThreadAbortException\" />\n          <option name=\"timeStamp\" value=\"3\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"github-copilot-workspace\">\n    <instructionFileLocations>\n      <option value=\".github/instructions\" />\n    </instructionFileLocations>\n    <promptFileLocations>\n      <option value=\".github/prompts\" />\n    </promptFileLocations>\n  </component>\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision 2fc9246e1e8c14ce775fab8565c3208d08c6fa10)
+-+++ b/.idea/workspace.xml	(date 1773321686530)
+-@@ -4,7 +4,9 @@
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="" />
+-+    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
+-+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-+    </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -19,6 +21,11 @@
+-     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+-   </component>
+-   <component name="Git.Settings">
+-+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-+      <map>
+-+        <entry key="$PROJECT_DIR$" value="main" />
+-+      </map>
+-+    </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-   </component>
+-   <component name="GitHubPullRequestSearchHistory">{
+-@@ -27,12 +34,12 @@
+-     &quot;assignee&quot;: &quot;nazariidatsenko25-png&quot;
+-   }
+- }</component>
+--  <component name="GithubPullRequestsUISettings"><![CDATA[{
+--  "selectedUrlAndAccountId": {
+--    "url": "https://github.com/nazariidatsenko25-png/draft.git",
+--    "accountId": "11a323ad-f552-45dd-8d05-d392ee4e8eb2"
+--  }
+--}]]></component>
+-+  <component name="GithubPullRequestsUISettings">{
+-+  &quot;selectedUrlAndAccountId&quot;: {
+-+    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/draft.git&quot;,
+-+    &quot;accountId&quot;: &quot;11a323ad-f552-45dd-8d05-d392ee4e8eb2&quot;
+-+  }
+-+}</component>
+-   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+-   <component name="ProblemsViewState">
+-     <option name="selectedTabId" value="CurrentFile" />
+-@@ -45,25 +52,25 @@
+-     <option name="hideEmptyMiddlePackages" value="true" />
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+--  <component name="PropertiesComponent"><![CDATA[{
+--  "keyToString": {
+--    "ModuleVcsDetector.initialDetectionPerformed": "true",
+--    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+--    "RunOnceActivity.ShowReadmeOnStart": "true",
+--    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+--    "RunOnceActivity.git.unshallow": "true",
+--    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+--    "git-widget-placeholder": "main",
+--    "last_opened_file_path": "/Users/admin/Desktop/draft",
+--    "node.js.detected.package.eslint": "true",
+--    "node.js.detected.package.tslint": "true",
+--    "node.js.selected.package.eslint": "(autodetect)",
+--    "node.js.selected.package.tslint": "(autodetect)",
+--    "nodejs_package_manager_path": "npm",
+--    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
+--    "vue.rearranger.settings.migration": "true"
+-+  <component name="PropertiesComponent">{
+-+  &quot;keyToString&quot;: {
+-+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+-+    &quot;git-widget-placeholder&quot;: &quot;draft&quot;,
+-+    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/draft&quot;,
+-+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
+-+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+-   }
+--}]]></component>
+-+}</component>
+-   <component name="RunManager">
+-     <configuration name="draft" type="Python.DjangoServer" factoryName="Django server">
+-       <module name="draft" />
+-@@ -108,7 +115,20 @@
+-       <workItem from="1772204518025" duration="1054000" />
+-       <workItem from="1772633792834" duration="963000" />
+-       <workItem from="1773230574201" duration="1002000" />
+-+      <workItem from="1773231843877" duration="55000" />
+-+      <workItem from="1773232028339" duration="268000" />
+-+      <workItem from="1773234547742" duration="829000" />
+-+      <workItem from="1773321202267" duration="484000" />
+-+    </task>
+-+    <task id="LOCAL-00001" summary="fix">
+-+      <option name="closed" value="true" />
+-+      <created>1773231892232</created>
+-+      <option name="number" value="00001" />
+-+      <option name="presentableId" value="LOCAL-00001" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1773231892232</updated>
+-     </task>
+-+    <option name="localTasksCounter" value="2" />
+-     <servers />
+-   </component>
+-   <component name="TypeScriptGeneratedFilesManager">
+-@@ -121,7 +141,19 @@
+-       <map>
+-         <entry key="MAIN">
+-           <value>
+--            <State />
+-+            <State>
+-+              <option name="FILTERS">
+-+                <map>
+-+                  <entry key="branch">
+-+                    <value>
+-+                      <list>
+-+                        <option value="origin/draft" />
+-+                      </list>
+-+                    </value>
+-+                  </entry>
+-+                </map>
+-+              </option>
+-+            </State>
+-           </value>
+-         </entry>
+-       </map>
+-@@ -129,6 +161,8 @@
+-   </component>
+-   <component name="VcsManagerConfiguration">
+-     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+-+    <MESSAGE value="fix" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+-   </component>
+-   <component name="XDebuggerManager">
+-     <breakpoint-manager>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"bea33db1-4773-4b9f-a10b-6ac52951b0ee\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/@google_genai.js\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/@google_genai.js.map\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-G3PMV62Z.js\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-G3PMV62Z.js.map\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-IWOBEF4E.js\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-IWOBEF4E.js.map\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-RY7GF66K.js\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/chunk-RY7GF66K.js.map\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/groq-sdk.js\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/groq-sdk.js.map\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/data/mockData.js\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/data/mockData.js\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/index.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/index.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/views/CourseCatalog.jsx\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/views/CourseCatalog.jsx\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"CopilotPersistence\">\n    <persistenceIdMap>\n      <entry key=\"_/Users/admin/Desktop/draft\" value=\"3AG2JeicFZv2KDcotl39cVS45K4\" />\n    </persistenceIdMap>\n  </component>\n  <component name=\"DjangoConsoleOptions\" custom-start-script=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\">\n    <option name=\"myCustomStartScript\" value=\"import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;nazariidatsenko25-png&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/draft&quot;,\n    &quot;accountId&quot;: &quot;2a39e0d1-9579-445b-bdda-2eccf39b6165&quot;\n  }\n}</component>\n  <component name=\"MetaFilesCheckinStateConfiguration\" checkMetaFiles=\"true\" />\n  <component name=\"ProblemsViewState\">\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 6\n}</component>\n  <component name=\"ProjectId\" id=\"3AG2JeicFZv2KDcotl39cVS45K4\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,\n    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;draft&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/draft&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"draft\" type=\"Python.DjangoServer\" factoryName=\"Django server\">\n      <module name=\"draft\" />\n      <option name=\"ENV_FILES\" value=\"\" />\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\n      <option name=\"PARENT_ENVS\" value=\"true\" />\n      <envs>\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\n      </envs>\n      <option name=\"SDK_HOME\" value=\"\" />\n      <option name=\"WORKING_DIRECTORY\" value=\"\" />\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\n      <option name=\"launchJavascriptDebuger\" value=\"false\" />\n      <option name=\"port\" value=\"8000\" />\n      <option name=\"host\" value=\"\" />\n      <option name=\"additionalOptions\" value=\"\" />\n      <option name=\"browserUrl\" value=\"\" />\n      <option name=\"runTestServer\" value=\"false\" />\n      <option name=\"runNoReload\" value=\"false\" />\n      <option name=\"useCustomRunCommand\" value=\"false\" />\n      <option name=\"customRunCommand\" value=\"\" />\n      <method v=\"2\" />\n    </configuration>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-PY-252.25557.178\" />\n        <option value=\"bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"bea33db1-4773-4b9f-a10b-6ac52951b0ee\" name=\"Changes\" comment=\"\" />\n      <created>1772146705002</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1772146705002</updated>\n      <workItem from=\"1772204518025\" duration=\"1054000\" />\n      <workItem from=\"1772633792834\" duration=\"963000\" />\n      <workItem from=\"1773230574201\" duration=\"1002000\" />\n      <workItem from=\"1773235052323\" duration=\"184000\" />\n      <workItem from=\"1773236538459\" duration=\"919000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"UnityCheckinConfiguration\" checkUnsavedScenes=\"true\" />\n  <component name=\"UnityProjectConfiguration\" hasMinimizedUI=\"false\" />\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State />\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"CLEAR_INITIAL_COMMIT_MESSAGE\" value=\"true\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.OperationCanceledException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.OperationCanceledException\" />\n          <option name=\"timeStamp\" value=\"1\" />\n        </breakpoint>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.Threading.Tasks.TaskCanceledException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.Threading.Tasks.TaskCanceledException\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n        <breakpoint enabled=\"true\" type=\"DotNet_Exception_Breakpoints\">\n          <properties exception=\"System.Threading.ThreadAbortException\" breakIfHandledByOtherCode=\"false\" displayValue=\"System.Threading.ThreadAbortException\" />\n          <option name=\"timeStamp\" value=\"3\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n  <component name=\"github-copilot-workspace\">\n    <instructionFileLocations>\n      <option value=\".github/instructions\" />\n    </instructionFileLocations>\n    <promptFileLocations>\n      <option value=\".github/prompts\" />\n    </promptFileLocations>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 06cee9f92c2ae296646dbbd3a40642118698632d)
++++ b/.idea/workspace.xml	(date 1773918914701)
+@@ -6,30 +6,6 @@
+   <component name="ChangeListManager">
+     <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/@google_genai.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/@google_genai.js.map" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-G3PMV62Z.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-G3PMV62Z.js.map" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-IWOBEF4E.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-IWOBEF4E.js.map" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-RY7GF66K.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/chunk-RY7GF66K.js.map" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/groq-sdk.js" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/groq-sdk.js.map" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/data/mockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/mockData.js" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -142,6 +118,7 @@
+       <workItem from="1773230574201" duration="1002000" />
+       <workItem from="1773235052323" duration="184000" />
+       <workItem from="1773236538459" duration="919000" />
++      <workItem from="1773918914406" duration="1000" />
+     </task>
+     <servers />
+   </component>

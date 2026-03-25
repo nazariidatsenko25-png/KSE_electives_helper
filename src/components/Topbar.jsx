@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bell, Search, User, MessageSquare, Calendar, Award, X } from 'lucide-react';
+import { Bell, Search, User, MessageSquare, Calendar, Award, X, Menu } from 'lucide-react';
 
-const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView }) => {
+const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView, setIsMobileMenuOpen }) => {
     const [showNotifs, setShowNotifs] = useState(false);
     const notifRef = useRef(null);
 
@@ -48,6 +48,14 @@ const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView }) => {
 
     return (
         <header className="topbar">
+            {/* Hamburger Button for Mobile */}
+            <button 
+                className="mobile-menu-btn action-btn glass-panel" 
+                onClick={() => setIsMobileMenuOpen(true)}
+            >
+                <Menu size={20} />
+            </button>
+
             {currentView !== 'catalog' ? (
                 <div className="search-container glass-panel">
                     <Search size={18} className="search-icon" />
