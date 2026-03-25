@@ -4131,6 +4131,7 @@ body {
   .search-container {
     order: unset;
     width: auto;
+    min-width: unset;
     margin-top: 0;
   }
   .profile-info {
