@@ -31,6 +31,56 @@ const mockSyllabi = {
     },
 };
 
+// Lightweight markdown renderer for AI responses
+const renderMarkdown = (text) => {
+    if (!text) return '';
+    let html = text
+        // Escape HTML entities first
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        // Bold: **text** or __text__
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/__(.+?)__/g, '<strong>$1</strong>')
+        // Italic: *text* (not bullet) — only when surrounded by word chars
+        .replace(/(?<!\n)\*(?!\s)(.+?)(?<!\s)\*/g, '<em>$1</em>');
+
+    // Process line by line for lists and paragraphs
+    const lines = html.split('\n');
+    const result = [];
+    let inList = false;
+    let listType = null;
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const bulletMatch = line.match(/^[\*\-]\s+(.+)/);
+        const numberedMatch = line.match(/^\d+\.\s+(.+)/);
+
+        if (bulletMatch) {
+            if (!inList || listType !== 'ul') {
+                if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
+                result.push('<ul>');
+                inList = true; listType = 'ul';
+            }
+            result.push(`<li>${bulletMatch[1]}</li>`);
+        } else if (numberedMatch) {
+            if (!inList || listType !== 'ol') {
+                if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
+                result.push('<ol>');
+                inList = true; listType = 'ol';
+            }
+            result.push(`<li>${numberedMatch[1]}</li>`);
+        } else {
+            if (inList) { result.push(listType === 'ul' ? '</ul>' : '</ol>'); inList = false; listType = null; }
+            if (line.trim() === '') {
+                result.push('<br/>');
+            } else {
+                result.push(`<span>${line}</span><br/>`);
+            }
+        }
+    }
+    if (inList) result.push(listType === 'ul' ? '</ul>' : '</ol>');
+    return result.join('');
+};
+
 const AiAdvisor = ({ user }) => {
     const [query, setQuery] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -134,7 +184,7 @@ const AiAdvisor = ({ user }) => {
                     <Sparkles className="text-gradient" size={28} />
                     <h1 className="heading-1 m-0">SmartCourse AI</h1>
                 </div>
-                <p className="text-muted">Працює на базі Meta Llama 3 (через Backend API)</p>
+                <p className="text-muted">Працює на базі Google Gemini 2.5 Flash</p>
             </div>
 
             <div className="chat-layout">
@@ -147,7 +197,11 @@ const AiAdvisor = ({ user }) => {
                                         {msg.type === 'ai' ? <Bot size={18} /> : (user.first_name?.[0] || 'С')}
                                     </div>
                                     <div className="message-content">
-                                        {msg.text}
+                                        {msg.type === 'ai' ? (
+                                            <span dangerouslySetInnerHTML={{ __html: renderMarkdown(msg.text) }} />
+                                        ) : (
+                                            msg.text
+                                        )}
                                         {msg.type === 'ai' && i === 0 && messages.length === 1 && (
                                             <div className="prompt-chips animate-in">
                                                 {suggestedPrompts.map((prompt, pIdx) => (
