@@ -70,6 +70,7 @@ const CourseCatalog = ({ user, navigate }) => {
     const [activeFilters, setActiveFilters] = useState(defaultFilters);
     const [pendingFilters, setPendingFilters] = useState(defaultFilters);
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [sidebarMaxHeight, setSidebarMaxHeight] = useState(null);
 
     const [sortField, setSortField] = useState('term');
     const [sortOrder, setSortOrder] = useState('asc'); // change to asc for default term progression
@@ -98,6 +99,24 @@ const CourseCatalog = ({ user, navigate }) => {
     const [reviewsExpanded, setReviewsExpanded] = useState({}); 
     const popupRef = useRef(null);
     const sidebarRef = useRef(null);
+
+    // Dynamically compute max-height for the filter panel so it always fits in the viewport
+    useEffect(() => {
+        if (!isSidebarOpen) return;
+        const computeHeight = () => {
+            if (sidebarRef.current) {
+                const rect = sidebarRef.current.getBoundingClientRect();
+                setSidebarMaxHeight(window.innerHeight - rect.top - 16);
+            }
+        };
+        // Run after paint so the element is in its final position
+        const raf = requestAnimationFrame(computeHeight);
+        window.addEventListener('resize', computeHeight);
+        return () => {
+            cancelAnimationFrame(raf);
+            window.removeEventListener('resize', computeHeight);
+        };
+    }, [isSidebarOpen]);
 
     const departments = [...new Set(mockCatalog.map(c => c.department))];
 
@@ -376,7 +395,8 @@ const CourseCatalog = ({ user, navigate }) => {
             <div className="catalog-layout">
                 {/* Advanced Filters Overlay / Sidebar Conditionally rendered */}
                 {isSidebarOpen && (
-                    <aside className="catalog-sidebar glass-panel modal-like-sidebar" ref={sidebarRef}>
+                    <aside className="catalog-sidebar glass-panel modal-like-sidebar" ref={sidebarRef}
+                        style={sidebarMaxHeight ? { maxHeight: `${sidebarMaxHeight}px` } : undefined}>
                         <div className="sidebar-header">
                             <h3 className="heading-3" style={{ fontSize: '1.2rem', margin: 0 }}>Фільтри</h3>
                             <button className="profile-popup-close" onClick={() => setIsSidebarOpen(false)} style={{ position: 'static' }}>
@@ -448,7 +468,7 @@ const CourseCatalog = ({ user, navigate }) => {
                             </div>
                         </div>
 
-                        <div className="sidebar-footer" style={{ display: 'flex', gap: '0.75rem', marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
+                        <div className="sidebar-footer" style={{ display: 'flex', gap: '0.75rem' }}>
                             <button className="btn-secondary" style={{ flex: 1, padding: '0.5rem' }} onClick={clearFilters}>Очистити</button>
                             <button className="btn-primary" style={{ flex: 1, padding: '0.5rem' }} onClick={saveFilters}>Зберегти</button>
                         </div>
