@@ -39,7 +39,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 66,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 40,
             "elective": 60
@@ -168,7 +169,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 72,
+        "numberOfPractices": 22,
+        "numberOfLectures": 8,
         "enrollmentType": {
             "mandatory": 93,
             "elective": 7
@@ -295,7 +297,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 44,
+        "numberOfPractices": 13,
+        "numberOfLectures": 17,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -421,7 +424,8 @@ export const mockCatalog = [
         "duration": 12,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 47,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 91,
             "elective": 9
@@ -550,7 +554,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 50,
+        "numberOfPractices": 15,
+        "numberOfLectures": 15,
         "enrollmentType": {
             "mandatory": 20,
             "elective": 80
@@ -682,7 +687,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -810,7 +816,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 60,
+        "numberOfPractices": 18,
+        "numberOfLectures": 12,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -940,7 +947,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 45,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 15,
             "elective": 85
@@ -1072,7 +1080,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 67,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -1203,7 +1212,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 33,
+        "numberOfPractices": 10,
+        "numberOfLectures": 20,
         "enrollmentType": {
             "mandatory": 97,
             "elective": 3
@@ -1328,7 +1338,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 38,
+        "numberOfPractices": 11,
+        "numberOfLectures": 19,
         "enrollmentType": {
             "mandatory": 16,
             "elective": 84
@@ -1454,7 +1465,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 22,
             "elective": 78
@@ -1586,7 +1598,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 77,
+        "numberOfPractices": 23,
+        "numberOfLectures": 7,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -1715,7 +1728,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 70,
+        "numberOfPractices": 21,
+        "numberOfLectures": 9,
         "enrollmentType": {
             "mandatory": 85,
             "elective": 15
@@ -1842,7 +1856,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 58,
+        "numberOfPractices": 17,
+        "numberOfLectures": 13,
         "enrollmentType": {
             "mandatory": 77,
             "elective": 23
@@ -1973,7 +1988,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 6,
         "termLength": 16,
-        "practicePercentage": 38,
+        "numberOfPractices": 11,
+        "numberOfLectures": 19,
         "enrollmentType": {
             "mandatory": 86,
             "elective": 14
@@ -2098,7 +2114,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 47,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -2227,7 +2244,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 30,
+        "numberOfPractices": 9,
+        "numberOfLectures": 21,
         "enrollmentType": {
             "mandatory": 96,
             "elective": 4
@@ -2356,7 +2374,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 7,
         "termLength": 16,
-        "practicePercentage": 39,
+        "numberOfPractices": 12,
+        "numberOfLectures": 18,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -2480,7 +2499,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 80,
+        "numberOfPractices": 24,
+        "numberOfLectures": 6,
         "enrollmentType": {
             "mandatory": 28,
             "elective": 72
@@ -2607,7 +2627,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 33,
+        "numberOfPractices": 10,
+        "numberOfLectures": 20,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -2739,7 +2760,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 88,
             "elective": 12
@@ -2868,7 +2890,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 48,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 39,
             "elective": 61
@@ -2998,7 +3021,8 @@ export const mockCatalog = [
         "duration": 12,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 38,
+        "numberOfPractices": 11,
+        "numberOfLectures": 19,
         "enrollmentType": {
             "mandatory": 75,
             "elective": 25
@@ -3129,7 +3153,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 51,
+        "numberOfPractices": 15,
+        "numberOfLectures": 15,
         "enrollmentType": {
             "mandatory": 78,
             "elective": 22
@@ -3259,7 +3284,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 57,
+        "numberOfPractices": 17,
+        "numberOfLectures": 13,
         "enrollmentType": {
             "mandatory": 24,
             "elective": 76
@@ -3387,7 +3413,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 71,
+        "numberOfPractices": 21,
+        "numberOfLectures": 9,
         "enrollmentType": {
             "mandatory": 12,
             "elective": 88
@@ -3515,7 +3542,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 74,
+        "numberOfPractices": 22,
+        "numberOfLectures": 8,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -3644,7 +3672,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 45,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -3772,7 +3801,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 74,
+        "numberOfPractices": 22,
+        "numberOfLectures": 8,
         "enrollmentType": {
             "mandatory": 9,
             "elective": 91
@@ -3899,7 +3929,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 61,
+        "numberOfPractices": 18,
+        "numberOfLectures": 12,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -4028,7 +4059,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 30,
+        "numberOfPractices": 9,
+        "numberOfLectures": 21,
         "enrollmentType": {
             "mandatory": 16,
             "elective": 84
@@ -4156,7 +4188,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 36,
+        "numberOfPractices": 11,
+        "numberOfLectures": 19,
         "enrollmentType": {
             "mandatory": 6,
             "elective": 94
@@ -4284,7 +4317,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 79,
+        "numberOfPractices": 24,
+        "numberOfLectures": 6,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -4413,7 +4447,8 @@ export const mockCatalog = [
         "duration": 12,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 72,
+        "numberOfPractices": 22,
+        "numberOfLectures": 8,
         "enrollmentType": {
             "mandatory": 75,
             "elective": 25
@@ -4542,7 +4577,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 39,
+        "numberOfPractices": 12,
+        "numberOfLectures": 18,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -4669,7 +4705,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 34,
+        "numberOfPractices": 10,
+        "numberOfLectures": 20,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -4795,7 +4832,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 85,
+        "numberOfPractices": 26,
+        "numberOfLectures": 4,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -4939,7 +4977,8 @@ export const mockCatalog = [
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 40,
+        "numberOfPractices": 12,
+        "numberOfLectures": 18,
         "enrollmentType": {
             "mandatory": 90,
             "elective": 10
@@ -5068,7 +5107,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 7,
         "termLength": 16,
-        "practicePercentage": 43,
+        "numberOfPractices": 13,
+        "numberOfLectures": 17,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -5193,7 +5233,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 6,
         "termLength": 16,
-        "practicePercentage": 65,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -5317,7 +5358,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 47,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -5443,7 +5485,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 79,
+        "numberOfPractices": 24,
+        "numberOfLectures": 6,
         "enrollmentType": {
             "mandatory": 22,
             "elective": 78
@@ -5574,7 +5617,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 78,
+        "numberOfPractices": 23,
+        "numberOfLectures": 7,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -5699,7 +5743,8 @@ export const mockCatalog = [
         "duration": 13,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 75,
+        "numberOfPractices": 23,
+        "numberOfLectures": 7,
         "enrollmentType": {
             "mandatory": 97,
             "elective": 3
@@ -5829,7 +5874,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 69,
+        "numberOfPractices": 21,
+        "numberOfLectures": 9,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -5955,7 +6001,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 74,
+        "numberOfPractices": 22,
+        "numberOfLectures": 8,
         "enrollmentType": {
             "mandatory": 24,
             "elective": 76
@@ -6080,7 +6127,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 67,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 84,
             "elective": 16
@@ -6208,7 +6256,8 @@ export const mockCatalog = [
         "duration": 12,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 50,
+        "numberOfPractices": 15,
+        "numberOfLectures": 15,
         "enrollmentType": {
             "mandatory": 80,
             "elective": 20
@@ -6337,7 +6386,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 46,
+        "numberOfPractices": 14,
+        "numberOfLectures": 16,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -6462,7 +6512,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 51,
+        "numberOfPractices": 15,
+        "numberOfLectures": 15,
         "enrollmentType": {
             "mandatory": 91,
             "elective": 9
@@ -6592,7 +6643,8 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 58,
+        "numberOfPractices": 17,
+        "numberOfLectures": 13,
         "enrollmentType": {
             "mandatory": 32,
             "elective": 68
@@ -6720,7 +6772,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 61,
+        "numberOfPractices": 18,
+        "numberOfLectures": 12,
         "enrollmentType": {
             "mandatory": 81,
             "elective": 19
@@ -6848,7 +6901,8 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 68,
+        "numberOfPractices": 20,
+        "numberOfLectures": 10,
         "enrollmentType": {
             "mandatory": 36,
             "elective": 64
@@ -6974,7 +7028,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 35,
+        "numberOfPractices": 11,
+        "numberOfLectures": 19,
         "enrollmentType": {
             "mandatory": 80,
             "elective": 20
@@ -7104,7 +7159,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 42,
+        "numberOfPractices": 13,
+        "numberOfLectures": 17,
         "enrollmentType": {
             "mandatory": 40,
             "elective": 60
@@ -7231,7 +7287,8 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 63,
+        "numberOfPractices": 19,
+        "numberOfLectures": 11,
         "enrollmentType": {
             "mandatory": 13,
             "elective": 87
@@ -7358,7 +7415,8 @@ export const mockCatalog = [
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 69,
+        "numberOfPractices": 21,
+        "numberOfLectures": 9,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17

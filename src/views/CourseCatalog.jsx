@@ -578,9 +578,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     {course.category === 'core' ? "Обов'язковий" : 'Вибірковий'}
                                                 </span>
                                                 <span className="course-code-badge">{course.code}</span>
-                                                <span className={`instructor-title-badge ${course.instructorTitle}`}>
-                                                    {course.instructorTitle === 'professor' ? '🎓 Професор' : course.instructorTitle === 'expert' ? '💼 Експерт-практик' : '📖 Викладач'}
-                                                </span>
+
                                                 {course.attendanceMandatory && (
                                                     <span className="attendance-badge" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title="Обов'язкове відвідування">
                                                         <Lock size={12} /> Обов'язково
@@ -598,17 +596,18 @@ const CourseCatalog = ({ user, navigate }) => {
 
                                         <div className="catalog-card-right">
                                             <div className="catalog-meta">
-                                                <span 
-                                                    className="catalog-meta-item" 
-                                                    style={{ color: isWishlisted ? '#ef4444' : 'var(--text-muted)', cursor: 'pointer', transition: 'color 0.2s' }} 
-                                                    title={isWishlisted ? "Прибрати з улюблених" : "Додати до улюблених"}
-                                                    onClick={(e) => handleWishlistToggle(e, course)}
-                                                >
-                                                    <Heart size={14} fill={isWishlisted ? "currentColor" : "none"} />
-                                                </span>
-                                                <span className="catalog-meta-item">
-                                                    <Star size={14} color="#F59E0B" fill="#F59E0B" />
-                                                    {course.rating}
+                                                <span className="catalog-meta-item" title={`Рейтинг: ${course.rating}`}>
+                                                    <div style={{ display: 'flex', position: 'relative', width: '70px', minWidth: '70px', height: '14px' }}>
+                                                        <div style={{ display: 'flex', position: 'absolute', top: 0, left: 0, color: 'var(--text-muted)', opacity: 0.3, width: '70px' }}>
+                                                            {[1, 2, 3, 4, 5].map(i => <Star key={`bg-${i}`} size={14} style={{ flexShrink: 0 }} />)}
+                                                        </div>
+                                                        <div style={{ display: 'flex', position: 'absolute', top: 0, left: 0, overflow: 'hidden', width: `${(course.rating / 5) * 100}%`, color: '#F59E0B' }}>
+                                                            <div style={{ display: 'flex', width: '70px' }}>
+                                                                {[1, 2, 3, 4, 5].map(i => <Star key={`fg-${i}`} size={14} fill="#F59E0B" color="#F59E0B" style={{ flexShrink: 0 }} />)}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <span>{course.rating}</span>
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <BookOpen size={14} />
@@ -622,12 +621,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     <Clock size={14} />
                                                     {course.duration} тиж.
                                                 </span>
-                                                {course.semester === 'Весна 2027' && (
-                                                    <span className="catalog-meta-item">
-                                                        <Users size={14} />
-                                                        {course.spots.taken} {course.language === 'Англійська' ? 'students' : 'учнів'}
-                                                    </span>
-                                                )}
+
                                                 <span className="catalog-meta-item">
                                                     <BarChart2 size={14} color="#6EE7B7" />
                                                     {course.passRate60Plus || '--'}% закриття
@@ -637,7 +631,16 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     Ср. бал: {course.historicalAverage || '--'}
                                                 </span>
                                             </div>
-                                            <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
+                                            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginLeft: '1rem' }}>
+                                                <span 
+                                                    style={{ display: 'flex', alignItems: 'center', color: isWishlisted ? '#ef4444' : 'var(--text-muted)', cursor: 'pointer', transition: 'color 0.2s' }} 
+                                                    title={isWishlisted ? "Прибрати з улюблених" : "Додати до улюблених"}
+                                                    onClick={(e) => handleWishlistToggle(e, course)}
+                                                >
+                                                    <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
+                                                </span>
+                                                <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
+                                            </div>
                                         </div>
                                     </div>
 
@@ -653,13 +656,13 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 </span>
                                             </div>
 
-                                            <div className="expanded-dashboard-v2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
+                                            <div className="expanded-dashboard-v2" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '0.75rem', marginBottom: '1rem' }}>
                                                 
                                                 {/* Zone 1: Instructor & Syllabus Download */}
                                                 <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', gridColumn: '1 / -1', gap: '1rem', alignItems: 'center', flexWrap: 'wrap' }}>
                                                     <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" onClick={(e) => handleInstructorClick(e, course)} style={{ width: '64px', height: '64px', borderRadius: '32px', objectFit: 'cover', cursor: 'pointer', transition: 'opacity 0.15s', }} onMouseEnter={e => e.target.style.opacity='0.8'} onMouseLeave={e => e.target.style.opacity='1'} />
                                                     <div style={{ flex: 1, minWidth: '200px' }}>
-                                                        <h4 onClick={(e) => handleInstructorClick(e, course)} style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-main)', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.15s' }} onMouseEnter={e => e.target.style.textDecorationColor='currentColor'} onMouseLeave={e => e.target.style.textDecorationColor='transparent'}>{course.instructor}</h4>
+                                                        <h4 onClick={(e) => handleInstructorClick(e, course)} style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1rem', color: 'var(--text-main)', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.15s' }} onMouseEnter={e => e.target.style.textDecorationColor='currentColor'} onMouseLeave={e => e.target.style.textDecorationColor='transparent'}>{course.instructor}</h4>
                                                         <span className="text-muted block text-sm" style={{ marginBottom: '0.4rem', color: 'var(--color-accent)' }}>
                                                             {course.instructorTitle === 'professor' ? 'Професор' : course.instructorTitle === 'expert' ? 'Запрошений експерт' : 'Викладач'}
                                                         </span>
@@ -850,15 +853,15 @@ const CourseCatalog = ({ user, navigate }) => {
 
                                                         {/* Zone 6: Practice vs Theory Line */}
                                                         <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                                            <h4 className="dashboard-heading">Теорія vs Практика</h4>
+                                                            <h4 className="dashboard-heading">Лекції vs Практики</h4>
                                                             <div style={{ marginTop: '1.5rem', position: 'relative', height: '14px', background: 'rgba(255,255,255,0.05)', borderRadius: '7px', border: '1px solid rgba(255,255,255,0.1)' }}>
-                                                                <div style={{ position: 'absolute', top: '-6px', bottom: '-6px', width: '4px', background: '#a855f7', left: `calc(${course.practicePercentage}% - 2px)`, borderRadius: '2px', boxShadow: '0 0 10px #a855f7', zIndex: 2 }}></div>
+                                                                <div style={{ position: 'absolute', top: '-6px', bottom: '-6px', width: '4px', background: '#a855f7', left: `calc(${(course.numberOfLectures / (course.numberOfPractices + course.numberOfLectures)) * 100}% - 2px)`, borderRadius: '2px', boxShadow: '0 0 10px #a855f7', zIndex: 2 }}></div>
                                                                 <div style={{ position: 'absolute', left: '50%', top: '0', bottom: '0', width: '2px', background: 'rgba(255,255,255,0.3)', zIndex: 1 }}></div>
                                                             </div>
                                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                                                                <span>Теорія: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{100 - course.practicePercentage}%</span></span>
+                                                                <span>Лекцій: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.numberOfLectures}</span></span>
                                                                 <span>Баланс</span>
-                                                                <span>Практика: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.practicePercentage}%</span></span>
+                                                                <span>Практик: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.numberOfPractices}</span></span>
                                                             </div>
                                                         </div>
 

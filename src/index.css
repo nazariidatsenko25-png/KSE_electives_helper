@@ -1996,11 +1996,21 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
+  transition: font-size 0.2s ease;
+}
+
+.catalog-card.expanded .catalog-course-name {
+  font-size: 1.4rem;
 }
 
 .catalog-instructor {
   font-size: 0.85rem;
   color: var(--text-muted);
+  transition: font-size 0.2s ease;
+}
+
+.catalog-card.expanded .catalog-instructor {
+  font-size: 0.75rem;
 }
 
 .catalog-card-right {
@@ -2011,18 +2021,23 @@ body {
 }
 
 .catalog-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 0.4rem 1rem;
 }
 
 .catalog-meta-item {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 4px;
   font-size: 0.8rem;
   color: var(--text-muted);
   white-space: nowrap;
+}
+
+.catalog-meta-item:not(:first-child) {
+  min-width: 95px;
 }
 
 .catalog-meta-item.full {
@@ -4208,7 +4223,7 @@ body {
   .catalog-card-main {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
   .catalog-card-right {
     justify-content: flex-end;
