@@ -62,8 +62,8 @@ const defaultFilters = {
 };
 
 const CourseCatalog = ({ user, navigate }) => {
-    const [search, setSearch] = useState('');
-    const [filterType, setFilterType] = useState('all');
+    const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get('q') || '');
+    const [filterType, setFilterType] = useState(() => new URLSearchParams(window.location.search).get('filterType') || 'all');
     const [pinActive, setPinActive] = useState(true);
     
     // Abstracting filters into active and pending states
@@ -74,7 +74,70 @@ const CourseCatalog = ({ user, navigate }) => {
 
     const [sortField, setSortField] = useState('term');
     const [sortOrder, setSortOrder] = useState('asc'); // change to asc for default term progression
-    const [expanded, setExpanded] = useState(null);
+    const [expanded, setExpanded] = useState(() => {
+        const exp = new URLSearchParams(window.location.search).get('expanded');
+        return exp ? Number(exp) : null;
+    });
+
+    useEffect(() => {
+        const handlePopState = () => {
+            const params = new URLSearchParams(window.location.search);
+            setSearch(params.get('q') || '');
+            setFilterType(params.get('filterType') || 'all');
+            const exp = params.get('expanded');
+            setExpanded(exp ? Number(exp) : null);
+        };
+        window.addEventListener('popstate', handlePopState);
+        return () => window.removeEventListener('popstate', handlePopState);
+    }, []);
+
+    const prevExpandedRef = useRef(expanded);
+    useEffect(() => {
+        const params = new URLSearchParams(window.location.search);
+        let changed = false;
+        let isNavigation = false;
+
+        if (expanded !== prevExpandedRef.current) {
+            isNavigation = true;
+            prevExpandedRef.current = expanded;
+        }
+
+        const newExp = expanded ? String(expanded) : null;
+        if (params.get('expanded') !== newExp) {
+            if (newExp) params.set('expanded', newExp);
+            else params.delete('expanded');
+            changed = true;
+        }
+
+        const newQ = search || null;
+        if (params.get('q') !== (newQ || null)) { // strict check isn't strictly necessary but safe
+            if (newQ) params.set('q', newQ);
+            else params.delete('q');
+            changed = true;
+        }
+
+        const newFlt = filterType !== 'all' ? filterType : null;
+        if (params.get('filterType') !== newFlt) {
+            if (newFlt) params.set('filterType', newFlt);
+            else params.delete('filterType');
+            changed = true;
+        }
+
+        if (changed) {
+            const newUrl = `${window.location.pathname}?${params.toString()}`;
+            // Avoid pushing state loop if URL already matches
+            if (window.location.search !== `?${params.toString()}`) {
+                if (isNavigation) {
+                    const container = document.querySelector('.view-container');
+                    const currentScroll = container ? container.scrollTop : 0;
+                    window.history.replaceState({ ...window.history.state, scrollTop: currentScroll }, '');
+                    window.history.pushState({ scrollTop: 0 }, '', newUrl);
+                } else {
+                    window.history.replaceState(window.history.state, '', newUrl);
+                }
+            }
+        }
+    }, [expanded, search, filterType]);
     const [showOnlyWishlist, setShowOnlyWishlist] = useState(false);
     const [showExtendedStats, setShowExtendedStats] = useState(false);
     const [wishlist, setWishlist] = useState(new Set());
@@ -572,8 +635,6 @@ const CourseCatalog = ({ user, navigate }) => {
                             const restCourses = (pinActive && user) ? sorted.filter(c => !activeCourseIds.has(c.id)) : sorted;
 
                             const renderCard = (course, isActive = false) => {
-                            const spotsLeft = course.spots.total - course.spots.taken;
-                            const isFull = spotsLeft <= 0;
                             const isExpanded = expanded === course.id;
                             const isWishlisted = wishlist.has(course.id);
                             const isLoading = loadingWishlist.has(course.id);
@@ -638,16 +699,6 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     <MessageCircle size={14} />
                                                     {course.language}
                                                 </span>
-                                                <span className="catalog-meta-item">
-                                                    <Clock size={14} />
-                                                    {course.duration} тиж.
-                                                </span>
-                                                {course.semester === 'Весна 2027' && (
-                                                    <span className="catalog-meta-item">
-                                                        <Users size={14} />
-                                                        {course.spots.taken} {course.language === 'Англійська' ? 'students' : 'учнів'}
-                                                    </span>
-                                                )}
                                                 <span className="catalog-meta-item">
                                                     <BarChart2 size={14} color="#6EE7B7" />
                                                     {course.passRate60Plus || '--'}% закриття
@@ -716,18 +767,52 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                 </div>
 
                                                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-                                                                    <div>
-                                                                        <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Передумови (Must Have)</h5>
-                                                                        <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
-                                                                            {course.detailedSyllabus.prerequisites.mustHave.map((item, i) => <li key={i}>{item}</li>)}
-                                                                        </ul>
-                                                                    </div>
-                                                                    <div>
-                                                                        <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Бажані (Nice to Have)</h5>
-                                                                        <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
-                                                                            {course.detailedSyllabus.prerequisites.niceToHave.map((item, i) => <li key={i}>{item}</li>)}
-                                                                        </ul>
-                                                                    </div>
+                                                                    {['mustHave', 'niceToHave'].map(prereqType => (
+                                                                        <div key={prereqType}>
+                                                                            <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+                                                                                {prereqType === 'mustHave' ? 'Передумови (Must Have)' : 'Бажані (Nice to Have)'}
+                                                                            </h5>
+                                                                            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                                                                {course.detailedSyllabus.prerequisites[prereqType].map((item, i) => {
+                                                                                    const prereqCourse = mockCatalog.find(c => item.includes(c.code) || item.includes(c.name));
+                                                                                    if (prereqCourse) {
+                                                                                        return (
+                                                                                            <div 
+                                                                                                key={i}
+                                                                                                className="rec-card glass-panel" 
+                                                                                                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1rem', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', background: 'rgba(255,255,255,0.03)' }}
+                                                                                                onClick={(e) => {
+                                                                                                    e.stopPropagation();
+                                                                                                    setSearch(prereqCourse.code);
+                                                                                                    setFilterType('all');
+                                                                                                    setActiveFilters(defaultFilters);
+                                                                                                    setPendingFilters(defaultFilters);
+                                                                                                    setExpanded(prereqCourse.id);
+                                                                                                    setTimeout(() => {
+                                                                                                        const el = document.querySelector(`.catalog-card.expanded`);
+                                                                                                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                                                                                    }, 100);
+                                                                                                }}
+                                                                                            >
+                                                                                                <div className="rec-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                                                                                                    <div>
+                                                                                                        <span className="course-code-badge" style={{ fontSize: '0.75rem', padding: '2px 6px', borderRadius: '4px', background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa' }}>{prereqCourse.code}</span>
+                                                                                                        <h3 style={{ margin: '4px 0 0', fontSize: '1rem', fontWeight: 600, color: 'var(--text-main)' }}>{prereqCourse.name}</h3>
+                                                                                                    </div>
+                                                                                                    <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary)' }}>{prereqCourse.credits} ECTS</div>
+                                                                                                </div>
+                                                                                                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                                                                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><Clock size={14} /> <span>{prereqCourse.semester}</span></div>
+                                                                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}><User size={14} /> <span>{prereqCourse.instructor}</span></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        );
+                                                                                    }
+                                                                                    return <div key={i} style={{ padding: '0.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: '6px', fontSize: '0.9rem' }}>• {item}</div>;
+                                                                                })}
+                                                                            </div>
+                                                                        </div>
+                                                                    ))}
                                                                 </div>
 
                                                                 <div>
@@ -1017,8 +1102,8 @@ const CourseCatalog = ({ user, navigate }) => {
                                             </div>
 
                                             <button
-                                                className={`btn-primary mt-sm ${isFull ? 'btn-disabled' : ''} ${isWishlisted ? 'btn-wishlisted' : ''}`}
-                                                disabled={isFull || isLoading}
+                                                className={`btn-primary mt-sm ${isWishlisted ? 'btn-wishlisted' : ''}`}
+                                                disabled={isLoading}
                                                 onClick={(e) => handleWishlistToggle(e, course)}
                                             >
                                                 {isLoading ? (
@@ -1026,8 +1111,6 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         <Loader2 size={16} className="spin-icon" />
                                                         Зачекайте...
                                                     </>
-                                                ) : isFull ? (
-                                                    'Немає місць'
                                                 ) : isWishlisted ? (
                                                     <>
                                                         <Heart size={16} fill="currentColor" />

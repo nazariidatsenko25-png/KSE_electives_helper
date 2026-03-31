@@ -1,4 +1,4 @@
-#!/Users/admin/Desktop/draft/backend/venv/bin/python3
+#!/Users/pt2/RiderProjects/KSE_electives_helper/backend/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -5,10 +5,60 @@ import { Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog, Profile, Studen
 import { mockUser } from './data/mockData';
 
 function App() {
-  const [currentView, setCurrentView] = useState('dashboard');
-  const [viewParams, setViewParams] = useState({});
+  const [currentView, setCurrentView] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('view') || 'dashboard';
+  });
+  const [viewParams, setViewParams] = useState(() => {
+    const params = new URLSearchParams(window.location.search);
+    const vp = {};
+    for (let [k, v] of params.entries()) {
+      if (k !== 'view') vp[k] = v;
+    }
+    return vp;
+  });
   const [user, setUser] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  React.useEffect(() => {
+    const handlePopState = (e) => {
+      const params = new URLSearchParams(window.location.search);
+      setCurrentView(params.get('view') || 'dashboard');
+      const vp = {};
+      for (let [k, v] of params.entries()) {
+        if (k !== 'view') vp[k] = v;
+      }
+      setViewParams(vp);
+
+      const savedScroll = e.state?.scrollTop;
+      if (savedScroll !== undefined) {
+        setTimeout(() => {
+          const container = document.querySelector('.view-container');
+          if (container) container.scrollTo({ top: savedScroll, behavior: 'instant' });
+        }, 50);
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  React.useEffect(() => {
+    const params = new URLSearchParams();
+    params.set('view', currentView);
+    Object.entries(viewParams).forEach(([k, v]) => {
+      if (v !== undefined && v !== null) params.set(k, v);
+    });
+    const newUrl = `${window.location.pathname}?${params.toString()}`;
+    
+    // Only push if the URL actually needs to change to avoid loops
+    if (window.location.search !== `?${params.toString()}`) {
+      const container = document.querySelector('.view-container');
+      const currentScroll = container ? container.scrollTop : 0;
+      window.history.replaceState({ ...window.history.state, scrollTop: currentScroll }, '');
+      window.history.pushState({ scrollTop: 0 }, '', newUrl);
+      if (container) container.scrollTo(0, 0);
+    }
+  }, [currentView, viewParams]);
 
   const handleMockLogin = () => {
     setUser(mockUser);
