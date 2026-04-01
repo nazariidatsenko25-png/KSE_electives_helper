@@ -244,40 +244,60 @@ const CourseCatalog = ({ user, navigate }) => {
                     const ids = new Set(data.map(item => item.course));
                     setWishlist(ids);
                 })
-                .catch(err => console.warn('Wishlist fetch unavailable (mock mode):', err.message));
+                .catch(err => {
+                    console.warn('Wishlist fetch unavailable, falling back to local storage:', err.message);
+                    const storageKey = `mock_wishlist_${user.id}`;
+                    const saved = localStorage.getItem(storageKey);
+                    if (saved) {
+                        setWishlist(new Set(JSON.parse(saved)));
+                    } else if (user.wishlist) {
+                        setWishlist(new Set(user.wishlist));
+                        localStorage.setItem(storageKey, JSON.stringify(user.wishlist));
+                    }
+                });
+        } else {
+            setWishlist(new Set());
         }
     }, [user]);
 
     const handleWishlistToggle = async (e, course) => {
         e.stopPropagation();
+        if (!user) return; // Prevent toggling if unexpected guest
         const courseId = course.id;
         const isWishlisted = wishlist.has(courseId);
 
         setLoadingWishlist(prev => new Set(prev).add(courseId));
 
+        const updateLocalAndState = (newSet) => {
+            setWishlist(newSet);
+            localStorage.setItem(`mock_wishlist_${user.id}`, JSON.stringify([...newSet]));
+            return newSet;
+        };
+
         try {
             if (isWishlisted) {
-                // Optimistic UI update
+                // Optimistic UI + LocalStorage update
                 setWishlist(prev => {
                     const next = new Set(prev);
                     next.delete(courseId);
-                    return next;
+                    return updateLocalAndState(next);
                 });
                 await fetchWithAuth(`/api/wishlist/${courseId}/`, {
                     method: 'DELETE',
                     suppressAuthRedirect: true,
-                });
+                }).catch(() => {});
             } else {
-                // Optimistic UI update
-                setWishlist(prev => new Set(prev).add(courseId));
+                setWishlist(prev => {
+                    const next = new Set(prev);
+                    next.add(courseId);
+                    return updateLocalAndState(next);
+                });
                 await fetchWithAuth('/api/wishlist/', {
                     method: 'POST',
                     suppressAuthRedirect: true,
                     body: JSON.stringify({ course: courseId }),
-                });
+                }).catch(() => {});
             }
-        } catch (err) {
-            console.error('Wishlist toggle error:', err);
         } finally {
             setLoadingWishlist(prev => {
                 const next = new Set(prev);
@@ -763,7 +783,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                 
                                                                 <div>
                                                                     <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Обґрунтування курсу</h5>
-                                                                    <p style={{ margin: 0 }}>{course.detailedSyllabus.justification}</p>
+                                                                    <p style={{ margin: 0, marginBottom: '1rem' }}>{course.detailedSyllabus.justification}</p>
+                                                                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '0.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span></div>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span></div>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span></div>
+                                                                    </div>
                                                                 </div>
 
                                                                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
@@ -867,7 +892,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     ) : (
                                                         <>
                                                             <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Короткий опис дисципліни</h4>
-                                                            <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0 }}>{course.description}</p>
+                                                            <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0, marginBottom: '1rem' }}>{course.description}</p>
+                                                            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '0.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span></div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span></div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span></div>
+                                                            </div>
                                                         </>
                                                     )}
                                                 </div>
@@ -955,15 +985,15 @@ const CourseCatalog = ({ user, navigate }) => {
 
                                                         {/* Zone 6: Practice vs Theory Line */}
                                                         <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                                                            <h4 className="dashboard-heading">Теорія vs Практика</h4>
+                                                            <h4 className="dashboard-heading">Лекційні vs Практичні години</h4>
                                                             <div style={{ marginTop: '1.5rem', position: 'relative', height: '14px', background: 'rgba(255,255,255,0.05)', borderRadius: '7px', border: '1px solid rgba(255,255,255,0.1)' }}>
                                                                 <div style={{ position: 'absolute', top: '-6px', bottom: '-6px', width: '4px', background: '#a855f7', left: `calc(${course.practicePercentage}% - 2px)`, borderRadius: '2px', boxShadow: '0 0 10px #a855f7', zIndex: 2 }}></div>
                                                                 <div style={{ position: 'absolute', left: '50%', top: '0', bottom: '0', width: '2px', background: 'rgba(255,255,255,0.3)', zIndex: 1 }}></div>
                                                             </div>
                                                             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '12px', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                                                                <span>Теорія: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{100 - course.practicePercentage}%</span></span>
+                                                                <span>Лекції: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.lectureHours} год</span></span>
                                                                 <span>Баланс</span>
-                                                                <span>Практика: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.practicePercentage}%</span></span>
+                                                                <span>Практика: <span style={{color: 'var(--text-main)', fontWeight: 600}}>{course.practiceHours} год</span></span>
                                                             </div>
                                                         </div>
 

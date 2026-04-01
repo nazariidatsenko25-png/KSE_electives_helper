@@ -9,6 +9,7 @@ export const mockUser = {
     total_credits: 72,
     creditsRequired: 240,
     gpa: 88.5,
+    wishlist: [10, 14, 15] // Seeded courses for initial sync
 };
 
 // Mock transcript data
@@ -35,11 +36,11 @@ export const mockCatalog = [
         "name": "Кількісні статистики",
         "instructor": "Володимир Павленко",
         "instructorTitle": "expert",
-        "credits": 24,
+        "credits": 6,
         "duration": 10,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 66,
+        "practicePercentage": 40,
         "enrollmentType": {
             "mandatory": 40,
             "elective": 60
@@ -157,7 +158,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 100,
+        "lectureHours": 48,
+        "practiceHours": 32
     },
     {
         "id": 11,
@@ -165,11 +169,11 @@ export const mockCatalog = [
         "name": "Глобальна інтелектуальної власності",
         "instructor": "Андрій Мороз",
         "instructorTitle": "expert",
-        "credits": 8,
+        "credits": 6,
         "duration": 9,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 72,
+        "practicePercentage": 53,
         "enrollmentType": {
             "mandatory": 93,
             "elective": 7
@@ -285,7 +289,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 90,
+        "lectureHours": 42,
+        "practiceHours": 48
     },
     {
         "id": 12,
@@ -293,11 +300,11 @@ export const mockCatalog = [
         "name": "Корпоративна топології",
         "instructor": "Проф. Олександр Гаврилюк",
         "instructorTitle": "professor",
-        "credits": 26,
+        "credits": 3,
         "duration": 9,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 44,
+        "practicePercentage": 46,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -413,7 +420,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 51,
+        "lectureHours": 21,
+        "practiceHours": 18
     },
     {
         "id": 13,
@@ -421,11 +431,11 @@ export const mockCatalog = [
         "name": "Кількісні макроекономіки",
         "instructor": "Проф. Оксана Мороз",
         "instructorTitle": "professor",
-        "credits": 2,
+        "credits": 3,
         "duration": 12,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 47,
+        "practicePercentage": 51,
         "enrollmentType": {
             "mandatory": 91,
             "elective": 9
@@ -543,7 +553,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 47,
+        "lectureHours": 21,
+        "practiceHours": 22
     },
     {
         "id": 14,
@@ -551,11 +564,11 @@ export const mockCatalog = [
         "name": "Стратегічне баз даних",
         "instructor": "Олена Мельник",
         "instructorTitle": "lecturer",
-        "credits": 2,
+        "credits": 6,
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 50,
+        "practicePercentage": 59,
         "enrollmentType": {
             "mandatory": 20,
             "elective": 80
@@ -676,7 +689,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 87,
+        "lectureHours": 38,
+        "practiceHours": 55
     },
     {
         "id": 15,
@@ -684,11 +700,11 @@ export const mockCatalog = [
         "name": "Теорія корпоративного права",
         "instructor": "Юлія Мороз",
         "instructorTitle": "lecturer",
-        "credits": 17,
+        "credits": 6,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "practicePercentage": 38,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -806,7 +822,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 87,
+        "lectureHours": 58,
+        "practiceHours": 35
     },
     {
         "id": 16,
@@ -814,11 +833,11 @@ export const mockCatalog = [
         "name": "Вступ до інтелектуальної власності",
         "instructor": "Проф. Юлія Бондаренко",
         "instructorTitle": "professor",
-        "credits": 12,
+        "credits": 4,
         "duration": 13,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 60,
+        "practicePercentage": 64,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -937,7 +956,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 67,
+        "lectureHours": 19,
+        "practiceHours": 34
     },
     {
         "id": 17,
@@ -945,11 +967,11 @@ export const mockCatalog = [
         "name": "Прикладна штучного інтелекту",
         "instructor": "Олена Власенко",
         "instructorTitle": "expert",
-        "credits": 24,
+        "credits": 2,
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 45,
+        "practicePercentage": 68,
         "enrollmentType": {
             "mandatory": 15,
             "elective": 85
@@ -1071,7 +1093,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 29,
+        "lectureHours": 10,
+        "practiceHours": 21
     },
     {
         "id": 18,
@@ -1079,11 +1104,11 @@ export const mockCatalog = [
         "name": "Корпоративна корпоративного права",
         "instructor": "Проф. Володимир Власенко",
         "instructorTitle": "professor",
-        "credits": 19,
+        "credits": 5,
         "duration": 13,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 67,
+        "practicePercentage": 59,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -1204,7 +1229,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 80,
+        "lectureHours": 29,
+        "practiceHours": 41
     },
     {
         "id": 19,
@@ -1212,11 +1240,11 @@ export const mockCatalog = [
         "name": "Методи топології",
         "instructor": "Володимир Ковальчук",
         "instructorTitle": "expert",
-        "credits": 18,
+        "credits": 5,
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 33,
+        "practicePercentage": 46,
         "enrollmentType": {
             "mandatory": 97,
             "elective": 3
@@ -1331,7 +1359,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 87,
+        "lectureHours": 34,
+        "practiceHours": 29
     },
     {
         "id": 20,
@@ -1343,7 +1374,7 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 38,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 16,
             "elective": 84
@@ -1458,7 +1489,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 62,
+        "lectureHours": 59,
+        "practiceHours": 29
     },
     {
         "id": 21,
@@ -1466,11 +1500,11 @@ export const mockCatalog = [
         "name": "Аналіз баз даних",
         "instructor": "Петро Ткаченко",
         "instructorTitle": "lecturer",
-        "credits": 20,
+        "credits": 2,
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "practicePercentage": 43,
         "enrollmentType": {
             "mandatory": 22,
             "elective": 78
@@ -1591,7 +1625,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 25,
+        "lectureHours": 20,
+        "practiceHours": 15
     },
     {
         "id": 22,
@@ -1599,11 +1636,11 @@ export const mockCatalog = [
         "name": "Теорія корпоративного права",
         "instructor": "Марія Шевченко",
         "instructorTitle": "expert",
-        "credits": 11,
+        "credits": 4,
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 77,
+        "practicePercentage": 68,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -1722,7 +1759,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 67,
+        "lectureHours": 17,
+        "practiceHours": 36
     },
     {
         "id": 23,
@@ -1730,11 +1770,11 @@ export const mockCatalog = [
         "name": "Кількісні психології ділових відносин",
         "instructor": "Володимир Лисенко",
         "instructorTitle": "lecturer",
-        "credits": 20,
+        "credits": 2,
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 70,
+        "practicePercentage": 68,
         "enrollmentType": {
             "mandatory": 85,
             "elective": 15
@@ -1850,7 +1890,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 32,
+        "lectureHours": 9,
+        "practiceHours": 19
     },
     {
         "id": 24,
@@ -1858,11 +1901,11 @@ export const mockCatalog = [
         "name": "Теорія криптографії",
         "instructor": "Проф. Петро Кравченко",
         "instructorTitle": "professor",
-        "credits": 17,
+        "credits": 4,
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 58,
+        "practicePercentage": 51,
         "enrollmentType": {
             "mandatory": 77,
             "elective": 23
@@ -1983,7 +2026,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 49,
+        "lectureHours": 35,
+        "practiceHours": 36
     },
     {
         "id": 25,
@@ -1991,11 +2037,11 @@ export const mockCatalog = [
         "name": "Прикладна мікроекономіки",
         "instructor": "Проф. Олександр Лисенко",
         "instructorTitle": "professor",
-        "credits": 3,
+        "credits": 5,
         "duration": 10,
         "startWeek": 6,
         "termLength": 16,
-        "practicePercentage": 38,
+        "practicePercentage": 32,
         "enrollmentType": {
             "mandatory": 86,
             "elective": 14
@@ -2110,7 +2156,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 76,
+        "lectureHours": 50,
+        "practiceHours": 24
     },
     {
         "id": 26,
@@ -2118,11 +2167,11 @@ export const mockCatalog = [
         "name": "Стратегічне мікроекономіки",
         "instructor": "Оксана Ткаченко",
         "instructorTitle": "expert",
-        "credits": 17,
+        "credits": 4,
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 47,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -2240,7 +2289,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 68,
+        "lectureHours": 35,
+        "practiceHours": 17
     },
     {
         "id": 27,
@@ -2248,11 +2300,11 @@ export const mockCatalog = [
         "name": "Кількісні криптографії",
         "instructor": "Проф. Наталія Мороз",
         "instructorTitle": "professor",
-        "credits": 23,
+        "credits": 5,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 30,
+        "practicePercentage": 34,
         "enrollmentType": {
             "mandatory": 96,
             "elective": 4
@@ -2371,7 +2423,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 76,
+        "lectureHours": 49,
+        "practiceHours": 25
     },
     {
         "id": 28,
@@ -2379,11 +2434,11 @@ export const mockCatalog = [
         "name": "Методи машинного навчання",
         "instructor": "Проф. Тетяна Кравченко",
         "instructorTitle": "professor",
-        "credits": 26,
+        "credits": 2,
         "duration": 8,
         "startWeek": 7,
         "termLength": 16,
-        "practicePercentage": 39,
+        "practicePercentage": 56,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -2496,7 +2551,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 35,
+        "lectureHours": 11,
+        "practiceHours": 14
     },
     {
         "id": 29,
@@ -2504,11 +2562,11 @@ export const mockCatalog = [
         "name": "Основи статистики",
         "instructor": "Петро Лисенко",
         "instructorTitle": "expert",
-        "credits": 23,
+        "credits": 6,
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 80,
+        "practicePercentage": 60,
         "enrollmentType": {
             "mandatory": 28,
             "elective": 72
@@ -2624,7 +2682,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 107,
+        "lectureHours": 29,
+        "practiceHours": 44
     },
     {
         "id": 30,
@@ -2632,11 +2693,11 @@ export const mockCatalog = [
         "name": "Обчислювальний криптографії",
         "instructor": "Проф. Андрій Павленко",
         "instructorTitle": "professor",
-        "credits": 15,
+        "credits": 6,
         "duration": 14,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 33,
+        "practicePercentage": 45,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -2758,7 +2819,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 102,
+        "lectureHours": 43,
+        "practiceHours": 35
     },
     {
         "id": 31,
@@ -2766,11 +2830,11 @@ export const mockCatalog = [
         "name": "Корпоративна криптографії",
         "instructor": "Володимир Павленко",
         "instructorTitle": "lecturer",
-        "credits": 5,
+        "credits": 2,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 68,
+        "practicePercentage": 56,
         "enrollmentType": {
             "mandatory": 88,
             "elective": 12
@@ -2889,7 +2953,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 33,
+        "lectureHours": 12,
+        "practiceHours": 15
     },
     {
         "id": 32,
@@ -2897,11 +2964,11 @@ export const mockCatalog = [
         "name": "Сучасна корпоративного права",
         "instructor": "Михайло Власенко",
         "instructorTitle": "expert",
-        "credits": 3,
+        "credits": 5,
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 48,
+        "practicePercentage": 50,
         "enrollmentType": {
             "mandatory": 39,
             "elective": 61
@@ -3021,7 +3088,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 76,
+        "lectureHours": 37,
+        "practiceHours": 37
     },
     {
         "id": 33,
@@ -3029,11 +3099,11 @@ export const mockCatalog = [
         "name": "Теорія машинного навчання",
         "instructor": "Михайло Лисенко",
         "instructorTitle": "expert",
-        "credits": 18,
+        "credits": 5,
         "duration": 12,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 38,
+        "practicePercentage": 49,
         "enrollmentType": {
             "mandatory": 75,
             "elective": 25
@@ -3154,7 +3224,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 78,
+        "lectureHours": 37,
+        "practiceHours": 35
     },
     {
         "id": 34,
@@ -3162,11 +3235,11 @@ export const mockCatalog = [
         "name": "Аналіз криптографії",
         "instructor": "Проф. Юлія Савченко",
         "instructorTitle": "professor",
-        "credits": 11,
+        "credits": 4,
         "duration": 11,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 51,
+        "practicePercentage": 48,
         "enrollmentType": {
             "mandatory": 78,
             "elective": 22
@@ -3286,7 +3359,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 53,
+        "lectureHours": 35,
+        "practiceHours": 32
     },
     {
         "id": 35,
@@ -3294,11 +3370,11 @@ export const mockCatalog = [
         "name": "Стратегічне корпоративного права",
         "instructor": "Оксана Кравченко",
         "instructorTitle": "lecturer",
-        "credits": 15,
+        "credits": 5,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 57,
+        "practicePercentage": 46,
         "enrollmentType": {
             "mandatory": 24,
             "elective": 76
@@ -3415,7 +3491,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 76,
+        "lectureHours": 40,
+        "practiceHours": 34
     },
     {
         "id": 36,
@@ -3423,11 +3502,11 @@ export const mockCatalog = [
         "name": "Вступ до баз даних",
         "instructor": "Наталія Мороз",
         "instructorTitle": "expert",
-        "credits": 9,
+        "credits": 4,
         "duration": 11,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 71,
+        "practicePercentage": 70,
         "enrollmentType": {
             "mandatory": 12,
             "elective": 88
@@ -3545,7 +3624,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 51,
+        "lectureHours": 21,
+        "practiceHours": 48
     },
     {
         "id": 37,
@@ -3553,11 +3635,11 @@ export const mockCatalog = [
         "name": "Системний корпоративного права",
         "instructor": "Проф. Оксана Лисенко",
         "instructorTitle": "professor",
-        "credits": 6,
+        "credits": 3,
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 74,
+        "practicePercentage": 59,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -3675,7 +3757,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 44,
+        "lectureHours": 19,
+        "practiceHours": 27
     },
     {
         "id": 38,
@@ -3683,11 +3768,11 @@ export const mockCatalog = [
         "name": "Кількісні психології ділових відносин",
         "instructor": "Андрій Мороз",
         "instructorTitle": "lecturer",
-        "credits": 5,
+        "credits": 4,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 45,
+        "practicePercentage": 36,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -3805,7 +3890,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 62,
+        "lectureHours": 37,
+        "practiceHours": 21
     },
     {
         "id": 39,
@@ -3813,11 +3901,11 @@ export const mockCatalog = [
         "name": "Прикладна корпоративного права",
         "instructor": "Проф. Наталія Мороз",
         "instructorTitle": "professor",
-        "credits": 26,
+        "credits": 4,
         "duration": 9,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 74,
+        "practicePercentage": 54,
         "enrollmentType": {
             "mandatory": 9,
             "elective": 91
@@ -3934,7 +4022,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 51,
+        "lectureHours": 32,
+        "practiceHours": 37
     },
     {
         "id": 40,
@@ -3942,11 +4033,11 @@ export const mockCatalog = [
         "name": "Сучасна психології ділових відносин",
         "instructor": "Михайло Кравченко",
         "instructorTitle": "expert",
-        "credits": 2,
+        "credits": 6,
         "duration": 13,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 61,
+        "practicePercentage": 57,
         "enrollmentType": {
             "mandatory": 18,
             "elective": 82
@@ -4064,7 +4155,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 90,
+        "lectureHours": 39,
+        "practiceHours": 51
     },
     {
         "id": 41,
@@ -4072,11 +4166,11 @@ export const mockCatalog = [
         "name": "Вступ до статистики",
         "instructor": "Олена Лисенко",
         "instructorTitle": "lecturer",
-        "credits": 20,
+        "credits": 6,
         "duration": 11,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 30,
+        "practicePercentage": 54,
         "enrollmentType": {
             "mandatory": 16,
             "elective": 84
@@ -4194,7 +4288,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 81,
+        "lectureHours": 46,
+        "practiceHours": 53
     },
     {
         "id": 42,
@@ -4202,11 +4299,11 @@ export const mockCatalog = [
         "name": "Кібернетична психології ділових відносин",
         "instructor": "Андрій Ткаченко",
         "instructorTitle": "expert",
-        "credits": 8,
+        "credits": 3,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 36,
+        "practicePercentage": 38,
         "enrollmentType": {
             "mandatory": 6,
             "elective": 94
@@ -4324,7 +4421,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 38,
+        "lectureHours": 32,
+        "practiceHours": 20
     },
     {
         "id": 43,
@@ -4332,11 +4432,11 @@ export const mockCatalog = [
         "name": "Стратегічне політології",
         "instructor": "Проф. Володимир Ткаченко",
         "instructorTitle": "professor",
-        "credits": 2,
+        "credits": 3,
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 79,
+        "practicePercentage": 43,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -4454,7 +4554,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 53,
+        "lectureHours": 21,
+        "practiceHours": 16
     },
     {
         "id": 44,
@@ -4466,7 +4569,7 @@ export const mockCatalog = [
         "duration": 12,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 72,
+        "practicePercentage": 41,
         "enrollmentType": {
             "mandatory": 75,
             "elective": 25
@@ -4584,7 +4687,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 59,
+        "lectureHours": 36,
+        "practiceHours": 25
     },
     {
         "id": 45,
@@ -4592,11 +4698,11 @@ export const mockCatalog = [
         "name": "Стратегічне психології ділових відносин",
         "instructor": "Проф. Тетяна Власенко",
         "instructorTitle": "professor",
-        "credits": 21,
+        "credits": 5,
         "duration": 10,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 39,
+        "practicePercentage": 67,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -4713,7 +4819,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 80,
+        "lectureHours": 23,
+        "practiceHours": 47
     },
     {
         "id": 46,
@@ -4721,11 +4830,11 @@ export const mockCatalog = [
         "name": "Системний мікроекономіки",
         "instructor": "Оксана Шевченко",
         "instructorTitle": "lecturer",
-        "credits": 25,
+        "credits": 5,
         "duration": 10,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 34,
+        "practicePercentage": 44,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -4841,7 +4950,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 75,
+        "lectureHours": 42,
+        "practiceHours": 33
     },
     {
         "id": 47,
@@ -4849,11 +4961,11 @@ export const mockCatalog = [
         "name": "Економіка фірми",
         "instructor": "Валентин Гвоздій",
         "instructorTitle": "expert",
-        "credits": 24,
+        "credits": 2,
         "duration": 11,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 85,
+        "practicePercentage": 69,
         "enrollmentType": {
             "mandatory": 95,
             "elective": 5
@@ -4986,7 +5098,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 28,
+        "lectureHours": 10,
+        "practiceHours": 22
     },
     {
         "id": 48,
@@ -4994,11 +5109,11 @@ export const mockCatalog = [
         "name": "Кількісні машинного навчання",
         "instructor": "Василь Гаврилюк",
         "instructorTitle": "lecturer",
-        "credits": 24,
+        "credits": 2,
         "duration": 14,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 40,
+        "practicePercentage": 59,
         "enrollmentType": {
             "mandatory": 90,
             "elective": 10
@@ -5116,7 +5231,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 33,
+        "lectureHours": 11,
+        "practiceHours": 16
     },
     {
         "id": 49,
@@ -5124,11 +5242,11 @@ export const mockCatalog = [
         "name": "Міжнародна корпоративного права",
         "instructor": "Тетяна Гаврилюк",
         "instructorTitle": "lecturer",
-        "credits": 15,
+        "credits": 6,
         "duration": 9,
         "startWeek": 7,
         "termLength": 16,
-        "practicePercentage": 43,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -5243,7 +5361,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 99,
+        "lectureHours": 54,
+        "practiceHours": 27
     },
     {
         "id": 50,
@@ -5251,11 +5372,11 @@ export const mockCatalog = [
         "name": "Інноваційна корпоративного права",
         "instructor": "Василь Ковальчук",
         "instructorTitle": "expert",
-        "credits": 24,
+        "credits": 3,
         "duration": 8,
         "startWeek": 6,
         "termLength": 16,
-        "practicePercentage": 65,
+        "practicePercentage": 59,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -5368,7 +5489,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 53,
+        "lectureHours": 15,
+        "practiceHours": 22
     },
     {
         "id": 51,
@@ -5376,11 +5500,11 @@ export const mockCatalog = [
         "name": "Вступ до фінансового менеджменту",
         "instructor": "Дмитро Шевченко",
         "instructorTitle": "expert",
-        "credits": 13,
+        "credits": 3,
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 47,
+        "practicePercentage": 68,
         "enrollmentType": {
             "mandatory": 8,
             "elective": 92
@@ -5496,7 +5620,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 50,
+        "lectureHours": 13,
+        "practiceHours": 27
     },
     {
         "id": 52,
@@ -5504,11 +5631,11 @@ export const mockCatalog = [
         "name": "Міжнародна фінансового менеджменту",
         "instructor": "Михайло Лисенко",
         "instructorTitle": "expert",
-        "credits": 22,
+        "credits": 6,
         "duration": 13,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 79,
+        "practicePercentage": 48,
         "enrollmentType": {
             "mandatory": 22,
             "elective": 78
@@ -5628,7 +5755,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 88,
+        "lectureHours": 48,
+        "practiceHours": 44
     },
     {
         "id": 53,
@@ -5636,11 +5766,11 @@ export const mockCatalog = [
         "name": "Кількісні інтелектуальної власності",
         "instructor": "Проф. Дмитро Кравченко",
         "instructorTitle": "professor",
-        "credits": 17,
+        "credits": 6,
         "duration": 8,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 78,
+        "practicePercentage": 69,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -5755,7 +5885,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 93,
+        "lectureHours": 27,
+        "practiceHours": 60
     },
     {
         "id": 54,
@@ -5763,11 +5896,11 @@ export const mockCatalog = [
         "name": "Корпоративна політології",
         "instructor": "Проф. Михайло Павленко",
         "instructorTitle": "professor",
-        "credits": 26,
+        "credits": 6,
         "duration": 13,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 75,
+        "practicePercentage": 51,
         "enrollmentType": {
             "mandatory": 97,
             "elective": 3
@@ -5887,7 +6020,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 83,
+        "lectureHours": 48,
+        "practiceHours": 49
     },
     {
         "id": 55,
@@ -5895,11 +6031,11 @@ export const mockCatalog = [
         "name": "Стратегічне штучного інтелекту",
         "instructor": "Юлія Савченко",
         "instructorTitle": "lecturer",
-        "credits": 2,
+        "credits": 3,
         "duration": 8,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 69,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 33,
             "elective": 67
@@ -6015,7 +6151,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 45,
+        "lectureHours": 30,
+        "practiceHours": 15
     },
     {
         "id": 56,
@@ -6023,11 +6162,11 @@ export const mockCatalog = [
         "name": "Аналіз штучного інтелекту",
         "instructor": "Проф. Петро Кравченко",
         "instructorTitle": "professor",
-        "credits": 17,
+        "credits": 2,
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 74,
+        "practicePercentage": 38,
         "enrollmentType": {
             "mandatory": 24,
             "elective": 76
@@ -6141,7 +6280,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 31,
+        "lectureHours": 18,
+        "practiceHours": 11
     },
     {
         "id": 57,
@@ -6149,11 +6291,11 @@ export const mockCatalog = [
         "name": "Теорія алгоритмів",
         "instructor": "Наталія Шевченко",
         "instructorTitle": "expert",
-        "credits": 9,
+        "credits": 4,
         "duration": 9,
         "startWeek": 2,
         "termLength": 16,
-        "practicePercentage": 67,
+        "practicePercentage": 46,
         "enrollmentType": {
             "mandatory": 84,
             "elective": 16
@@ -6270,7 +6412,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 51,
+        "lectureHours": 37,
+        "practiceHours": 32
     },
     {
         "id": 58,
@@ -6278,11 +6423,11 @@ export const mockCatalog = [
         "name": "Методи фінансового менеджменту",
         "instructor": "Проф. Володимир Ковальчук",
         "instructorTitle": "professor",
-        "credits": 11,
+        "credits": 5,
         "duration": 12,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 50,
+        "practicePercentage": 61,
         "enrollmentType": {
             "mandatory": 80,
             "elective": 20
@@ -6400,7 +6545,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 78,
+        "lectureHours": 28,
+        "practiceHours": 44
     },
     {
         "id": 59,
@@ -6408,11 +6556,11 @@ export const mockCatalog = [
         "name": "Сучасна алгоритмів",
         "instructor": "Проф. Дмитро Мороз",
         "instructorTitle": "professor",
-        "credits": 9,
+        "credits": 2,
         "duration": 8,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 46,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 100,
             "elective": 0
@@ -6526,7 +6674,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 33,
+        "lectureHours": 18,
+        "practiceHours": 9
     },
     {
         "id": 1,
@@ -6538,7 +6689,7 @@ export const mockCatalog = [
         "duration": 11,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 51,
+        "practicePercentage": 33,
         "enrollmentType": {
             "mandatory": 91,
             "elective": 9
@@ -6658,7 +6809,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 86,
+        "lectureHours": 63,
+        "practiceHours": 31
     },
     {
         "id": 2,
@@ -6666,11 +6820,11 @@ export const mockCatalog = [
         "name": "Кібербезпека",
         "instructor": "Проф. Василь Шевченко",
         "instructorTitle": "professor",
-        "credits": 6,
+        "credits": 2,
         "duration": 11,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 58,
+        "practicePercentage": 61,
         "enrollmentType": {
             "mandatory": 32,
             "elective": 68
@@ -6787,7 +6941,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 27,
+        "lectureHours": 13,
+        "practiceHours": 20
     },
     {
         "id": 3,
@@ -6795,11 +6952,11 @@ export const mockCatalog = [
         "name": "Теорія ігор",
         "instructor": "Проф. Юлія Гаврилюк",
         "instructorTitle": "professor",
-        "credits": 6,
+        "credits": 2,
         "duration": 10,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 61,
+        "practicePercentage": 36,
         "enrollmentType": {
             "mandatory": 81,
             "elective": 19
@@ -6917,7 +7074,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 27,
+        "lectureHours": 21,
+        "practiceHours": 12
     },
     {
         "id": 4,
@@ -6929,7 +7089,7 @@ export const mockCatalog = [
         "duration": 8,
         "startWeek": 4,
         "termLength": 16,
-        "practicePercentage": 68,
+        "practicePercentage": 65,
         "enrollmentType": {
             "mandatory": 36,
             "elective": 64
@@ -7045,7 +7205,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 105,
+        "lectureHours": 26,
+        "practiceHours": 49
     },
     {
         "id": 5,
@@ -7053,11 +7216,11 @@ export const mockCatalog = [
         "name": "Фінансова економіка",
         "instructor": "Тетяна Шевченко",
         "instructorTitle": "expert",
-        "credits": 6,
+        "credits": 3,
         "duration": 10,
         "startWeek": 3,
         "termLength": 16,
-        "practicePercentage": 35,
+        "practicePercentage": 55,
         "enrollmentType": {
             "mandatory": 80,
             "elective": 20
@@ -7177,7 +7340,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 50,
+        "lectureHours": 18,
+        "practiceHours": 22
     },
     {
         "id": 6,
@@ -7185,11 +7351,11 @@ export const mockCatalog = [
         "name": "Аналіз даних з Python",
         "instructor": "Проф. Юлія Мельник",
         "instructorTitle": "professor",
-        "credits": 6,
+        "credits": 2,
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 42,
+        "practicePercentage": 54,
         "enrollmentType": {
             "mandatory": 40,
             "elective": 60
@@ -7306,7 +7472,10 @@ export const mockCatalog = [
             "1-й рік Аналітики"
         ],
         "syllabusUrl": "/syllabus-dummy.pdf",
-        "language": "Англійська"
+        "language": "Англійська",
+        "selfStudyHours": 34,
+        "lectureHours": 12,
+        "practiceHours": 14
     },
     {
         "id": 7,
@@ -7318,7 +7487,7 @@ export const mockCatalog = [
         "duration": 10,
         "startWeek": 1,
         "termLength": 16,
-        "practicePercentage": 63,
+        "practicePercentage": 62,
         "enrollmentType": {
             "mandatory": 13,
             "elective": 87
@@ -7435,7 +7604,10 @@ export const mockCatalog = [
             "1-й рік Бізнес-економіки",
             "1-й рік Аналітики"
         ],
-        "syllabusUrl": "/syllabus-dummy.pdf"
+        "syllabusUrl": "/syllabus-dummy.pdf",
+        "selfStudyHours": 82,
+        "lectureHours": 37,
+        "practiceHours": 61
     },
     {
         "id": 8,
@@ -7443,11 +7615,11 @@ export const mockCatalog = [
         "name": "Диференціальні рівняння",
         "instructor": "Петро Шевченко",
         "instructorTitle": "expert",
-        "credits": 6,
+        "credits": 2,
         "duration": 9,
         "startWeek": 5,
         "termLength": 16,
-        "practicePercentage": 69,
+        "practicePercentage": 55,
         "enrollmentType": {
             "mandatory": 83,
             "elective": 17
@@ -7561,7 +7733,10 @@ export const mockCatalog = [
             "1-й рік Аналітики"
         ],
         "syllabusUrl": "/syllabus-dummy.pdf",
-        "language": "Українська"
+        "language": "Українська",
+        "selfStudyHours": 31,
+        "lectureHours": 13,
+        "practiceHours": 16
     }
 ];
 
