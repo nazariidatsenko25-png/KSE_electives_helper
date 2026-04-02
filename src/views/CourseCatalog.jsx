@@ -815,7 +815,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                                     setExpanded(prereqCourse.id);
                                                                                                     setTimeout(() => {
                                                                                                         const el = document.querySelector(`.catalog-card.expanded`);
-                                                                                                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                                                                                        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                                                                                                     }, 100);
                                                                                                 }}
                                                                                             >
