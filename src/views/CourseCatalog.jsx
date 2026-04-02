@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin, ThumbsUp, ThumbsDown, Sparkles, ChevronUp, Award, BarChart2, Pin, PinOff } from 'lucide-react';
-import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments } from '../data/mockData';
+import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin, ThumbsUp, ThumbsDown, Sparkles, ChevronUp, Award, BarChart2, Pin, PinOff, CheckCircle } from 'lucide-react';
+import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments, mockTranscript } from '../data/mockData';
 import { fetchWithAuth } from '../utils/api';
 
 const MultiRangeSlider = ({ min, max, value, onChange }) => {
@@ -78,6 +78,7 @@ const CourseCatalog = ({ user, navigate }) => {
         const exp = new URLSearchParams(window.location.search).get('expanded');
         return exp ? Number(exp) : null;
     });
+    const [showFullInfoFor, setShowFullInfoFor] = useState(null);
 
     useEffect(() => {
         const handlePopState = () => {
@@ -651,10 +652,15 @@ const CourseCatalog = ({ user, navigate }) => {
                                 ? new Set(mockEnrollments[user.id] || [])
                                 : new Set();
 
+                            // Completed courses - matched through transcript
+                            const completedCourseIds = user
+                                ? new Set(sorted.filter(c => mockTranscript?.some(t => t.course_code === c.code)).map(c => c.id))
+                                : new Set();
+
                             const pinnedCourses = (pinActive && user) ? sorted.filter(c => activeCourseIds.has(c.id)) : [];
                             const restCourses = (pinActive && user) ? sorted.filter(c => !activeCourseIds.has(c.id)) : sorted;
 
-                            const renderCard = (course, isActive = false) => {
+                            const renderCard = (course, isActive = false, isCompleted = false) => {
                             const isExpanded = expanded === course.id;
                             const isWishlisted = wishlist.has(course.id);
                             const isLoading = loadingWishlist.has(course.id);
@@ -666,10 +672,11 @@ const CourseCatalog = ({ user, navigate }) => {
                             return (
                                 <div
                                     key={course.id}
-                                    className={`catalog-card glass-panel ${isExpanded ? 'expanded' : ''} ${isActive ? 'active-course' : ''}`}
+                                    className={`catalog-card glass-panel ${isExpanded ? 'expanded' : ''} ${isActive ? 'active-course' : ''} ${isCompleted ? 'completed-course' : ''}`}
                                     onClick={() => {
                                         setExpanded(isExpanded ? null : course.id);
                                         setShowExtendedStats(false);
+                                        if (!isExpanded) setShowFullInfoFor(null);
                                     }}
                                 >
                                     <div className="catalog-card-main">
@@ -732,7 +739,61 @@ const CourseCatalog = ({ user, navigate }) => {
                                         </div>
                                     </div>
 
-                                    {isExpanded && (
+                                    {isExpanded && isCompleted && showFullInfoFor !== course.id ? (
+                                        <div className="catalog-card-details" onClick={e => e.stopPropagation()} style={{ borderTop: 'none', marginTop: 0, paddingTop: 0 }}>
+                                            <div style={{ background: 'rgba(16, 185, 129, 0.05)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
+                                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1.5rem' }}>
+                                                    <CheckCircle size={22} color="#10b981" />
+                                                    <h4 style={{ margin: 0, fontWeight: 700, fontSize: '1.2rem', color: '#10b981' }}>Курс пройдено</h4>
+                                                    {(() => {
+                                                        const transcriptCourse = mockTranscript?.find(t => t.course_code === course.code);
+                                                        const userReview = mockReviews[course.id]?.find(r => r.authorId === user?.id);
+                                                        const grade = transcriptCourse?.grade || userReview?.grade || ["A", "A-", "B+", "B", "A"][course.id % 5] || "A";
+                                                        return <span style={{ marginLeft: 'auto', background: 'rgba(16, 185, 129, 0.2)', padding: '6px 12px', borderRadius: '8px', color: '#10b981', fontWeight: 700, fontSize: '1rem' }}>Оцінка: {grade}</span>;
+                                                    })()}
+                                                </div>
+                                                
+                                                <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1.25rem', borderRadius: '8px', marginBottom: '1.5rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                                    {(() => {
+                                                        const userReview = mockReviews[course.id]?.find(r => r.authorId === user?.id);
+                                                        if (userReview) {
+                                                            return (
+                                                                <>
+                                                                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
+                                                                        <h5 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1rem' }}>Ваш відгук про курс:</h5>
+                                                                    </div>
+                                                                    {userReview.questions?.map((q, i) => (
+                                                                        <div key={i} style={{ marginBottom: '1rem' }}>
+                                                                            <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>{q.q}</p>
+                                                                            <p style={{ margin: '4px 0 0 0', fontSize: '0.9rem', color: 'var(--text-main)', lineHeight: '1.5' }}>{q.a}</p>
+                                                                        </div>
+                                                                    ))}
+                                                                </>
+                                                            );
+                                                        }
+                                                        return (
+                                                            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                                                                <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Ви ще не залишили відгук про цей курс.</span>
+                                                                <button className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>Залишити відгук</button>
+                                                            </div>
+                                                        );
+                                                    })()}
+                                                </div>
+                                                <button 
+                                                    className="btn-secondary" 
+                                                    style={{ width: '100%', padding: '0.75rem', display: 'flex', justifyContent: 'center', gap: '8px', alignItems: 'center', background: 'rgba(16, 185, 129, 0.1)', color: '#10b981', border: '1px solid rgba(16, 185, 129, 0.2)', transition: 'background 0.2s', fontWeight: 600 }}
+                                                    onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(16, 185, 129, 0.15)'}
+                                                    onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(16, 185, 129, 0.1)'}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setShowFullInfoFor(course.id);
+                                                    }}
+                                                >
+                                                    <ChevronDown size={18} /> Показати повну інформацію
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ) : isExpanded && (
                                         <div className="catalog-card-details">
                                             {/* Top Header Row of Details */}
                                             <div className="expanded-header">
@@ -801,11 +862,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                 {course.detailedSyllabus.prerequisites[prereqType].map((item, i) => {
                                                                                     const prereqCourse = mockCatalog.find(c => item.includes(c.code) || item.includes(c.name));
                                                                                     if (prereqCourse) {
+                                                                                        const isCompleted = activeCourseIds.has(prereqCourse.id);
                                                                                         return (
                                                                                             <div 
                                                                                                 key={i}
                                                                                                 className="rec-card glass-panel" 
-                                                                                                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1rem', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', background: 'rgba(255,255,255,0.03)' }}
+                                                                                                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '0.5rem', padding: '1rem', border: isCompleted ? '1px solid rgba(16, 185, 129, 0.4)' : '1px solid rgba(255,255,255,0.1)', borderRadius: '12px', background: isCompleted ? 'rgba(16, 185, 129, 0.05)' : 'rgba(255,255,255,0.03)' }}
                                                                                                 onClick={(e) => {
                                                                                                     e.stopPropagation();
                                                                                                     setSearch(prereqCourse.code);
@@ -821,7 +883,10 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                             >
                                                                                                 <div className="rec-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                                                                                                     <div>
-                                                                                                        <span className="course-code-badge" style={{ fontSize: '0.75rem', padding: '2px 6px', borderRadius: '4px', background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa' }}>{prereqCourse.code}</span>
+                                                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                                                                                                            <span className="course-code-badge" style={{ display: 'inline-flex', alignItems: 'center', height: '22px', fontSize: '0.75rem', padding: '0 8px', borderRadius: '4px', background: 'rgba(59, 130, 246, 0.2)', color: '#60a5fa' }}>{prereqCourse.code}</span>
+                                                                                                            {isCompleted && <span style={{ display: 'inline-flex', alignItems: 'center', height: '22px', fontSize: '0.75rem', padding: '0 8px', borderRadius: '4px', background: 'rgba(16, 185, 129, 0.2)', color: '#10b981', fontWeight: 600, gap: '4px' }}><CheckCircle size={12} strokeWidth={2.5} /> Пройдено</span>}
+                                                                                                        </div>
                                                                                                         <h3 style={{ margin: '4px 0 0', fontSize: '1rem', fontWeight: 600, color: 'var(--text-main)' }}>{prereqCourse.name}</h3>
                                                                                                     </div>
                                                                                                     <div style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-primary)' }}>{prereqCourse.credits} ECTS</div>

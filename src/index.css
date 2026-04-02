@@ -3913,6 +3913,23 @@ body {
   font-weight: 700;
   padding: 0.15rem 0.5rem;
   border-radius: 10px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #FBBF24;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.catalog-card.completed-course {
+  border-left: 3px solid rgba(16, 185, 129, 0.6);
+  background: rgba(16, 185, 129, 0.03);
+}
+.catalog-card.completed-course:hover {
+  background: rgba(16, 185, 129, 0.06);
+}
+.completed-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
   background: rgba(16, 185, 129, 0.12);
   color: #34d399;
   border: 1px solid rgba(16, 185, 129, 0.25);

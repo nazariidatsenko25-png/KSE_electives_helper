@@ -34,8 +34,8 @@ const Sidebar = ({ currentView, setCurrentView, isMobileMenuOpen, setIsMobileMen
       <aside className={`sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <div className="logo-container">
-          <div className="logo-box">K</div>
-          <span className="logo-text">KSE Hub</span>
+          <div className="logo-box">S</div>
+          <span className="logo-text">StudentO</span>
         </div>
       </div>
 
