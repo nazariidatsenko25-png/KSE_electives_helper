@@ -5,9 +5,11 @@ import {
     MessageSquare, Clock, Award, ArrowLeft, ShieldCheck,
     ThumbsUp, ThumbsDown, Mail, FileText, ChevronRight, X
 } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 import { mockUsers, mockReviews, mockCatalog } from '../data/mockData';
 
 const StudentProfile = ({ userId, onBack }) => {
+    const { t, language } = useApp();
     const [showReviewsModal, setShowReviewsModal] = useState(false);
 
     // 1. Fetch User Info
@@ -38,7 +40,8 @@ const StudentProfile = ({ userId, onBack }) => {
 
     const formatDate = (isoStr) => {
         const d = new Date(isoStr);
-        return d.toLocaleDateString('uk-UA', { day: '2-digit', month: 'short', year: 'numeric' });
+        const localeMap = { uk: 'uk-UA', en: 'en-US', de: 'de-DE' };
+        return d.toLocaleDateString(localeMap[language] || 'en-US', { day: '2-digit', month: 'short', year: 'numeric' });
     };
 
     if (!student) {
@@ -46,9 +49,9 @@ const StudentProfile = ({ userId, onBack }) => {
             <div className="profile-view animate-in centered">
                 <div className="glass-panel text-center" style={{ padding: '3rem' }}>
                     <User size={48} className="text-muted mb-md" />
-                    <h2 className="heading-2">Профіль не знайдено</h2>
-                    <p className="text-muted">Користувача з ID {userId} не існує або доступ до його сторінки обмежений.</p>
-                    <button className="btn-primary mt-md" onClick={onBack}>Повернутися назад</button>
+                    <h2 className="heading-2">{t.studentProfile.notFoundTitle}</h2>
+                    <p className="text-muted">{t.studentProfile.notFoundDesc.replace('{userId}', userId)}</p>
+                    <button className="btn-primary mt-md" onClick={onBack}>{t.studentProfile.backToProfile}</button>
                 </div>
             </div>
         );
@@ -67,7 +70,7 @@ const StudentProfile = ({ userId, onBack }) => {
                     onClick={onBack}
                     style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(255,255,255,0.05)', border: 'none' }}
                 >
-                    <ArrowLeft size={16} /> Повернутися до вибору курсів
+                    <ArrowLeft size={16} /> {t.studentProfile.backToCatalog}
                 </button>
             </div>
 
@@ -87,15 +90,15 @@ const StudentProfile = ({ userId, onBack }) => {
                     <div className="profile-hero-info">
                         <h1 className="profile-full-name">
                             {student.first_name} {student.last_name}
-                            <ShieldCheck size={20} className="text-primary" style={{ marginLeft: '0.5rem', display: 'inline-block', verticalAlign: 'middle' }} title="Верифікований студент KSE" />
+                            <ShieldCheck size={20} className="text-primary" style={{ marginLeft: '0.5rem', display: 'inline-block', verticalAlign: 'middle' }} title={t.studentProfile.verifiedBadge} />
                         </h1>
                         <span className="profile-major-badge">
                             <GraduationCap size={16} />
-                            {student.major || 'Студент KSE'}
+                            {student.major || t.studentProfile.studentKSE}
                         </span>
                         <div style={{ marginTop: '0.5rem', display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
                             <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><User size={14} /> @{student.nickname}</span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Calendar size={14} /> {student.current_year}-й рік навчання</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '0.3rem' }}><Calendar size={14} /> {t.studentProfile.yearOfStudy.replace('{year}', student.current_year)}</span>
                         </div>
                     </div>
                 </div>
@@ -110,7 +113,7 @@ const StudentProfile = ({ userId, onBack }) => {
                     <div className="profile-card glass-panel">
                         <div className="profile-card-header">
                             <FileText size={18} className="profile-card-icon" />
-                            <h2>Особиста інформація</h2>
+                            <h2>{t.profile.personalInfo}</h2>
                         </div>
                         <div className="profile-info-list" style={{ marginTop: '1rem' }}>
                             <div className="profile-info-item">
@@ -127,8 +130,8 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <BookOpen size={16} />
                                 </div>
                                 <div className="info-details">
-                                    <span className="info-label">Спеціальність</span>
-                                    <span className="info-value">{student.major || 'Не вказано'}</span>
+                                    <span className="info-label">{t.profile.major}</span>
+                                    <span className="info-value">{student.major || 'N/A'}</span>
                                 </div>
                             </div>
                             <div className="profile-info-item">
@@ -136,8 +139,8 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <Calendar size={16} />
                                 </div>
                                 <div className="info-details">
-                                    <span className="info-label">Рік навчання</span>
-                                    <span className="info-value">{student.current_year}-й курс</span>
+                                    <span className="info-label">{t.profile.yearOfStudy}</span>
+                                    <span className="info-value">{t.profile.yearSuffix.replace('{year}', student.current_year)}</span>
                                 </div>
                             </div>
                             <div className="profile-info-item">
@@ -145,7 +148,7 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <Award size={16} />
                                 </div>
                                 <div className="info-details">
-                                    <span className="info-label">Кредити</span>
+                                    <span className="info-label">{t.profile.credits}</span>
                                     <span className="info-value">{mockCredits} ECTS</span>
                                 </div>
                             </div>
@@ -156,10 +159,10 @@ const StudentProfile = ({ userId, onBack }) => {
                     <div className="profile-card glass-panel">
                         <div className="profile-card-header">
                             <User size={18} className="profile-card-icon" />
-                            <h2>Про мене</h2>
+                            <h2>{t.profile.aboutMe}</h2>
                         </div>
                         <p className="bio-text" style={{ marginTop: '1rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
-                            {student.bio || `Студент Київської школи економіки за спеціальністю «${student.major}». Завжди відкритий(а) до нових знайомств, академічних дебатів та спільних міждисциплінарних проєктів.`}
+                            {student.bio || `KSE student specializing in "${student.major}". Open to networking, academic debates and collaborative multidisciplinary projects.`}
                         </p>
                     </div>
 
@@ -167,7 +170,7 @@ const StudentProfile = ({ userId, onBack }) => {
                     <div className="profile-card glass-panel">
                         <div className="profile-card-header">
                             <Star size={18} className="profile-card-icon text-accent" />
-                            <h2>Активність студента</h2>
+                            <h2>{t.studentProfile.activity}</h2>
                         </div>
                         <div className="profile-info-list" style={{ marginTop: '1rem' }}>
                             <div className="profile-info-item">
@@ -175,7 +178,7 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <MessageSquare size={16} />
                                 </div>
                                 <div className="info-details">
-                                    <span className="info-label">Написано відгуків</span>
+                                    <span className="info-label">{t.studentProfile.reviewsWritten}</span>
                                     <span className="info-value">{userReviews.length}</span>
                                 </div>
                             </div>
@@ -184,7 +187,7 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <Award size={16} />
                                 </div>
                                 <div className="info-details">
-                                    <span className="info-label">Отримано 'Корисно' сумарно</span>
+                                    <span className="info-label">{t.studentProfile.helpfulEarned}</span>
                                     <span className="info-value">
                                         {userReviews.reduce((sum, r) => sum + (r.likes || 0), 0)}
                                     </span>
@@ -196,21 +199,21 @@ const StudentProfile = ({ userId, onBack }) => {
                     <div className="profile-card glass-panel">
                         <div className="profile-card-header">
                             <Award size={18} className="profile-card-icon" color="#10B981" />
-                            <h2>Досягнення</h2>
+                            <h2>{t.studentProfile.achievements}</h2>
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
                             {userReviews.length >= 1 && (
                                 <span className="achievement-badge" style={{ padding: '0.4rem 0.8rem', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', borderRadius: '100px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                    <MessageSquare size={14} /> Письменник-початківець
+                                    <MessageSquare size={14} /> {t.studentProfile.beginnerWriter}
                                 </span>
                             )}
                             {userReviews.reduce((sum, r) => sum + (r.likes || 0), 0) >= 10 && (
                                 <span className="achievement-badge" style={{ padding: '0.4rem 0.8rem', background: 'rgba(245, 158, 11, 0.1)', color: '#F59E0B', borderRadius: '100px', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                                    <Star size={14} /> Лідери думок
+                                    <Star size={14} /> {t.studentProfile.opinionLeader}
                                 </span>
                             )}
                         </div>
-                        {userReviews.length === 0 && <p className="text-muted text-sm" style={{ marginTop: '1rem' }}>Досягнень поки немає.</p>}
+                        {userReviews.length === 0 && <p className="text-muted text-sm" style={{ marginTop: '1rem' }}>{t.studentProfile.noAchievements}</p>}
                     </div>
                 </div>
 
@@ -223,8 +226,8 @@ const StudentProfile = ({ userId, onBack }) => {
                                     <MessageSquare size={24} className="text-primary" />
                                 </div>
                                 <div>
-                                    <h2 style={{ fontSize: '1.4rem', margin: 0 }}>Публічні відгуки</h2>
-                                    <p className="text-muted text-sm" style={{ margin: '0.2rem 0 0' }}>Студент ділиться своїм досвідом</p>
+                                    <h2 style={{ fontSize: '1.4rem', margin: 0 }}>{t.studentProfile.publicReviews}</h2>
+                                    <p className="text-muted text-sm" style={{ margin: '0.2rem 0 0' }}>{t.studentProfile.sharingExperience}</p>
                                 </div>
                             </div>
                             <span className="reviews-count" style={{ background: 'var(--color-primary)', color: 'white', padding: '4px 12px', borderRadius: '20px', fontSize: '1rem', fontWeight: 600 }}>{userReviews.length}</span>
@@ -233,14 +236,14 @@ const StudentProfile = ({ userId, onBack }) => {
                         {userReviews.length === 0 ? (
                             <div className="profile-empty-reviews" style={{ textAlign: 'center', padding: '3rem 0', background: 'rgba(0,0,0,0.1)', borderRadius: '12px' }}>
                                 <MessageSquare size={32} className="text-muted mb-sm" style={{ margin: '0 auto 1rem', opacity: 0.5 }} />
-                                <p className="text-muted">Цей студент ще не написав публічних відгуків.</p>
+                                <p className="text-muted">{t.studentProfile.noPublicReviews}</p>
                             </div>
                         ) : (
                             <div className="reviews-summary-dashboard" style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                 
                                 <div className="recent-review-preview" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--border)', borderRadius: '12px', padding: '1.5rem' }}>
                                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', alignItems: 'center' }}>
-                                        <span style={{ fontSize: '0.8rem', color: 'var(--color-accent)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>Останній відгук</span>
+                                        <span style={{ fontSize: '0.8rem', color: 'var(--color-accent)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>{t.studentProfile.lastReview}</span>
                                         <div className="review-date" style={{ color: 'var(--text-muted)', fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
                                             <Clock size={12} />
                                             {formatDate(userReviews[0].date)}
@@ -253,13 +256,13 @@ const StudentProfile = ({ userId, onBack }) => {
                                                 {userReviews[0].course?.code || 'N/A'}
                                             </span>
                                             <span className="review-course-title" style={{ fontWeight: 600, fontSize: '1.1rem', color: 'var(--text-main)' }}>
-                                                {userReviews[0].course?.name || 'Курс'}
+                                                {userReviews[0].course?.name || 'Course'}
                                             </span>
                                         </div>
                                     </div>
                                     
                                     <div className="review-preview-bubble" style={{ background: 'rgba(0,0,0,0.2)', padding: '1rem', borderRadius: '8px', borderLeft: '3px solid var(--color-primary)', color: 'var(--text-muted)', fontStyle: 'italic', fontSize: '0.95rem' }}>
-                                        "{userReviews[0].questions?.[0]?.a || 'Без тексту.'}"
+                                        "{userReviews[0].questions?.[0]?.a || t.studentProfile.noText}"
                                     </div>
                                 </div>
 
@@ -268,7 +271,7 @@ const StudentProfile = ({ userId, onBack }) => {
                                     style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', borderRadius: '12px' }}
                                     onClick={() => setShowReviewsModal(true)}
                                 >
-                                    Переглянути всі відгуки ({userReviews.length}) <ChevronRight size={18} />
+                                    {t.studentProfile.viewAllReviews.replace('{count}', userReviews.length)} <ChevronRight size={18} />
                                 </button>
                             </div>
                         )}
@@ -302,9 +305,9 @@ const StudentProfile = ({ userId, onBack }) => {
                         <div className="modal-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.5rem 2rem', borderBottom: '1px solid var(--border)', background: 'rgba(15, 23, 42, 0.95)', borderTopLeftRadius: '16px', borderTopRightRadius: '16px', zIndex: 2 }}>
                             <div>
                                 <h2 style={{ fontSize: '1.4rem', margin: 0, display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                    <MessageSquare className="text-primary" size={24} /> Всі публічні відгуки
+                                    <MessageSquare className="text-primary" size={24} /> {t.studentProfile.allPublicReviews}
                                 </h2>
-                                <p className="text-muted text-sm" style={{ margin: '0.2rem 0 0 2.25rem' }}>від {student.first_name} {student.last_name}</p>
+                                <p className="text-muted text-sm" style={{ margin: '0.2rem 0 0 2.25rem' }}>{t.studentProfile.from} {student.first_name} {student.last_name}</p>
                             </div>
                             <button 
                                 className="modal-close-btn" 
@@ -335,11 +338,11 @@ const StudentProfile = ({ userId, onBack }) => {
                                                 </div>
                                                 <div className="review-title-row" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
                                                     <span className="review-course-title" style={{ fontWeight: 'bold', fontSize: '1.25rem', color: 'var(--text-main)' }}>
-                                                        {review.course?.name || 'Курс'}
+                                                        {review.course?.name || 'Course'}
                                                     </span>
                                                     {review.grade && (
                                                         <span className="review-grade-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', background: 'rgba(16, 185, 129, 0.1)', color: '#10B981', padding: '4px 10px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 600 }}>
-                                                            Оцінка: {review.grade}
+                                                            {t.studentProfile.grade} {review.grade}
                                                         </span>
                                                     )}
                                                 </div>
@@ -356,7 +359,7 @@ const StudentProfile = ({ userId, onBack }) => {
                                         </div>
 
                                         <div className="review-vote-row" style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px dashed rgba(255,255,255,0.1)', alignItems: 'center' }}>
-                                            <span className="review-helpful-label" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Оцінка цього відгуку спільнотою:</span>
+                                            <span className="review-helpful-label" style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>{t.studentProfile.communityRating}</span>
                                             <div style={{ display: 'flex', gap: '1rem' }}>
                                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--text-main)', fontWeight: 600, background: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: '12px' }}><ThumbsUp size={16} color="#3B82F6" /> {review.likes || 0}</span>
                                                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--text-main)', fontWeight: 600, background: 'rgba(255,255,255,0.05)', padding: '4px 10px', borderRadius: '12px' }}><ThumbsDown size={16} color="#EF4444" /> {review.dislikes || 0}</span>

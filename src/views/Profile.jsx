@@ -18,17 +18,18 @@ const AVATAR_COLORS = [
 const AVATAR_EMOJIS = ['🦁','🐯','🦊','🐺','🦝','🐻','🐼','🦄','🐸','🐙','🦋','🌟'];
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
-function formatDate(dateStr) {
+function formatDate(dateStr, t) {
   const date = new Date(dateStr);
-  return date.toLocaleDateString('uk-UA', { day: 'numeric', month: 'long', year: 'numeric' });
+  const locale = t.lang === 'uk' ? 'uk-UA' : t.lang === 'de' ? 'de-DE' : 'en-US';
+  return date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 }
 
-function timeAgo(iso) {
+function timeAgo(iso, p) {
   const diff = (Date.now() - new Date(iso).getTime()) / 1000;
-  if (diff < 60)   return 'щойно';
-  if (diff < 3600) return `${Math.floor(diff / 60)} хв тому`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)} год тому`;
-  return `${Math.floor(diff / 86400)} дн тому`;
+  if (diff < 60)   return p.justNow;
+  if (diff < 3600) return `${Math.floor(diff / 60)} ${p.mins} ${p.ago}`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} ${p.hours} ${p.ago}`;
+  return `${Math.floor(diff / 86400)} ${p.days} ${p.ago}`;
 }
 
 function renderStars(rating) {
@@ -61,7 +62,7 @@ function AvatarDisplay({ profile, size = 80, className = '' }) {
 }
 
 // ─── Avatar Picker Modal ──────────────────────────────────────────────────────
-function AvatarPicker({ profile, onSave, onClose }) {
+function AvatarPicker({ profile, onSave, onClose, p }) {
   const [tab, setTab] = useState(profile.avatarType || 'color');
   const [selectedColor, setSelectedColor] = useState(profile.avatarColor);
   const [selectedEmoji, setSelectedEmoji] = useState(profile.avatarEmoji);
@@ -94,7 +95,7 @@ function AvatarPicker({ profile, onSave, onClose }) {
     <div className="avatar-modal-overlay" onClick={onClose}>
       <div className="avatar-modal glass-panel" onClick={e => e.stopPropagation()}>
         <div className="avatar-modal-header">
-          <h3>Змінити аватар</h3>
+          <h3>{p.changeAvatar}</h3>
           <button className="icon-btn" onClick={onClose}><X size={18} /></button>
         </div>
 
@@ -104,9 +105,9 @@ function AvatarPicker({ profile, onSave, onClose }) {
 
         <div className="avatar-tabs">
           {[
-            { key: 'color', icon: <div className="color-dot" style={{background:'#6B21A8'}} />, label: 'Колір' },
-            { key: 'emoji', icon: <Smile size={15} />, label: 'Емодзі' },
-            { key: 'image', icon: <Image size={15} />, label: 'Фото' },
+            { key: 'color', icon: <div className="color-dot" style={{background:'#6B21A8'}} />, label: p.color },
+            { key: 'emoji', icon: <Smile size={15} />, label: p.emoji },
+            { key: 'image', icon: <Image size={15} />, label: p.photo },
           ].map(t => (
             <button key={t.key} className={`avatar-tab ${tab === t.key ? 'active' : ''}`} onClick={() => setTab(t.key)}>
               {t.icon} {t.label}
@@ -140,14 +141,14 @@ function AvatarPicker({ profile, onSave, onClose }) {
                 <div className="image-preview-wrap">
                   <img src={imageBase64} alt="preview" className="image-preview-thumb" />
                   <button className="btn-secondary btn-sm" onClick={() => setImageBase64(null)}>
-                    <X size={13} /> Видалити
+                    <X size={13} /> {p.delete}
                   </button>
                 </div>
               ) : (
                 <button className="upload-zone" onClick={() => fileRef.current?.click()}>
                   <Camera size={28} />
-                  <span>Клацніть для вибору фото</span>
-                  <span className="upload-hint">JPG, PNG до 5MB</span>
+                  <span>{p.clickToSelect}</span>
+                  <span className="upload-hint">{p.uploadHint}</span>
                 </button>
               )}
             </div>
@@ -155,9 +156,9 @@ function AvatarPicker({ profile, onSave, onClose }) {
         </div>
 
         <div className="avatar-modal-footer">
-          <button className="btn-secondary" onClick={onClose}>Скасувати</button>
+          <button className="btn-secondary" onClick={onClose}>{p.cancel}</button>
           <button className="btn-primary" onClick={handleSave}>
-            <Save size={14} /> Зберегти
+            <Save size={14} /> {p.save}
           </button>
         </div>
       </div>
@@ -166,7 +167,7 @@ function AvatarPicker({ profile, onSave, onClose }) {
 }
 
 // ─── Profile Wall ─────────────────────────────────────────────────────────────
-function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost, deleteWallPost, isOwner }) {
+function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost, deleteWallPost, isOwner, p }) {
   const [text, setText] = useState('');
 
   if (isPrivate && !isOwner) {
@@ -174,7 +175,7 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
       <div className="profile-card glass-panel">
         <div className="private-placeholder">
           <Lock size={24} />
-          <p>Стіна прихована — профіль приватний</p>
+          <p>{p.wallHidden}</p>
         </div>
       </div>
     );
@@ -183,7 +184,7 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
   const handlePost = () => {
     const t = text.trim();
     if (!t) return;
-    const name = currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : 'Анонім';
+    const name = currentUser ? `${currentUser.first_name} ${currentUser.last_name}` : (p?.anonymous || 'Anonymous');
     const color = AVATAR_COLORS[Math.floor(Math.random() * AVATAR_COLORS.length)];
     addWallPost(t, name, color);
     setText('');
@@ -193,7 +194,7 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
     <div className="profile-card glass-panel">
       <div className="profile-card-header">
         <MessageSquare size={18} className="profile-card-icon" />
-        <h2>Стіна профілю</h2>
+        <h2>{p.wallTitle}</h2>
         <span className="reviews-count">{wallPosts.length}</span>
       </div>
 
@@ -205,7 +206,7 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
           </div>
           <input
             className="wall-input"
-            placeholder={currentUser ? `Напишіть щось для ${ownerName}...` : 'Увійдіть, щоб залишити повідомлення'}
+            placeholder={currentUser ? p.writeSomething.replace('{name}', ownerName) : p.loginToPost}
             value={text}
             onChange={e => setText(e.target.value)}
             onKeyDown={e => e.key === 'Enter' && handlePost()}
@@ -223,7 +224,7 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
         {wallPosts.length === 0 ? (
           <div className="wall-empty">
             <MessageSquare size={28} />
-            <p>Стіна порожня. Будьте першим!</p>
+            <p>{p.wallEmpty}</p>
           </div>
         ) : wallPosts.map(post => (
           <div key={post.id} className="wall-post-item">
@@ -234,10 +235,10 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
               <div className="wall-post-meta">
                 <span className="wall-post-author">{post.author}</span>
                 <span className="wall-post-time">
-                  <Clock size={11} /> {timeAgo(post.timestamp)}
+                  <Clock size={11} /> {timeAgo(post.timestamp, p)}
                 </span>
                 {isOwner && (
-                  <button className="wall-delete-btn" onClick={() => deleteWallPost(post.id)} title="Видалити">
+                  <button className="wall-delete-btn" onClick={() => deleteWallPost(post.id)} title={p.delete}>
                     <Trash2 size={12} />
                   </button>
                 )}
@@ -253,7 +254,8 @@ function ProfileWall({ ownerName, isPrivate, currentUser, wallPosts, addWallPost
 
 // ─── Main Profile Component ──────────────────────────────────────────────────
 const Profile = ({ user }) => {
-  const { userProfile, updateUserProfile, wallPosts, addWallPost, deleteWallPost } = useApp();
+  const { t, userProfile, updateUserProfile, wallPosts, addWallPost, deleteWallPost } = useApp();
+  const p = t.profile;
 
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
   const [editingBio, setEditingBio] = useState(false);
@@ -282,8 +284,8 @@ const Profile = ({ user }) => {
       <div className="profile-view animate-in centered">
         <div className="glass-panel text-center" style={{ padding: '3rem' }}>
           <User size={48} className="text-muted mb-md" />
-          <h2 className="heading-2">Увійдіть до системи</h2>
-          <p className="text-muted">Щоб переглянути свій профіль, увійдіть через Google.</p>
+          <h2 className="heading-2">{p.signInRequired}</h2>
+          <p className="text-muted">{p.signInDesc}</p>
         </div>
       </div>
     );
@@ -298,6 +300,7 @@ const Profile = ({ user }) => {
       {/* Avatar Picker Modal */}
       {showAvatarPicker && (
         <AvatarPicker
+          p={p}
           profile={userProfile}
           onSave={updateUserProfile}
           onClose={() => setShowAvatarPicker(false)}
@@ -311,7 +314,7 @@ const Profile = ({ user }) => {
 
           {/* Avatar */}
           <div className="profile-avatar-section">
-            <div className="profile-avatar-wrapper" onClick={() => setShowAvatarPicker(true)} title="Змінити аватар">
+            <div className="profile-avatar-wrapper" onClick={() => setShowAvatarPicker(true)} title={p.changeAvatar}>
               <AvatarDisplay profile={userProfile} size={88} />
               <div className="avatar-edit-overlay"><Camera size={18} /></div>
             </div>
@@ -321,12 +324,12 @@ const Profile = ({ user }) => {
           <div className="profile-hero-info">
             <h1 className="profile-full-name">{user.first_name} {user.last_name}</h1>
             <div className="profile-hero-badges">
-              <span className="profile-major-badge"><GraduationCap size={15} />{user.major || 'Студент'}</span>
+              <span className="profile-major-badge"><GraduationCap size={15} />{user.major || t.aiAdvisor.student}</span>
               {user.gpa && (
-                <span className="profile-major-badge gpa-badge"><Star size={15} fill="#F59E0B" color="#F59E0B" />GPA: {user.gpa}</span>
+                <span className="profile-major-badge gpa-badge"><Star size={15} fill="#F59E0B" color="#F59E0B" />{t.dashboard.gpa}: {user.gpa}</span>
               )}
               <span className={`privacy-chip ${isPrivate ? 'private' : 'public'}`}>
-                {isPrivate ? <><Lock size={12} />Приватний</> : <><Globe size={12} />Публічний</>}
+                {isPrivate ? <><Lock size={12} />{p.private}</> : <><Globe size={12} />{p.public}</>}
               </span>
             </div>
 
@@ -334,7 +337,7 @@ const Profile = ({ user }) => {
             <div className="last-seen-row">
               <span className="online-dot" />
               <span className="last-seen-text">
-                Онлайн: {timeAgo(userProfile.lastSeen)}
+                {p.online} {timeAgo(userProfile.lastSeen, p)}
               </span>
             </div>
 
@@ -343,10 +346,10 @@ const Profile = ({ user }) => {
               <div className="linkedin-row">
                 {userProfile.linkedIn ? (
                   <a href={userProfile.linkedIn} target="_blank" rel="noreferrer" className="linkedin-link">
-                    <Linkedin size={14} /> LinkedIn профіль
+                    <Linkedin size={14} /> {p.linkedinProfile}
                   </a>
                 ) : (
-                  <span className="linkedin-empty">Немає LinkedIn</span>
+                  <span className="linkedin-empty">{p.noLinkedin}</span>
                 )}
                 <button className="icon-btn-sm" onClick={() => { setLinkedInInput(userProfile.linkedIn || ''); setEditingLinkedIn(true); }}>
                   <Edit3 size={13} />
@@ -373,9 +376,9 @@ const Profile = ({ user }) => {
             <button
               className={`privacy-toggle-btn ${isPrivate ? 'is-private' : 'is-public'}`}
               onClick={() => updateUserProfile({ isPrivate: !isPrivate })}
-              title={isPrivate ? 'Зробити публічним' : 'Зробити приватним'}
+              title={isPrivate ? p.makePublic : p.makePrivate}
             >
-              {isPrivate ? <><ShieldOff size={15} />Зробити публічним</> : <><Shield size={15} />Зробити приватним</>}
+              {isPrivate ? <><ShieldOff size={15} />{p.makePublic}</> : <><Shield size={15} />{p.makePrivate}</>}
             </button>
           </div>
         </div>
@@ -384,9 +387,9 @@ const Profile = ({ user }) => {
       {/* ── TABS ── */}
       <div className="profile-tabs">
         {[
-          { key: 'info',     label: 'Профіль',    icon: <FileText size={15} /> },
-          { key: 'comments', label: 'Коментарі',  icon: <MessageSquare size={15} />, count: reviews.length },
-          { key: 'wall',     label: 'Стіна',       icon: <Globe size={15} />, count: wallPosts.length },
+          { key: 'info',     label: p.tabInfo,    icon: <FileText size={15} /> },
+          { key: 'comments', label: p.tabComments,  icon: <MessageSquare size={15} />, count: reviews.length },
+          { key: 'wall',     label: p.tabWall,       icon: <Globe size={15} />, count: wallPosts.length },
         ].map(tab => (
           <button key={tab.key} className={`profile-tab ${activeTab === tab.key ? 'active' : ''}`}
             onClick={() => setActiveTab(tab.key)}>
@@ -408,7 +411,7 @@ const Profile = ({ user }) => {
               <div className="profile-card glass-panel">
                 <div className="profile-card-header">
                   <FileText size={18} className="profile-card-icon" />
-                  <h2>Особиста інформація</h2>
+                  <h2>{p.personalInfo}</h2>
                 </div>
                 <div className="profile-info-list">
                   <div className="profile-info-item">
@@ -421,24 +424,24 @@ const Profile = ({ user }) => {
                   <div className="profile-info-item">
                     <div className="info-icon-wrap"><BookOpen size={15} /></div>
                     <div className="info-details">
-                      <span className="info-label">Спеціальність</span>
-                      <span className="info-value">{user.major || 'Не вказано'}</span>
+                      <span className="info-label">{p.major}</span>
+                      <span className="info-value">{user.major || t.catalog.completed}</span>
                     </div>
                   </div>
                   <div className="profile-info-item">
                     <div className="info-icon-wrap"><Calendar size={15} /></div>
                     <div className="info-details">
-                      <span className="info-label">Рік навчання</span>
-                      <span className="info-value">{user.current_year}-й курс</span>
+                      <span className="info-label">{p.yearOfStudy}</span>
+                      <span className="info-value">{user.current_year}{p.yearSuffix}</span>
                     </div>
                   </div>
                   <div className="profile-info-item">
                     <div className="info-icon-wrap"><Award size={15} /></div>
                     <div className="info-details" style={{ width: '100%' }}>
-                      <span className="info-label">Кредити</span>
+                      <span className="info-label">{p.credits}</span>
                       <div className="credits-row">
                         <span className="credits-value">{user.total_credits || 0}</span>
-                        <span className="credits-sep">/ {user.creditsRequired || 240} ECTS</span>
+                        <span className="credits-sep">/ {user.creditsRequired || 240} {t.aiAdvisor.ectsContext}</span>
                       </div>
                       <div className="credits-bar-bg">
                         <div className="credits-bar-fill"
@@ -454,18 +457,18 @@ const Profile = ({ user }) => {
               <div className="profile-card glass-panel">
                 <div className="profile-card-header">
                   <Shield size={18} className="profile-card-icon" />
-                  <h2>Конфіденційність</h2>
+                  <h2>{p.privacy}</h2>
                 </div>
                 <div className="privacy-settings-list">
                   <div className="privacy-setting-item">
                     <div className="privacy-setting-info">
                       <span className="privacy-setting-title">
-                        {isPrivate ? <><Lock size={14} /> Приватний профіль</> : <><Globe size={14} /> Публічний профіль</>}
+                        {isPrivate ? <><Lock size={14} /> {p.private} {p.personalInfo}</> : <><Globe size={14} /> {p.public} {p.personalInfo}</>}
                       </span>
                       <span className="privacy-setting-desc">
                         {isPrivate
-                          ? 'Ваші коментарі та стіна приховані від інших користувачів'
-                          : 'Інші можуть бачити вашу стіну та коментарі до курсів'}
+                          ? p.privateDesc
+                          : p.publicDesc}
                       </span>
                     </div>
                     <button
@@ -484,10 +487,10 @@ const Profile = ({ user }) => {
               <div className="profile-card glass-panel">
                 <div className="profile-card-header">
                   <Edit3 size={18} className="profile-card-icon" />
-                  <h2>Про мене</h2>
+                  <h2>{p.aboutMe}</h2>
                   {!editingBio && (
                     <button className="bio-edit-btn" onClick={() => { setBioInput(userProfile.bio); setEditingBio(true); }}>
-                      <Edit3 size={13} /> Редагувати
+                      <Edit3 size={13} /> {p.edit}
                     </button>
                   )}
                 </div>
@@ -497,7 +500,7 @@ const Profile = ({ user }) => {
                       className="bio-textarea"
                       value={bioInput}
                       onChange={e => setBioInput(e.target.value)}
-                      placeholder="Розкажіть про себе, свої інтереси та цілі..."
+                      placeholder={p.bioPlaceholder}
                       rows={5}
                       maxLength={500}
                       autoFocus
@@ -505,14 +508,14 @@ const Profile = ({ user }) => {
                     <div className="bio-edit-actions">
                       <span className="bio-char-count">{bioInput.length}/500</span>
                       <div className="bio-btns">
-                        <button className="btn-secondary btn-sm" onClick={() => setEditingBio(false)}><X size={13} /> Скасувати</button>
-                        <button className="btn-primary btn-sm" onClick={() => { updateUserProfile({ bio: bioInput }); setEditingBio(false); }}><Save size={13} /> Зберегти</button>
+                        <button className="btn-secondary btn-sm" onClick={() => setEditingBio(false)}><X size={13} /> {p.cancel}</button>
+                        <button className="btn-primary btn-sm" onClick={() => { updateUserProfile({ bio: bioInput }); setEditingBio(false); }}><Save size={13} /> {p.save}</button>
                       </div>
                     </div>
                   </div>
                 ) : (
                   <p className={`bio-text ${!userProfile.bio ? 'empty' : ''}`}>
-                    {userProfile.bio || 'Натисніть «Редагувати», щоб додати інформацію про себе.'}
+                    {userProfile.bio || p.bioEmpty}
                   </p>
                 )}
               </div>
@@ -525,21 +528,21 @@ const Profile = ({ user }) => {
           <div className="profile-card glass-panel">
             <div className="profile-card-header">
               <MessageSquare size={18} className="profile-card-icon" />
-              <h2>Мої коментарі до курсів</h2>
+              <h2>{p.myComments}</h2>
               <span className="reviews-count">{reviews.length}</span>
             </div>
             {isPrivate ? (
               <div className="private-placeholder">
                 <Lock size={22} />
-                <p>Коментарі приховані — профіль приватний</p>
-                <span className="text-muted">Тільки ви бачите цей розділ</span>
+                <p>{p.wallHidden}</p>
+                <span className="text-muted">{p.privateDesc}</span>
               </div>
             ) : loadingReviews ? (
-              <div className="profile-loading"><div className="profile-spinner" /><span className="text-muted">Завантаження...</span></div>
+              <div className="profile-loading"><div className="profile-spinner" /><span className="text-muted">{p.loading}</span></div>
             ) : reviews.length === 0 ? (
               <div className="profile-empty-reviews">
                 <MessageSquare size={32} className="text-muted" />
-                <p className="text-muted">Ви ще не залишили жодного коментаря.</p>
+                <p className="text-muted">{p.noComments}</p>
               </div>
             ) : (
               <div className="profile-reviews-list">
@@ -549,7 +552,7 @@ const Profile = ({ user }) => {
                       <div className="review-course-info">
                         <span className="review-course-code">{review.course?.code || 'N/A'}</span>
                         <div className="review-title-row">
-                          <span className="review-course-title">{review.course?.title || 'Курс'}</span>
+                          <span className="review-course-title">{review.course?.title || (t.studentProfile.course || 'Course')}</span>
                           {review.grade && (
                             <span className="review-grade-badge"><Award size={12} />{review.grade}</span>
                           )}
@@ -561,12 +564,12 @@ const Profile = ({ user }) => {
                       </div>
                     </div>
                     <div className="review-ratings-row">
-                      <div className="review-rating-mini"><span className="rating-mini-label">Якість</span>{renderStars(review.rating_quality)}</div>
-                      <div className="review-rating-mini"><span className="rating-mini-label">Складність</span>{renderStars(review.rating_difficulty)}</div>
-                      <div className="review-rating-mini"><span className="rating-mini-label">Навантаження</span>{renderStars(review.rating_workload)}</div>
+                      <div className="review-rating-mini"><span className="rating-mini-label">{p.quality}</span>{renderStars(review.rating_quality)}</div>
+                      <div className="review-rating-mini"><span className="rating-mini-label">{p.difficulty}</span>{renderStars(review.rating_difficulty)}</div>
+                      <div className="review-rating-mini"><span className="rating-mini-label">{p.workload}</span>{renderStars(review.rating_workload)}</div>
                     </div>
                     {review.comment && <p className="review-comment-text">«{review.comment}»</p>}
-                    <div className="review-date"><Clock size={11} />{formatDate(review.created_at)}</div>
+                    <div className="review-date"><Clock size={11} />{formatDate(review.created_at, t)}</div>
                   </div>
                 ))}
               </div>
@@ -584,6 +587,7 @@ const Profile = ({ user }) => {
             addWallPost={addWallPost}
             deleteWallPost={deleteWallPost}
             isOwner={true}
+            p={p}
           />
         )}
       </div>
