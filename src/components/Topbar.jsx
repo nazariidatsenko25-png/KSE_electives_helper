@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Bell, Search, User, MessageSquare, Calendar, Award, X, Menu } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 
 const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView, setIsMobileMenuOpen }) => {
+    const { t } = useApp();
     const [showNotifs, setShowNotifs] = useState(false);
     const notifRef = useRef(null);
 
@@ -61,7 +63,7 @@ const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView, setIsMob
                     <Search size={18} className="search-icon" />
                     <input
                         type="text"
-                        placeholder="Пошук курсів, викладачів або силабусів..."
+                        placeholder={t.topbar.search}
                         className="search-input"
                     />
                 </div>
@@ -118,10 +120,10 @@ const Topbar = ({ user, onLogin, onLogout, currentView, setCurrentView, setIsMob
                         <div className="profile-avatar">
                             <User size={20} />
                         </div>
-                        <button onClick={(e) => { e.stopPropagation(); onLogout(); }} style={{ marginLeft: '10px', fontSize: '0.8rem', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>Вийти</button>
+                        <button onClick={(e) => { e.stopPropagation(); onLogout(); }} style={{ marginLeft: '10px', fontSize: '0.8rem', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>{t.topbar.logout}</button>
                     </div>
                 ) : (
-                    <button onClick={onLogin} className="btn-primary" style={{ cursor: 'pointer' }}>Увійти через Google</button>
+                    <button onClick={onLogin} className="btn-primary" style={{ cursor: 'pointer' }}>{t.topbar.loginGoogle}</button>
                 )}
             </div>
         </header>

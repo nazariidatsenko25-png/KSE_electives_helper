@@ -33,16 +33,41 @@
   --fs-body: 0.95rem;
   --fs-caption: 0.75rem;
 
+  /* Theme Accents (Light Mode Overrides) */
+  --btn-border: transparent;
+  --btn-text: white;
+
   --font-family: 'Inter',
     system-ui,
     -apple-system,
     sans-serif;
+  --font-dyslexic: 'OpenDyslexic', 'Comic Sans MS', sans-serif;
+}
+
+[data-theme='light'] {
+  --btn-border: rgba(0,0,0,0.2);
+  --btn-text: #000;
+}
+
+.dyslexia-mode {
+  --font-family: var(--font-dyslexic) !important;
+  font-family: var(--font-dyslexic) !important;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+}
+
+.dyslexia-mode * {
+  font-family: var(--font-dyslexic) !important;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  font-size: var(--base-font-size, 16px);
 }
 
 body {
@@ -68,6 +93,11 @@ body {
   /* Slightly squarer radius from screenshot */
   box-shadow: none;
   /* Removing heavy shadows based on flat dark theme screenshot */
+}
+
+[data-theme='light'] .glass-panel {
+  border: 1px solid rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .text-gradient {
@@ -268,13 +298,32 @@ body {
 .topbar {
   height: auto;
   min-height: 70px;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  z-index: 5;
-  flex-wrap: wrap;
+  z-index: 20;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 992px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .view-container {
+    padding: 0.75rem;
+    padding-bottom: 5rem;
+  }
+  .search-container {
+    min-width: 100%;
+    order: 3;
+    margin-top: 0;
+  }
 }
 
 .mobile-menu-btn {
@@ -602,13 +651,18 @@ body {
   background: var(--color-success);
   /* Green primary action from screenshot */
   color: white;
-  border: none;
+  border: 1px solid var(--btn-border, transparent);
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+[data-theme='light'] .btn-primary {
+  color: white; /* Ensure white text on green success color */
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -5036,10 +5090,60 @@ body {
   border-bottom: 1px solid rgba(0,0,0,0.06);
   padding-bottom: 0.75rem;
 }
+/* Sidebar and UI element overrides for light mode */
+[data-theme="light"] .sidebar {
+  border-right: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 4px 0 15px rgba(0,0,0,0.03);
+  background: #ffffff;
+}
+[data-theme="light"] .topbar {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  background: #ffffff;
+}
+[data-theme="light"] .logo-text,
+[data-theme="light"] .logo-box {
+  color: var(--text-main);
+}
+[data-theme="light"] .logo-box {
+  background: rgba(0,0,0,0.05);
+}
+[data-theme="light"] .menu-label {
+  color: var(--text-muted);
+}
+[data-theme="light"] .menu-item {
+  color: var(--text-muted);
+}
+[data-theme="light"] .menu-item:hover {
+  color: var(--text-main);
+  background: rgba(0,0,0,0.04);
+}
+[data-theme="light"] .menu-item.active {
+  color: var(--color-primary);
+  background: rgba(124,58,237,0.08);
+}
+[data-theme="light"] .menu-item.active svg {
+  color: var(--color-primary);
+}
+[data-theme="light"] .btn-primary {
+  color: #fff;
+}
+[data-theme="light"] .back-btn {
+  color: var(--text-main);
+  background: rgba(0,0,0,0.05);
+}
+[data-theme="light"] .back-btn:hover {
+  background: rgba(0,0,0,0.1);
+}
 
 /* ==========================================================================
    LAYOUT FIX — prevent horizontal cutoff
    ========================================================================== */
+html {
+  font-size: var(--base-font-size, 16px);
+  transition: font-size 0.3s ease;
+}
+
 html, body {
   overflow-x: hidden;
   width: 100%;
@@ -5672,3 +5776,170 @@ html, body {
   background: #ffffff;
 }
 
+/* ==========================================================================
+   SETTINGS PANEL NEW CONTROLS
+   ========================================================================== */
+
+/* Font Slider */
+.font-slider-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.25rem;
+}
+
+.font-size-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: var(--input-bg);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid var(--border);
+}
+
+.font-size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.font-size-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s;
+}
+
+.font-size-slider::-webkit-slider-thumb:hover,
+.font-size-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Toggle Switch */
+.dyslexia-toggle-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--input-bg);
+  transition: .3s;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: var(--text-muted);
+  transition: .3s;
+  border-radius: 50%;
+}
+
+.toggle-switch input:checked + .toggle-slider {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
+  background-color: #fff;
+}
+
+/* ==========================================================================
+   DYSLEXIA MODE OVERRIDE
+   ========================================================================== */
+body.dyslexia-mode,
+body.dyslexia-mode *,
+body.dyslexia-mode button,
+body.dyslexia-mode input,
+body.dyslexia-mode textarea,
+body.dyslexia-mode select,
+body.dyslexia-mode .sidebar,
+body.dyslexia-mode .topbar,
+body.dyslexia-mode h1,
+body.dyslexia-mode h2,
+body.dyslexia-mode h3,
+body.dyslexia-mode p,
+body.dyslexia-mode span {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', 'Andika', sans-serif !important;
+  letter-spacing: 0.1em !important;
+  word-spacing: 0.2em !important;
+  line-height: 1.6 !important;
+}
+
+/* ==========================================================================
+   LIGHT THEME BUTTON & VISIBILITY FIXES
+   ========================================================================== */
+[data-theme="light"] .sidebar, [data-theme="light"] .topbar {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .btn-primary, [data-theme="light"] .btn-secondary, [data-theme="light"] .action-btn, [data-theme="light"] .menu-item, [data-theme="light"] .menu-label {
+  color: var(--text-main);
+}
+
+[data-theme="light"] .btn-primary {
+  color: #fff; /* Primary is green, white text is visible */
+}
+
+[data-theme="light"] .community-tab, [data-theme="light"] .club-card-desc, [data-theme="light"] .club-msg {
+  color: var(--text-main);
+}
+
+[data-theme="light"] .btn-secondary, [data-theme="light"] .action-btn {
+  background: var(--surface);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .btn-secondary:hover, [data-theme="light"] .action-btn:hover {
+  background: var(--surface-hover);
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .glass-panel {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  background: var(--surface);
+}
+
+[data-theme="light"] .club-card:hover, [data-theme="light"] .widget-progress, [data-theme="light"] .course-card {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
