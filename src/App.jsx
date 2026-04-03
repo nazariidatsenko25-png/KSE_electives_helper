@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
-import { Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog, Profile, StudentProfile, InstructorProfile } from './views';
+import SettingsPanel from './components/SettingsPanel';
+import {
+  Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog,
+  Profile, StudentProfile, InstructorProfile, Community
+} from './views';
 import { mockUser } from './data/mockData';
 
 function App() {
@@ -29,7 +33,6 @@ function App() {
         if (k !== 'view') vp[k] = v;
       }
       setViewParams(vp);
-
       const savedScroll = e.state?.scrollTop;
       if (savedScroll !== undefined) {
         setTimeout(() => {
@@ -49,8 +52,6 @@ function App() {
       if (v !== undefined && v !== null) params.set(k, v);
     });
     const newUrl = `${window.location.pathname}?${params.toString()}`;
-    
-    // Only push if the URL actually needs to change to avoid loops
     if (window.location.search !== `?${params.toString()}`) {
       const container = document.querySelector('.view-container');
       const currentScroll = container ? container.scrollTop : 0;
@@ -60,61 +61,46 @@ function App() {
     }
   }, [currentView, viewParams]);
 
-  const handleMockLogin = () => {
-    setUser(mockUser);
-  };
-
-  const handleLogout = () => {
-    setUser(null);
-  };
-
-  const navigate = (view, params = {}) => {
-    setViewParams(params);
-    setCurrentView(view);
-  };
+  const handleMockLogin = () => setUser(mockUser);
+  const handleLogout = () => setUser(null);
+  const navigate = (view, params = {}) => { setViewParams(params); setCurrentView(view); };
 
   const renderView = () => {
     switch (currentView) {
-      case 'dashboard':
-        return <Dashboard user={user} setCurrentView={setCurrentView} />;
-      case 'ai-advisor':
-        return <AiAdvisor user={user} />;
-      case 'evaluations':
-        return <CourseEvaluations user={user} />;
-      case 'catalog':
-        return <CourseCatalog user={user} navigate={navigate} />;
-      case 'profile':
-        return <Profile user={user} />;
-      case 'student-profile':
-        return <StudentProfile userId={viewParams.userId} onBack={() => navigate('catalog')} />;
-      case 'instructor-profile':
-        return <InstructorProfile courseId={viewParams.courseId} onBack={() => navigate('catalog')} />;
-      default:
-        return <Dashboard user={user} setCurrentView={setCurrentView} />;
+      case 'dashboard':  return <Dashboard user={user} setCurrentView={setCurrentView} />;
+      case 'ai-advisor': return <AiAdvisor user={user} />;
+      case 'evaluations':return <CourseEvaluations user={user} />;
+      case 'catalog':    return <CourseCatalog user={user} navigate={navigate} />;
+      case 'profile':    return <Profile user={user} />;
+      case 'community':  return <Community user={user} />;
+      case 'student-profile':   return <StudentProfile userId={viewParams.userId} onBack={() => navigate('catalog')} />;
+      case 'instructor-profile':return <InstructorProfile courseId={viewParams.courseId} onBack={() => navigate('catalog')} />;
+      default:           return <Dashboard user={user} setCurrentView={setCurrentView} />;
     }
   };
 
   return (
     <div className="app-container">
-      <Sidebar 
-        currentView={currentView} 
-        setCurrentView={setCurrentView} 
+      <Sidebar
+        currentView={currentView}
+        setCurrentView={setCurrentView}
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
       />
       <div className="main-content">
-        <Topbar 
-          user={user} 
-          onLogin={handleMockLogin} 
-          onLogout={handleLogout} 
-          currentView={currentView} 
-          setCurrentView={setCurrentView} 
+        <Topbar
+          user={user}
+          onLogin={handleMockLogin}
+          onLogout={handleLogout}
+          currentView={currentView}
+          setCurrentView={setCurrentView}
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
         <main className="view-container">
           {renderView()}
         </main>
       </div>
+      <SettingsPanel />
     </div>
   );
 }
