@@ -5,3 +5,4 @@ export { default as CourseCatalog } from './CourseCatalog';
 export { default as Profile } from './Profile';
 export { default as StudentProfile } from './StudentProfile';
 export { default as InstructorProfile } from './InstructorProfile';
+export { default as Community } from './Community';
