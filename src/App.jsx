@@ -68,13 +68,13 @@ function App() {
   const renderView = () => {
     switch (currentView) {
       case 'dashboard':  return <Dashboard user={user} setCurrentView={setCurrentView} />;
-      case 'ai-advisor': return <AiAdvisor user={user} />;
-      case 'evaluations':return <CourseEvaluations user={user} />;
-      case 'catalog':    return <CourseCatalog user={user} navigate={navigate} />;
-      case 'profile':    return <Profile user={user} />;
-      case 'community':  return <Community user={user} />;
-      case 'student-profile':   return <StudentProfile userId={viewParams.userId} onBack={() => navigate('catalog')} />;
-      case 'instructor-profile':return <InstructorProfile courseId={viewParams.courseId} onBack={() => navigate('catalog')} />;
+      case 'ai-advisor': return <AiAdvisor user={user} setCurrentView={setCurrentView} />;
+      case 'evaluations':return <CourseEvaluations user={user} setCurrentView={setCurrentView} />;
+      case 'catalog':    return <CourseCatalog user={user} setCurrentView={setCurrentView} navigate={navigate} />;
+      case 'profile':    return <Profile user={user} setCurrentView={setCurrentView} />;
+      case 'community':  return <Community user={user} setCurrentView={setCurrentView} />;
+      case 'student-profile':   return <StudentProfile userId={viewParams.userId} onBack={() => navigate('catalog')} setCurrentView={setCurrentView} />;
+      case 'instructor-profile':return <InstructorProfile courseId={viewParams.courseId} onBack={() => navigate('catalog')} setCurrentView={setCurrentView} />;
       default:           return <Dashboard user={user} setCurrentView={setCurrentView} />;
     }
   };

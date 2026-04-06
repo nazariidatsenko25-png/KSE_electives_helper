@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { CheckCircle2, AlertTriangle, MessageSquare, Lock, Loader2, ChevronDown, Award } from 'lucide-react';
+import { MessageSquare, Lock, Loader2, ChevronDown, Award, CheckCircle2, AlertTriangle } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 
-const CourseEvaluations = ({ user }) => {
+const CourseEvaluations = ({ user, setCurrentView }) => {
+    const { t } = useApp();
+    const e = t.evaluations;
+    
     const [submitted, setSubmitted] = useState(false);
     const [rating1, setRating1] = useState(3);
     const [rating2, setRating2] = useState(3);
@@ -53,7 +57,7 @@ const CourseEvaluations = ({ user }) => {
             });
             setSubmitted(true);
         } catch (err) {
-            setError(err.message || 'Помилка при відправці. Спробуйте ще раз.');
+            setError(err.message || e.error);
         } finally {
             setIsSubmitting(false);
         }
@@ -71,10 +75,11 @@ const CourseEvaluations = ({ user }) => {
     if (!user) {
         return (
             <div className="eval-view animate-in centered">
-                <div className="glass-panel text-center">
-                    <Lock size={48} className="text-muted mb-md" />
-                    <h2 className="heading-2">Авторизація обов'язкова</h2>
-                    <p className="text-muted">Щоб залишити верифікований відгук, увійдіть до системи за допомогою корпоративної пошти.</p>
+                <div className="placeholder-content glass-panel" style={{ textAlign: 'center', padding: '3rem', maxWidth: '600px', margin: '4rem auto' }}>
+                    <Lock size={48} className="text-muted" style={{ marginBottom: '1.5rem', opacity: 0.5 }} />
+                    <h2 className="heading-2">{e.authRequired}</h2>
+                    <p className="text-muted">{e.authDesc}</p>
+                    <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => setCurrentView('profile')}>{t.sidebar.profile}</button>
                 </div>
             </div>
         );
@@ -85,10 +90,10 @@ const CourseEvaluations = ({ user }) => {
             <div className="eval-view animate-in centered">
                 <div className="glass-panel success-panel">
                     <CheckCircle2 size={48} className="text-secondary mb-md" />
-                    <h2 className="heading-2">Оцінку Надіслано</h2>
-                    <p className="text-muted">Дякуємо за ваш відгук! Ваша відповідь була анонімізована та записана до верифікованої бази даних.</p>
+                    <h2 className="heading-2">{e.successTitle}</h2>
+                    <p className="text-muted">{e.successDesc}</p>
                     <div className="mt-lg">
-                        <button className="btn-primary" onClick={handleReset}>Оцінити інший курс</button>
+                        <button className="btn-primary" onClick={handleReset}>{e.evalAnother}</button>
                     </div>
                 </div>
             </div>
@@ -101,21 +106,21 @@ const CourseEvaluations = ({ user }) => {
                 <div className="eval-title-row">
                     <MessageSquare className="text-gradient" size={28} />
                     <div>
-                        <h1 className="heading-1 m-0">Верифіковане оцінювання курсу</h1>
-                        <p className="text-muted">Анонімізований відгук за {course.trimester || course.term}</p>
+                        <h1 className="heading-1 m-0">{e.title}</h1>
+                        <p className="text-muted">{e.subtitle} {course.trimester || course.term}</p>
                     </div>
                 </div>
 
                 <div className="auth-badge">
                     <Lock size={14} className="text-muted" />
-                    <span>Проходження Moodle верифіковано</span>
+                    <span>{e.moodleVerified}</span>
                 </div>
             </div>
 
             {/* Course Selector */}
             {transcript.length > 1 && (
                 <div className="eval-course-selector glass-panel">
-                    <label className="text-muted text-sm" htmlFor="course-select">Оберіть курс для оцінювання:</label>
+                    <label className="text-muted text-sm" htmlFor="course-select">{e.selectCourse}</label>
                     <div className="select-wrapper">
                         <select
                             id="course-select"
@@ -123,9 +128,9 @@ const CourseEvaluations = ({ user }) => {
                             value={selectedCourseId || ''}
                             onChange={(e) => setSelectedCourseId(Number(e.target.value))}
                         >
-                            {transcript.map(t => (
-                                <option key={t.course.id} value={t.course.id}>
-                                    {t.course.code} — {t.course.title}{t.grade ? ` · Оцінка: ${t.grade}` : ''}
+                            {transcript.map(enrollment => (
+                                <option key={enrollment.course.id} value={enrollment.course.id}>
+                                    {enrollment.course.code} — {enrollment.course.title}{enrollment.grade ? ` · ${t.catalog.grade} ${enrollment.grade}` : ''}
                                 </option>
                             ))}
                         </select>
@@ -143,15 +148,15 @@ const CourseEvaluations = ({ user }) => {
                     {selectedEnrollment?.grade && (
                         <div className="eval-grade-badge">
                             <Award size={16} />
-                            <span>Оцінка: <strong>{selectedEnrollment.grade}</strong></span>
+                            <span>{e.grade || t.catalog.grade} <strong>{selectedEnrollment.grade}</strong></span>
                         </div>
                     )}
                 </div>
-                <p className="instructor">Викладач: {course.instructor}</p>
+                <p className="instructor">{e.instructor} {course.instructor}</p>
 
                 <div className="disclaimer mt-sm">
                     <AlertTriangle size={16} className="text-accent" />
-                    <p className="text-sm text-muted">Відповіді повністю деідентифікуються перед тим, як ними поділяться з викладачами. Конструктивна критика допомагає покращувати програми KSE.</p>
+                    <p className="text-sm text-muted">{e.disclaimer}</p>
                 </div>
             </div>
 
@@ -164,11 +169,11 @@ const CourseEvaluations = ({ user }) => {
 
             <form className="eval-form glass-panel" onSubmit={handleSubmit}>
                 <div className="form-section">
-                    <h3 className="heading-2 text-md">1. Якість викладання та Зрозумілість</h3>
-                    <p className="text-muted text-sm mb-md">Наскільки ефективно викладач пояснював складні концепції та сприяв проведенню занять у форматі flipped classroom?</p>
+                    <h3 className="heading-2 text-md">{e.q1Title}</h3>
+                    <p className="text-muted text-sm mb-md">{e.q1Desc}</p>
 
                     <div className="likert-scale">
-                        <span className="scale-label">Погано</span>
+                        <span className="scale-label">{e.poor}</span>
                         {[1, 2, 3, 4, 5].map(val => (
                             <button
                                 key={val}
@@ -179,16 +184,16 @@ const CourseEvaluations = ({ user }) => {
                                 {val}
                             </button>
                         ))}
-                        <span className="scale-label">Відмінно</span>
+                        <span className="scale-label">{e.excellent}</span>
                     </div>
                 </div>
 
                 <div className="form-section">
-                    <h3 className="heading-2 text-md">2. Струкура курсу та Силабус</h3>
-                    <p className="text-muted text-sm mb-md">Чи відповідали система оцінювання та завдання вказаним цілям навчання?</p>
+                    <h3 className="heading-2 text-md">{e.q2Title}</h3>
+                    <p className="text-muted text-sm mb-md">{e.q2Desc}</p>
 
                     <div className="likert-scale">
-                        <span className="scale-label">Зовсім не згоден</span>
+                        <span className="scale-label">{e.disagree}</span>
                         {[1, 2, 3, 4, 5].map(val => (
                             <button
                                 key={val}
@@ -199,13 +204,13 @@ const CourseEvaluations = ({ user }) => {
                                 {val}
                             </button>
                         ))}
-                        <span className="scale-label">Повністю згоден</span>
+                        <span className="scale-label">{e.agree}</span>
                     </div>
                 </div>
 
                 <div className="form-section">
-                    <h3 className="heading-2 text-md">3. Академічне навантаження</h3>
-                    <p className="text-muted text-sm mb-md">Очікувані vs. фактичні години витрачені на самостійне вивчення та домашні завдання на тиждень.</p>
+                    <h3 className="heading-2 text-md">{e.q3Title}</h3>
+                    <p className="text-muted text-sm mb-md">{e.q3Desc}</p>
 
                     <div className="likert-scale workload-scale">
                         <span className="scale-label">&lt; 3 год</span>
@@ -223,11 +228,11 @@ const CourseEvaluations = ({ user }) => {
                 </div>
 
                 <div className="form-section">
-                    <h3 className="heading-2 text-md">4. Відкритий відгук (Необов'язково)</h3>
-                    <p className="text-muted text-sm mb-sm">Що мають знати майбутні студенти перед початком цього курсу? Які аспекти можна б було покращити?</p>
+                    <h3 className="heading-2 text-md">{e.q4Title}</h3>
+                    <p className="text-muted text-sm mb-sm">{e.q4Desc}</p>
                     <textarea
                         className="eval-textarea"
-                        placeholder="Поділіться своїми детальними думками тут..."
+                        placeholder={e.placeholder}
                         value={comments}
                         onChange={(e) => setComments(e.target.value)}
                         rows={5}
@@ -235,15 +240,15 @@ const CourseEvaluations = ({ user }) => {
                 </div>
 
                 <div className="form-actions border-t pt-md mt-lg">
-                    <button type="button" className="btn-secondary">Зберегти чернетку</button>
+                    <button type="button" className="btn-secondary">{e.saveDraft}</button>
                     <button type="submit" className="btn-primary" disabled={isSubmitting}>
                         {isSubmitting ? (
                             <>
                                 <Loader2 size={16} className="spin-icon" />
-                                Відправлення...
+                                {e.submitting}
                             </>
                         ) : (
-                            'Відправити оцінювання'
+                            e.submit
                         )}
                     </button>
                 </div>

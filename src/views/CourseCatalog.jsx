@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BookOpen, Clock, Users, Star, Search, ChevronDown, Lock, Heart, Loader2, MessageCircle, Send, X, User, GraduationCap, Calendar, Mail, ArrowDown, ArrowUp, Filter, FileText, Linkedin, ThumbsUp, ThumbsDown, Sparkles, ChevronUp, Award, BarChart2, Pin, PinOff, CheckCircle } from 'lucide-react';
+import { Search, Heart, Star, BookOpen, MessageCircle, BarChart2, Award, ChevronDown, ChevronUp, Lock, Sparkles, Filter, ArrowDown, ArrowUp, Pin, PinOff, CheckCircle, GraduationCap, Clock, Activity, FileText, Bot, X, Loader2, Send, ThumbsUp, ThumbsDown, Calendar, User } from 'lucide-react';
 import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments, mockTranscript } from '../data/mockData';
+import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 
 const MultiRangeSlider = ({ min, max, value, onChange }) => {
@@ -62,6 +63,9 @@ const defaultFilters = {
 };
 
 const CourseCatalog = ({ user, navigate }) => {
+    const { t } = useApp();
+    const c = t.catalog;
+    
     const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get('q') || '');
     const [filterType, setFilterType] = useState(() => new URLSearchParams(window.location.search).get('filterType') || 'all');
     const [pinActive, setPinActive] = useState(true);
@@ -438,7 +442,7 @@ const CourseCatalog = ({ user, navigate }) => {
         const parts = semesterStr.split(' ');
         const term = parts[0];
         const year = parseInt(parts[1], 10) || 0;
-        const termOrder = { 'Зима': 1, 'Весна': 2, 'Літо': 3, 'Осінь': 4 };
+        const termOrder = { [c.terms.autumn]: 1, [c.terms.spring]: 2, [c.terms.summer]: 3 };
         const termVal = termOrder[term] || 0;
         
         const diff = (year - currentYear) * 4 + (termVal - currentTermVal);
@@ -471,8 +475,8 @@ const CourseCatalog = ({ user, navigate }) => {
 
             <div className="catalog-header">
                 <div>
-                    <h1 className="heading-1">Каталог курсів</h1>
-                    <p className="text-muted">Весняний семестр 2027 · {mockCatalog.length} курсів доступно</p>
+                    <h1 className="heading-1">{c.title}</h1>
+                    <p className="text-muted">{c.subtitle.replace('{count}', mockCatalog.length)}</p>
                 </div>
             </div>
 
@@ -482,7 +486,7 @@ const CourseCatalog = ({ user, navigate }) => {
                     <aside className="catalog-sidebar glass-panel modal-like-sidebar" ref={sidebarRef}
                         style={sidebarMaxHeight ? { maxHeight: `${sidebarMaxHeight}px` } : undefined}>
                         <div className="sidebar-header">
-                            <h3 className="heading-3" style={{ fontSize: '1.2rem', margin: 0 }}>Фільтри</h3>
+                            <h3 className="heading-3" style={{ fontSize: '1.2rem', margin: 0 }}>{c.filters}</h3>
                             <button className="profile-popup-close" onClick={() => setIsSidebarOpen(false)} style={{ position: 'static' }}>
                                 <X size={18} />
                             </button>
@@ -490,7 +494,7 @@ const CourseCatalog = ({ user, navigate }) => {
 
                         <div className="sidebar-content">
                             <div className="filter-group">
-                                <h4>Кафедра / Спеціалізація</h4>
+                                <h4>{c.department}</h4>
                                 {departments.map(d => (
                                     <label className="checkbox-label" key={d}>
                                         <input type="checkbox" checked={pendingFilters.dept.includes(d)} onChange={(e) => handleCheckboxArray('dept', d, e.target.checked)} /> {d}
@@ -499,8 +503,8 @@ const CourseCatalog = ({ user, navigate }) => {
                             </div>
 
                             <div className="filter-group">
-                                <h4>Рівень</h4>
-                                {['Бакалавр', 'Магістр', 'PhD'].map(lvl => (
+                                <h4>{c.level}</h4>
+                                {[c.levels.bachelor, c.levels.master, c.levels.phd].map(lvl => (
                                     <label className="checkbox-label" key={lvl}>
                                         <input type="checkbox" checked={pendingFilters.level.includes(lvl)} onChange={(e) => handleCheckboxArray('level', lvl, e.target.checked)} /> {lvl}
                                     </label>
@@ -508,8 +512,8 @@ const CourseCatalog = ({ user, navigate }) => {
                             </div>
 
                             <div className="filter-group">
-                                <h4>Терм</h4>
-                                {['Осінь', 'Весна', 'Літо'].map(t => (
+                                <h4>{c.term}</h4>
+                                {[c.terms.autumn, c.terms.spring, c.terms.summer].map(t => (
                                     <label className="checkbox-label" key={t}>
                                         <input type="checkbox" checked={pendingFilters.term.includes(t)} onChange={(e) => handleCheckboxArray('term', t, e.target.checked)} /> {t}
                                     </label>
@@ -517,16 +521,16 @@ const CourseCatalog = ({ user, navigate }) => {
                             </div>
 
                             <div className="filter-group">
-                                <h4>Доступність</h4>
+                                <h4>{c.availability}</h4>
                                 <label className="checkbox-label">
                                     <input type="checkbox" checked={pendingFilters.nextTerm} onChange={(e) => updatePending('nextTerm', e.target.checked)} />
-                                    Тільки наступного терму
+                                    {c.nextTermOnly}
                                 </label>
                             </div>
 
                             <div className="filter-group">
-                                <h4>Мова викладання</h4>
-                                {['Українська', 'Англійська'].map(lang => (
+                                <h4>{c.language}</h4>
+                                {[c.languages.uk, c.languages.en].map(lang => (
                                     <label className="checkbox-label" key={lang}>
                                         <input type="checkbox" checked={pendingFilters.language.includes(lang)} onChange={(e) => handleCheckboxArray('language', lang, e.target.checked)} /> {lang}
                                     </label>
@@ -543,7 +547,7 @@ const CourseCatalog = ({ user, navigate }) => {
                             </div>
 
                             <div className="filter-group" style={{ marginTop: '0.5rem' }}>
-                                <h4>Тривалість (тижнів)</h4>
+                                <h4>{c.duration}</h4>
                                 <MultiRangeSlider 
                                     min={minDuration} max={maxDuration} 
                                     value={pendingFilters.duration} 
@@ -553,8 +557,8 @@ const CourseCatalog = ({ user, navigate }) => {
                         </div>
 
                         <div className="sidebar-footer" style={{ display: 'flex', gap: '0.75rem' }}>
-                            <button className="btn-secondary" style={{ flex: 1, padding: '0.5rem' }} onClick={clearFilters}>Очистити</button>
-                            <button className="btn-primary" style={{ flex: 1, padding: '0.5rem' }} onClick={saveFilters}>Зберегти</button>
+                            <button className="btn-secondary" style={{ flex: 1, padding: '0.5rem' }} onClick={clearFilters}>{c.clear}</button>
+                            <button className="btn-primary" style={{ flex: 1, padding: '0.5rem' }} onClick={saveFilters}>{c.save}</button>
                         </div>
                     </aside>
                 )}
@@ -565,7 +569,7 @@ const CourseCatalog = ({ user, navigate }) => {
                             <Search size={18} className="text-muted" />
                             <input
                                 type="text"
-                                placeholder="Пошук за назвою, кодом або викладачем..."
+                                placeholder={c.searchPlaceholder}
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 className="catalog-search-input"
@@ -577,19 +581,19 @@ const CourseCatalog = ({ user, navigate }) => {
                                 className={`filter-chip ${filterType === 'all' ? 'active' : ''}`}
                                 onClick={() => setFilterType('all')}
                             >
-                                Всі
+                                {c.filterAll}
                             </button>
                             <button
                                 className={`filter-chip ${filterType === 'core' ? 'active' : ''}`}
                                 onClick={() => setFilterType('core')}
                             >
-                                Обов'язкові
+                                {c.filterCore}
                             </button>
                             <button
                                 className={`filter-chip ${filterType === 'elective' ? 'active' : ''}`}
                                 onClick={() => setFilterType('elective')}
                             >
-                                Вибіркові
+                                {c.filterElective}
                             </button>
                             
                             <button 
@@ -598,7 +602,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                 style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: "0.5rem", color: showOnlyWishlist ? '#ef4444' : 'inherit' }}
                             >
                                 <Heart size={14} fill={showOnlyWishlist ? 'currentColor' : 'none'} color={showOnlyWishlist ? '#ef4444' : 'currentColor'} />
-                                Улюблені
+                                {c.wishlist}
                             </button>
 
                             <button 
@@ -607,7 +611,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                 style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
                             >
                                 <Filter size={14} />
-                                Фільтри
+                                {c.filters}
                                 {isFiltersActive && (
                                     <span style={{ width: '8px', height: '8px', background: 'var(--color-accent)', borderRadius: '50%' }}></span>
                                 )}
@@ -619,25 +623,25 @@ const CourseCatalog = ({ user, navigate }) => {
                                     value={sortField}
                                     onChange={(e) => setSortField(e.target.value)}
                                 >
-                                    <option value="term">За семестром (за замовчуванням)</option>
-                                    <option value="rating">За рейтингом</option>
-                                    <option value="credits">За кредитами</option>
-                                    <option value="duration">За тривалістю</option>
-                                    <option value="dept">За спеціалізацією</option>
-                                    <option value="passRate">За % завершення</option>
-                                    <option value="avgScore">За середнім балом</option>
+                                    <option value="term">{c.sortOptions.term}</option>
+                                    <option value="rating">{c.sortOptions.rating}</option>
+                                    <option value="credits">{c.sortOptions.credits}</option>
+                                    <option value="duration">{c.sortOptions.duration}</option>
+                                    <option value="dept">{c.sortOptions.dept}</option>
+                                    <option value="passRate">{c.sortOptions.passRate}</option>
+                                    <option value="avgScore">{c.sortOptions.avgScore}</option>
                                 </select>
                                 <button 
                                     className="dept-select glass-panel sort-order-btn" 
                                     onClick={() => setSortOrder(prev => prev === 'desc' ? 'asc' : 'desc')}
-                                    title={sortOrder === 'desc' ? 'За спаданням' : 'За зростанням'}
+                                    title={sortOrder === 'desc' ? c.sortOrderDesc : c.sortOrderAsc}
                                 >
                                     {sortOrder === 'desc' ? <ArrowDown size={16} /> : <ArrowUp size={16} />}
                                 </button>
                                 <button
                                     className={`dept-select glass-panel sort-order-btn pin-toggle-btn ${pinActive ? 'pin-active' : ''}`}
                                     onClick={() => setPinActive(prev => !prev)}
-                                    title={pinActive ? 'Приховати активні курси' : 'Закріпити активні курси вгорі'}
+                                    title={pinActive ? c.pinHide : c.pinShow}
                                 >
                                     {pinActive ? <Pin size={16} /> : <PinOff size={16} />}
                                 </button>
@@ -654,11 +658,11 @@ const CourseCatalog = ({ user, navigate }) => {
 
                             // Completed courses - matched through transcript
                             const completedCourseIds = user
-                                ? new Set(sorted.filter(c => mockTranscript?.some(t => t.course_code === c.code)).map(c => c.id))
+                                ? new Set(sorted.filter(courseItem => mockTranscript?.some(trItem => trItem.course_code === courseItem.code)).map(courseItem => courseItem.id))
                                 : new Set();
 
-                            const pinnedCourses = (pinActive && user) ? sorted.filter(c => activeCourseIds.has(c.id)) : [];
-                            const restCourses = (pinActive && user) ? sorted.filter(c => !activeCourseIds.has(c.id)) : sorted;
+                            const pinnedCourses = (pinActive && user) ? sorted.filter(courseObj => activeCourseIds.has(courseObj.id)) : [];
+                            const restCourses = (pinActive && user) ? sorted.filter(courseObj => !activeCourseIds.has(courseObj.id)) : sorted;
 
                             const renderCard = (course, isActive = false, isCompleted = false) => {
                             const isExpanded = expanded === course.id;
@@ -683,20 +687,20 @@ const CourseCatalog = ({ user, navigate }) => {
                                         <div className="catalog-card-left">
                                             <div className="catalog-card-top" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
                                                 <span className={`course-type-badge ${course.category}`}>
-                                                    {course.category === 'core' ? "Обов'язковий" : 'Вибірковий'}
+                                                    {course.category === 'core' ? c.badges.core : c.badges.elective}
                                                 </span>
                                                 <span className="course-code-badge">{course.code}</span>
                                                 <span className={`instructor-title-badge ${course.instructorTitle}`}>
-                                                    {course.instructorTitle === 'professor' ? '🎓 Професор' : course.instructorTitle === 'expert' ? '💼 Експерт-практик' : '📖 Викладач'}
+                                                    {course.instructorTitle === 'professor' ? c.badges.professor : course.instructorTitle === 'expert' ? c.badges.expert : c.badges.lecturer}
                                                 </span>
                                                 {course.attendanceMandatory && (
-                                                    <span className="attendance-badge" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title="Обов'язкове відвідування">
-                                                        <Lock size={12} /> Обов'язково
+                                                    <span className="attendance-badge" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title={c.badges.mandatory}>
+                                                        <Lock size={12} /> {c.badges.mandatory}
                                                     </span>
                                                 )}
                                                 {course.bonusPointsAvailable && (
-                                                    <span className="bonus-badge" style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#F59E0B', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title="Є можливість отримати додаткові бали">
-                                                        <Sparkles size={12} /> Бонуси
+                                                    <span className="bonus-badge" style={{ background: 'rgba(245, 158, 11, 0.1)', color: '#F59E0B', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title={c.badges.bonuses}>
+                                                        <Sparkles size={12} /> {c.badges.bonuses}
                                                     </span>
                                                 )}
                                             </div>
@@ -709,7 +713,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 <span 
                                                     className="catalog-meta-item" 
                                                     style={{ color: isWishlisted ? '#ef4444' : 'var(--text-muted)', cursor: 'pointer', transition: 'color 0.2s' }} 
-                                                    title={isWishlisted ? "Прибрати з улюблених" : "Додати до улюблених"}
+                                                    title={isWishlisted ? c.wishlistRemove : c.wishlistAdd}
                                                     onClick={(e) => handleWishlistToggle(e, course)}
                                                 >
                                                     <Heart size={14} fill={isWishlisted ? "currentColor" : "none"} />
@@ -728,11 +732,11 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <BarChart2 size={14} color="#6EE7B7" />
-                                                    {course.passRate60Plus || '--'}% закриття
+                                                    {course.passRate60Plus || '--'}{c.passRate}
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <Award size={14} color="#93C5FD" />
-                                                    Ср. бал: {course.historicalAverage || '--'}
+                                                    {c.avgScore} {course.historicalAverage || '--'}
                                                 </span>
                                             </div>
                                             <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
@@ -744,12 +748,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                             <div style={{ background: 'rgba(16, 185, 129, 0.05)', padding: '1.5rem', borderRadius: '12px', border: '1px solid rgba(16, 185, 129, 0.2)' }}>
                                                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1.5rem' }}>
                                                     <CheckCircle size={22} color="#10b981" />
-                                                    <h4 style={{ margin: 0, fontWeight: 700, fontSize: '1.2rem', color: '#10b981' }}>Курс пройдено</h4>
+                                                    <h4 style={{ margin: 0, fontWeight: 700, fontSize: '1.2rem', color: '#10b981' }}>{c.completed}</h4>
                                                     {(() => {
                                                         const transcriptCourse = mockTranscript?.find(t => t.course_code === course.code);
                                                         const userReview = mockReviews[course.id]?.find(r => r.authorId === user?.id);
                                                         const grade = transcriptCourse?.grade || userReview?.grade || ["A", "A-", "B+", "B", "A"][course.id % 5] || "A";
-                                                        return <span style={{ marginLeft: 'auto', background: 'rgba(16, 185, 129, 0.2)', padding: '6px 12px', borderRadius: '8px', color: '#10b981', fontWeight: 700, fontSize: '1rem' }}>Оцінка: {grade}</span>;
+                                                        return <span style={{ marginLeft: 'auto', background: 'rgba(16, 185, 129, 0.2)', padding: '6px 12px', borderRadius: '8px', color: '#10b981', fontWeight: 700, fontSize: '1rem' }}>{c.grade} {grade}</span>;
                                                     })()}
                                                 </div>
                                                 
@@ -760,7 +764,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                             return (
                                                                 <>
                                                                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '1rem' }}>
-                                                                        <h5 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1rem' }}>Ваш відгук про курс:</h5>
+                                                                        <h5 style={{ margin: 0, color: 'var(--text-main)', fontSize: '1rem' }}>{c.yourReview}</h5>
                                                                     </div>
                                                                     {userReview.questions?.map((q, i) => (
                                                                         <div key={i} style={{ marginBottom: '1rem' }}>
@@ -773,8 +777,8 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         }
                                                         return (
                                                             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                                                                <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>Ви ще не залишили відгук про цей курс.</span>
-                                                                <button className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>Залишити відгук</button>
+                                                                <span style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>{c.noReview}</span>
+                                                                <button className="btn-secondary" style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}>{c.leaveReview}</button>
                                                             </div>
                                                         );
                                                     })()}
@@ -789,7 +793,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         setShowFullInfoFor(course.id);
                                                     }}
                                                 >
-                                                    <ChevronDown size={18} /> Показати повну інформацію
+                                                    <ChevronDown size={18} /> {c.showFullInfo}
                                                 </button>
                                             </div>
                                         </div>
@@ -1451,10 +1455,16 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                     </div>
                                                                                 )}
                                                                             </div>
+                                                                            {!user && (
+                                                                                <div className="login-nudge glass-panel" style={{ marginBottom: '1.5rem', padding: '1rem', display: 'flex', alignItems: 'center', gap: '8px', background: 'rgba(59, 130, 246, 0.05)', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
+                                                                                    <Lock size={14} color="var(--color-accent)" />
+                                                                                    <span className="text-sm">{c.loginNudge}</span>
+                                                                                </div>
+                                                                            )}
                                                                     </div>
                                                                 );
-                                                                                                                            });
-                                                                                                                        })()}
+                                                                });
+                                                            })()}
                                                         </div>
                                                     )}
                                                 </div>
@@ -1477,18 +1487,18 @@ const CourseCatalog = ({ user, navigate }) => {
                                         <>
                                             <div className="active-courses-header">
                                                 <Pin size={13} />
-                                                <span>Мої активні курси</span>
+                                                <span>{c.activeCourses}</span>
                                                 <span className="active-courses-count">{pinnedCourses.length}</span>
                                             </div>
-                                            {pinnedCourses.map(c => renderCard(c, true))}
+                                            {pinnedCourses.map(courseObj => renderCard(courseObj, true))}
                                             {restCourses.length > 0 && <div className="active-courses-divider" />}
                                         </>
                                     )}
-                                    {restCourses.map(c => renderCard(c, false))}
+                                    {restCourses.map(courseObj => renderCard(courseObj, false))}
                                     {sorted.length === 0 && (
                                         <div className="catalog-empty">
                                             <Search size={48} className="text-muted" />
-                                            <p>Курсів за вашим запитом не знайдено</p>
+                                            <p>{c.empty}</p>
                                         </div>
                                     )}
                                 </>

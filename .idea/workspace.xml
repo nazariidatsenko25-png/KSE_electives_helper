@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="" />
+    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +15,7 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_/Users/admin/Desktop/draft" value="3AG2JeicFZv2KDcotl39cVS45K4" />
+      <entry key="_C:/Users/38093/RiderProjects/draft" value="3BpEtGSXtj7OgUrs5T7yz2EziJ0" />
     </persistenceIdMap>
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
@@ -34,8 +37,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/KSE_electives_helper&quot;,
-    &quot;accountId&quot;: &quot;2a39e0d1-9579-445b-bdda-2eccf39b6165&quot;
+    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/draft.git&quot;,
+    &quot;accountId&quot;: &quot;e372fe90-304f-4ad2-8044-4bea5d03c0ff&quot;
   }
 }</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -120,8 +123,9 @@
       <workItem from="1774443504476" duration="694000" />
       <workItem from="1774729387644" duration="1189000" />
       <workItem from="1774731324910" duration="1596000" />
-      <workItem from="1774946756897" duration="657000" />
-      <workItem from="1775071582747" duration="2253000" />
+      <workItem from="1775177816138" duration="28000" />
+      <workItem from="1775215333875" duration="1672000" />
+      <workItem from="1775230043063" duration="2112000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -139,39 +143,23 @@
       <option name="project" value="LOCAL" />
       <updated>1773736314387</updated>
     </task>
-    <task id="LOCAL-00003" summary="big commit">
+    <task id="LOCAL-00003" summary="sosial and settings">
       <option name="closed" value="true" />
-      <created>1774984622218</created>
+      <created>1775215585728</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1774984622218</updated>
+      <updated>1775215585728</updated>
     </task>
-    <task id="LOCAL-00004" summary="jkjij">
+    <task id="LOCAL-00004" summary="debag">
       <option name="closed" value="true" />
-      <created>1775071638473</created>
+      <created>1775232111146</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1775071638473</updated>
+      <updated>1775232111146</updated>
     </task>
-    <task id="LOCAL-00005" summary="dedfdfe">
-      <option name="closed" value="true" />
-      <created>1775160021244</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1775160021244</updated>
-    </task>
-    <task id="LOCAL-00006" summary="ddd">
-      <option name="closed" value="true" />
-      <created>1775241506293</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1775241506293</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,11 +182,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="update" />
     <MESSAGE value="fix" />
-    <MESSAGE value="big commit" />
-    <MESSAGE value="jkjij" />
-    <MESSAGE value="dedfdfe" />
-    <MESSAGE value="ddd" />
-    <option name="LAST_COMMIT_MESSAGE" value="ddd" />
+    <MESSAGE value="sosial and settings" />
+    <MESSAGE value="debag" />
+    <option name="LAST_COMMIT_MESSAGE" value="debag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

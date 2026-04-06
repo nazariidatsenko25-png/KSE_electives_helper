@@ -1,5 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Send, Bot, Sparkles, BookOpen, Clock, Activity, Lock, X, FileText, GraduationCap, AlertTriangle } from 'lucide-react';
+import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 import { mockTranscript } from '../data/mockData';
 
@@ -81,7 +82,10 @@ const renderMarkdown = (text) => {
     return result.join('');
 };
 
-const AiAdvisor = ({ user }) => {
+const AiAdvisor = ({ user, setCurrentView }) => {
+    const { t } = useApp();
+    const a = t.aiAdvisor;
+    
     const [query, setQuery] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [syllabusModal, setSyllabusModal] = useState(null);
@@ -92,7 +96,7 @@ const AiAdvisor = ({ user }) => {
     const [messages, setMessages] = useState([
         {
             type: 'ai',
-            text: `Привіт, ${user ? user.first_name || user.email.split('@')[0] : 'Студенте'}! Я бачу, що ти навчаєшся на спеціальності "${user ? user.major : 'Інженерії Програмного Забезпечення'}". Чим можу допомогти з плануванням предметів?`,
+            text: `${a.greeting}, ${user ? (user.first_name || user.email.split('@')[0]) : t.dashboard.student}${a.greetingSuffix}`,
             recs: null
         }
     ]);
@@ -102,10 +106,10 @@ const AiAdvisor = ({ user }) => {
     }, [messages]);
 
     const suggestedPrompts = [
-        'Порекомендуй вибірковий з Data Science',
-        'Які передумови для CS402?',
-        'Склади розклад без ранкових пар',
-        'Що взяти як гуманітарний вибірковий?',
+        a.suggested.ds,
+        a.suggested.prereq,
+        a.suggested.schedule,
+        a.suggested.elective,
     ];
 
     const handleSend = async (e, customQuery = null) => {
@@ -133,16 +137,16 @@ const AiAdvisor = ({ user }) => {
 
             // Build tool action labels for display
             const toolLabels = {
-                get_transcript: '📋 Перевірено транскрипт',
-                check_prerequisites: '🔍 Перевірено передумови',
-                add_to_wishlist: '⭐ Додано до списку бажань',
+                get_transcript: a.tools.transcript,
+                check_prerequisites: a.tools.prereqs,
+                add_to_wishlist: a.tools.wishlist,
             };
 
             const toolActions = (data.tools_used || []).map(t => toolLabels[t.tool] || t.tool);
 
             setMessages(prev => [...prev, {
                 type: 'ai',
-                text: data.message || "Ось декілька рекомендацій.",
+                text: data.message || "---",
                 recs: data.recommendations && data.recommendations.length > 0 ? data.recommendations : null,
                 tools: toolActions.length > 0 ? toolActions : null,
                 compacted: data.compacted || false,
@@ -152,7 +156,7 @@ const AiAdvisor = ({ user }) => {
             console.error(err);
             setMessages(prev => [...prev, {
                 type: 'ai',
-                text: "Вибачте, виникла помилка: " + err.message,
+                text: a.error + " " + err.message,
                 recs: null,
                 tools: null,
             }]);
@@ -170,8 +174,11 @@ const AiAdvisor = ({ user }) => {
             <div className="advisor-view animate-in centered">
                 <div className="glass-panel text-center" style={{ marginTop: '10%', padding: '3rem' }}>
                     <Lock size={48} className="text-muted mb-md" />
-                    <h2 className="heading-2">Авторизація обов'язкова</h2>
-                    <p className="text-muted">Щоб ШІ-советник міг давати персоналізовані поради, увійдіть у систему.</p>
+                    <h2 className="heading-2">{a.authRequired}</h2>
+                    <p className="text-muted">{a.authDesc}</p>
+                    <button className="btn-primary" style={{ marginTop: '2rem' }} onClick={() => setCurrentView('profile')}>
+                        {t.sidebar.profile}
+                    </button>
                 </div>
             </div>
         );
@@ -182,9 +189,9 @@ const AiAdvisor = ({ user }) => {
             <div className="advisor-header">
                 <div className="header-title">
                     <Sparkles className="text-gradient" size={28} />
-                    <h1 className="heading-1 m-0">SmartCourse AI</h1>
+                    <h1 className="heading-1 m-0">{a.title}</h1>
                 </div>
-                <p className="text-muted">Працює на базі Google Gemini 2.5 Flash</p>
+                <p className="text-muted">{a.subtitle}</p>
             </div>
 
             <div className="chat-layout">
@@ -240,7 +247,7 @@ const AiAdvisor = ({ user }) => {
                                         fontSize: '0.65rem', color: 'var(--text-muted)',
                                         margin: '0 0 0.5rem 2.5rem', opacity: 0.7,
                                     }}>
-                                        🔄 Контекст розмови було стиснуто для оптимізації
+                                        {a.compacted}
                                     </div>
                                 )}
 
@@ -286,7 +293,7 @@ const AiAdvisor = ({ user }) => {
                                     <Bot size={18} />
                                 </div>
                                 <div className="message-content">
-                                    <span className="typing-dots">Думаю<span>.</span><span>.</span><span>.</span></span>
+                                    <span className="typing-dots">{a.thinking}</span>
                                 </div>
                             </div>
                         )}
@@ -297,7 +304,7 @@ const AiAdvisor = ({ user }) => {
                         <input
                             type="text"
                             className="chat-input"
-                            placeholder="Напр., я хочу вибірковий курс про дані, але щоб було не надто багато математики..."
+                            placeholder={a.placeholder}
                             value={query}
                             onChange={(e) => setQuery(e.target.value)}
                             disabled={isLoading}
@@ -309,10 +316,10 @@ const AiAdvisor = ({ user }) => {
                 </div>
 
                 <div className="context-panel glass-panel">
-                    <h3 className="heading-2 text-sm uppercase">Контекст ШІ</h3>
+                    <h3 className="heading-2 text-sm uppercase">{a.contextTitle}</h3>
                     <div className="context-item">
                         <BookOpen size={16} className="text-info" />
-                        <span>Транскрипти: {transcript.length} курсів</span>
+                        <span>{a.transcriptContext}: {transcript.length} {t.sidebar.evaluations.toLowerCase()}</span>
                     </div>
                     <div className="context-item">
                         <GraduationCap size={16} className="text-success" />
@@ -320,11 +327,11 @@ const AiAdvisor = ({ user }) => {
                     </div>
                     <div className="context-item">
                         <Activity size={16} className="text-primary-dark" />
-                        <span>ECTS: {user.total_credits} / 120</span>
+                        <span>{a.ectsContext}: {user.total_credits} / 120</span>
                     </div>
                     <div className="context-item alert">
                         <AlertTriangle size={16} className="text-warning" style={{ color: '#F59E0B' }} />
-                        <span>Відсутній 1 гуманітарний вибірковий</span>
+                        <span>{a.missingElective}</span>
                     </div>
                     <div className="context-item" style={{ fontSize: '0.75rem', color: 'var(--text-muted)', opacity: 0.7 }}>
                         🟢 Backend API Mode
@@ -348,7 +355,7 @@ const AiAdvisor = ({ user }) => {
 
                         <div className="syllabus-body">
                             <div className="syllabus-section">
-                                <h3><FileText size={16} /> Цілі курсу</h3>
+                                <h3><FileText size={16} /> {a.syllabus.objectives}</h3>
                                 <ul>
                                     {mockSyllabi.default.objectives.map((obj, i) => (
                                         <li key={i}>{obj}</li>
@@ -357,11 +364,11 @@ const AiAdvisor = ({ user }) => {
                             </div>
 
                             <div className="syllabus-section">
-                                <h3><Clock size={16} /> Тижневий план</h3>
+                                <h3><Clock size={16} /> {a.syllabus.plan}</h3>
                                 <div className="syllabus-schedule">
                                     {mockSyllabi.default.schedule.map((item, i) => (
                                         <div key={i} className="syllabus-week">
-                                            <span className="week-num">Тижні {item.week}</span>
+                                            <span className="week-num">{a.syllabus.weeks} {item.week}</span>
                                             <span className="week-topic">{item.topic}</span>
                                         </div>
                                     ))}
@@ -369,7 +376,7 @@ const AiAdvisor = ({ user }) => {
                             </div>
 
                             <div className="syllabus-section">
-                                <h3><Activity size={16} /> Оцінювання</h3>
+                                <h3><Activity size={16} /> {a.syllabus.grading}</h3>
                                 <div className="syllabus-grading">
                                     {mockSyllabi.default.grading.map((item, i) => (
                                         <div key={i} className="grading-row">
@@ -381,7 +388,7 @@ const AiAdvisor = ({ user }) => {
                             </div>
 
                             <div className="syllabus-section">
-                                <h3><BookOpen size={16} /> Підручник</h3>
+                                <h3><BookOpen size={16} /> {a.syllabus.textbook}</h3>
                                 <p className="text-muted">{mockSyllabi.default.textbook}</p>
                             </div>
                         </div>
