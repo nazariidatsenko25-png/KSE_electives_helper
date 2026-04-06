@@ -1,44 +1,6 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 
-// ─── Translations ────────────────────────────────────────────────────────────
-const translations = {
-  uk: {
-    sidebar: {
-      mainMenu: 'Головне меню',
-      dashboard: 'Дашборд',
-      aiAdvisor: 'AI Радник',
-      evaluations: 'Оцінювання',
-      learning: 'Навчання',
-      catalog: 'Каталог курсів',
-      community: 'Спільнота',
-      schedule: 'Розклад',
-      comingSoon: 'Скоро буде доступно',
-    },
-    topbar: {
-      search: 'Пошук курсів, викладачів...',
-      logout: 'Вийти',
-      loginGoogle: 'Увійти через Google',
-    },
-  },
-  en: {
-    sidebar: {
-      mainMenu: 'Main Menu',
-      dashboard: 'Dashboard',
-      aiAdvisor: 'AI Advisor',
-      evaluations: 'Evaluations',
-      learning: 'Learning',
-      catalog: 'Course Catalog',
-      community: 'Community',
-      schedule: 'Schedule',
-      comingSoon: 'Coming soon',
-    },
-    topbar: {
-      search: 'Search courses, instructors...',
-      logout: 'Log out',
-      loginGoogle: 'Sign in with Google',
-    },
-  },
-};
+import { translations } from '../locales.js';
 
 // ─── Default User Profile ────────────────────────────────────────────────────
 const defaultUserProfile = {

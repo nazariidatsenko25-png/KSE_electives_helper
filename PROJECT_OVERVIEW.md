@@ -12,6 +12,7 @@ The **Kyiv School of Economics (KSE) Student Portal** is a unified, modern "sing
 - **Student Profiles** — enriched profile cards with GPA, attendance, credits, active courses, review history
 - **Instructor Profiles** — instructor pages with course overviews and student review summaries
 - **Reviews System** — per-course star ratings in a full-screen modal with AI summarization, comment threads, helpful/unhelpful voting
+- **Community Hub** — student clubs directory with per-club info pages, real-time chat simulation, schedules and announcements
 - **Premium Aesthetics** — glassmorphism dark theme, fluid animations, fully responsive mobile-first design
 
 **Tech Stack:**  
@@ -26,22 +27,27 @@ frontend (React/Vite)          backend (Django/DRF)
 ───────────────────────        ─────────────────────────────────
 src/
   App.jsx                      kse_portal/settings.py
-  components/
-    Sidebar.jsx                core/
-    Topbar.jsx                   models.py       ← DB schema
-  views/                         views.py        ← REST API
-    Dashboard.jsx                ai_views.py     ← AI chat endpoint
-    AiAdvisor.jsx                moderation.py   ← LLM content filter
-    CourseCatalog.jsx            serializers.py
-    CourseEvaluations.jsx        tests.py
-    Profile.jsx                  adapters.py     ← Google OAuth domain check
-    StudentProfile.jsx           signals.py
+  locales.js   ← i18n          core/
+  context/                       models.py       ← DB schema
+    AppContext.jsx ← global        views.py        ← REST API
+  components/                    ai_views.py     ← AI chat endpoint
+    Sidebar.jsx                  moderation.py   ← LLM content filter
+    Topbar.jsx                   serializers.py
+    SettingsPanel.jsx            tests.py
+  views/                         adapters.py     ← Google OAuth domain check
+    Dashboard.jsx                signals.py
+    AiAdvisor.jsx
+    CourseCatalog.jsx          templates/
+    CourseEvaluations.jsx        account/        ← Custom Google OAuth UI
+    Profile.jsx
+    StudentProfile.jsx         .env              ← GEMINI_API_KEY (secret)
     InstructorProfile.jsx
+    Community.jsx   ← NEW
   data/
-    mockData.js                templates/
-  utils/                         account/        ← Custom Google OAuth UI
+    mockData.js
+  utils/
     api.js
-  index.css                    .env              ← GEMINI_API_KEY (secret)
+  index.css
 ```
 
 ---
@@ -88,19 +94,21 @@ src/
 
 | View | File | Description |
 |---|---|---|
-| **Dashboard** | `Dashboard.jsx` | ECTS progress bar, GPA, active courses, quick-action cards |
+| **Dashboard** | `Dashboard.jsx` | ECTS progress bar, GPA, active courses, quick-action cards, interactive weekly schedule grid |
 | **AI Advisor** | `AiAdvisor.jsx` | Chat interface + context ribbon (mobile) / side panel (desktop) |
 | **Course Catalog** | `CourseCatalog.jsx` | Searchable list with filter drawer, wishlist toggle, expandable cards, reviews modal |
 | **Course Evaluations** | `CourseEvaluations.jsx` | Multi-step evaluation form (quality / difficulty / workload ratings + comment) |
-| **My Profile** | `Profile.jsx` | Student's own profile: GPA, credits, attendance, course history, reviews |
-| **Student Profile** | `StudentProfile.jsx` | Public view of another student's profile card |
-| **Instructor Profile** | `InstructorProfile.jsx` | Instructor's courses and aggregate review data |
+| **My Profile** | `Profile.jsx` | Student's own profile: avatar picker, editable bio, LinkedIn, privacy toggle, course reviews tab, profile wall tab |
+| **Student Profile** | `StudentProfile.jsx` | Public view of another student's profile card with reviews modal via React Portal |
+| **Instructor Profile** | `InstructorProfile.jsx` | Instructor's courses and aggregate review data *(stub — under construction)* |
+| **Community** | `Community.jsx` | Student clubs directory — grid of clubs, per-club detail page with Info/Chat tabs, schedule & announcements |
 
 ### Key Components
 | Component | Description |
 |---|---|
-| `Sidebar.jsx` | Off-canvas drawer on mobile (hamburger trigger); static sidebar on desktop |
-| `Topbar.jsx` | Top navigation bar; wraps to 2 rows on mobile (search drops to row 2) |
+| `Sidebar.jsx` | Off-canvas drawer on mobile (hamburger trigger); static sidebar on desktop; `Schedule` item shown as disabled ("Coming Soon") |
+| `Topbar.jsx` | Top navigation bar; search bar hidden when on catalog view; notification bell with mock dropdown; user profile chip |
+| `SettingsPanel.jsx` | Placeholder stub — returns `null`; reserved for future theme/language/font settings UI |
 
 ---
 
@@ -128,13 +136,29 @@ The AI endpoint (`POST /api/ai/chat/`) follows Claude Cookbook best practices:
 ## 7. Authentication
 
 - **Google OAuth2** via `django-allauth`
-- **Domain restriction**: `adapters.py` blocks non-`@kse.org.ua` accounts
+- **Domain restriction**: `adapters.py` blocks accounts that are not `@kse.org.ua` **or** `@kse.today`
 - **Frontend fallback**: `fetchWithAuth` in `utils/api.js` handles `401`/`403` responses by triggering a session refresh or redirect
 - **Dev mock**: A mock student "Олена Коваленко" can be used locally without a real Google account
 
 ---
 
-## 8. Responsive Design System
+## 8. Internationalization (i18n)
+
+All user-facing strings are managed in `src/locales.js` and injected globally via `AppContext`.
+
+| Language | Code | Status |
+|---|---|---|
+| Ukrainian | `uk` | ✅ Full (default) |
+| English | `en` | ✅ Full |
+| German | `de` | ✅ Full |
+
+- `AppContext` exposes `{ t, language, setLanguage }` to all components via `useApp()`
+- Components access strings as `t.dashboard.welcome`, `t.community.clubs`, etc.
+- All views, components and the Community club definitions are fully translated
+
+---
+
+## 9. Responsive Design System
 
 The CSS in `src/index.css` is written **mobile-first**:
 
@@ -152,7 +176,7 @@ Key patterns:
 
 ---
 
-## 9. Testing
+## 10. Testing
 
 Run with: `python manage.py test`
 
@@ -165,14 +189,14 @@ Run with: `python manage.py test`
 
 ---
 
-## 10. Development Setup
+## 11. Development Setup
 
 ```bash
 # Backend
 cd backend
-python -m venv venv && source venv/bin/activate
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env          # add your GEMINI_API_KEY
+# add your GEMINI_API_KEY to backend/.env
 python manage.py migrate
 python manage.py runserver
 
@@ -182,7 +206,9 @@ npm install
 npm run dev
 ```
 
-**Environment variables** (`backend/.env`):
+> **Note:** Use `python3` explicitly when creating the virtual environment on macOS. The venv `python` symlink may not resolve correctly on some setups.
+
+**Environment variables** (`backend/.env`)  — file already exists, do not overwrite:
 ```
 SECRET_KEY=...
 GEMINI_API_KEY=...
@@ -194,7 +220,7 @@ GOOGLE_CLIENT_SECRET=...
 
 ---
 
-## 11. Cookbook Reference
+## 12. Cookbook Reference
 
 > Before implementing any new AI feature or modifying LLM logic, consult the relevant patterns in `draft/claude-cookbooks-main/`.
 
@@ -231,7 +257,7 @@ GOOGLE_CLIENT_SECRET=...
 
 ---
 
-## 12. Roadmap & Known Issues
+## 13. Roadmap & Known Issues
 
 ### Roadmap
 1. **Real Moodle Integration** — replace `mockData.js` with REST/XML-RPC calls for live enrollments, grades, and syllabi
@@ -239,9 +265,33 @@ GOOGLE_CLIENT_SECRET=...
 3. **Schedule/Calendar Sync** — `GET /api/user/schedule/` from Moodle Calendar or Google Calendar
 4. **RAG for AI** — add vector DB of syllabi (pgvector) for retrieval-augmented course recommendations
 5. **Rate Limiting** — throttle `/api/ai/chat/` to prevent abuse
+6. **SettingsPanel UI** — implement the settings panel (`src/components/SettingsPanel.jsx`) with theme toggle, font size, language switcher, and dyslexia font option (state already managed in `AppContext`)
 
 ### Known Issues
 1. **Mock Data** — student GPA, attendance, credits (shown in `Profile.jsx`), and per-course statistics are sourced from `mockData.js` and need real backend endpoints
 2. **AI Route Auth** — `AiChatView` uses `AllowAny` in dev; switch to `IsAuthenticated` for production
 3. **Loading Race** — `App.jsx` may briefly flash undefined state when switching from mock to real backend; fix with a global `<Loading />` wrapper
 4. **Course Embeddings** — `Course.embedding` and `Review.embedding` fields exist as JSONField stubs; full vector search requires pgvector + PostgreSQL
+5. **SettingsPanel** — currently a stub (`return null`); theme/language/font settings UI not yet implemented
+6. **Topbar notifications** — notification items are hardcoded in Ukrainian; should be translated via `t.*` and loaded from backend
+
+---
+
+## 14. Recent Changes (April 2026)
+
+### New Features Added
+| Feature | Files Changed | Description |
+|---|---|---|
+| **Community Hub** | `src/views/Community.jsx`, `src/views/index.js`, `src/App.jsx` | New full view: 6 student clubs (MMA, Chess, Volleyball, Football, Debates, Running) with club info pages, schedule, announcements, and simulated real-time group chat |
+| **Full i18n System** | `src/locales.js`, `src/context/AppContext.jsx` | Complete translations for all UI strings in 3 languages (UK, EN, DE); moved from scattered inline strings to a single `locales.js` source of truth imported by `AppContext` |
+| **Enhanced Profile View** | `src/views/Profile.jsx` | Overhauled `Profile.jsx`: avatar picker modal (color/emoji/photo upload), editable bio, LinkedIn field, privacy toggle, 3 tabs (Profile / Comments / Wall), profile wall with post/delete |
+| **Extended AppContext** | `src/context/AppContext.jsx` | `AppProvider` now exposes: `t`, `language`/`setLanguage`, `userProfile`/`updateUserProfile`, `wallPosts`/`addWallPost`/`deleteWallPost`. All state persisted to `localStorage`. Translations loaded from `locales.js`. |
+| **StudentProfile improvements** | `src/views/StudentProfile.jsx` | Added full-screen reviews modal via React `createPortal`, community voting (ThumbsUp/ThumbsDown), multi-language date formatting, achievements badges |
+| **SettingsPanel stub** | `src/components/SettingsPanel.jsx` | Created initial placeholder so the import in `App.jsx` no longer causes a build error; ready to be implemented |
+
+### Bug Fixes
+| Bug | Root Cause | Fix |
+|---|---|---|
+| **Blank screen on load** | A bad merge conflict resolution (`commit 50f41f3f`) truncated `AppContext.jsx`, `SettingsPanel.jsx`, and `Community.jsx` to broken/empty files. The missing `t` object caused every component that calls `useApp()` to crash immediately. | Restored all 3 files from pre-merge commit `a7fa27b0`. Then replaced the inline mini-translation object in `AppContext.jsx` with the correct `import { translations } from '../locales.js'` to restore the full translation tree. |
+| **Vite build error** | `SettingsPanel.jsx` was committed as an empty file (0 bytes), causing a JS parse error. | Replaced with a valid placeholder component `return null`. |
+| **Backend venv broken** | `python` symlink in the existing `venv/bin/` pointed to a non-existent interpreter path. | Deleted and recreated venv using `python3 -m venv venv`; all dependencies reinstalled from `requirements.txt`. |
