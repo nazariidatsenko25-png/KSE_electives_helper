@@ -796,9 +796,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     {course.category === 'core' ? c.badges.core : c.badges.elective}
                                                 </span>
                                                 <span className="course-code-badge">{course.code}</span>
-                                                <span className={`instructor-title-badge ${course.instructorTitle}`}>
-                                                    {course.instructorTitle === 'professor' ? c.badges.professor : course.instructorTitle === 'expert' ? c.badges.expert : c.badges.lecturer}
-                                                </span>
+
                                                 {course.attendanceMandatory && (
                                                     <span className="attendance-badge" style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#EF4444', padding: '4px 8px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: '4px' }} title={c.badges.mandatory}>
                                                         <Lock size={12} /> {c.badges.mandatory}
@@ -947,9 +945,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     <img src={course.instructorPhoto} alt={course.instructor} className="instructor-avatar-large" onClick={(e) => handleInstructorClick(e, course)} style={{ width: '64px', height: '64px', borderRadius: '32px', objectFit: 'cover', cursor: 'pointer', transition: 'opacity 0.15s', }} onMouseEnter={e => e.target.style.opacity='0.8'} onMouseLeave={e => e.target.style.opacity='1'} />
                                                     <div style={{ flex: 1, minWidth: '200px' }}>
                                                         <h4 onClick={(e) => handleInstructorClick(e, course)} style={{ margin: '0 0 0.25rem 0', fontWeight: 600, fontSize: '1.2rem', color: 'var(--text-main)', cursor: 'pointer', textDecoration: 'underline', textDecorationColor: 'transparent', transition: 'text-decoration-color 0.15s' }} onMouseEnter={e => e.target.style.textDecorationColor='currentColor'} onMouseLeave={e => e.target.style.textDecorationColor='transparent'}>{course.instructor}</h4>
-                                                        <span className="text-muted block text-sm" style={{ marginBottom: '0.4rem', color: 'var(--color-accent)' }}>
-                                                            {course.instructorTitle === 'professor' ? 'Професор' : course.instructorTitle === 'expert' ? 'Запрошений експерт' : 'Викладач'}
-                                                        </span>
+
                                                         {course.instructorBio && (
                                                             <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: '1.4' }}>
                                                                 {course.instructorBio}
