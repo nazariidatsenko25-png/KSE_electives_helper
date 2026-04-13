@@ -187,7 +187,17 @@ export const translations = {
       showFullInfo: 'Показати повну інформацію',
       activeCourses: 'Мої активні курси',
       loginNudge: 'Увійдіть в акаунт, щоб побачити ваші активні курси вгорі',
-      empty: 'Курсів за вашим запитом не знайдено'
+      empty: 'Курсів за вашим запитом не знайдено',
+      changes: {
+        showChanges: 'Показати зміни',
+        hideChanges: 'Приховати зміни',
+        noChanges: 'Без змін',
+        newCourse: 'Новий курс',
+        was: 'Було',
+        now: 'Зараз',
+        changed: 'Змінено',
+        fieldsChanged: 'полів змінено',
+      }
     },
     evaluations: {
       authRequired: 'Потрібна авторизація',
@@ -486,7 +496,17 @@ export const translations = {
       showFullInfo: 'Show full information',
       activeCourses: 'My Active Courses',
       loginNudge: 'Sign in to see your active courses at the top',
-      empty: 'No courses found for your request'
+      empty: 'No courses found for your request',
+      changes: {
+        showChanges: 'Show Changes',
+        hideChanges: 'Hide Changes',
+        noChanges: 'No Changes',
+        newCourse: 'New Course',
+        was: 'Was',
+        now: 'Now',
+        changed: 'Changed',
+        fieldsChanged: 'fields changed',
+      }
     },
     evaluations: {
       authRequired: 'Authorization Required',
@@ -785,7 +805,17 @@ export const translations = {
       showFullInfo: 'Vollständige Informationen anzeigen',
       activeCourses: 'Meine aktiven Kurse',
       loginNudge: 'Melden Sie sich an, um Ihre aktiven Kurse oben zu sehen',
-      empty: 'Keine Kurse für Ihre Anfrage gefunden'
+      empty: 'Keine Kurse für Ihre Anfrage gefunden',
+      changes: {
+        showChanges: 'Änderungen anzeigen',
+        hideChanges: 'Änderungen ausblenden',
+        noChanges: 'Keine Änderungen',
+        newCourse: 'Neuer Kurs',
+        was: 'War',
+        now: 'Jetzt',
+        changed: 'Geändert',
+        fieldsChanged: 'Felder geändert',
+      }
     },
     evaluations: {
       authRequired: 'Autorisierung erforderlich',

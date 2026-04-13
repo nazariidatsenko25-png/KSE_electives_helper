@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, Heart, Star, BookOpen, MessageCircle, BarChart2, Award, ChevronDown, ChevronUp, Lock, Sparkles, Filter, ArrowDown, ArrowUp, Pin, PinOff, CheckCircle, GraduationCap, Clock, Activity, FileText, Bot, X, Loader2, Send, ThumbsUp, ThumbsDown, Calendar, User } from 'lucide-react';
-import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments, mockTranscript } from '../data/mockData';
+import { Search, Heart, Star, BookOpen, MessageCircle, BarChart2, Award, ChevronDown, ChevronUp, Lock, Sparkles, Filter, ArrowDown, ArrowUp, Pin, PinOff, CheckCircle, GraduationCap, Clock, Activity, FileText, Bot, X, Loader2, Send, ThumbsUp, ThumbsDown, Calendar, User, GitCompareArrows } from 'lucide-react';
+import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments, mockTranscript, mockPreviousGeneration } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 
@@ -165,6 +165,7 @@ const CourseCatalog = ({ user, navigate }) => {
     const [reviewVotes, setReviewVotes] = useState({}); // { reviewId: 'like' | 'dislike' | null }
     const [aiSummaryState, setAiSummaryState] = useState({}); // { courseId: { loading, summary } }
     const [reviewsExpanded, setReviewsExpanded] = useState({}); 
+    const [changesMode, setChangesMode] = useState({}); // { courseId: boolean }
     const popupRef = useRef(null);
     const sidebarRef = useRef(null);
 
@@ -417,6 +418,108 @@ const CourseCatalog = ({ user, navigate }) => {
     };
 
     const isFiltersActive = JSON.stringify(activeFilters) !== JSON.stringify(defaultFilters);
+
+    // ── "Show Changes" helpers ──
+    const getChanges = (courseId) => {
+        const prev = mockPreviousGeneration[courseId];
+        if (!prev) return null;
+        const current = mockCatalog.find(cc => cc.id === courseId);
+        if (!current) return null;
+
+        const numericFields = [
+            { key: 'credits', label: 'ECTS' },
+            { key: 'rating', label: c.sortOptions.rating },
+            { key: 'historicalAverage', label: c.avgScore },
+            { key: 'passRate60Plus', label: c.passRate },
+            { key: 'lectureHours', label: 'Лекції (год)' },
+            { key: 'practiceHours', label: 'Практика (год)' },
+            { key: 'selfStudyHours', label: 'Самост. (год)' },
+        ];
+
+        const numericDiffs = [];
+        for (const f of numericFields) {
+            if (prev[f.key] !== undefined && prev[f.key] !== current[f.key]) {
+                const delta = current[f.key] - prev[f.key];
+                numericDiffs.push({
+                    key: f.key,
+                    label: f.label,
+                    oldVal: prev[f.key],
+                    newVal: current[f.key],
+                    delta,
+                    direction: delta > 0 ? 'up' : 'down',
+                });
+            }
+        }
+
+        const textDiffs = [];
+        if (prev.description && prev.description !== current.description) {
+            textDiffs.push({ key: 'description', label: 'Опис', oldText: prev.description, newText: current.description });
+        }
+        if (prev.instructor && prev.instructor !== current.instructor) {
+            textDiffs.push({ key: 'instructor', label: 'Викладач', oldText: prev.instructor, newText: current.instructor });
+        }
+
+        // Syllabus text diffs
+        if (prev.detailedSyllabus && current.detailedSyllabus) {
+            const ps = prev.detailedSyllabus;
+            const cs = current.detailedSyllabus;
+            if (ps.justification && ps.justification !== cs.justification) {
+                textDiffs.push({ key: 'justification', label: 'Обґрунтування', oldText: ps.justification, newText: cs.justification });
+            }
+            if (ps.goals && JSON.stringify(ps.goals) !== JSON.stringify(cs.goals)) {
+                textDiffs.push({ key: 'goals', label: 'Цілі курсу', oldText: ps.goals.join('; '), newText: cs.goals.join('; ') });
+            }
+            if (ps.outcomes && JSON.stringify(ps.outcomes) !== JSON.stringify(cs.outcomes)) {
+                textDiffs.push({ key: 'outcomes', label: 'Результати навчання', oldText: ps.outcomes.join('; '), newText: cs.outcomes.join('; ') });
+            }
+        }
+
+        // Grading breakdown diffs
+        const gradingDiffs = [];
+        if (prev.gradingBreakdown && current.gradingBreakdown) {
+            for (const gk of ['exam', 'project', 'homework']) {
+                const ov = prev.gradingBreakdown[gk];
+                const nv = current.gradingBreakdown[gk];
+                if (ov !== undefined && ov !== nv) {
+                    const labels = { exam: 'Іспит', project: 'Проєкт', homework: 'ДЗ' };
+                    gradingDiffs.push({ key: gk, label: labels[gk], oldVal: ov, newVal: nv, delta: nv - ov, direction: nv > ov ? 'up' : 'down' });
+                }
+            }
+        }
+
+        const totalChanges = numericDiffs.length + textDiffs.length + gradingDiffs.length;
+        return { numericDiffs, textDiffs, gradingDiffs, hasChanges: totalChanges > 0, totalChanges };
+    };
+
+    const renderNumericChange = (diff) => (
+        <span className="change-indicator" key={diff.key}>
+            <span className={`change-arrow ${diff.direction}`}>
+                {diff.direction === 'up' ? <ArrowUp size={12} /> : <ArrowDown size={12} />}
+            </span>
+            <span className={`change-magnitude ${diff.direction}`}>
+                {diff.direction === 'up' ? '+' : ''}{Math.round(diff.delta * 10) / 10}
+            </span>
+        </span>
+    );
+
+    const renderTextChange = (diff) => (
+        <div className="text-diff-container" key={diff.key}>
+            <div className="text-diff-label">{diff.label}:</div>
+            <div className="text-diff-old">
+                <span className="text-diff-tag">{c.changes.was}</span>
+                {diff.oldText}
+            </div>
+            <div className="text-diff-new">
+                <span className="text-diff-tag">{c.changes.now}</span>
+                {diff.newText}
+            </div>
+        </div>
+    );
+
+    const getNumericDiff = (changes, fieldKey) => {
+        if (!changes) return null;
+        return changes.numericDiffs.find(d => d.key === fieldKey);
+    };
 
     const filtered = mockCatalog.filter(course => {
         const matchSearch = course.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -672,6 +775,9 @@ const CourseCatalog = ({ user, navigate }) => {
                             const courseReviews = reviews[course.id] || [];
                             const aiState = aiSummaryState[course.id] || {};
                             const isReviewsExpanded = reviewsExpanded[course.id] ?? false;
+                            const isChangesActive = changesMode[course.id] || false;
+                            const changes = isChangesActive ? getChanges(course.id) : null;
+                            const hasPreviousGen = !!mockPreviousGeneration[course.id];
 
                             return (
                                 <div
@@ -721,10 +827,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 <span className="catalog-meta-item">
                                                     <Star size={14} color="#F59E0B" fill="#F59E0B" />
                                                     {course.rating}
+                                                    {isChangesActive && getNumericDiff(changes, 'rating') && renderNumericChange(getNumericDiff(changes, 'rating'))}
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <BookOpen size={14} />
                                                     {course.credits} ECTS
+                                                    {isChangesActive && getNumericDiff(changes, 'credits') && renderNumericChange(getNumericDiff(changes, 'credits'))}
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <MessageCircle size={14} />
@@ -733,10 +841,12 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 <span className="catalog-meta-item">
                                                     <BarChart2 size={14} color="#6EE7B7" />
                                                     {course.passRate60Plus || '--'}{c.passRate}
+                                                    {isChangesActive && getNumericDiff(changes, 'passRate60Plus') && renderNumericChange(getNumericDiff(changes, 'passRate60Plus'))}
                                                 </span>
                                                 <span className="catalog-meta-item">
                                                     <Award size={14} color="#93C5FD" />
                                                     {c.avgScore} {course.historicalAverage || '--'}
+                                                    {isChangesActive && getNumericDiff(changes, 'historicalAverage') && renderNumericChange(getNumericDiff(changes, 'historicalAverage'))}
                                                 </span>
                                             </div>
                                             <ChevronDown size={16} className={`expand-icon ${isExpanded ? 'rotated' : ''}`} />
@@ -807,7 +917,28 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 <span className="max-points-badge">
                                                     Максимум: <span style={{fontWeight: 'bold', color: 'var(--text-main)'}}>{course.maxPoints}</span> балів
                                                 </span>
+                                                {hasPreviousGen && (
+                                                    <button
+                                                        className={`changes-toggle-btn ${isChangesActive ? 'active' : ''}`}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            setChangesMode(prev => ({ ...prev, [course.id]: !prev[course.id] }));
+                                                        }}
+                                                        title={isChangesActive ? c.changes.hideChanges : c.changes.showChanges}
+                                                    >
+                                                        <GitCompareArrows size={14} />
+                                                        {isChangesActive ? c.changes.hideChanges : c.changes.showChanges}
+                                                    </button>
+                                                )}
                                             </div>
+
+                                            {/* Changes Summary Banner */}
+                                            {isChangesActive && changes && changes.hasChanges && (
+                                                <div className="changes-summary-banner">
+                                                    <GitCompareArrows size={14} />
+                                                    <span>{changes.totalChanges} {c.changes.fieldsChanged}</span>
+                                                </div>
+                                            )}
 
                                             <div className="expanded-dashboard-v2" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '0.75rem', marginBottom: '1rem' }}>
                                                 
@@ -850,9 +981,9 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                     <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Обґрунтування курсу</h5>
                                                                     <p style={{ margin: 0, marginBottom: '1rem' }}>{course.detailedSyllabus.justification}</p>
                                                                     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '0.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
-                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span></div>
-                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span></div>
-                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span></div>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span>{isChangesActive && getNumericDiff(changes, 'lectureHours') && renderNumericChange(getNumericDiff(changes, 'lectureHours'))}</div>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span>{isChangesActive && getNumericDiff(changes, 'practiceHours') && renderNumericChange(getNumericDiff(changes, 'practiceHours'))}</div>
+                                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span>{isChangesActive && getNumericDiff(changes, 'selfStudyHours') && renderNumericChange(getNumericDiff(changes, 'selfStudyHours'))}</div>
                                                                     </div>
                                                                 </div>
 
@@ -963,9 +1094,9 @@ const CourseCatalog = ({ user, navigate }) => {
                                                             <h4 className="dashboard-heading" style={{ marginBottom: '0.5rem' }}>Короткий опис дисципліни</h4>
                                                             <p className="catalog-description text-sm" style={{ lineHeight: '1.5', margin: 0, marginBottom: '1rem' }}>{course.description}</p>
                                                             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '0.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
-                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span></div>
-                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span></div>
-                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span></div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span>{isChangesActive && getNumericDiff(changes, 'lectureHours') && renderNumericChange(getNumericDiff(changes, 'lectureHours'))}</div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span>{isChangesActive && getNumericDiff(changes, 'practiceHours') && renderNumericChange(getNumericDiff(changes, 'practiceHours'))}</div>
+                                                                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#10b981' }}></span>Самостійна робота: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.selfStudyHours} год</span>{isChangesActive && getNumericDiff(changes, 'selfStudyHours') && renderNumericChange(getNumericDiff(changes, 'selfStudyHours'))}</div>
                                                             </div>
                                                         </>
                                                     )}
@@ -1199,6 +1330,38 @@ const CourseCatalog = ({ user, navigate }) => {
                                                     </>
                                                 )}
                                             </div>
+
+                                            {/* Text & Grading Changes Panel */}
+                                            {isChangesActive && changes && changes.hasChanges && (
+                                                <div className="changes-detail-panel" onClick={(e) => e.stopPropagation()}>
+                                                    {/* Grading breakdown diffs */}
+                                                    {changes.gradingDiffs.length > 0 && (
+                                                        <div className="changes-grading-section">
+                                                            <h4 className="dashboard-heading" style={{ marginBottom: '0.75rem', fontSize: '0.9rem' }}>Зміни у розподілі оцінювання</h4>
+                                                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+                                                                {changes.gradingDiffs.map(gd => (
+                                                                    <div key={gd.key} className="grading-diff-item">
+                                                                        <span className="grading-diff-label">{gd.label}</span>
+                                                                        <div className="grading-diff-values">
+                                                                            <span className="grading-diff-old">{gd.oldVal}%</span>
+                                                                            <span className="grading-diff-arrow">→</span>
+                                                                            <span className="grading-diff-new">{gd.newVal}%</span>
+                                                                            {renderNumericChange(gd)}
+                                                                        </div>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                    {/* Text diffs */}
+                                                    {changes.textDiffs.length > 0 && (
+                                                        <div className="changes-text-section">
+                                                            <h4 className="dashboard-heading" style={{ marginBottom: '0.75rem', fontSize: '0.9rem' }}>Текстові зміни</h4>
+                                                            {changes.textDiffs.map(td => renderTextChange(td))}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            )}
 
                                             <button
                                                 className={`btn-primary mt-sm ${isWishlisted ? 'btn-wishlisted' : ''}`}

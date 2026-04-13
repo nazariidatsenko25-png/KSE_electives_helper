@@ -5980,3 +5980,266 @@ body.dyslexia-mode span {
 [data-theme="light"] .club-card:hover, [data-theme="light"] .widget-progress, [data-theme="light"] .course-card {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
+
+/* ==========================================================================
+   SHOW CHANGES FEATURE
+   ========================================================================== */
+
+/* Toggle button — positioned inside expanded-header */
+.changes-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.08);
+  color: #a78bfa;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.changes-toggle-btn:hover {
+  background: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+}
+
+.changes-toggle-btn.active {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: #8b5cf6;
+  color: #c4b5fd;
+  box-shadow: 0 0 16px rgba(139, 92, 246, 0.25), inset 0 0 8px rgba(139, 92, 246, 0.1);
+}
+
+/* Summary banner */
+.changes-summary-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  background: rgba(139, 92, 246, 0.06);
+  color: #c4b5fd;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  animation: bannerSlideIn 0.35s ease-out;
+}
+
+@keyframes bannerSlideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Inline numeric change indicator */
+.change-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: 4px;
+  animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.change-arrow {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.change-arrow.up { color: #34d399; }
+.change-arrow.down { color: #f87171; }
+
+.change-magnitude {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.change-magnitude.up   { color: #34d399; }
+.change-magnitude.down { color: #f87171; }
+
+/* Changes detail panel */
+.changes-detail-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  background: rgba(139, 92, 246, 0.04);
+  margin-bottom: 0.75rem;
+  animation: panelFadeIn 0.4s ease-out;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 2000px; }
+}
+
+/* Grading diff items */
+.grading-diff-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  min-width: 120px;
+}
+
+.grading-diff-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.grading-diff-values {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+}
+
+.grading-diff-old {
+  color: #f87171;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.grading-diff-arrow {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.grading-diff-new {
+  color: #34d399;
+  font-weight: 700;
+}
+
+/* Text diff container */
+.text-diff-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.text-diff-container:last-child {
+  margin-bottom: 0;
+}
+
+.text-diff-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.text-diff-old {
+  display: flex;
+  gap: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(248, 113, 113, 0.06);
+  border: 1px solid rgba(248, 113, 113, 0.15);
+  color: #fca5a5;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  text-decoration: line-through;
+  text-decoration-color: rgba(248, 113, 113, 0.4);
+}
+
+.text-diff-new {
+  display: flex;
+  gap: 8px;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  background: rgba(52, 211, 153, 0.06);
+  border: 1px solid rgba(52, 211, 153, 0.15);
+  color: #6ee7b7;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.text-diff-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+  flex-shrink: 0;
+  min-width: 42px;
+  text-decoration: none;
+}
+
+.text-diff-old .text-diff-tag { color: #f87171; }
+.text-diff-new .text-diff-tag { color: #34d399; }
+
+/* ── Light theme overrides ── */
+[data-theme="light"] .changes-toggle-btn {
+  background: rgba(139, 92, 246, 0.06);
+  border-color: rgba(139, 92, 246, 0.25);
+  color: #7c3aed;
+}
+
+[data-theme="light"] .changes-toggle-btn:hover {
+  background: rgba(139, 92, 246, 0.12);
+}
+
+[data-theme="light"] .changes-toggle-btn.active {
+  background: rgba(139, 92, 246, 0.15);
+  color: #6d28d9;
+}
+
+[data-theme="light"] .changes-summary-banner {
+  background: rgba(139, 92, 246, 0.05);
+  color: #6d28d9;
+}
+
+[data-theme="light"] .changes-detail-panel {
+  background: rgba(139, 92, 246, 0.03);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+[data-theme="light"] .text-diff-old {
+  background: rgba(239, 68, 68, 0.06);
+  border-color: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+[data-theme="light"] .text-diff-new {
+  background: rgba(16, 185, 129, 0.06);
+  border-color: rgba(16, 185, 129, 0.15);
+  color: #047857;
+}
+
+[data-theme="light"] .text-diff-old .text-diff-tag { color: #dc2626; }
+[data-theme="light"] .text-diff-new .text-diff-tag { color: #059669; }
+
+[data-theme="light"] .change-magnitude.up   { color: #059669; }
+[data-theme="light"] .change-magnitude.down { color: #dc2626; }
+[data-theme="light"] .change-arrow.up   { color: #059669; }
+[data-theme="light"] .change-arrow.down { color: #dc2626; }
+
+[data-theme="light"] .grading-diff-old { color: #dc2626; }
+[data-theme="light"] .grading-diff-new { color: #059669; }
+
+[data-theme="light"] .grading-diff-item {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
