@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/mockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/mockData.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" afterDir="false" />
-    </list>
+    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="draft" />
+        <entry key="$PROJECT_DIR$" value="20d9ac620c017068bd4db501a7da784b8c930d31" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,12 +33,12 @@
     &quot;assignee&quot;: &quot;nazariidatsenko25-png&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/nazariidatsenko25-png/KSE_electives_helper.git",
-    "accountId": "5fddec4a-202a-4e90-b8ee-918e141acbed"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/KSE_electives_helper.git&quot;,
+    &quot;accountId&quot;: &quot;5fddec4a-202a-4e90-b8ee-918e141acbed&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/node_modules/.vite/deps/chunk-3DCTBBZ3.js.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/node_modules/fetch-blob/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js.map" root0="FORCE_HIGHLIGHTING" />
@@ -59,26 +55,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "ComparingSyllabuses",
-    "last_opened_file_path": "/Users/admin/Desktop/draft",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;ComparingSyllabuses&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/draft&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="draft" type="Python.DjangoServer" factoryName="Django server">
       <module name="draft" />
@@ -133,6 +129,7 @@
       <workItem from="1775215333875" duration="1672000" />
       <workItem from="1775230043063" duration="2112000" />
       <workItem from="1776106020223" duration="2724000" />
+      <workItem from="1776159203163" duration="614000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />

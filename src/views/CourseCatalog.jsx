@@ -273,6 +273,7 @@ const CourseCatalog = ({ user, navigate }) => {
     const [aiSummaryState, setAiSummaryState] = useState({}); // { courseId: { loading, summary } }
     const [reviewsExpanded, setReviewsExpanded] = useState({}); 
     const [changesMode, setChangesMode] = useState({}); // { courseId: boolean }
+    const [teacherCommentExpanded, setTeacherCommentExpanded] = useState({}); // { courseId: boolean }
     const popupRef = useRef(null);
     const sidebarRef = useRef(null);
 
@@ -591,8 +592,22 @@ const CourseCatalog = ({ user, navigate }) => {
             }
         }
 
-        const totalChanges = numericDiffs.length + textDiffs.length + gradingDiffs.length;
-        return { numericDiffs, textDiffs, gradingDiffs, hasChanges: totalChanges > 0, totalChanges };
+        // Grading table row diffs (per-row total changes)
+        const gradingTableRowDiffs = {};
+        if (prev.detailedSyllabus?.gradingTable && current.detailedSyllabus?.gradingTable) {
+            const prevTable = prev.detailedSyllabus.gradingTable;
+            const currTable = current.detailedSyllabus.gradingTable;
+            currTable.forEach((row, i) => {
+                const prevRow = prevTable.find(r => r.type === row.type) || prevTable[i];
+                if (prevRow && prevRow.total !== row.total) {
+                    const delta = row.total - prevRow.total;
+                    gradingTableRowDiffs[row.type] = { oldVal: prevRow.total, newVal: row.total, delta, direction: delta > 0 ? 'up' : 'down' };
+                }
+            });
+        }
+
+        const totalChanges = numericDiffs.length + textDiffs.length + gradingDiffs.length + Object.keys(gradingTableRowDiffs).length;
+        return { numericDiffs, textDiffs, gradingDiffs, gradingTableRowDiffs, hasChanges: totalChanges > 0, totalChanges };
     };
 
     const renderNumericChange = (diff) => (
@@ -1066,17 +1081,41 @@ const CourseCatalog = ({ user, navigate }) => {
                                                 </div>
 
                                                 {/* Teacher's Comment on Changes */}
-                                                {isChangesActive && changes && changes.hasChanges && mockPreviousGeneration[course.id]?.teacherComment && (
-                                                    <div className="dashboard-zone glass-panel teacher-comment-zone" style={{ padding: '1.25rem', background: 'rgba(139, 92, 246, 0.06)', borderRadius: '12px', gridColumn: '1 / -1', borderLeft: '4px solid #8b5cf6', marginTop: '0.25rem', marginBottom: '0.25rem' }}>
-                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', color: '#c4b5fd', fontWeight: 600 }}>
-                                                            <MessageCircle size={18} />
-                                                            <span>Коментар викладача щодо змін у курсі</span>
+                                                {isChangesActive && changes && changes.hasChanges && mockPreviousGeneration[course.id]?.teacherComment && (() => {
+                                                    const isTeacherExpanded = !!teacherCommentExpanded[course.id];
+                                                    const problems = mockPreviousGeneration[course.id]?.mainProblems || [];
+                                                    return (
+                                                        <div className="dashboard-zone glass-panel teacher-comment-zone" style={{ padding: '1.25rem', background: 'rgba(139, 92, 246, 0.06)', borderRadius: '12px', gridColumn: '1 / -1', borderLeft: '4px solid #8b5cf6', marginTop: '0.25rem', marginBottom: '0.25rem' }}>
+                                                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', color: '#c4b5fd', fontWeight: 600 }}>
+                                                                <MessageCircle size={18} />
+                                                                <span style={{ flex: 1 }}>Коментар викладача щодо змін у курсі</span>
+                                                                {problems.length > 0 && (
+                                                                    <button
+                                                                        onClick={(e) => { e.stopPropagation(); setTeacherCommentExpanded(prev => ({ ...prev, [course.id]: !prev[course.id] })); }}
+                                                                        style={{ display: 'flex', alignItems: 'center', gap: '4px', background: isTeacherExpanded ? 'rgba(139, 92, 246, 0.2)' : 'rgba(139, 92, 246, 0.1)', border: '1px solid rgba(139, 92, 246, 0.3)', borderRadius: '6px', padding: '3px 10px', cursor: 'pointer', color: '#c4b5fd', fontSize: '0.78rem', fontWeight: 600, transition: 'all 0.2s' }}
+                                                                    >
+                                                                        {isTeacherExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
+                                                                        {isTeacherExpanded ? 'Згорнути' : 'Основні проблеми'}
+                                                                    </button>
+                                                                )}
+                                                            </div>
+                                                            <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.5', fontStyle: 'italic', marginBottom: isTeacherExpanded && problems.length > 0 ? '1rem' : 0 }}>
+                                                                "{mockPreviousGeneration[course.id].teacherComment}"
+                                                            </p>
+                                                            {isTeacherExpanded && problems.length > 0 && (
+                                                                <div style={{ borderTop: '1px solid rgba(139, 92, 246, 0.2)', paddingTop: '0.85rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                                                                    <div style={{ fontSize: '0.78rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: '#a78bfa', marginBottom: '0.1rem' }}>Основні проблеми курсу</div>
+                                                                    {problems.map((problem, pi) => (
+                                                                        <div key={pi} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', padding: '0.6rem 0.75rem', background: 'rgba(139, 92, 246, 0.08)', borderRadius: '8px', border: '1px solid rgba(139, 92, 246, 0.15)' }}>
+                                                                            <span style={{ minWidth: '20px', height: '20px', borderRadius: '50%', background: 'rgba(139, 92, 246, 0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: 700, color: '#c4b5fd', flexShrink: 0, marginTop: '1px' }}>{pi + 1}</span>
+                                                                            <span style={{ fontSize: '0.88rem', color: 'var(--text-main)', lineHeight: '1.5' }}>{problem}</span>
+                                                                        </div>
+                                                                    ))}
+                                                                </div>
+                                                            )}
                                                         </div>
-                                                        <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.5', fontStyle: 'italic' }}>
-                                                            "{mockPreviousGeneration[course.id].teacherComment}"
-                                                        </p>
-                                                    </div>
-                                                )}
+                                                    );
+                                                })()}
 
                                                 {/* Zone 2: Short Syllabus (Description) or Detailed Syllabus */}
                                                 <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', gridColumn: '1 / -1' }}>
@@ -1189,15 +1228,27 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody>
-                                                                                {course.detailedSyllabus.gradingTable.map((row, i) => (
-                                                                                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                                                                                        <td style={{ padding: '10px', fontWeight: 600 }}>{row.type}</td>
-                                                                                        <td style={{ padding: '10px', opacity: 0.8 }}>{row.details}</td>
-                                                                                        <td style={{ padding: '10px', textAlign: 'center' }}>{row.perItem}</td>
-                                                                                        <td style={{ padding: '10px', textAlign: 'center', fontWeight: 600, color: '#3b82f6' }}>{row.total}</td>
-                                                                                        <td style={{ padding: '10px', opacity: 0.8 }}>{row.deadline}</td>
-                                                                                    </tr>
-                                                                                ))}
+                                                                                {course.detailedSyllabus.gradingTable.map((row, i) => {
+                                                                                    const rowDiff = isChangesActive && changes?.gradingTableRowDiffs?.[row.type];
+                                                                                    return (
+                                                                                        <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: rowDiff ? (rowDiff.direction === 'up' ? 'rgba(16,185,129,0.04)' : 'rgba(248,113,113,0.04)') : 'transparent', transition: 'background 0.2s' }}>
+                                                                                            <td style={{ padding: '10px', fontWeight: 600 }}>{row.type}</td>
+                                                                                            <td style={{ padding: '10px', opacity: 0.8 }}>{row.details}</td>
+                                                                                            <td style={{ padding: '10px', textAlign: 'center' }}>{row.perItem}</td>
+                                                                                            <td style={{ padding: '10px', textAlign: 'center', fontWeight: 600, color: '#3b82f6' }}>
+                                                                                                {row.total}
+                                                                                                {rowDiff && (
+                                                                                                    <span style={{ marginLeft: '6px', fontSize: '0.75rem', display: 'inline-flex', alignItems: 'center', gap: '2px', color: rowDiff.direction === 'up' ? '#10b981' : '#f87171', fontWeight: 700 }}>
+                                                                                                        {rowDiff.direction === 'up' ? <ArrowUp size={11} /> : <ArrowDown size={11} />}
+                                                                                                        {rowDiff.direction === 'up' ? '+' : ''}{rowDiff.delta}
+                                                                                                        <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)', fontWeight: 400, marginLeft: '2px' }}>({rowDiff.oldVal}→{rowDiff.newVal})</span>
+                                                                                                    </span>
+                                                                                                )}
+                                                                                            </td>
+                                                                                            <td style={{ padding: '10px', opacity: 0.8 }}>{row.deadline}</td>
+                                                                                        </tr>
+                                                                                    );
+                                                                                })}
                                                                                 <tr style={{ background: 'rgba(255,255,255,0.02)' }}>
                                                                                     <td colSpan="3" style={{ padding: '10px', fontWeight: 'bold', color: 'var(--text-main)', textAlign: 'right' }}>Разом</td>
                                                                                     <td style={{ padding: '10px', textAlign: 'center', fontWeight: 'bold', color: '#10b981', fontSize: '0.9rem' }}>100</td>
@@ -1282,26 +1333,53 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column' }}>
                                                             <h4 className="dashboard-heading">Середній бал</h4>
                                                             <div className="stat-linear-container" style={{ marginTop: 'auto', marginBottom: 'auto', width: '100%' }}>
-                                                                <div className="linear-label" style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>
+                                                                <div className="linear-label" style={{ fontSize: '1.2rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                                                                     <span style={{fontWeight: 600, color: 'var(--text-main)'}}>{course.historicalAverage}</span>
                                                                     <span className="text-muted text-sm ml-xs"> / {course.maxPoints}</span>
+                                                                    {isChangesActive && getNumericDiff(changes, 'historicalAverage') && renderNumericChange(getNumericDiff(changes, 'historicalAverage'))}
                                                                 </div>
+                                                                {isChangesActive && getNumericDiff(changes, 'historicalAverage') && (() => {
+                                                                    const diff = getNumericDiff(changes, 'historicalAverage');
+                                                                    return (
+                                                                        <div style={{ position: 'relative', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', marginBottom: '6px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                                                                            <div style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${(diff.oldVal / course.maxPoints) * 100}%`, background: 'rgba(248,113,113,0.35)', borderRadius: '4px', transition: '0.3s' }} />
+                                                                        </div>
+                                                                    );
+                                                                })()}
                                                                 <div className="linear-progress-bg mt-xs">
                                                                     <div className="linear-progress-fill" style={{ width: `${(course.historicalAverage / course.maxPoints) * 100}%` }}></div>
                                                                 </div>
+                                                                {isChangesActive && getNumericDiff(changes, 'historicalAverage') && (
+                                                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+                                                                        <span style={{ color: '#f87171' }}>Було: {getNumericDiff(changes, 'historicalAverage').oldVal}</span>
+                                                                        <span style={{ color: '#10b981' }}>Стало: {getNumericDiff(changes, 'historicalAverage').newVal}</span>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
 
                                                         {/* Zone 5: % Закриття дисципліни */}
                                                         <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                                                             <h4 className="dashboard-heading" style={{ alignSelf: 'flex-start', width: '100%' }}>% закриття дисципліни</h4>
-                                                            <div className="stat-ring-container" style={{ marginTop: '0.5rem' }}>
+                                                            <div className="stat-ring-container" style={{ marginTop: '0.5rem', position: 'relative' }}>
                                                                 <svg className="radial-progress" viewBox="0 0 36 36">
                                                                     <path className="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                    {isChangesActive && getNumericDiff(changes, 'passRate60Plus') && (
+                                                                        <path style={{ stroke: getNumericDiff(changes, 'passRate60Plus').direction === 'up' ? 'rgba(248,113,113,0.35)' : 'rgba(16,185,129,0.35)', fill: 'none', strokeWidth: 2.8, strokeLinecap: 'round' }}
+                                                                            strokeDasharray={`${getNumericDiff(changes, 'passRate60Plus').oldVal}, 100`}
+                                                                            d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                                                    )}
                                                                     <path className="circle-fill" strokeDasharray={`${course.passRate60Plus}, 100`} d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
                                                                     <text x="18" y="20.35" className="percentage">{course.passRate60Plus}%</text>
                                                                 </svg>
                                                             </div>
+                                                            {isChangesActive && getNumericDiff(changes, 'passRate60Plus') && (
+                                                                <div style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', fontSize: '0.72rem' }}>
+                                                                    <span style={{ color: '#f87171' }}>Було: {getNumericDiff(changes, 'passRate60Plus').oldVal}%</span>
+                                                                    {renderNumericChange(getNumericDiff(changes, 'passRate60Plus'))}
+                                                                    <span style={{ color: '#10b981' }}>Стало: {getNumericDiff(changes, 'passRate60Plus').newVal}%</span>
+                                                                </div>
+                                                            )}
                                                         </div>
 
                                                         {/* Zone 6: Practice vs Theory Line */}
@@ -1474,13 +1552,7 @@ const CourseCatalog = ({ user, navigate }) => {
                                                             </div>
                                                         </div>
                                                     )}
-                                                    {/* Text diffs */}
-                                                    {changes.textDiffs.length > 0 && (
-                                                        <div className="changes-text-section">
-                                                            <h4 className="dashboard-heading" style={{ marginBottom: '0.75rem', fontSize: '0.9rem' }}>Текстові зміни</h4>
-                                                            {changes.textDiffs.map(td => renderTextChange(td))}
-                                                        </div>
-                                                    )}
+
                                                 </div>
                                             )}
 
