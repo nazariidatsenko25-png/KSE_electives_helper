@@ -9620,6 +9620,7 @@ export const mockReviews = {
 // falls back to "no change" when a field is missing from the snapshot.
 export const mockPreviousGeneration = {
     10: {
+        teacherComment: 'У новому семестрі ми збільшили кількість практичних завдань та додали 1 ECTS кредит, щоб глибше пропрацювати теми.',
         credits: 5,
         rating: 4.0,
         historicalAverage: 82.1,
@@ -9637,6 +9638,7 @@ export const mockPreviousGeneration = {
         },
     },
     11: {
+        teacherComment: 'Оновлено розподіл оцінювання: збільшено вагу домашніх завдань для стимулювання рівномірної роботи протягом семестру.',
         credits: 6,
         rating: 3.7,
         historicalAverage: 74.2,
@@ -9653,6 +9655,7 @@ export const mockPreviousGeneration = {
         },
     },
     13: {
+        teacherComment: 'Формат курсу змінено, додані нові теми з поведінкової макроекономіки.',
         credits: 4,
         rating: 4.1,
         historicalAverage: 75.3,
@@ -9669,6 +9672,7 @@ export const mockPreviousGeneration = {
         },
     },
     14: {
+        teacherComment: 'Ми оновили детальний силабус та змінили вимоги до фінального проєкту.',
         credits: 5,
         rating: 4.6,
         historicalAverage: 88.1,
@@ -9686,6 +9690,7 @@ export const mockPreviousGeneration = {
         },
     },
     15: {
+        teacherComment: 'Актуалізовано матеріали курсу згідно з останніми змінами в корпоративному законодавстві.',
         credits: 5,
         rating: 4.2,
         historicalAverage: 81.5,
@@ -9703,6 +9708,7 @@ export const mockPreviousGeneration = {
         },
     },
     18: {
+        teacherComment: 'Зменшено вагу іспиту на користь практичних проєктів.',
         credits: 4,
         rating: 4.5,
         historicalAverage: 83.0,
@@ -9714,6 +9720,7 @@ export const mockPreviousGeneration = {
         gradingBreakdown: { exam: 45, project: 25, homework: 30 },
     },
     20: {
+        teacherComment: 'Додано нові лекції з постквантової криптографії.',
         credits: 4,
         rating: 4.3,
         historicalAverage: 80.0,

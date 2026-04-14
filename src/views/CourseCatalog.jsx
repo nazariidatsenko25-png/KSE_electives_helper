@@ -428,9 +428,6 @@ const CourseCatalog = ({ user, navigate }) => {
 
         const numericFields = [
             { key: 'credits', label: 'ECTS' },
-            { key: 'rating', label: c.sortOptions.rating },
-            { key: 'historicalAverage', label: c.avgScore },
-            { key: 'passRate60Plus', label: c.passRate },
             { key: 'lectureHours', label: 'Лекції (год)' },
             { key: 'practiceHours', label: 'Практика (год)' },
             { key: 'selfStudyHours', label: 'Самост. (год)' },
@@ -960,6 +957,19 @@ const CourseCatalog = ({ user, navigate }) => {
                                                         )}
                                                     </div>
                                                 </div>
+
+                                                {/* Teacher's Comment on Changes */}
+                                                {isChangesActive && changes && changes.hasChanges && mockPreviousGeneration[course.id]?.teacherComment && (
+                                                    <div className="dashboard-zone glass-panel teacher-comment-zone" style={{ padding: '1.25rem', background: 'rgba(139, 92, 246, 0.06)', borderRadius: '12px', gridColumn: '1 / -1', borderLeft: '4px solid #8b5cf6', marginTop: '0.25rem', marginBottom: '0.25rem' }}>
+                                                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem', color: '#c4b5fd', fontWeight: 600 }}>
+                                                            <MessageCircle size={18} />
+                                                            <span>Коментар викладача щодо змін у курсі</span>
+                                                        </div>
+                                                        <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.5', fontStyle: 'italic' }}>
+                                                            "{mockPreviousGeneration[course.id].teacherComment}"
+                                                        </p>
+                                                    </div>
+                                                )}
 
                                                 {/* Zone 2: Short Syllabus (Description) or Detailed Syllabus */}
                                                 <div className="dashboard-zone glass-panel" style={{ padding: '1rem', background: 'rgba(255,255,255,0.03)', borderRadius: '12px', gridColumn: '1 / -1' }}>

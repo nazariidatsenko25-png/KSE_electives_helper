@@ -6,63 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PROJECT_OVERVIEW.md" beforeDir="false" afterPath="$PROJECT_DIR$/PROJECT_OVERVIEW.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/activate" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/activate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/activate.csh" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/activate.csh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/activate.fish" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/activate.fish" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/distro" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/distro" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/django-admin" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/django-admin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/f2py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/f2py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/httpx" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/httpx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/normalizer" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/normalizer" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/numpy-config" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/numpy-config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/pip" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/pip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/pip3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/pip3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/pip3.12" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/pip3.12" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/python" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/python" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/python3" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/python3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/python3.12" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/python3.12" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/sqlformat" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/sqlformat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/bin/websockets" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/bin/websockets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/charset_normalizer-3.4.4.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/charset_normalizer-3.4.4.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/distro-1.9.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/distro-1.9.0.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/django-6.0.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/django-6.0.2.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/httpx-0.28.1.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/httpx-0.28.1.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/numpy-2.4.2.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/numpy-2.4.2.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/pip-24.0.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/sqlparse-0.5.5.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/sqlparse-0.5.5.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/websockets-16.0.dist-info/RECORD" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/lib/python3.12/site-packages/websockets-16.0.dist-info/RECORD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/venv/pyvenv.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/backend/venv/pyvenv.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/acorn" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/acorn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/baseline-browser-mapping" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/baseline-browser-mapping" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/browserslist" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/browserslist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/esbuild" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/esbuild" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/eslint" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/eslint" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/js-yaml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/js-yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/jsesc" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/jsesc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/json5" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/json5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/nanoid" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/nanoid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/node-which" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/node-which" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/parser" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/parser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/rollup" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/rollup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/semver" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/semver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/update-browserslist-db" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/update-browserslist-db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/vite" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/vite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/win32-x64/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/win32-x64/esbuild.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/win32-x64/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-gnu/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-gnu/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-gnu/rollup.win32-x64-gnu.node" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-msvc/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-msvc/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-win32-x64-msvc/rollup.win32-x64-msvc.node" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/esbuild/bin/esbuild" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/esbuild/bin/esbuild" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/rollup/dist/bin/rollup" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/rollup/dist/bin/rollup" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/AppContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/AppContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/mockData.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/mockData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CourseCatalog.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +26,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="draft" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -92,12 +37,12 @@
     &quot;assignee&quot;: &quot;nazariidatsenko25-png&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/draft.git&quot;,
-    &quot;accountId&quot;: &quot;e372fe90-304f-4ad2-8044-4bea5d03c0ff&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nazariidatsenko25-png/KSE_electives_helper.git",
+    "accountId": "5fddec4a-202a-4e90-b8ee-918e141acbed"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/node_modules/.vite/deps/chunk-3DCTBBZ3.js.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/node_modules/fetch-blob/node_modules/web-streams-polyfill/dist/ponyfill.es2018.js.map" root0="FORCE_HIGHLIGHTING" />
@@ -114,26 +59,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;draft&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/draft&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "ComparingSyllabuses",
+    "last_opened_file_path": "/Users/admin/Desktop/draft",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="draft" type="Python.DjangoServer" factoryName="Django server">
       <module name="draft" />
@@ -187,6 +132,7 @@
       <workItem from="1775177816138" duration="28000" />
       <workItem from="1775215333875" duration="1672000" />
       <workItem from="1775230043063" duration="2112000" />
+      <workItem from="1776106020223" duration="2724000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
@@ -220,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775232111146</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Removed course label &quot;Викладач&quot;,&quot;Професор&quot;">
+      <option name="closed" value="true" />
+      <created>1776106686210</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1776106686210</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -245,7 +199,8 @@
     <MESSAGE value="fix" />
     <MESSAGE value="sosial and settings" />
     <MESSAGE value="debag" />
-    <option name="LAST_COMMIT_MESSAGE" value="debag" />
+    <MESSAGE value="Removed course label &quot;Викладач&quot;,&quot;Професор&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed course label &quot;Викладач&quot;,&quot;Професор&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
