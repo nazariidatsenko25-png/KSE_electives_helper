@@ -48,6 +48,113 @@ const MultiRangeSlider = ({ min, max, value, onChange }) => {
 };
 
 const minCredits = Math.min(...mockCatalog.map(c => c.credits));
+
+const ToggleDiffText = ({ oldText, newText, isChangesActive }) => {
+    const [showOld, setShowOld] = useState(false);
+    
+    if (!isChangesActive || !oldText || oldText === newText) {
+        return <p style={{ margin: 0, marginBottom: '1rem' }}>{newText}</p>;
+    }
+
+    return (
+        <div style={{ marginBottom: '1rem' }}>
+            <div 
+                onClick={(e) => { e.stopPropagation(); setShowOld(!showOld); }}
+                style={{ 
+                    margin: 0, 
+                    cursor: 'pointer', 
+                    background: showOld ? 'rgba(248, 113, 113, 0.08)' : 'rgba(16, 185, 129, 0.08)',
+                    border: showOld ? '1px dashed rgba(248, 113, 113, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
+                    padding: '0.75rem',
+                    borderRadius: '8px',
+                    color: 'var(--text-main)',
+                    position: 'relative',
+                    transition: 'all 0.2s',
+                    lineHeight: '1.5'
+                }}
+                title={showOld ? "Натисніть, щоб переглянути нову версію" : "Натисніть, щоб переглянути стару версію"}
+            >
+                <div style={{
+                    position: 'absolute',
+                    top: '-10px',
+                    right: '10px',
+                    background: showOld ? '#f87171' : '#10b981',
+                    color: 'white',
+                    fontSize: '0.65rem',
+                    padding: '2px 8px',
+                    borderRadius: '10px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+                }}>
+                    {showOld ? "Стара версія" : "Оновлено"}
+                </div>
+                {showOld ? (
+                    <span style={{ color: '#f87171' }}>{oldText}</span>
+                ) : (
+                    <span>{newText}</span>
+                )}
+            </div>
+        </div>
+    );
+};
+
+const ToggleDiffList = ({ oldArr, newArr, isChangesActive }) => {
+    const [showOld, setShowOld] = useState(false);
+    
+    const isDifferent = JSON.stringify(oldArr) !== JSON.stringify(newArr);
+    
+    if (!isChangesActive || !oldArr || !isDifferent) {
+        return (
+            <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
+                {newArr.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+        );
+    }
+
+    return (
+        <div 
+            onClick={(e) => { e.stopPropagation(); setShowOld(!showOld); }}
+            style={{ 
+                cursor: 'pointer', 
+                background: showOld ? 'rgba(248, 113, 113, 0.08)' : 'rgba(16, 185, 129, 0.08)',
+                border: showOld ? '1px dashed rgba(248, 113, 113, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
+                padding: '1rem 0.75rem 0.5rem 1rem',
+                borderRadius: '8px',
+                position: 'relative',
+                transition: 'all 0.2s',
+            }}
+            title={showOld ? "Натисніть, щоб переглянути нову версію" : "Натисніть, щоб переглянути стару версію"}
+        >
+            <div style={{
+                position: 'absolute',
+                top: '-10px',
+                right: '10px',
+                background: showOld ? '#f87171' : '#10b981',
+                color: 'white',
+                fontSize: '0.65rem',
+                padding: '2px 8px',
+                borderRadius: '10px',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.05em',
+                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+            }}>
+                {showOld ? "Стара версія" : "Оновлено"}
+            </div>
+            {showOld ? (
+                <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#f87171' }}>
+                    {oldArr.map((item, i) => <li key={i}>{item}</li>)}
+                </ul>
+            ) : (
+                <ul style={{ margin: 0, paddingLeft: '1.2rem', color: 'var(--text-main)' }}>
+                    {newArr.map((item, i) => <li key={i}>{item}</li>)}
+                </ul>
+            )}
+        </div>
+    );
+};
 const maxCredits = Math.max(...mockCatalog.map(c => c.credits));
 const minDuration = Math.min(...mockCatalog.map(c => c.duration));
 const maxDuration = Math.max(...mockCatalog.map(c => c.duration));
@@ -985,7 +1092,11 @@ const CourseCatalog = ({ user, navigate }) => {
                                                                 
                                                                 <div>
                                                                     <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Обґрунтування курсу</h5>
-                                                                    <p style={{ margin: 0, marginBottom: '1rem' }}>{course.detailedSyllabus.justification}</p>
+                                                                    <ToggleDiffText 
+                                                                        oldText={mockPreviousGeneration[course.id]?.detailedSyllabus?.justification} 
+                                                                        newText={course.detailedSyllabus.justification} 
+                                                                        isChangesActive={isChangesActive} 
+                                                                    />
                                                                     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', padding: '0.75rem', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
                                                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#60a5fa' }}></span>Лекції: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.lectureHours} год</span>{isChangesActive && getNumericDiff(changes, 'lectureHours') && renderNumericChange(getNumericDiff(changes, 'lectureHours'))}</div>
                                                                         <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#a855f7' }}></span>Практика: <span style={{ color: 'var(--text-main)', fontWeight: 600 }}>{course.practiceHours} год</span>{isChangesActive && getNumericDiff(changes, 'practiceHours') && renderNumericChange(getNumericDiff(changes, 'practiceHours'))}</div>
@@ -1048,16 +1159,20 @@ const CourseCatalog = ({ user, navigate }) => {
 
                                                                 <div>
                                                                     <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Цілі курсу</h5>
-                                                                    <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
-                                                                        {course.detailedSyllabus.goals.map((item, i) => <li key={i}>{item}</li>)}
-                                                                    </ul>
+                                                                    <ToggleDiffList 
+                                                                        oldArr={mockPreviousGeneration[course.id]?.detailedSyllabus?.goals}
+                                                                        newArr={course.detailedSyllabus.goals}
+                                                                        isChangesActive={isChangesActive}
+                                                                    />
                                                                 </div>
 
                                                                 <div>
                                                                     <h5 style={{ color: 'var(--text-main)', marginBottom: '0.5rem', fontSize: '0.95rem' }}>Результати навчання</h5>
-                                                                    <ul style={{ margin: 0, paddingLeft: '1.2rem' }}>
-                                                                        {course.detailedSyllabus.outcomes.map((item, i) => <li key={i}>{item}</li>)}
-                                                                    </ul>
+                                                                    <ToggleDiffList 
+                                                                        oldArr={mockPreviousGeneration[course.id]?.detailedSyllabus?.outcomes}
+                                                                        newArr={course.detailedSyllabus.outcomes}
+                                                                        isChangesActive={isChangesActive}
+                                                                    />
                                                                 </div>
 
                                                                 <div>
