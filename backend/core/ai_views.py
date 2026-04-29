@@ -265,160 +265,167 @@ class AiChatView(APIView):
     permission_classes = [AllowAny]
 
     def post(self, request):
-        api_key = getattr(settings, 'GEMINI_API_KEY', None)
-        if not api_key:
-            return Response(
-                {'detail': 'AI advisor not configured. GEMINI_API_KEY missing.'},
-                status=status.HTTP_503_SERVICE_UNAVAILABLE,
-            )
-
-        query = request.data.get('query', '').strip()
-        incoming_messages = request.data.get('messages', [])
-
-        if not query:
-            return Response(
-                {'detail': 'Query is required.'},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        # Use real user if authenticated, otherwise use a mock user for dev
-        user = request.user
-        if not user or not user.is_authenticated:
-            # Fallback mock user for development
-            # Try to find a real user in the DB to associate queries with,
-            # otherwise Enrollment filters will crash.
-            user = User.objects.first()
-            user_name = 'Олена'
-            user_year = '3'
-            user_major = 'Програмна інженерія'
-        else:
-            user_name = user.first_name or user.email.split('@')[0]
-            user_year = getattr(user, 'current_year', '1')
-            user_major = getattr(user, 'major', 'General')
-
-        system_instruction = build_system_prompt(
-            name=user_name,
-            year=user_year,
-            major=user_major,
-        )
-
-        # ── Build proper message history (cookbook pattern) ──
-        llm_messages = []
-        for msg in incoming_messages:
-            role = 'model' if msg.get('type') == 'ai' else 'user'
-            text = msg.get('text', '')
-            if text:
-                llm_messages.append({'role': role, 'content': text})
-
-        # Add the new user query
-        llm_messages.append({'role': 'user', 'content': query})
-
-        # ── Session memory compaction (cookbook pattern) ──
-        client = genai.Client(api_key=api_key)
-        was_compacted = estimate_chars(llm_messages) > MAX_CONTEXT_CHARS
-        if was_compacted:
-            system_msg = {'role': 'system', 'content': system_instruction}
-            llm_messages = compact_history(client, llm_messages, system_msg)
-
-        # Convert to Gemini formats
-        gemini_messages = []
-        for msg in llm_messages:
-            gemini_messages.append(
-                types.Content(
-                    role=msg['role'],
-                    parts=[types.Part.from_text(text=msg['content'])]
-                )
-            )
-
-        gemini_config = types.GenerateContentConfig(
-            system_instruction=system_instruction,
-            tools=TOOL_DEFINITIONS,
-        )
-
-        # ── Tool use loop ──
-        tools_used = []
-        max_tool_rounds = 3  # Safety limit
-
         try:
-            for _ in range(max_tool_rounds):
-                response = client.models.generate_content(
-                    model='gemini-2.5-flash',
-                    contents=gemini_messages,
-                    config=gemini_config,
+            api_key = getattr(settings, 'GEMINI_API_KEY', None)
+            if not api_key:
+                return Response(
+                    {'detail': 'AI advisor not configured. GEMINI_API_KEY missing.'},
+                    status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 )
 
-                # If no tool calls, we have our final response
-                if not response.function_calls:
-                    final_text = response.text or 'Ось мої рекомендації.'
-                    break
+            query = request.data.get('query', '').strip()
+            incoming_messages = request.data.get('messages', [])
 
-                # Process tool calls
-                # 1) Add model's function_call response to history
-                gemini_messages.append(
-                    response.candidates[0].content
+            if not query:
+                return Response(
+                    {'detail': 'Query is required.'},
+                    status=status.HTTP_400_BAD_REQUEST,
                 )
 
-                # 2) Collect tool results into a new Content part
-                tool_results_parts = []
-                for tool_call in response.function_calls:
-                    tool_name = tool_call.name
-                    tool_args = tool_call.args if tool_call.args else {}
+            # Use real user if authenticated, otherwise use a mock user for dev
+            user = request.user
+            if not user or not user.is_authenticated:
+                # Fallback mock user for development
+                # Try to find a real user in the DB to associate queries with,
+                # otherwise Enrollment filters will crash.
+                user = User.objects.first()
+                user_name = 'Олена'
+                user_year = '3'
+                user_major = 'Програмна інженерія'
+            else:
+                user_name = user.first_name or user.email.split('@')[0]
+                user_year = getattr(user, 'current_year', '1')
+                user_major = getattr(user, 'major', 'General')
 
-                    tool_result = execute_tool(tool_name, tool_args, user)
-                    tools_used.append({
-                        'tool': tool_name,
-                        'args': tool_args,
-                        'result_preview': tool_result[:100],
-                    })
+            system_instruction = build_system_prompt(
+                name=user_name,
+                year=user_year,
+                major=user_major,
+            )
 
-                    # Add result for Gemini
-                    tool_results_parts.append(
-                        types.Part.from_function_response(
-                            name=tool_name,
-                            response={"result": tool_result}
-                        )
-                    )
+            # ── Build proper message history (cookbook pattern) ──
+            llm_messages = []
+            for msg in incoming_messages:
+                role = 'model' if msg.get('type') == 'ai' else 'user'
+                text = msg.get('text', '')
+                if text:
+                    llm_messages.append({'role': role, 'content': text})
 
+            # Add the new user query
+            llm_messages.append({'role': 'user', 'content': query})
+
+            # ── Session memory compaction (cookbook pattern) ──
+            client = genai.Client(api_key=api_key)
+            was_compacted = estimate_chars(llm_messages) > MAX_CONTEXT_CHARS
+            if was_compacted:
+                system_msg = {'role': 'system', 'content': system_instruction}
+                llm_messages = compact_history(client, llm_messages, system_msg)
+
+            # Convert to Gemini formats
+            gemini_messages = []
+            for msg in llm_messages:
                 gemini_messages.append(
                     types.Content(
-                        role="user",
-                        parts=tool_results_parts
+                        role=msg['role'],
+                        parts=[types.Part.from_text(text=msg['content'])]
                     )
                 )
-            else:
-                final_text = 'Ось мої рекомендації.' # Fallback if max rounds hit
 
-        except Exception as exc:
-            logger.exception('Gemini API error')
-            return Response(
-                {'detail': f'AI service error: {str(exc)}'},
-                status=status.HTTP_502_BAD_GATEWAY,
+            gemini_config = types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                tools=TOOL_DEFINITIONS,
             )
 
-        # Extract course recommendations from the AI response text
-        import re
-        mentioned_codes = re.findall(r'\b([A-Z]{2,4}\d{3})\b', final_text)
-        recommendations = []
-        if mentioned_codes:
-            seen = set()
-            for code in mentioned_codes:
-                if code not in seen:
-                    seen.add(code)
-                    try:
-                        c = Course.objects.get(code__iexact=code)
-                        recommendations.append({
-                            'code': c.code,
-                            'title': c.title,
-                            'credits': c.ects_credits,
-                            'instructor': c.instructor or '',
-                            'trimester': c.trimester or '',
-                        })
-                    except Course.DoesNotExist:
-                        pass
+            # ── Tool use loop ──
+            tools_used = []
+            max_tool_rounds = 3  # Safety limit
 
-        return Response({
-            'message': final_text,
-            'recommendations': recommendations,
-            'tools_used': tools_used,
-            'compacted': was_compacted,
-        })
+            try:
+                for _ in range(max_tool_rounds):
+                    response = client.models.generate_content(
+                        model='gemini-2.5-flash',
+                        contents=gemini_messages,
+                        config=gemini_config,
+                    )
+
+                    # If no tool calls, we have our final response
+                    if not response.function_calls:
+                        final_text = response.text or 'Ось мої рекомендації.'
+                        break
+
+                    # Process tool calls
+                    # 1) Add model's function_call response to history
+                    gemini_messages.append(
+                        response.candidates[0].content
+                    )
+
+                    # 2) Collect tool results into a new Content part
+                    tool_results_parts = []
+                    for tool_call in response.function_calls:
+                        tool_name = tool_call.name
+                        tool_args = tool_call.args if tool_call.args else {}
+
+                        tool_result = execute_tool(tool_name, tool_args, user)
+                        tools_used.append({
+                            'tool': tool_name,
+                            'args': tool_args,
+                            'result_preview': tool_result[:100],
+                        })
+
+                        # Add result for Gemini
+                        tool_results_parts.append(
+                            types.Part.from_function_response(
+                                name=tool_name,
+                                response={"result": tool_result}
+                            )
+                        )
+
+                    gemini_messages.append(
+                        types.Content(
+                            role="user",
+                            parts=tool_results_parts
+                        )
+                    )
+                else:
+                    final_text = 'Ось мої рекомендації.' # Fallback if max rounds hit
+
+            except Exception as exc:
+                logger.exception('Gemini API error')
+                return Response(
+                    {'detail': f'AI service error: {str(exc)}'},
+                    status=status.HTTP_502_BAD_GATEWAY,
+                )
+
+            # Extract course recommendations from the AI response text
+            import re
+            mentioned_codes = re.findall(r'\b([A-Z]{2,4}\d{3})\b', final_text)
+            recommendations = []
+            if mentioned_codes:
+                seen = set()
+                for code in mentioned_codes:
+                    if code not in seen:
+                        seen.add(code)
+                        try:
+                            c = Course.objects.get(code__iexact=code)
+                            recommendations.append({
+                                'code': c.code,
+                                'title': c.title,
+                                'credits': c.ects_credits,
+                                'instructor': c.instructor or '',
+                                'trimester': c.trimester or '',
+                            })
+                        except Course.DoesNotExist:
+                            pass
+
+            return Response({
+                'message': final_text,
+                'recommendations': recommendations,
+                'tools_used': tools_used,
+                'compacted': was_compacted,
+            })
+            
+        except Exception as e:
+            import traceback
+            tb = traceback.format_exc()
+            logger.exception('Uncaught Exception in AiChatView')
+            return Response({'detail': f'Crash: {str(e)}\n\nTraceback:\n{tb}'}, status=500)
