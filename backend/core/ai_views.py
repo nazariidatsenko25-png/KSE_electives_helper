@@ -262,7 +262,7 @@ class AiChatView(APIView):
         "compacted": bool
       }
     """
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny]
 
     def post(self, request):
         api_key = getattr(settings, 'GEMINI_API_KEY', None)
