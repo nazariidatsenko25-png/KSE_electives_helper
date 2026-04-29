@@ -32,7 +32,7 @@ urlpatterns = [
     # allauth
     path('accounts/', include('allauth.urls')),
     
-    # API endpoints
+    # API endpoints (Original)
     path('api/user/profile/', UserProfileView.as_view(), name='user-profile'),
     path('api/user/transcript/', UserTranscriptView.as_view(), name='user-transcript'),
     path('api/courses/catalog/', CourseCatalogView.as_view(), name='course-catalog'),
@@ -41,4 +41,14 @@ urlpatterns = [
     path('api/wishlist/', WishlistListCreateView.as_view(), name='wishlist-list-create'),
     path('api/wishlist/<int:course_id>/', WishlistRemoveView.as_view(), name='wishlist-remove'),
     path('api/ai/chat/', AiChatView.as_view(), name='ai-chat'),
+    
+    # API endpoints (DigitalOcean Stripped Path Fallbacks)
+    path('user/profile/', UserProfileView.as_view()),
+    path('user/transcript/', UserTranscriptView.as_view()),
+    path('courses/catalog/', CourseCatalogView.as_view()),
+    path('courses/<int:pk>/permissions/', CoursePermissionView.as_view()),
+    path('reviews/', ReviewCreateView.as_view()),
+    path('wishlist/', WishlistListCreateView.as_view()),
+    path('wishlist/<int:course_id>/', WishlistRemoveView.as_view()),
+    path('ai/chat/', AiChatView.as_view()),
 ]
