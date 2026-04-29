@@ -4,7 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="" />
+    <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/index-CVkOfq8s.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/index-DMw2t-ge.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/bin/esbuild" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/rollup.darwin-arm64.node" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.node" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SettingsPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SettingsPanel.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/context/AppContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/AppContext.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AiAdvisor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AiAdvisor.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Profile.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

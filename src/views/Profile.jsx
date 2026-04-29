@@ -371,16 +371,7 @@ const Profile = ({ user }) => {
             )}
           </div>
 
-          {/* Privacy toggle */}
-          <div className="profile-hero-actions">
-            <button
-              className={`privacy-toggle-btn ${isPrivate ? 'is-private' : 'is-public'}`}
-              onClick={() => updateUserProfile({ isPrivate: !isPrivate })}
-              title={isPrivate ? p.makePublic : p.makePrivate}
-            >
-              {isPrivate ? <><ShieldOff size={15} />{p.makePublic}</> : <><Shield size={15} />{p.makePrivate}</>}
-            </button>
-          </div>
+
         </div>
       </div>
 

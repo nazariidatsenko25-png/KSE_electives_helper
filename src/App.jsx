@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import Sidebar from './components/Sidebar';
 import Topbar from './components/Topbar';
 import SettingsPanel from './components/SettingsPanel';
+import { Settings as SettingsIcon } from 'lucide-react';
+
 import {
   Dashboard, AiAdvisor, CourseEvaluations, CourseCatalog,
   Profile, StudentProfile, InstructorProfile, Community
 } from './views';
 import { mockUser } from './data/mockData';
 
+import { AppProvider, useApp } from './context/AppContext';
+
 function App() {
+  const { setSettingsOpen, t } = useApp();
+
   const [currentView, setCurrentView] = useState(() => {
     const params = new URLSearchParams(window.location.search);
     return params.get('view') || 'dashboard';
@@ -101,6 +107,14 @@ function App() {
         </main>
       </div>
       <SettingsPanel />
+      <button 
+        className="settings-fab glass-panel" 
+        onClick={() => setSettingsOpen(true)}
+        title={t.settings.title}
+      >
+        <SettingsIcon size={24} />
+      </button>
+
     </div>
   );
 }

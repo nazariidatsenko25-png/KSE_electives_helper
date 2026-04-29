@@ -333,9 +333,7 @@ const AiAdvisor = ({ user, setCurrentView }) => {
                         <AlertTriangle size={16} className="text-warning" style={{ color: '#F59E0B' }} />
                         <span>{a.missingElective}</span>
                     </div>
-                    <div className="context-item" style={{ fontSize: '0.75rem', color: 'var(--text-muted)', opacity: 0.7 }}>
-                        🟢 Backend API Mode
-                    </div>
+
                 </div>
             </div>
 
