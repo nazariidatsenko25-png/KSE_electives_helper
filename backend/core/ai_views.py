@@ -429,6 +429,6 @@ class AiChatView(APIView):
             env_names = sorted(os.environ.keys())
             db_engine = getattr(settings, 'DATABASES', {}).get('default', {}).get('ENGINE', 'UNKNOWN')
             settings_mod = os.environ.get('DJANGO_SETTINGS_MODULE', 'NOT SET')
-            diag = f"\n\nDIAGNOSTIC:\nSettings: {settings_mod}\nDB Engine: {db_engine}\nEnv vars: {', '.join(env_names)}"
+            diag = f"\n\nDIAGNOSTIC:\nSettings: {settings_mod}\nDB Engine: {db_engine}\nDATABASE_URL: {os.environ.get('DATABASE_URL', 'NOT SET')}\nEnv vars: {', '.join(env_names)}"
             logger.exception('Uncaught Exception in AiChatView')
             return Response({'detail': f'Crash: {str(e)}{diag}\n\nTraceback:\n{tb}'}, status=500)
