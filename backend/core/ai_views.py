@@ -423,7 +423,12 @@ class AiChatView(APIView):
             })
             
         except Exception as e:
-            import traceback
+            import traceback, os
             tb = traceback.format_exc()
+            # Diagnostic: dump env var names and DB config
+            env_names = sorted(os.environ.keys())
+            db_engine = getattr(settings, 'DATABASES', {}).get('default', {}).get('ENGINE', 'UNKNOWN')
+            settings_mod = os.environ.get('DJANGO_SETTINGS_MODULE', 'NOT SET')
+            diag = f"\n\nDIAGNOSTIC:\nSettings: {settings_mod}\nDB Engine: {db_engine}\nEnv vars: {', '.join(env_names)}"
             logger.exception('Uncaught Exception in AiChatView')
-            return Response({'detail': f'Crash: {str(e)}\n\nTraceback:\n{tb}'}, status=500)
+            return Response({'detail': f'Crash: {str(e)}{diag}\n\nTraceback:\n{tb}'}, status=500)
