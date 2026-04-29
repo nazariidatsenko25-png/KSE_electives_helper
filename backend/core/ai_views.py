@@ -262,8 +262,7 @@ class AiChatView(APIView):
         "compacted": bool
       }
     """
-    permission_classes = [AllowAny]  # Dev: allow mock login; for prod switch to [IsAuthenticated]
-    authentication_classes = []  # Dev: bypass CSRF for mock login; for prod remove this line
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         api_key = getattr(settings, 'GEMINI_API_KEY', None)
