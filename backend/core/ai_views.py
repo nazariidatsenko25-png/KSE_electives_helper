@@ -282,13 +282,11 @@ class AiChatView(APIView):
                     status=status.HTTP_400_BAD_REQUEST,
                 )
 
-            # Use real user if authenticated, otherwise use a mock user for dev
+            # Use real user if authenticated, otherwise use mock identity for demo
             user = request.user
             if not user or not user.is_authenticated:
-                # Fallback mock user for development
-                # Try to find a real user in the DB to associate queries with,
-                # otherwise Enrollment filters will crash.
-                user = User.objects.first()
+                # No DB lookup needed — execute_tool handles user=None safely
+                user = None
                 user_name = 'Олена'
                 user_year = '3'
                 user_major = 'Програмна інженерія'
