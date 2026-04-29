@@ -1,59 +1,90 @@
-# KSE Student Portal
+<div align="center">
+  <img src="https://vitejs.dev/logo.svg" alt="Logo" width="80" height="80">
 
-> **⚠️ TODO (before production release):** Re-add a `.gitignore` file with the following entries:
->
-> ```
-> # Logs
-> logs
-> *.log
-> npm-debug.log*
-> yarn-debug.log*
-> yarn-error.log*
-> pnpm-debug.log*
-> lerna-debug.log*
->
-> node_modules
-> dist
-> dist-ssr
-> *.local
->
-> # Editor directories and files
-> .vscode/*
-> !.vscode/extensions.json
-> .idea
-> .DS_Store
-> *.suo
-> *.ntvs*
-> *.njsproj
-> *.sln
-> *.sw?
->
-> # Environment variables (API keys — never commit!)
-> .env
-> *.env
->
-> # Python
-> __pycache__/
-> *.py[cod]
-> db.sqlite3
-> backend/venv/
-> ```
+  <h3 align="center">KSE Student Portal</h3>
 
----
+  <p align="center">
+    A unified, modern "single pane of glass" platform for Kyiv School of Economics students.
+    <br />
+    <br />
+    <a href="#">View Demo</a>
+    ·
+    <a href="https://github.com/nazariidatsenko25-png/KSE_electives_helper/issues">Report Bug</a>
+  </p>
+</div>
 
-## React + Vite
+## 🌟 About The Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The **Kyiv School of Economics (KSE) Student Portal** consolidates scattered academic systems (Moodle, grading systems, course catalogs) into one responsive, beautifully designed dashboard with seamless Google SSO authentication.
 
-Currently, two official plugins are available:
+### 🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **SmartCourse AI Advisor** — LLM academic counselor powered by Google Gemini 2.5 Flash with real-time DB tool access.
+* **Diploma Progress Dashboard** — Visual ECTS credit tracking, GPA, graduation requirements, and active courses.
+* **Interactive Course Catalog** — Searchable/filterable course directory with wishlist and expandable detail cards.
+* **Course Evaluations & Reviews** — Anonymized multi-criteria reviews with LLM-powered content moderation.
+* **Community Hub** — Student clubs directory with real-time chat simulations, schedules, and announcements.
+* **Internationalization (i18n)** — Full support for Ukrainian, English, and German.
+* **Premium Aesthetics** — Glassmorphism dark theme, fluid animations, fully responsive mobile-first design.
 
-## React Compiler
+### 💻 Built With
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Frontend**: React 18, Vite, Vanilla CSS
+* **Backend**: Django 4, Django REST Framework
+* **Database**: PostgreSQL / SQLite
+* **Authentication**: Google OAuth2 (`django-allauth`)
+* **AI Integration**: Google Gemini 2.5 Flash API
 
-## Expanding the ESLint configuration
+<!-- GETTING STARTED -->
+## 🛠 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+* Python 3.10+
+* Node.js v18+
+* Google Gemini API Key
+
+### Installation
+
+1. **Clone the repo**
+   ```sh
+   git clone https://github.com/nazariidatsenko25-png/KSE_electives_helper.git
+   cd KSE_electives_helper
+   ```
+
+2. **Setup Backend**
+   ```sh
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   python manage.py migrate
+   python manage.py runserver
+   ```
+
+3. **Setup Frontend**
+   ```sh
+   # Open a new terminal from the root directory
+   npm install
+   npm run dev
+   ```
+
+4. **Environment Variables**
+   Create a `.env` file in the `backend` directory with your API keys:
+   ```env
+   SECRET_KEY=your_django_secret_key
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+## 🌐 Deployment (DigitalOcean)
+
+This project is configured to be deployed on DigitalOcean App Platform as a 3-component setup:
+1. **PostgreSQL Database**
+2. **Web Service (Django Backend)** (Source: `backend/`, Command: `gunicorn kse_portal.wsgi:application`)
+3. **Static Site (React Frontend)** (Source: `/`, Command: `npm run build`)
+
+## 🎓 KSE Ecosystem
+
+Designed specifically for the KSE community to replace fragmented legacy systems and deliver a world-class academic experience.
