@@ -261,11 +261,10 @@ GOOGLE_CLIENT_SECRET=...
 
 ### Roadmap
 1. **Real Moodle Integration** — replace `mockData.js` with REST/XML-RPC calls for live enrollments, grades, and syllabi
-2. **PostgreSQL Migration** — switch from SQLite to PostgreSQL for production (Docker/Heroku/AWS)
-3. **Schedule/Calendar Sync** — `GET /api/user/schedule/` from Moodle Calendar or Google Calendar
-4. **RAG for AI** — add vector DB of syllabi (pgvector) for retrieval-augmented course recommendations
-5. **Rate Limiting** — throttle `/api/ai/chat/` to prevent abuse
-6. **SettingsPanel UI** — implement the settings panel (`src/components/SettingsPanel.jsx`) with theme toggle, font size, language switcher, and dyslexia font option (state already managed in `AppContext`)
+2. **Schedule/Calendar Sync** — `GET /api/user/schedule/` from Moodle Calendar or Google Calendar
+3. **RAG for AI** — add vector DB of syllabi (pgvector) for retrieval-augmented course recommendations
+4. **Rate Limiting** — throttle `/api/ai/chat/` to prevent abuse
+5. **SettingsPanel UI** — implement the settings panel (`src/components/SettingsPanel.jsx`) with theme toggle, font size, language switcher, and dyslexia font option (state already managed in `AppContext`)
 
 ### Known Issues
 1. **Mock Data** — student GPA, attendance, credits (shown in `Profile.jsx`), and per-course statistics are sourced from `mockData.js` and need real backend endpoints
@@ -292,6 +291,8 @@ GOOGLE_CLIENT_SECRET=...
 ### Bug Fixes
 | Bug | Root Cause | Fix |
 |---|---|---|
-| **Blank screen on load** | A bad merge conflict resolution (`commit 50f41f3f`) truncated `AppContext.jsx`, `SettingsPanel.jsx`, and `Community.jsx` to broken/empty files. The missing `t` object caused every component that calls `useApp()` to crash immediately. | Restored all 3 files from pre-merge commit `a7fa27b0`. Then replaced the inline mini-translation object in `AppContext.jsx` with the correct `import { translations } from '../locales.js'` to restore the full translation tree. |
+| **DigitalOcean 500 Error (SQLite Fallback)** | DigitalOcean App Platform injects the Database URL via a component reference (e.g. `${dev-db-000359.DATABASE_URL}`). If unbound, Django fell back to an uninitialized SQLite DB. | Added robust PostgreSQL auto-discovery in `production.py` and `development.py` that scans all env vars. Updated `wsgi.py` to default to `kse_portal.settings.production`. |
+| **Auth crash on AI Route** | Unauthenticated visitors querying the AI caused `User.objects.first()` to crash the DB when uninitialized. | Added safe fallback to skip DB lookup for anonymous users, and temporarily allowed unauthenticated access to the AI for presentation demos. |
+| **Blank screen on load** | A bad merge conflict resolution (`commit 50f41f3f`) truncated `AppContext.jsx`, `SettingsPanel.jsx`, and `Community.jsx` to broken/empty files. | Restored all 3 files from pre-merge commit. Replaced inline mini-translation object in `AppContext.jsx` with the correct `import { translations } from '../locales.js'`. |
 | **Vite build error** | `SettingsPanel.jsx` was committed as an empty file (0 bytes), causing a JS parse error. | Replaced with a valid placeholder component `return null`. |
-| **Backend venv broken** | `python` symlink in the existing `venv/bin/` pointed to a non-existent interpreter path. | Deleted and recreated venv using `python3 -m venv venv`; all dependencies reinstalled from `requirements.txt`. |
+| **Backend venv broken** | `python` symlink in the existing `venv/bin/` pointed to a non-existent interpreter path. | Deleted and recreated venv using `python3 -m venv venv`; all dependencies reinstalled. |
