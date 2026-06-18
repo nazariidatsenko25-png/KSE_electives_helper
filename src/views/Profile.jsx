@@ -268,7 +268,7 @@ const Profile = ({ user }) => {
 
   // Load reviews
   useEffect(() => {
-    if (!user) { setLoadingReviews(false); return; }
+    if (!user) { Promise.resolve().then(() => setLoadingReviews(false)); return; }
     fetchWithAuth('/api/reviews/?my=true', { suppressAuthRedirect: true })
       .then(data => setReviews(Array.isArray(data) ? data : (data.results || [])))
       .catch(() => setReviews([

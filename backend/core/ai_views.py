@@ -13,9 +13,16 @@ import logging
 
 from django.conf import settings
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, BasePermission
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+class IsAuthenticatedOrDebug(BasePermission):
+    """Allow unauthenticated access only when DEBUG is True for mock data testing."""
+    def has_permission(self, request, view):
+        if getattr(settings, 'DEBUG', False):
+            return True
+        return bool(request.user and request.user.is_authenticated)
 
 from google import genai
 from google.genai import types
@@ -262,7 +269,7 @@ class AiChatView(APIView):
         "compacted": bool
       }
     """
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrDebug]
 
     def post(self, request):
         try:

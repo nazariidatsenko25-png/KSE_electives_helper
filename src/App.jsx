@@ -111,10 +111,11 @@ function App() {
         className="settings-fab glass-panel" 
         onClick={() => setSettingsOpen(true)}
         title={t.settings.title}
+        aria-label={t.settings.title}
       >
-        <SettingsIcon size={24} />
+        <SettingsIcon size={24} aria-hidden="true" />
       </button>
-
+      <div className="noise-overlay" />
     </div>
   );
 }

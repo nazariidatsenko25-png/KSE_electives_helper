@@ -104,7 +104,7 @@ const Dashboard = ({ user, setCurrentView }) => {
                         </div>
 
                         <div className="schedule-body">
-                            {timeSlots.map((time, index) => (
+                            {timeSlots.map((time) => (
                                 <div key={time} className="schedule-row">
                                     <div className="time-label">{time}</div>
                                     {scheduleDays.map(day => {

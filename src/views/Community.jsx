@@ -295,7 +295,7 @@ function ClubPage({ club, onBack }) {
 }
 
 // ─── Community Home ───────────────────────────────────────────────────────────
-export default function Community({ user }) {
+export default function Community() {
   const { t } = useApp();
   const [selectedClub, setSelectedClub] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');

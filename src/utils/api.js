@@ -39,7 +39,7 @@ export const fetchWithAuth = async (url, options = {}) => {
         try {
             const errorData = await response.json();
             errorMessage = errorData.detail || errorData.message || JSON.stringify(errorData);
-        } catch (_) { /* body wasn't JSON */ }
+        } catch { /* body wasn't JSON */ }
         throw new Error(errorMessage);
     }
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, Heart, Star, BookOpen, MessageCircle, BarChart2, Award, ChevronDown, ChevronUp, Lock, Sparkles, Filter, ArrowDown, ArrowUp, Pin, PinOff, CheckCircle, GraduationCap, Clock, Activity, FileText, Bot, X, Loader2, Send, ThumbsUp, ThumbsDown, Calendar, User, GitCompareArrows } from 'lucide-react';
-import { mockCatalog, mockComments, mockUsers, mockReviews, mockEnrollments, mockTranscript, mockPreviousGeneration } from '../data/mockData';
+import { mockCatalog, mockUsers, mockReviews, mockEnrollments, mockTranscript, mockPreviousGeneration } from '../data/mockData';
 import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 
@@ -57,41 +57,43 @@ const ToggleDiffText = ({ oldText, newText, isChangesActive }) => {
     }
 
     return (
-        <div style={{ marginBottom: '1rem' }}>
+        <div style={{ marginBottom: 'var(--space-md)' }}>
             <div 
                 onClick={(e) => { e.stopPropagation(); setShowOld(!showOld); }}
                 style={{ 
                     margin: 0, 
                     cursor: 'pointer', 
-                    background: showOld ? 'rgba(248, 113, 113, 0.08)' : 'rgba(16, 185, 129, 0.08)',
-                    border: showOld ? '1px dashed rgba(248, 113, 113, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
-                    padding: '0.75rem',
-                    borderRadius: '8px',
+                    background: showOld ? 'rgba(239, 68, 68, 0.08)' : 'rgba(16, 185, 129, 0.08)',
+                    border: showOld ? '1px dashed rgba(239, 68, 68, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
+                    padding: 'var(--space-sm) var(--space-md)',
+                    borderRadius: 'var(--radius-sm)',
                     color: 'var(--text-main)',
                     position: 'relative',
-                    transition: 'all 0.2s',
+                    transition: 'all 0.2s ease',
                     lineHeight: '1.5'
                 }}
                 title={showOld ? "Натисніть, щоб переглянути нову версію" : "Натисніть, щоб переглянути стару версію"}
+                role="button"
+                aria-pressed={showOld}
+                aria-label={showOld ? "Показується стара версія. Натисніть для нової" : "Показується нова версія. Натисніть для старої"}
             >
                 <div style={{
                     position: 'absolute',
                     top: '-10px',
                     right: '10px',
-                    background: showOld ? '#f87171' : '#10b981',
-                    color: 'white',
-                    fontSize: '0.65rem',
+                    background: showOld ? 'var(--color-error)' : 'var(--color-success)',
+                    color: 'var(--text-inverse)',
+                    fontSize: 'var(--fs-caption)',
                     padding: '2px 8px',
-                    borderRadius: '10px',
+                    borderRadius: 'var(--radius-full)',
                     fontWeight: 700,
                     textTransform: 'uppercase',
                     letterSpacing: '0.05em',
-                    boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
                 }}>
-                    {showOld ? "Стара версія" : "Оновлено"}
+                    {showOld ? "[-] Стара версія" : "[+] Оновлено"}
                 </div>
                 {showOld ? (
-                    <span style={{ color: '#f87171' }}>{oldText}</span>
+                    <span style={{ color: 'var(--color-error)' }}>{oldText}</span>
                 ) : (
                     <span>{newText}</span>
                 )}
@@ -118,30 +120,32 @@ const ToggleDiffList = ({ oldArr, newArr, isChangesActive }) => {
             onClick={(e) => { e.stopPropagation(); setShowOld(!showOld); }}
             style={{ 
                 cursor: 'pointer', 
-                background: showOld ? 'rgba(248, 113, 113, 0.08)' : 'rgba(16, 185, 129, 0.08)',
-                border: showOld ? '1px dashed rgba(248, 113, 113, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
-                padding: '1rem 0.75rem 0.5rem 1rem',
-                borderRadius: '8px',
+                background: showOld ? 'rgba(239, 68, 68, 0.08)' : 'rgba(16, 185, 129, 0.08)',
+                border: showOld ? '1px dashed rgba(239, 68, 68, 0.4)' : '1px dashed rgba(16, 185, 129, 0.4)',
+                padding: 'var(--space-md) var(--space-sm) var(--space-sm) var(--space-md)',
+                borderRadius: 'var(--radius-sm)',
                 position: 'relative',
-                transition: 'all 0.2s',
+                transition: 'all 0.2s ease',
             }}
             title={showOld ? "Натисніть, щоб переглянути нову версію" : "Натисніть, щоб переглянути стару версію"}
+            role="button"
+            aria-pressed={showOld}
+            aria-label={showOld ? "Показується стара версія. Натисніть для нової" : "Показується нова версія. Натисніть для старої"}
         >
             <div style={{
                 position: 'absolute',
                 top: '-10px',
                 right: '10px',
-                background: showOld ? '#f87171' : '#10b981',
-                color: 'white',
-                fontSize: '0.65rem',
+                background: showOld ? 'var(--color-error)' : 'var(--color-success)',
+                color: 'var(--text-inverse)',
+                fontSize: 'var(--fs-caption)',
                 padding: '2px 8px',
-                borderRadius: '10px',
+                borderRadius: 'var(--radius-full)',
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
-                boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
             }}>
-                {showOld ? "Стара версія" : "Оновлено"}
+                {showOld ? "[-] Стара версія" : "[+] Оновлено"}
             </div>
             {showOld ? (
                 <ul style={{ margin: 0, paddingLeft: '1.2rem', color: '#f87171' }}>
@@ -370,7 +374,7 @@ const CourseCatalog = ({ user, navigate }) => {
                     }
                 });
         } else {
-            setWishlist(new Set());
+            Promise.resolve().then(() => setWishlist(new Set()));
         }
     }, [user]);
 
@@ -621,19 +625,7 @@ const CourseCatalog = ({ user, navigate }) => {
         </span>
     );
 
-    const renderTextChange = (diff) => (
-        <div className="text-diff-container" key={diff.key}>
-            <div className="text-diff-label">{diff.label}:</div>
-            <div className="text-diff-old">
-                <span className="text-diff-tag">{c.changes.was}</span>
-                {diff.oldText}
-            </div>
-            <div className="text-diff-new">
-                <span className="text-diff-tag">{c.changes.now}</span>
-                {diff.newText}
-            </div>
-        </div>
-    );
+
 
     const getNumericDiff = (changes, fieldKey) => {
         if (!changes) return null;
@@ -878,10 +870,6 @@ const CourseCatalog = ({ user, navigate }) => {
                                 ? new Set(mockEnrollments[user.id] || [])
                                 : new Set();
 
-                            // Completed courses - matched through transcript
-                            const completedCourseIds = user
-                                ? new Set(sorted.filter(courseItem => mockTranscript?.some(trItem => trItem.course_code === courseItem.code)).map(courseItem => courseItem.id))
-                                : new Set();
 
                             const pinnedCourses = (pinActive && user) ? sorted.filter(courseObj => activeCourseIds.has(courseObj.id)) : [];
                             const restCourses = (pinActive && user) ? sorted.filter(courseObj => !activeCourseIds.has(courseObj.id)) : sorted;
@@ -890,7 +878,7 @@ const CourseCatalog = ({ user, navigate }) => {
                             const isExpanded = expanded === course.id;
                             const isWishlisted = wishlist.has(course.id);
                             const isLoading = loadingWishlist.has(course.id);
-                            const isElective = course.category === 'elective';
+
                             const courseReviews = reviews[course.id] || [];
                             const aiState = aiSummaryState[course.id] || {};
                             const isReviewsExpanded = reviewsExpanded[course.id] ?? false;

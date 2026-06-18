@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, Bot, Sparkles, BookOpen, Clock, Activity, Lock, X, FileText, GraduationCap, AlertTriangle } from 'lucide-react';
+import { Send, Bot, Sparkles, BookOpen, Clock, Activity, Lock, X, FileText, GraduationCap, AlertTriangle, CheckCircle } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { fetchWithAuth } from '../utils/api';
 import { mockTranscript } from '../data/mockData';
@@ -52,7 +52,7 @@ const renderMarkdown = (text) => {
 
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
-        const bulletMatch = line.match(/^[\*\-]\s+(.+)/);
+        const bulletMatch = line.match(/^[*-]\s+(.+)/);
         const numberedMatch = line.match(/^\d+\.\s+(.+)/);
 
         if (bulletMatch) {
@@ -215,7 +215,7 @@ const AiAdvisor = ({ user, setCurrentView }) => {
                                                     <button 
                                                         key={pIdx} 
                                                         className="prompt-chip"
-                                                        onClick={(e) => handleSend(null, prompt)}
+                                                        onClick={() => handleSend(null, prompt)}
                                                     >
                                                         {prompt}
                                                     </button>
@@ -233,10 +233,15 @@ const AiAdvisor = ({ user, setCurrentView }) => {
                                     }}>
                                         {msg.tools.map((tool, ti) => (
                                             <span key={ti} style={{
-                                                fontSize: '0.7rem', padding: '2px 8px',
-                                                borderRadius: '12px', background: 'rgba(99,102,241,0.15)',
-                                                color: 'var(--color-primary)', fontWeight: 500,
-                                            }}>{tool}</span>
+                                                fontSize: '0.75rem', padding: '4px 12px',
+                                                borderRadius: '16px', background: 'rgba(99,102,241,0.15)',
+                                                color: '#c7d2fe', fontWeight: 600,
+                                                border: '1px solid rgba(99,102,241,0.3)',
+                                                display: 'inline-flex', alignItems: 'center', gap: '6px',
+                                                boxShadow: '0 2px 8px rgba(0,0,0,0.15)'
+                                            }}>
+                                                <CheckCircle size={12} color="#818cf8" /> {tool}
+                                            </span>
                                         ))}
                                     </div>
                                 )}
@@ -309,8 +314,20 @@ const AiAdvisor = ({ user, setCurrentView }) => {
                             onChange={(e) => setQuery(e.target.value)}
                             disabled={isLoading}
                         />
-                        <button type="submit" className="send-btn btn-primary" disabled={isLoading}>
-                            <Send size={18} />
+                        <button type="submit" className="send-btn-premium btn-primary group" disabled={isLoading}>
+                            <span style={{ paddingRight: '0.25rem', fontSize: '0.9rem' }}>Надіслати</span>
+                            <div className="btn-inner-icon-wrapper">
+                                {isLoading ? (
+                                    <div 
+                                        className="loader spin-icon" 
+                                        style={{ width: '16px', height: '16px', borderWidth: '2px' }} 
+                                        role="status" 
+                                        aria-label="Завантаження відповіді..."
+                                    />
+                                ) : (
+                                    <Send size={16} aria-hidden="true" />
+                                )}
+                            </div>
                         </button>
                     </form>
                 </div>

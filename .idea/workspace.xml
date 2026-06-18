@@ -6,39 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bea33db1-4773-4b9f-a10b-6ac52951b0ee" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/index-CVkOfq8s.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/index-DMw2t-ge.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/_metadata.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/lucide-react.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react-dom_client.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-dev-runtime.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.vite/deps/react_jsx-runtime.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/bin/esbuild" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@esbuild/darwin-arm64/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/@rollup/rollup-darwin-arm64/rollup.darwin-arm64.node" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/fsevents.node" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/fsevents/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SettingsPanel.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SettingsPanel.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/context/AppContext.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/context/AppContext.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AiAdvisor.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AiAdvisor.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Profile.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="20d9ac620c017068bd4db501a7da784b8c930d31" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -70,8 +37,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/KSE_electives_helper.git&quot;,
-    &quot;accountId&quot;: &quot;5fddec4a-202a-4e90-b8ee-918e141acbed&quot;
+    &quot;url&quot;: &quot;https://github.com/nazariidatsenko25-png/draft.git&quot;,
+    &quot;accountId&quot;: &quot;11a323ad-f552-45dd-8d05-d392ee4e8eb2&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -90,26 +57,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "draft",
-    "last_opened_file_path": "/Users/admin/Desktop/draft",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.intellij.python.django.customization.DjangoModulesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;draft&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/admin/Desktop/draft&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.intellij.python.django.customization.DjangoModulesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="draft" type="Python.DjangoServer" factoryName="Django server">
       <module name="draft" />
@@ -165,6 +132,10 @@
       <workItem from="1775230043063" duration="2112000" />
       <workItem from="1776106020223" duration="2724000" />
       <workItem from="1776159203163" duration="614000" />
+      <workItem from="1779792891067" duration="3468000" />
+      <workItem from="1780513881660" duration="162000" />
+      <workItem from="1781813275071" duration="19000" />
+      <workItem from="1781813339634" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="update">
       <option name="closed" value="true" />
